@@ -1,5 +1,10 @@
 * {
-    font-family: 'Roboto', sans-serif;    
+    font-family: 'Roboto', sans-serif;
+    color: rgb(50, 50, 50)
+}
+
+html {
+    background-color: rgb(150, 150, 150);
 }
 
 body {
@@ -8,27 +13,6 @@ body {
     margin: 40px auto 40px auto;
     background-color: rgb(200, 200, 200);
     padding: 20px 20px 20px 20px;
-    border: 5px solid rgb(180, 180, 180);
-}
-
-html {
-    background-color: rgb(150, 150, 150);
-}
-
-div.content {
-    height: 280px;
-    width: 280px;
-    float: left;
-    margin: 10px;
-}
-
-img {
-    margin: 0 auto;
-    display: block;
-    border-radius: 50%;
-    width: 250px;
-    height: 250px;
-    object-fit: cover;
     border: 5px solid rgb(180, 180, 180);
 }
 
@@ -46,6 +30,11 @@ h1 {
     margin: auto; 
 }
 
+.menu li {
+    display: inline-block;
+    text-align: center;
+}
+
 .menu li a {
     text-decoration: none;
     color: rgb(100, 100, 100);
@@ -54,29 +43,65 @@ h1 {
     font-family: 'Jost', sans-serif;
 }
 
-.menu li {
-    display: inline-block;
-    text-align: center;
-}
-
 .menu li a:hover{
     color : rgb(150, 150, 150);
 }
 
-.contact {
-    list-style: none;
-    padding: 0;
-    margin: 15px 10px 15px 10px;
+div.content {
+    height: 280px;
+    width: 280px;
+    float: left;
+    margin: 10px;
 }
 
-.contact li a {
+div.icon {
+    display: flex;
+    height: 45px;
+    width: 280px;
+    float: left;
+}
+
+.icon-label {
     text-decoration: none;
-    color: rgb(100, 100, 100);
-    padding: 10px;
     display: block;
+    margin-top: 10px;
+    margin-left: 10px;
 }
 
-.contact li {
-    color: rgb(100, 100, 100);
-    padding: 10px;
+.icon {
+    height: 40px;
+    margin-left: 5px;
+}
+
+div.logo {
+    height: 70px;
+    width: 280px;
+    padding-top: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+#logo-github {
+    height: 27px;
+    margin-left: 35px;
+}
+
+#logo-linkedin {
+    height: 20px;
+    margin-left: 45px;
+}
+
+#profile-pic {
+    margin: 10px 10px 10px 10px;
+    display: block;
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border: 5px solid rgb(180, 180, 180);
 }
