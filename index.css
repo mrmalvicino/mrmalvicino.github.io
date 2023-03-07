@@ -23,9 +23,9 @@ header {
     align-items: center;
 }
 
-div.header-name {
+div.header-title {
     height: 80px;
-    width: 470px;
+    width: 650px;
     display: block
 }
 
@@ -43,6 +43,7 @@ h4 {
     color: rgb(90, 90, 90);
 }
 
+/*
 .menu {
     list-style: none;
     padding: 0;
@@ -64,6 +65,13 @@ h4 {
 
 .menu li a:hover{
     color : rgb(150, 150, 150);
+}
+*/
+
+div.header-area {
+    height: 450px;
+    width: 800px;
+    display: inline-flex;
 }
 
 div.contact-area {
@@ -128,11 +136,91 @@ div.icon {
 .icon-label {
     text-decoration: none;
     margin-left: 10px;
+    color: rgb(90, 90, 90);
 }
 
 .icon-img {
     height: 40px;
     margin-left: 5px;
+    display: flex;
+    align-items: center;
+}
+
+div.career-area {
+    height: 430px;
+    width: 476px;
+    padding: 10px;
+    border: 2px solid rgb(180, 180, 180);
+}
+
+div.about {
+    padding: 10px;
+    background-color: rgb(190, 190, 190) ;
+    border: 2px solid gray;
+    margin-bottom: 10px;
+}
+
+#presentation {
+    margin: 0;
+    text-indent: 20px;
+    color: rgb(90, 90, 90);
+}
+
+div.career {
+    height: 50px;
+    width: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-description {
+    text-align: right;
+    color: rgb(90, 90, 90);
+}
+
+.logo-img {
+    height: 30px;
+}
+
+div.projects-area {
+    height: 1050px;
+    width: 800px;
+    padding-top: 10px;
+    display: block;
+    float: left;
+}
+
+div.project {
+    height: 50px;
+    width: 796px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    border: 2px solid rgb(180, 180, 180);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+}
+
+.link-label {
+    color: rgb(50, 0, 255)
+}
+
+.link-description {
+    padding: 5px;
+    text-align: right;
+    color: rgb(90, 90, 90);
+}
+
+.link-img {
+    height: 40px;
+    margin-left: 5px;
+    margin-right: 10px;
     display: flex;
     align-items: center;
 }
