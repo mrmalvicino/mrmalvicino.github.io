@@ -1,185 +1,72 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Portfolio</title>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap" rel="stylesheet">
-        <link href="index.css" rel="stylesheet" type="text/css">
-    </head>
 
-    <body>
-        <header>
-            <div class="header-title">
-                <h1>Maximiliano Raúl Malvicino</h1>
-                <h4>Desarrollador de software JR. Estudiante de ingeniería de sonido. Docente adscripto de Física.</h4>
-            </div>
+<html lang="en">
 
-            <!--
-            <ul class="menu">
-                <li><a href="#">PORTFOLIO</a></li>
-                <li><a href="#">CV</a></li>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maximiliano's portfolio</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div>
+            <h1>Maximiliano Raúl Malvicino</h1>
+            <ul class="profile">
+                <li><a href="#">Software developer.</a></li>
+                <li><a href="#">Sound Engeneer.</a></li>
+                <li><a href="#">Physics teacher.</a></li>
             </ul>
-            -->
-        </header>
-        
-        <div class="header-area">
+        </div>
+        <input type="checkbox" id="check">
+        <label for="check" class="show-menu">&#8801</label>
+        <nav class="menu">
+            <a href="#">About me</a>
+            <a href="#">Skills</a>
+            <a href="#">Projects</a>
+            <a href="#">Education</a>
+            <a href="#">Contact</a>
+            <label for="check" class="hide-menu">&#215</label>
+        </nav>
+    </header>
 
-            <div class="contact-area">
-                <img src="https://avatars.githubusercontent.com/u/46000191?v=4" id="profile-pic"/>
-                
-                <div class="logo">
-                    <a href="https://www.linkedin.com/in/malvicinomaximilianoraul/"><img src="images/linkedin.png" id="logo-linkedin"/></a>
-                    <a href="https://www.github.com/mrmalvicino"><img src="images/github-logo.png" id="logo-github"/></a>
-                </div>
-                
-                <div class="icon">
-                    <a href="mailto:mrmalvicino@gmail.com"><img src="images/icon-mail.png" class="icon-img"/></a>
-                    <a href="mailto:mrmalvicino@gmail.com" class="icon-label">mrmalvicino@gmail.com</a>
-                </div>
-                
-                <div class="icon">
-                    <a href="phone:1559058729"><img src="images/icon-phone.png" class="icon-img"/></a>
-                    <a href="phone:1559058729" class="icon-label">+54 (911) 15-5905-8729</a>
-                </div>
-                
-                <div class="icon">
-                    <a href="https://t.me/mrmalvicino"><img src="images/icon-telegram.png" class="icon-img"/></a>
-                    <a href="https://t.me/mrmalvicino" class="icon-label">t.me/mrmalvicino</a>
-                </div>
-            </div>
-
-            <div class="career-area">
-                <div class="about">
-                    <p id="presentation">¡Hola, mi nombre es Maximiliano! Soy argentino y tengo 28 años. Actualmente resido en Buenos Aires.</p>
-                    <p id="presentation">Me apasiona la acústica y la programación. A lo largo de mi carrera, estuve trabajando en proyectos que combinan estos campos y convergen en el procesamiento de señales.</p>
-                    <p id="presentation">Si estás interesado en mi trabajo, no dudes en ponerte en contacto para llevar a cabo un proyecto en conjunto.</p>
-                </div>
-
-                <div class="career">
-                    <a href="https://www.frgp.utn.edu.ar/carreras/tup_tuss"><img src="images/utn.png" class="logo-img"/></a>
-                    <p class="logo-description">Tecnicatura Universitaria en Programación<br>5/20 materias</p>
-                </div>
-
-                <div class="career">
-                    <a href="http://www.untref.edu.ar/carrera/ingenieria-de-sonido"><img src="images/untref.png" class="logo-img"/></a>
-                    <p class="logo-description">Ingeniería de Sonido<br>25/44 materias</p>
-                </div>
-
-                <div class="career">
-                    <a href="https://www.cambridgeenglish.org"><img src="images/cambridge.png" class="logo-img"/></a>
-                    <img src="images/flag-uk.png" class="logo-img"/>
-                    <p class="logo-description">First Certificate in English<br>Nivel B2 (CEFR)</p>
-                </div>
-
-                <div class="career">
-                    <img src="images/utn.png" class="logo-img"/>
-                    <img src="images/flag-br.png" class="logo-img"/>
-                    <p class="logo-description">Portugués<br>Nivel 4/6 (UTN)</p>
-                </div>
-            </div>
-
+    <section id="about-me">
+        <div>
+            <img src="https://avatars.githubusercontent.com/u/46000191" id="profile-pic"/>
         </div>
 
-        <div class="projects-area">
-            <div class="project">
-                <div class="link">
-                <a href="https://github.com/mrmalvicino/super-libro-de-fisica"><img src="images/github-mark.png" class="link-img"/></a>
-                <a href="https://github.com/mrmalvicino/super-libro-de-fisica" class="link-label">https://github.com/mrmalvicino/super-libro-de-fisica</a>
-                </div>
-                <p class="link-description">Libro de física clásica</p>
-            </div>
-
-            <div class="project">
-                <div class="link">
-                <a href="https://github.com/mrmalvicino/notas-de-matematica"><img src="images/github-mark.png" class="link-img"/></a>
-                <a href="https://github.com/mrmalvicino/notas-de-matematica" class="link-label">https://github.com/mrmalvicino/notas-de-matematica</a>
-                </div>
-                <p class="link-description">Notas de matematica para ingeniería de sonido</p>
-            </div>
-
-            <div class="project">
-                <div class="link">
-                <a href="https://github.com/mrmalvicino/notas-de-acustica"><img src="images/github-mark.png" class="link-img"/></a>
-                <a href="https://github.com/mrmalvicino/notas-de-acustica" class="link-label">https://github.com/mrmalvicino/notas-de-acustica</a>
-                </div>
-                <p class="link-description">Notas de acústica para ingeniería de sonido</p>
-            </div>
-
-            <div class="project">
-                <div class="link">
-                <a href="https://github.com/mrmalvicino/notas-de-procesamiento-de-senales"><img src="images/github-mark.png" class="link-img"/></a>
-                <a href="https://github.com/mrmalvicino/notas-de-procesamiento-de-senales" class="link-label">https://github.com/mrmalvicino/notas-de-procesamiento-de-senales</a>
-                </div>
-                <p class="link-description">Notas de procesamiento de señales para ingeniería de sonido</p>
-            </div>
-
-            <div class="project">
-                <div class="link">
-                <a href="https://github.com/mrmalvicino/notas-de-electronica"><img src="images/github-mark.png" class="link-img"/></a>
-                <a href="https://github.com/mrmalvicino/notas-de-electronica" class="link-label">https://github.com/mrmalvicino/notas-de-electronica</a>
-                </div>
-                <p class="link-description">Notas de electrónica para ingeniería de sonido</p>
-            </div>
-
-            <div class="project">
-                <div class="link">
-                <a href="https://github.com/mrmalvicino/latex-templates"><img src="images/github-mark.png" class="link-img"/></a>
-                <a href="https://github.com/mrmalvicino/latex-templates" class="link-label">https://github.com/mrmalvicino/latex-templates</a>
-                </div>
-                <p class="link-description">Projects, environments and commands templates for LaTex</p>
-            </div>
-
-            <div class="project">
-                <div class="link">
-                <a href="https://github.com/mrmalvicino/stus-orthogonal-projection-calculator"><img src="images/github-mark.png" class="link-img"/></a>
-                <a href="https://github.com/mrmalvicino/stus-orthogonal-projection-calculator" class="link-label">https://github.com/mrmalvicino/stus-orthogonal-projection-calculator</a>
-                </div>
-                <p class="link-description">Graphic calculator that aproximates periodic functions by calculating it's orthogonal projection using Fourier Series</p>
-            </div>
-
-            <div class="project">
-                <div class="link">
-                <a href="https://github.com/mrmalvicino/probability-calculator"><img src="images/github-mark.png" class="link-img"/></a>
-                <a href="https://github.com/mrmalvicino/probability-calculator" class="link-label">https://github.com/mrmalvicino/probability-calculator</a>
-                </div>
-                <p class="link-description">Handy functions to calculate probabilities.</p>
-            </div>
-
-            <div class="project">
-                <div class="link">
-                <a href="https://github.com/mrmalvicino/signals-and-systems-assignments"><img src="images/github-mark.png" class="link-img"/></a>
-                <a href="https://github.com/mrmalvicino/signals-and-systems-assignments" class="link-label">https://github.com/mrmalvicino/signals-and-systems-assignments</a>
-                </div>
-                <p class="link-description">Homework assignments for the subject Signals and Systems at Untref</p>
-            </div>
-
-            <div class="project">
-                <div class="link">
-                <a href="https://github.com/mrmalvicino/dugun-auto-clicker"><img src="images/github-mark.png" class="link-img"/></a>
-                <a href="https://github.com/mrmalvicino/dugun-auto-clicker" class="link-label">https://github.com/mrmalvicino/dugun-auto-clicker</a>
-                </div>
-                <p class="link-description">Portable auto clicker and auto typer macro for Windows</p>
-            </div>
-
-            <div class="project">
-                <div class="link">
-                <a href="https://github.com/mrmalvicino/terminal-commands"><img src="images/github-mark.png" class="link-img"/></a>
-                <a href="https://github.com/mrmalvicino/terminal-commands" class="link-label">https://github.com/mrmalvicino/terminal-commands</a>
-                </div>
-                <p class="link-description">Basic commands for terminals</p>
-            </div>
-
-            <div class="project">
-                <div class="link">
-                <a href="https://github.com/mrmalvicino/mrmalvicino.github.io"><img src="images/github-mark.png" class="link-img"/></a>
-                <a href="https://github.com/mrmalvicino/mrmalvicino.github.io" class="link-label">https://github.com/mrmalvicino/mrmalvicino.github.io</a>
-                </div>
-                <p class="link-description">Portfolio</p>
+        <div>
+            <p id="presentation">
+                ¡Hola! Mi nombre es Maximiliano, soy argentino y tengo 28 años. Actualmente resido en Buenos Aires.
+                Me apasiona la acústica y la programación. A lo largo de mi carrera, estuve trabajando en proyectos que combinan estos campos y convergen en el procesamiento de señales.
+                Si estás interesado en mi trabajo, no dudes en ponerte en contacto para llevar a cabo un proyecto.
+            </p>
+            <div class="content">
+                <a href="https://www.linkedin.com/in/malvicinomaximilianoraul/"><img src="images/linkedin.png" id="logo-linkedin"/></a>
+                <a href="#" class="button">Download CV</a>
+                <a href="https://www.github.com/mrmalvicino"><img src="images/github-logo.png" id="logo-github"/></a>
             </div>
         </div>
+    </section>
 
-    </body>
+    <section id="skills">
+        skills
+    </section>
+
+    <section id="projects">
+        projects
+    </section>
+
+    <section id="education">
+        education
+    </section>
+
+    <section id="contact">
+        contact
+    </section>
+</body>
+
 </html>
-
-<script src="index.js"></script>

@@ -1,0 +1,202 @@
+/* RESET */
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Jost', sans-serif;
+}
+
+
+/* HEADER */
+
+header{
+    height: 100px;
+    padding: 0 50px;
+    background: rgb(28, 0, 136);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile{
+    list-style: none;
+}
+
+.profile li{
+    display: inline-block;
+    text-align: center;
+}
+
+.profile li a {
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+
+.profile li a:hover{
+    color: rgb(180, 180, 180)
+}
+
+.menu a{
+     color: white;
+     text-decoration: none;
+     text-transform: uppercase;
+     padding: 0 10px;
+}
+
+.show-menu,
+.hide-menu{
+    font-size: 50px;
+    cursor: pointer;
+    display: none;
+}
+
+.show-menu{
+    order: 1;
+}
+ 
+.show-menu:hover,
+.hide-menu:hover,
+.menu a:hover{
+    color: rgb(180, 180, 180)
+}
+
+#check{
+    display: none;
+}
+
+
+/* ABOUT ME */
+
+#about-me{
+    padding: 10px 50px;
+    background-color: white;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+}
+
+.content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#profile-pic{
+    width: 250px;
+    height: 250px;
+    display: block;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#presentation{
+    margin: 15px;
+    padding: 10px 20px;
+    background-color: rgb(140, 140, 140);
+    border-radius: 25px;
+    color: white;
+    font-size: large;
+    text-indent: 2em;
+}
+
+.button{
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: rgba(28, 0, 136, 1);
+    color: white;
+    font-size: larger;
+    text-align: center;
+    text-decoration: none;
+}
+
+.button:hover{
+    background-color: rgba(28, 0, 136, 0.5);
+}
+
+#logo-github {
+    height: 26px;
+    padding: 11px 34.1px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+#logo-linkedin {
+    height: 30px;
+    padding: 9px 20.87px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+
+/* SKILLS */
+
+
+
+
+/* PROJECTS */
+
+
+
+
+/* EDUCATION */
+
+
+
+
+/* CONTACT */
+
+
+
+
+/* RESPONSIVE */
+
+@media(max-width: 768px){
+    
+
+    /* HEADER */
+
+    .show-menu,
+    .hide-menu{
+        display: block;
+    }
+
+    .menu{
+        width: 100%;
+        height: 100vh;
+        padding: 100px 0px;
+        position: fixed;
+        background: rgb(28, 0, 136);
+        left: 0;
+        right: -100%;
+        top: 0;
+        text-align: center;
+        z-index: 100;
+    }
+
+    .menu a{
+        padding: 20px;
+        display: block;
+    }
+
+    .hide-menu{
+        position: absolute;
+        top: 50px;
+        right: 50px;
+    }
+
+    #check:checked ~ .menu{
+        display: none;
+    }
+
+
+    /* ABOUT ME */
+
+    #about-me{
+        flex-direction: column;
+    }
+
+    .content{
+        flex-direction: column;
+    }
+}
