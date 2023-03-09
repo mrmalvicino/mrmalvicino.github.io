@@ -79,7 +79,7 @@ header{
 .content{
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
 #profile-pic{
@@ -103,6 +103,7 @@ header{
 .button{
     margin: 10px;
     padding: 10px 20px;
+    border: 2px solid white;
     background-color: rgb(28, 0, 136);
     color: white;
     font-size: larger;
@@ -208,6 +209,15 @@ header{
     position: relative;
 }
 
+.description-box{
+    max-width: 800px;
+    min-height: 150px;
+    margin: 5px;
+    padding: 10px;
+    background-color: rgb(236, 23, 81);
+    border-radius: 25px;
+    color: white;
+}
 
 /* EDUCATION */
 
