@@ -11,7 +11,7 @@
 
 header{
     height: 100px;
-    padding: 0 50px;
+    padding: 0 30px;
     background: rgb(28, 0, 136);
     color: white;
     display: flex;
@@ -70,10 +70,8 @@ header{
 /* ABOUT ME */
 
 #about-me{
-    padding: 10px 50px;
+    padding: 10px 30px;
     background-color: white;
-    background-position: center;
-    background-size: cover;
     display: flex;
     align-items: center;
 }
@@ -105,7 +103,7 @@ header{
 .button{
     margin: 10px;
     padding: 10px 20px;
-    background-color: rgba(28, 0, 136, 1);
+    background-color: rgb(28, 0, 136);
     color: white;
     font-size: larger;
     text-align: center;
@@ -113,30 +111,83 @@ header{
 }
 
 .button:hover{
-    background-color: rgba(28, 0, 136, 0.5);
+    background-color: rgb(236, 23, 81);
 }
 
 #logo-github {
     height: 26px;
     padding: 11px 34.1px;
-    background-color: rgba(255, 255, 255, 0.5);
 }
 
 #logo-linkedin {
     height: 30px;
     padding: 9px 20.87px;
-    background-color: rgba(255, 255, 255, 0.5);
 }
 
 
 /* SKILLS */
 
+#skills{
+    padding: 0px 30px;
+    background-color: white;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+}
 
+.box{
+    margin: 5px;
+    padding: 10px;
+    background-color: rgb(236, 23, 81);
+    border-radius: 25px;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    color: white;
+}
+
+.logo-box{
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    padding: 5px;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.logo-img{
+    margin: auto auto;
+    max-width: 50px;
+    max-height: 50px;
+    position: relative;
+}
+
+.logo-label{
+    margin: 0 5px;
+    position: absolute;
+    font-size: x-large;
+}
+
+.logo-img:hover{
+    opacity: 0;
+}
+
+.logo-box:hover{
+    background-color: rgb(236, 23, 81);
+}
 
 
 /* PROJECTS */
 
-
+#projects{
+    padding: 5px 30px;
+    background-color: rgb(28, 0, 136);
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+}
 
 
 /* EDUCATION */
@@ -155,6 +206,10 @@ header{
     
 
     /* HEADER */
+
+    header{
+        height: 150px;
+    }
 
     .show-menu,
     .hide-menu{
@@ -197,6 +252,13 @@ header{
     }
 
     .content{
+        flex-direction: column;
+    }
+
+
+    /* SKILLS */
+
+    #skills{
         flex-direction: column;
     }
 }
