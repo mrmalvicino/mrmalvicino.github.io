@@ -175,6 +175,10 @@ header{
     color: rgb(236, 23, 81);
 }
 
+.logo-link{
+    height: 50px;
+}
+
 #skill:hover{
     opacity: 0;
 }
@@ -191,10 +195,11 @@ header{
 }
 
 .thumbnail-box{
-    width: 160px;
-    height: 160px;
+    min-width: 180px;
+    min-height: 180px;
+    width: 180px;
+    height: 180px;
     margin: 5px;
-    padding: 5px;
     background-color: white;
     border-radius: 5px;
     display: flex;
@@ -203,21 +208,31 @@ header{
 
 .thumbnail-img{
     margin: auto auto;
-    max-width: 150px;
-    max-height: 150px;
+    max-width: 170px;
+    max-height: 170px;
     background-color: white;
     position: relative;
 }
 
 .description-box{
     max-width: 800px;
-    min-height: 150px;
+    min-height: 160px;
     margin: 5px;
     padding: 10px;
     background-color: rgb(236, 23, 81);
-    border-radius: 25px;
+    border-radius: 5px;
     color: white;
 }
+
+.hbox{
+    margin: 0px;
+    padding: 0px;
+    align-items: center;
+    justify-content: space-evenly;
+    display: flex;
+    color: white;
+}
+
 
 /* EDUCATION */
 
