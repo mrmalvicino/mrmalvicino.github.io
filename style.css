@@ -1,4 +1,6 @@
+/* ----- */
 /* RESET */
+/* ----- */
 
 *{
     margin: 0;
@@ -7,6 +9,10 @@
     font-weight: 300;
 }
 
+
+/* ---------- */
+/* INDEX.HTML */
+/* ---------- */
 
 /* HEADER */
 
@@ -269,6 +275,19 @@ header{
     color: white;
     justify-content: space-evenly;
     align-items: center;
+}
+
+
+/* ------------- */
+/* PROJECTS.HTML */
+/* ------------- */
+
+#all-projects{
+    margin: 0px 30px;
+    padding: 10px 10px;
+    background-color: rgb(28, 0, 136);
+    align-items: center;
+    border-radius: 25px;
 }
 
 
