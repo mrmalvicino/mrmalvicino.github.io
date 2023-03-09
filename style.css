@@ -79,10 +79,11 @@ header{
 .content{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 #profile-pic{
+    margin: 10px;
     width: 250px;
     height: 250px;
     display: block;
@@ -91,8 +92,7 @@ header{
 }
 
 #presentation{
-    margin: 15px;
-    padding: 10px 20px;
+    padding: 15px 20px;
     background-color: rgb(140, 140, 140);
     border-radius: 25px;
     color: white;
@@ -116,11 +116,13 @@ header{
 
 #logo-github {
     height: 26px;
+    margin: 5px;
     padding: 11px 34.1px;
 }
 
 #logo-linkedin {
     height: 30px;
+    margin: 5px;
     padding: 9px 20.87px;
 }
 
@@ -128,10 +130,10 @@ header{
 /* SKILLS */
 
 #skills{
-    padding: 0px 30px;
+    padding: 10px 30px;
     background-color: white;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     display: flex;
 }
 
@@ -141,7 +143,7 @@ header{
     background-color: rgb(236, 23, 81);
     border-radius: 25px;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     display: flex;
     color: white;
 }
@@ -161,43 +163,68 @@ header{
     margin: auto auto;
     max-width: 50px;
     max-height: 50px;
+    background-color: white;
     position: relative;
 }
 
 .logo-label{
-    margin: 0 5px;
+    margin: 0 10px;
     position: absolute;
     font-size: x-large;
+    color: rgb(236, 23, 81);
 }
 
-.logo-img:hover{
+#skill:hover{
     opacity: 0;
-}
-
-.logo-box:hover{
-    background-color: rgb(236, 23, 81);
 }
 
 
 /* PROJECTS */
 
 #projects{
-    padding: 5px 30px;
+    margin: 0px 30px;
+    padding: 10px 10px;
     background-color: rgb(28, 0, 136);
     align-items: center;
-    justify-content: space-between;
+    border-radius: 25px;
+}
+
+.thumbnail-box{
+    width: 160px;
+    height: 160px;
+    margin: 5px;
+    padding: 5px;
+    background-color: white;
+    border-radius: 5px;
     display: flex;
+    align-items: center;
+}
+
+.thumbnail-img{
+    margin: auto auto;
+    max-width: 150px;
+    max-height: 150px;
+    background-color: white;
+    position: relative;
 }
 
 
 /* EDUCATION */
 
-
+#education{
+    padding: 10px 30px;
+    align-items: center;
+    justify-content: space-evenly;
+}
 
 
 /* CONTACT */
 
-
+#contact{
+    padding: 10px 30px;
+    align-items: center;
+    justify-content: space-evenly;
+}
 
 
 /* RESPONSIVE */
