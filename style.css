@@ -1,6 +1,6 @@
-/* ----- */
-/* RESET */
-/* ----- */
+/* ------------------- */
+/* GENERAL DEFINITIONS */
+/* ------------------- */
 
 *{
     margin: 0;
@@ -9,10 +9,82 @@
     font-weight: 300;
 }
 
+.content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box{
+    margin: 5px;
+    padding: 10px;
+    background-color: rgb(236, 23, 81);
+    border-radius: 25px;
+    align-items: center;
+    justify-content: space-evenly;
+    display: flex;
+    color: white;
+}
+
+.hbox{
+    margin: 0px;
+    padding: 0px;
+    align-items: center;
+    justify-content: space-evenly;
+    display: flex;
+    color: white;
+}
+
+.logo-box{
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    padding: 5px;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.logo-img{
+    margin: auto auto;
+    max-width: 50px;
+    max-height: 50px;
+    background-color: white;
+    position: relative;
+}
+
+.logo-label{
+    margin: 0 10px;
+    position: absolute;
+    font-size: x-large;
+    color: rgb(236, 23, 81);
+}
+
+.logo-link{
+    height: 50px;
+}
+
+.button{
+    margin: 10px;
+    padding: 10px 20px;
+    border: 2px solid white;
+    background-color: rgb(28, 0, 136);
+    color: white;
+    font-size: larger;
+    text-align: center;
+    text-decoration: none;
+}
+
+.button:hover{
+    background-color: rgb(236, 23, 81);
+}
+
 
 /* ---------- */
 /* INDEX.HTML */
 /* ---------- */
+
 
 /* HEADER */
 
@@ -83,12 +155,6 @@ header{
     align-items: center;
 }
 
-.content{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 #profile-pic{
     margin: 10px;
     width: 250px;
@@ -105,21 +171,6 @@ header{
     color: white;
     font-size: large;
     text-indent: 2em;
-}
-
-.button{
-    margin: 10px;
-    padding: 10px 20px;
-    border: 2px solid white;
-    background-color: rgb(28, 0, 136);
-    color: white;
-    font-size: larger;
-    text-align: center;
-    text-decoration: none;
-}
-
-.button:hover{
-    background-color: rgb(236, 23, 81);
 }
 
 #logo-github {
@@ -143,47 +194,6 @@ header{
     align-items: center;
     justify-content: center;
     display: flex;
-}
-
-.box{
-    margin: 5px;
-    padding: 10px;
-    background-color: rgb(236, 23, 81);
-    border-radius: 25px;
-    align-items: center;
-    justify-content: space-evenly;
-    display: flex;
-    color: white;
-}
-
-.logo-box{
-    width: 50px;
-    height: 50px;
-    margin: 5px;
-    padding: 5px;
-    background-color: white;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-}
-
-.logo-img{
-    margin: auto auto;
-    max-width: 50px;
-    max-height: 50px;
-    background-color: white;
-    position: relative;
-}
-
-.logo-label{
-    margin: 0 10px;
-    position: absolute;
-    font-size: x-large;
-    color: rgb(236, 23, 81);
-}
-
-.logo-link{
-    height: 50px;
 }
 
 #skill:hover{
@@ -231,15 +241,6 @@ header{
     color: white;
 }
 
-.hbox{
-    margin: 0px;
-    padding: 0px;
-    align-items: center;
-    justify-content: space-evenly;
-    display: flex;
-    color: white;
-}
-
 
 /* EDUCATION */
 
@@ -283,7 +284,7 @@ header{
 /* ------------- */
 
 #all-projects{
-    margin: 0px 30px;
+    margin: 30px 30px;
     padding: 10px 10px;
     background-color: rgb(28, 0, 136);
     align-items: center;
@@ -297,6 +298,13 @@ header{
 
 @media(max-width: 768px){
     
+
+    /* GENERAL */
+
+    .content{
+        flex-direction: column;
+    }
+
 
     /* HEADER */
 
@@ -341,10 +349,6 @@ header{
     /* ABOUT ME */
 
     #about-me{
-        flex-direction: column;
-    }
-
-    .content{
         flex-direction: column;
     }
 
