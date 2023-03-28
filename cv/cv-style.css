@@ -22,7 +22,7 @@ body{
 #left-column{
     width: 410px;
     padding: 20px;
-    background-color: rgb(230, 230, 230);
+    background-color: rgb(240, 240, 240);
 }
 
 #right-column{
@@ -51,6 +51,7 @@ h2{
     padding: 10px 0px 5px 0px;
     font-family: 'Jost', sans-serif;
     font-size: xx-large;
+    color: rgb(28, 0, 136);
 }
 
 h3{
@@ -86,9 +87,11 @@ h4{
 
 #presentation{
     margin: 20px 0px;
+    color: rgb(28, 0, 136);
 }
 
 h1{
     font-family: 'Jost', sans-serif;
     font-size: xxx-large;
+    color: rgb(28, 0, 136);
 }
