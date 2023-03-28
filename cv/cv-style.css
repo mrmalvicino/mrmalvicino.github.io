@@ -1,0 +1,94 @@
+/* ------------------- */
+/* GENERAL DEFINITIONS */
+/* ------------------- */
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
+}
+
+html{
+    background-color: rgb(28, 0, 136);
+}
+
+body{
+    width: 1050px;
+    height: 1485px;
+    margin: 50px auto;
+    display: flex;
+}
+
+#left-column{
+    width: 410px;
+    padding: 20px;
+    background-color: rgb(230, 230, 230);
+}
+
+#right-column{
+    width: 560px;
+    padding: 20px;
+    background-color: white;
+}
+
+.entry{
+    padding: 5px 0px 5px 0px;
+    align-items: center;
+}
+
+.hbox{
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    align-items: center;
+}
+
+#center{
+    justify-content: center;
+}
+
+h2{
+    padding: 10px 0px 5px 0px;
+    font-family: 'Jost', sans-serif;
+    font-size: xx-large;
+}
+
+h3{
+    font-family: 'Jost', sans-serif;
+    font-size: x-large;
+}
+
+h4{
+    font-size: x-large;
+    color: rgb(50, 50, 50);
+}
+
+
+/* PERSONAL INFORMATION */
+
+#profile-pic{
+    width: 350px;
+    height: 350px;
+    display: block;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.logo-img{
+    margin-right: 20px;
+    max-width: 50px;
+    max-height: 50px;
+    align-items: center;
+}
+
+
+/* PRESENTATION */
+
+#presentation{
+    margin: 20px 0px;
+}
+
+h1{
+    font-family: 'Jost', sans-serif;
+    font-size: xxx-large;
+}
