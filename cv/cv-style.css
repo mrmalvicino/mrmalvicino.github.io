@@ -56,11 +56,11 @@ h2{
 
 h3{
     font-family: 'Jost', sans-serif;
-    font-size: x-large;
+    font-size: 28px;
 }
 
 h4{
-    font-size: x-large;
+    font-size: 24px;
     color: rgb(50, 50, 50);
 }
 
@@ -68,6 +68,7 @@ h4{
 /* PERSONAL INFORMATION */
 
 #profile-pic{
+    margin-bottom: 10px;
     width: 350px;
     height: 350px;
     display: block;
@@ -86,12 +87,19 @@ h4{
 /* PRESENTATION */
 
 #presentation{
-    margin: 20px 0px;
-    color: rgb(28, 0, 136);
+    margin: 60px 0px;
+    padding: 10px;
 }
 
 h1{
+    margin-bottom: 10px;
     font-family: 'Jost', sans-serif;
-    font-size: xxx-large;
-    color: rgb(28, 0, 136);
+    font-size: 46px;
+    color: rgb(28, 0, 136);;
+}
+
+/* EXPERIENCE */
+
+#exp-entry{
+    border-top: 2px solid rgb(28, 0, 136);
 }
