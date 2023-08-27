@@ -8,6 +8,16 @@ function showHideMenu() {
     }
 }
 
+function showMenu() {
+    var checkbox = document.getElementById("check");
+    checkbox.checked = true;
+}
+
+function hideMenu() {
+    var checkbox = document.getElementById("check");
+    checkbox.checked = true;
+}
+
 window.onload = function() {
-    showHideMenu();
+    hideMenu();
 };
