@@ -21,12 +21,14 @@ body{
 
 #left-column{
     width: 410px;
+    height: 1485px;
     padding: 20px;
     background-color: rgb(240, 240, 240);
 }
 
 #right-column{
     width: 560px;
+    height: 1485px;
     padding: 20px;
     background-color: white;
 }
