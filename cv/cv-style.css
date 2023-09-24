@@ -15,18 +15,20 @@ html{
 body{
     width: 1050px;
     height: 1485px;
-    margin: 30px auto;
+    margin: 0px auto;
     display: flex;
 }
 
 #left-column{
     width: 410px;
+    height: 1440px;
     padding: 20px;
     background-color: rgb(240, 240, 240);
 }
 
 #right-column{
     width: 560px;
+    height: 1440px;
     padding: 20px;
     background-color: white;
 }
@@ -87,7 +89,7 @@ h4{
 /* PRESENTATION */
 
 #presentation{
-    margin: 60px 0px;
+    margin: 30px 0px;
     padding: 10px;
 }
 
