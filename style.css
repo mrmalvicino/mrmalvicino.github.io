@@ -1,6 +1,6 @@
-/* ------------------- */
-/* GENERAL DEFINITIONS */
-/* ------------------- */
+/* ------- */
+/* GENERAL */
+/* ------- */
 
 *{
     margin: 0;
@@ -54,13 +54,6 @@
     position: relative;
 }
 
-.logo-label{
-    margin: 0 10px;
-    position: absolute;
-    font-size: x-large;
-    color: rgb(236, 23, 81);
-}
-
 .logo-link{
     height: 50px;
 }
@@ -82,11 +75,12 @@
 
 
 /* ---------- */
-/* INDEX.HTML */
+/* index.html */
 /* ---------- */
 
-
+/* ------ */
 /* HEADER */
+/* ------ */
 
 header{
     height: 100px;
@@ -145,8 +139,9 @@ header{
     display: none;
 }
 
-
+/* -------- */
 /* ABOUT ME */
+/* -------- */
 
 #about-me{
     padding: 10px 30px;
@@ -185,8 +180,9 @@ header{
     padding: 9px 20.87px;
 }
 
-
+/* ------ */
 /* SKILLS */
+/* ------ */
 
 #skills{
     padding: 10px 30px;
@@ -196,12 +192,9 @@ header{
     display: flex;
 }
 
-#skill:hover{
-    opacity: 0;
-}
-
-
+/* -------- */
 /* PROJECTS */
+/* -------- */
 
 #projects{
     margin: 0px 30px;
@@ -241,8 +234,9 @@ header{
     color: white;
 }
 
-
+/* --------- */
 /* EDUCATION */
+/* --------- */
 
 #education{
     padding: 10px 30px;
@@ -267,8 +261,9 @@ header{
     border-radius: 5px;
 }
 
-
+/* ------- */
 /* CONTACT */
+/* ------- */
 
 #contact{
     padding: 10px 30px;
@@ -280,7 +275,7 @@ header{
 
 
 /* ------------- */
-/* PROJECTS.HTML */
+/* projects.html */
 /* ------------- */
 
 #all-projects{
@@ -297,16 +292,18 @@ header{
 /* ---------- */
 
 @media(max-width: 768px){
-    
 
+    /* ------- */
     /* GENERAL */
+    /* ------- */
 
     .content{
         flex-direction: column;
     }
 
-
+    /* ------ */
     /* HEADER */
+    /* ------ */
 
     header{
         height: 150px;
@@ -345,15 +342,17 @@ header{
         display: none;
     }
 
-
+    /* -------- */
     /* ABOUT ME */
+    /* -------- */
 
     #about-me{
         flex-direction: column;
     }
 
-
+    /* ------ */
     /* SKILLS */
+    /* ------ */
 
     #skills{
         flex-direction: column;
