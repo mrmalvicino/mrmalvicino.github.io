@@ -34,7 +34,7 @@
     margin: 20px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .card
@@ -52,46 +52,57 @@
 /* Clases de componentes */
 /* _____________________ */
 
-h1
+h1 /* Título de secciones */
 {
     padding: 3% 5%;
     font-size: 26px;
     text-align: center;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-h2
+h2 /* Título de proyectos */
 {
     padding: 3% 5%;
     font-size: 24px;
     text-align: center;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-h6
+h4 /* Labels */
+{
+    margin: 40px;
+    font-size: 20px;
+}
+
+h5 /* Párrafo de presentación */
+{
+    width:90%;
+    font-size: 18px;
+    text-align: center;
+}
+
+h6 /* Descripción de proyectos */
 {
     padding: 0% 5%;
-    font-size: 18px;
-    text-align: left;
-    text-indent: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.paragraph
-{
-    font-size: 18px;
+    font-size: 16px;
     text-align: left;
     text-indent: 20px;
 }
 
-.button
-{
+button {
+    border: none;
+    background-color: transparent;
+    outline: none;
+    margin: 0px;
     padding: 10px 20px;
     border-radius: 20px;
     font-size: larger;
     text-align: center;
     text-decoration: none;
     display: inline-block;
+}
+
+.image
+{
+    height: 50px;
 }
 
 .project-image
@@ -112,9 +123,9 @@ h6
 
 .skill-image
 {
-    padding: 50px;
+    padding: 40px;
     width: auto;
-    height: 100px;
+    height: 80px;
 }
 
 .education-image
@@ -135,8 +146,8 @@ h6
 .label
 {
     display: flex;
-    flex-direction: row; /* Ordenar elementos horizontalmente, uno al lado del otro. */
-    justify-content: space-evenly;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -151,7 +162,7 @@ h6
 /* Clases de colores */
 /* _________________ */
 
-.hover:hover
+.button-hover:hover
 {
     background-color: #666;
 }
@@ -166,6 +177,7 @@ h6
 {
     color: white;
     background-color: #666;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .dark-background
@@ -194,25 +206,4 @@ h6
     border-radius: 50%;
     display: block; /* En vez de mostrarse en línea con el texto, se muestra como un bloque. */
     object-fit: cover; /* Escalar el contenido manteniendo la relación de aspecto. */
-}
-
-#presentation-paragraph
-{
-    width:90%;
-    font-size: 18px;
-    text-align: center;
-}
-
-#linkedin-image
-{
-    height: 30px;
-    margin: 5px;
-    padding: 9px 20.87px;
-}
-
-#github-image
-{
-    height: 26px;
-    margin: 5px;
-    padding: 11px 34.1px;
 }
