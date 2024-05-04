@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -7,175 +6,170 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maximiliano's portfolio</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
     <link href="style.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <header>
-        <div>
-            <h1>Maximiliano Raúl Malvicino</h1>
-            <ul class="profile">
-                <li><a href="#">Software developer.</a></li>
-                <li><a href="#">Sound Engineer.</a></li>
-            </ul>
+    <section class="full-vh section" #id="about-section">
+        <div class="fill-content">
+            <img src="https://avatars.githubusercontent.com/u/46000191" id="profile-image"/>
         </div>
-        <input type="checkbox" id="check" onload="hideMenu()">
-        <label for="check" class="show-menu">&#8801</label>
-        <nav class="menu">
-            <a href="#about-me" onclick="hideMenu()">About me</a>
-            <a href="#skills" onclick="hideMenu()">Skills</a>
-            <a href="#projects" onclick="hideMenu()">Projects</a>
-            <a href="#education" onclick="hideMenu()">Education</a>
-            <a href="#contact" onclick="hideMenu()">Contact</a>
-            <label for="check" class="hide-menu">&#215</label>
-        </nav>
-    </header>
 
-    <section id="about-me">
-        <div>
-            <img src="https://avatars.githubusercontent.com/u/46000191" id="profile-pic"/>
+        <div class="fill-content">
+            <p id="presentation-paragraph"></p>
         </div>
-        <div>
-            <p id="presentation">
-                I am passionate about acoustics and programming.
-                Throughout my career, I have been working on projects that combine these fields and converge in signals processing.
-                Until now, my work experience has been mostly focused on teaching.
-                Motivated by the new challenges that the growth of the technology industry implies, I am currently looking for my first experience in the IT field as a software developer.
-            </p>
-            <div class="hbox">
-                <a href="https://www.linkedin.com/in/malvicinomaximilianoraul/"><img src="images/linkedin.png" id="logo-linkedin"/></a>
-                <a href="https://www.github.com/mrmalvicino"><img src="images/github-logo.png" id="logo-github"/></a>
+
+        <div class="fill-content">
+            <a href="https://www.linkedin.com/in/malvicinomaximilianoraul/" class="button">
+                <img src="images/linkedin.png" id="linkedin-image"/>
+            </a>
+
+            <a class="dark-background hover button" id="cv-button"></a>
+
+            <a href="https://www.github.com/mrmalvicino" class="button">
+                <img src="images/github-logo.png" id="github-image"/>
+            </a>
+        </div>
+    </section>
+
+    <section class="full-vh section" #id="skills-section">
+        <div class="light-background light-shadow wrap-content">
+            <div class="fill-content">
+                <h1>SKILLS</h1>
             </div>
-            <div class="content">
-                <div class="hbox">
-                    <a href="./cv/cv-index-es.html" class="button">Abrir CV</a>
-                    <a href="./cv/cv-malvicino-es.pdf" download="cv-malvicino-es" class="button">Descargar CV</a>
+            <img src="images/python.png" class="skill-image"/>
+            <img src="images/c-plus-plus.png" class="skill-image"/>
+            <img src="images/c-sharp.png" class="skill-image"/>
+            <img src="images/javascript.png" class="skill-image"/>
+            <img src="images/html.png" class="skill-image"/>
+            <img src="images/css.png" class="skill-image"/>
+            <img src="images/sql.png" class="skill-image"/>
+            <img src="images/dotnet.png" class="skill-image"/>
+            <img src="images/github-mark.png" class="skill-image"/>
+        </div>
+    </section>
+
+    <section class="section" #id="projects-section">
+        <div class="dark-background dark-shadow wrap-content">
+            <div class="fill-content">
+                <h1>PROJECTS</h1>
+            </div>
+
+            <div class="gray-background card">
+                <a href="https://github.com/mrmalvicino/meeni-erp" class="link">
+                    <h2>Meeni ERP</h2>
+                    <img src="https://img.freepik.com/vetores-gratis/ilustracao-de-gradiente-de-erp_23-2149379180.jpg" class="project-image"/>
+                    <h6>Simple enterprise resource planning software. Performs quotations, registers sales, manages stock, schedules purchases, and keep the accounting.</h6>
+                </a>
+                <div class="fill-content">
+                    <img src="images/c-sharp.png" class="logo-image"/>
+                    <img src="images/dotnet.png" class="logo-image"/>
+                    <img src="images/sql.png" class="logo-image"/>
+                    <img src="images/github-mark.png" class="logo-image"/>
                 </div>
-                <div class="hbox">
-                    <a href="./cv/cv-index-en.html" class="button">Open CV</a>
-                    <a href="./cv/cv-malvicino-en.pdf" download="cv-malvicino-en" class="button">Download CV</a>
+            </div>
+
+            <div class="gray-background card">
+                <a href="https://github.com/mrmalvicino/binary-calculator" class="link">
+                    <h2>Binary Calculator</h2>
+                    <img src="https://www.electronics-tutorials.ws/wp-content/uploads/2022/08/binary-numbers.jpg" class="project-image"/>
+                    <h6> Scripts to convert numbers in different bases.</h6>
+                </a>
+                <div class="fill-content">
+                    <img src="images/c-plus-plus.png" class="logo-image"/>
+                    <img src="images/github-mark.png" class="logo-image"/>
                 </div>
+            </div>
+
+            <div class="gray-background card">
+                <a href="https://github.com/mrmalvicino/dsp-package" class="link">
+                    <h2>DSP Package</h2>
+                    <img src="https://media.licdn.com/dms/image/C4E12AQGuynTn8T917A/article-cover_image-shrink_600_2000/0/1625806113240?e=2147483647&v=beta&t=zQtggrtYFeJLxr0MxRHbg4pLz39GtBYHa2R8xCeUVmY" class="project-image"/>
+                    <h6>The DSP object oriented Python package provides a set of tools for digital signal processing. It is designed to facilitate the generation, manipulation, and visualization of signals, as well as the application of filters and signals processing.</h6>
+                </a>
+                <div class="fill-content">
+                    <img src="images/python.png" class="logo-image"/>
+                    <img src="images/github-mark.png" class="logo-image"/>
+                </div>
+            </div>
+    
+            <div class="gray-background card">
+                <a href="https://github.com/mrmalvicino/stus-calculator" class="link">
+                    <h2>Stus Calculator</h2>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Fourier_Series.svg/640px-Fourier_Series.svg.png" class="project-image"/>
+                    <h6>graphic calculator that aproximates periodic functions by calculating it's orthogonal projection over a trigonometric polynomials vector space.</h6>
+                </a>
+                <div class="fill-content">
+                    <img src="images/python.png" class="logo-image"/>
+                    <img src="images/github-mark.png" class="logo-image"/>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="full-vh section" #id="education-section">
+        <div class="light-background light-shadow wrap-content">
+            <div class="fill-content">
+                <h1>EDUCATION</h1>
+            </div>
+            <div class="label">
+                <a href="https://www.frgp.utn.edu.ar/carreras/tup_tuss">
+                    <img src="images/utn.png" class="education-image"/>
+                </a>
+                <p>Technical Degree in Programming</p>
+            </div>
+            <div class="label">
+                <a href="http://www.untref.edu.ar/carrera/ingenieria-de-sonido">
+                    <img src="images/untref.png" class="education-image"/>
+                </a>
+                <p>Sound Engineering</p>
+            </div>
+            <div class="label">
+                <a href="https://www.cambridgeenglish.org">
+                    <img src="images/cambridge.png" class="education-image"/>
+                </a>
+                <p>First Certificate in English</p>
+            </div>
+            <div class="label">
+                <img src="images/flag-br.png" class="education-image"/>
+                <p>Portuguese Language Course (UTN)</p>
             </div>
         </div>
     </section>
 
-    <section id="skills">
-        <div class="box">
-            <div class="logo-box"><img src="images/python.png" class="logo-img"/></div>
-            <div class="logo-box"><img src="images/c-plus-plus.png" class="logo-img"/></div>
-            <div class="logo-box"><img src="images/c-sharp.png" class="logo-img"/></div>
-            <div class="logo-box"><img src="images/javascript.png" class="logo-img"/></div>
-        </div>
-        <div class="box">
-            <div class="logo-box"><img src="images/dotnet.png" class="logo-img"/></div>
-            <div class="logo-box"><img src="images/sql.png" class="logo-img"/></div>
-            <div class="logo-box"><img src="images/html.png" class="logo-img"/></div>
-            <div class="logo-box"><img src="images/css.png" class="logo-img"/></div>
-        </div>
-    </section>
-
-    <section id="projects">
-
-        <div class="content">
-            <div class="thumbnail-box"><img src="images/c-plus-plus.png" class="thumbnail-img"/></div>
-            <div class="description-box">
-                <h2>Baluma ERP</h2>
-                <h3>Baluma ERP is an enterprice resource planning software. It has different modules to manage the chain supply from end to end, being able to perform budgets, register sales, manage inventory stock, schedule purchases from suppliers, and keep an accounting of the activity.</h3>
-                <div class="hbox">
-                    <div class="logo-box"><a href="https://github.com/mrmalvicino/baluma-erp" class="logo-link"><img src="images/github-mark.png" class="logo-img"/></a></div>
-                </div>
+    <section class="full-vh section" #id="contact-section">
+        <div class="light-background light-shadow wrap-content">
+            <div class="fill-content">
+                <h1>CONTACT</h1>
             </div>
-        </div>
-
-        <div class="content">
-            <div class="thumbnail-box"><img src="images/c-plus-plus.png" class="thumbnail-img"/></div>
-            <div class="description-box">
-                <h2>Binary Calculator</h2>
-                <h3>Scripts to convert numbers in different bases.</h3>
-                <div class="hbox">
-                    <div class="logo-box"><a href="https://github.com/mrmalvicino/binary-calculator" class="logo-link"><img src="images/github-mark.png" class="logo-img"/></a></div>
-                </div>
+            <div class="label">
+                <a href="mailto:mrmalvicino@gmail.com">
+                    <img src="images/icon-mail.png" class="logo-image"/>
+                </a>
+                <p>mrmalvicino@gmail.com</p>
             </div>
-        </div>
-
-        <div class="content">
-            <div class="thumbnail-box"><img src="images/python.png" class="thumbnail-img"/></div>
-            <div class="description-box">
-                <h2>DSP Package</h2>
-                <h3>The DSP object oriented Python package provides a set of tools for digital signal processing. It is designed to facilitate the generation, manipulation, and visualization of signals, as well as the application of filters and signals processing.</h3>
-                <div class="hbox">
-                    <div class="logo-box"><a href="https://github.com/mrmalvicino/dsp-package" class="logo-link"><img src="images/github-mark.png" class="logo-img"/></a></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="content">
-            <div class="thumbnail-box"><img src="images/python.png" class="thumbnail-img"/></div>
-            <div class="description-box">
-                <h2>Stus Calculator</h2>
-                <h3>The Stus Calculator is a graphic calculator that aproximates periodic functions by calculating it's orthogonal projection over a trigonometric polynomials vector space.</h3>
-                <div class="hbox">
-                    <div class="logo-box"><a href="https://github.com/mrmalvicino/stus-calculator" class="logo-link"><img src="images/github-mark.png" class="logo-img"/></a></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="content">
-            <a href="projects.html" class="button">All projects</a>
-        </div>
-    </section>
-
-    <section id="education">
-        <div>
-            <div class="content">
-                <div>
-                    <div class="box">
-                        <a href="https://www.frgp.utn.edu.ar/carreras/tup_tuss"><img src="images/utn.png" class="university-img"/></a>
-                        <h4>Technical Degree in Programming</h4>
-                    </div>
-                    <div class="box">
-                        <a href="http://www.untref.edu.ar/carrera/ingenieria-de-sonido"><img src="images/untref.png" class="university-img"/></a>
-                        <h4>Sound Engineering (60%)</h4>
-                    </div>
-                </div>
-                <div>
-                    <div class="box">
-                        <img src="images/flag-br.png" class="flag-pic"/>
-                        <h4>Portuguese Language Course (UTN)</h4>
-                    </div>
-                    <div class="box">
-                        <img src="images/flag-uk.png" class="flag-pic"/>
-                        <div>
-                            <h4>First Certificate in English</h4>
-                            <a href="https://www.cambridgeenglish.org"><img src="images/cambridge.png" class="university-img"/></a>
-                        </div>
-                    </div>
-                </div>
+            <div class="label">
+                <a href="phone:1159058729">
+                    <img src="images/icon-phone.png" class="logo-image"/>
+                </a>
+                <p>+54 (911) 15-5905-8729</p>
             </div>
         </div>
     </section>
 
-    <section id="contact">
-        <div class="content" style="justify-content: space-evenly;">
-            <div class="hbox">
-                <div class="logo-box"><a href="mailto:mrmalvicino@gmail.com" class="logo-link"><img src="images/icon-mail.png" class="logo-img"/></a></div>
-                <h3>mrmalvicino@gmail.com</h3>
-            </div>
-            <div class="hbox">
-                <div class="logo-box"><a href="phone:1159058729" class="logo-link"><img src="images/icon-phone.png" class="logo-img"/></a></div>
-                <h3>+54 (911) 15-5905-8729</h3>
-            </div>
-        </div>
-        <div>
-            <div class="hbox">
-                <div class="logo-box"><a href="https://t.me/mrmalvicino" class="logo-link"><img src="images/telegram.png" class="logo-img"/></a></div>
-                <div class="logo-box"><a href="https://www.facebook.com/malvicinomaximilianoraul/" class="logo-link"><img src="images/facebook.png" class="logo-img"/></a></div>
-                <div class="logo-box"><a href="https://www.instagram.com/mmrsonido/" class="logo-link"><img src="images/instagram.png" class="logo-img"/></a></div>
-                <div class="logo-box"><a href="https://twitter.com/mmrsonido" class="logo-link"><img src="images/twitter.png" class="logo-img"/></a></div>
-            </div>
-        </div>
-    </section>
+
+    <label for="english">
+        <input type="radio" name="language" id="english" value="english" checked> English
+    </label>
+
+    <br>
+
+    <label for="spanish">
+        <input type="radio" name="language" id="spanish" value="spanish"> Español
+    </label>
 </body>
 
 </html>

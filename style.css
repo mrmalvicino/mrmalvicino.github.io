@@ -1,360 +1,218 @@
-/* ------- */
-/* GENERAL */
-/* ------- */
+/* Aplica a todo el body */
+/* _____________________ */
 
-*{
+*
+{
     margin: 0;
     padding: 0;
     font-family: 'Jost', sans-serif;
     font-weight: 300;
 }
 
-.content{
+/* Clases de contenedores */
+/* ______________________ */
+
+.section
+{
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column; /* Ordenar elementos verticalmente, uno abajo de otro. */
+    align-items: center; /* Centrar elementos con respecto al eje vertical. */
+    justify-content: space-around;
 }
 
-.box{
-    margin: 5px;
-    padding: 10px;
-    background-color: rgb(236, 23, 81);
-    border-radius: 25px;
-    align-items: center;
-    justify-content: space-evenly;
+.fill-content
+{
+    width: 100%;
     display: flex;
-    color: white;
+    flex-direction: row; /* Ordenar elementos horizontalmente, uno al lado del otro. */
+    align-items: center; /* Centrar elementos con respecto al eje horizontal. */
+    justify-content: space-around;
 }
 
-.hbox{
-    margin: 0px;
-    padding: 0px;
-    align-items: center;
-    justify-content: space-evenly;
+.wrap-content
+{
+    margin: 20px;
     display: flex;
-    color: white;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
-.logo-box{
-    width: 50px;
-    height: 50px;
-    margin: 5px;
-    padding: 5px;
-    background-color: white;
-    border-radius: 5px;
+.card
+{
+    margin: 30px 0px;
+    width: 500px;
+    height: 90vh;
+    border-radius: 10px;
     display: flex;
-    align-items: center;
+    flex-direction: column; /* Ordenar elementos verticalmente, uno abajo de otro. */
+    align-items: center; /* Centrar elementos con respecto al eje vertical. */
+    justify-content: space-between;
 }
 
-.logo-img{
-    margin: auto auto;
-    max-width: 50px;
-    max-height: 50px;
-    background-color: white;
-    position: relative;
+/* Clases de componentes */
+/* _____________________ */
+
+h1
+{
+    padding: 3% 5%;
+    font-size: 26px;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.logo-link{
-    height: 50px;
+h2
+{
+    padding: 3% 5%;
+    font-size: 24px;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.button{
-    margin: 10px;
+h6
+{
+    padding: 0% 5%;
+    font-size: 18px;
+    text-align: left;
+    text-indent: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.paragraph
+{
+    font-size: 18px;
+    text-align: left;
+    text-indent: 20px;
+}
+
+.button
+{
     padding: 10px 20px;
-    border: 2px solid white;
-    background-color: rgb(28, 0, 136);
-    color: white;
+    border-radius: 20px;
     font-size: larger;
     text-align: center;
     text-decoration: none;
+    display: inline-block;
 }
 
-.button:hover{
-    background-color: rgb(236, 23, 81);
+.project-image
+{
+    margin-left: 5%;
+    height: 70%;
+    width: 90%;
+    background-color: white;
 }
 
+.logo-image
+{
+    margin: 10px;
+    max-width: 50px;
+    max-height: 50px;
+    position: relative;
+}
 
-/* ---------- */
-/* index.html */
-/* ---------- */
-
-/* ------ */
-/* HEADER */
-/* ------ */
-
-header{
+.skill-image
+{
+    padding: 50px;
+    width: auto;
     height: 100px;
-    padding: 0 30px;
-    background: rgb(28, 0, 136);
-    color: white;
+}
+
+.education-image
+{
+    padding: 20px;
+    width: 100px;
+    height: auto;
+}
+
+.link
+{
+    max-height: 88%;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+.label
+{
     display: flex;
-    justify-content: space-between;
+    flex-direction: row; /* Ordenar elementos horizontalmente, uno al lado del otro. */
+    justify-content: space-evenly;
     align-items: center;
 }
 
-.profile{
-    list-style: none;
+/* Clases de modificadores de geometría */
+/* ____________________________________ */
+
+.full-vh
+{
+    height: 100vh; /* El elemento tiene la misma altura que la altura del viewport o ventana. */
 }
 
-.profile li{
-    display: inline-block;
+/* Clases de colores */
+/* _________________ */
+
+.hover:hover
+{
+    background-color: #666;
+}
+
+.light-background
+{
+    color: black;
+    background-color: rgba(200, 200, 200, 0.1);
+}
+
+.gray-background
+{
+    color: white;
+    background-color: #666;
+}
+
+.dark-background
+{
+    color: white;
+    background-color: #222;
+}
+
+.light-shadow
+{
+    box-shadow: 0px -10px 20px rgba(200, 200, 200, 0.5), 0px 10px 20px rgba(200, 200, 200, 0.5);
+}
+
+.dark-shadow
+{
+    box-shadow: 0px -10px 20px #222, 0px 10px 20px #222;
+}
+
+/* Identificadores individuales */
+/* ____________________________ */
+
+#profile-image
+{
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    display: block; /* En vez de mostrarse en línea con el texto, se muestra como un bloque. */
+    object-fit: cover; /* Escalar el contenido manteniendo la relación de aspecto. */
+}
+
+#presentation-paragraph
+{
+    width:90%;
+    font-size: 18px;
     text-align: center;
 }
 
-.profile li a {
-    text-decoration: none;
-    color: white;
-    display: block;
-}
-
-.profile li a:hover{
-    color: rgb(180, 180, 180)
-}
-
-.menu a{
-     color: white;
-     text-decoration: none;
-     text-transform: uppercase;
-     padding: 0 10px;
-}
-
-.show-menu,
-.hide-menu{
-    font-size: 50px;
-    cursor: pointer;
-    display: none;
-}
-
-.show-menu{
-    order: 1;
-}
- 
-.show-menu:hover,
-.hide-menu:hover,
-.menu a:hover{
-    color: rgb(180, 180, 180)
-}
-
-#check{
-    display: none;
-}
-
-/* -------- */
-/* ABOUT ME */
-/* -------- */
-
-#about-me{
-    padding: 10px 30px;
-    background-color: white;
-    display: flex;
-    align-items: center;
-}
-
-#profile-pic{
-    margin: 10px;
-    width: 250px;
-    height: 250px;
-    display: block;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-#presentation{
-    padding: 15px 20px;
-    background-color: rgb(140, 140, 140);
-    border-radius: 25px;
-    color: white;
-    font-size: large;
-    text-indent: 2em;
-}
-
-#logo-github {
-    height: 26px;
-    margin: 5px;
-    padding: 11px 34.1px;
-}
-
-#logo-linkedin {
+#linkedin-image
+{
     height: 30px;
     margin: 5px;
     padding: 9px 20.87px;
 }
 
-/* ------ */
-/* SKILLS */
-/* ------ */
-
-#skills{
-    padding: 10px 30px;
-    background-color: white;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-}
-
-/* -------- */
-/* PROJECTS */
-/* -------- */
-
-#projects{
-    margin: 0px 30px;
-    padding: 10px 10px;
-    background-color: rgb(28, 0, 136);
-    align-items: center;
-    border-radius: 25px;
-}
-
-.thumbnail-box{
-    min-width: 180px;
-    min-height: 180px;
-    width: 180px;
-    height: 180px;
+#github-image
+{
+    height: 26px;
     margin: 5px;
-    background-color: white;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-}
-
-.thumbnail-img{
-    margin: auto auto;
-    max-width: 170px;
-    max-height: 170px;
-    background-color: white;
-    position: relative;
-}
-
-.description-box{
-    max-width: 800px;
-    min-height: 160px;
-    margin: 5px;
-    padding: 10px;
-    background-color: rgb(236, 23, 81);
-    border-radius: 5px;
-    color: white;
-}
-
-/* --------- */
-/* EDUCATION */
-/* --------- */
-
-#education{
-    padding: 10px 30px;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.university-img{
-    max-width: 150px;
-    max-height: 50px;
-    margin: 10px;
-    padding: 5px;
-    background-color: white;
-    border-radius: 5px;
-}
-
-.flag-pic{
-    height: 50px;
-    margin: 10px;
-    padding: 5px;
-    background-color: white;
-    border-radius: 5px;
-}
-
-/* ------- */
-/* CONTACT */
-/* ------- */
-
-#contact{
-    padding: 10px 30px;
-    background: rgb(28, 0, 136);
-    color: white;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-
-/* ------------- */
-/* projects.html */
-/* ------------- */
-
-#all-projects{
-    margin: 30px 30px;
-    padding: 10px 10px;
-    background-color: rgb(28, 0, 136);
-    align-items: center;
-    border-radius: 25px;
-}
-
-
-/* ---------- */
-/* RESPONSIVE */
-/* ---------- */
-
-@media(max-width: 768px){
-
-    /* ------- */
-    /* GENERAL */
-    /* ------- */
-
-    .content{
-        flex-direction: column;
-    }
-
-    /* ------ */
-    /* HEADER */
-    /* ------ */
-
-    header{
-        height: 150px;
-    }
-
-    .show-menu,
-    .hide-menu{
-        display: block;
-    }
-
-    .menu{
-        width: 100%;
-        height: 100vh;
-        padding: 100px 0px;
-        position: fixed;
-        background: rgb(28, 0, 136);
-        left: 0;
-        right: -100%;
-        top: 0;
-        text-align: center;
-        z-index: 100;
-    }
-
-    .menu a{
-        padding: 20px;
-        display: block;
-    }
-
-    .hide-menu{
-        position: absolute;
-        top: 50px;
-        right: 50px;
-    }
-
-    #check:checked ~ .menu{
-        display: none;
-    }
-
-    /* -------- */
-    /* ABOUT ME */
-    /* -------- */
-
-    #about-me{
-        flex-direction: column;
-    }
-
-    /* ------ */
-    /* SKILLS */
-    /* ------ */
-
-    #skills{
-        flex-direction: column;
-    }
+    padding: 11px 34.1px;
 }
