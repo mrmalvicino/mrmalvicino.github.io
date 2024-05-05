@@ -31,8 +31,8 @@ section
 
 .wrapped-div
 {
-    margin: 20px;
     padding: 20px;
+    width: 90%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -40,7 +40,7 @@ section
 
 .card-div
 {
-    margin-bottom: 20px;
+    margin: 20px 0px;
     width: 500px;
     height: 90vh;
     border-radius: 10px;
