@@ -20,7 +20,7 @@ section
     justify-content: space-around;
 }
 
-.filled-div
+.row-div
 {
     width: 100%;
     display: flex;
