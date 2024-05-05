@@ -12,7 +12,7 @@
 /* Clases de contenedores */
 /* ______________________ */
 
-.section
+section
 {
     display: flex;
     flex-direction: column; /* Ordenar elementos verticalmente, uno abajo de otro. */
@@ -20,7 +20,7 @@
     justify-content: space-around;
 }
 
-.fill-content
+.filled-div
 {
     width: 100%;
     display: flex;
@@ -29,7 +29,7 @@
     justify-content: space-around;
 }
 
-.wrap-content
+.wrapped-div
 {
     margin: 20px;
     display: flex;
@@ -37,7 +37,7 @@
     justify-content: space-evenly;
 }
 
-.card
+.card-div
 {
     margin: 30px 0px;
     width: 500px;
@@ -47,6 +47,14 @@
     flex-direction: column; /* Ordenar elementos verticalmente, uno abajo de otro. */
     align-items: center; /* Centrar elementos con respecto al eje vertical. */
     justify-content: space-between;
+}
+
+.label-div
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 /* Clases de componentes */
@@ -100,7 +108,7 @@ button {
     display: inline-block;
 }
 
-.image
+.button-image
 {
     height: 50px;
 }
@@ -135,20 +143,12 @@ button {
     height: auto;
 }
 
-.link
+.div-link
 {
     max-height: 88%;
     width: 100%;
     text-decoration: none;
     color: inherit;
-}
-
-.label
-{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
 }
 
 /* Clases de modificadores de geometría */
@@ -159,10 +159,10 @@ button {
     height: 100vh; /* El elemento tiene la misma altura que la altura del viewport o ventana. */
 }
 
-/* Clases de colores */
-/* _________________ */
+/* Clases de modificadores de colores */
+/* __________________________________ */
 
-.button-hover:hover
+.hover-button:hover
 {
     background-color: #666;
 }
