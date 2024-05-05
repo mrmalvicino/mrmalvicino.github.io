@@ -53,9 +53,9 @@ section
 .label-div
 {
     display: flex;
-    flex-direction: row;
+    flex-direction: row; /* Ordenar elementos horizontalmente, uno al lado del otro. */
+    align-items: center; /* Centrar elementos con respecto al eje horizontal. */
     justify-content: space-between;
-    align-items: center;
 }
 
 /* Clases de componentes */
@@ -77,7 +77,7 @@ h2 /* Título de proyectos */
 
 h4 /* Labels */
 {
-    margin: 40px;
+    margin: 50px;
     font-size: 20px;
 }
 
@@ -139,8 +139,16 @@ button {
 .education-image
 {
     padding: 20px;
-    width: 100px;
-    height: auto;
+    width: auto;
+    height: 40px;
+}
+
+.invisible-link
+{
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+    display: inline-flex; /* El link toma el tamaño de su contenido. */
 }
 
 .div-link
