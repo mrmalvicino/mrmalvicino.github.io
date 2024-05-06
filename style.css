@@ -42,7 +42,7 @@ section
 {
     margin: 20px 0px;
     width: 500px;
-    height: 90vh;
+    height: 85vh;
     border-radius: 10px;
     display: flex;
     flex-direction: column; /* Ordenar elementos verticalmente, uno abajo de otro. */
@@ -52,6 +52,7 @@ section
 
 .label-div
 {
+    margin: 0px 20px;
     display: flex;
     flex-direction: row; /* Ordenar elementos horizontalmente, uno al lado del otro. */
     align-items: center; /* Centrar elementos con respecto al eje horizontal. */
@@ -126,7 +127,6 @@ button {
     margin: 10px;
     max-width: 50px;
     max-height: 50px;
-    position: relative;
 }
 
 .skill-image
@@ -151,7 +151,7 @@ button {
     display: inline-flex; /* El link toma el tamaño de su contenido. */
 }
 
-.div-link
+.project-link
 {
     max-height: 88%;
     width: 100%;
@@ -197,12 +197,12 @@ button {
 
 .light-shadow
 {
-    box-shadow: 0px -10px 20px rgba(200, 200, 200, 0.5), 0px 10px 20px rgba(200, 200, 200, 0.5);
+    box-shadow: 0px 0px 30px rgba(200, 200, 200, 0.5);
 }
 
 .dark-shadow
 {
-    box-shadow: 0px -10px 20px #222, 0px 10px 20px #222;
+    box-shadow: 0px 0px 30px rgba(34, 34, 34, 0.8);
 }
 
 /* Identificadores individuales */
@@ -210,9 +210,95 @@ button {
 
 #profile-image
 {
+    margin-top: 50px;
     width: 300px;
     height: 300px;
     border-radius: 50%;
     display: block; /* En vez de mostrarse en línea con el texto, se muestra como un bloque. */
     object-fit: cover; /* Escalar el contenido manteniendo la relación de aspecto. */
+}
+
+#projects-section
+{
+    padding: 40px 0px;
+}
+
+/* Header */
+/* ______ */
+
+header
+{
+    margin-top: 10px;
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-menu ul
+{
+    padding: 0;
+    height: 50px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    font-size: 18px;
+    color: #666;
+    background-color: rgba(190, 190, 190, 0.95);
+    text-shadow: 0px 0px 5px rgba(200, 200, 200, 0.95);
+    box-shadow: 0px 5px 20px rgba(125, 125, 125, 0.5);
+}
+
+.header-menu li
+{
+    margin: 0px 10px;
+}
+
+.header-menu a
+{
+    color: #666;
+    text-decoration: none;
+}
+
+.toggle-button
+{
+    width: 60px;
+    height: 60px;
+    display: none; /* Ocultar el botón en pantallas más grandes */
+}
+
+/* Responsive */
+/* __________ */
+
+@media screen and (max-width: 768px)
+{
+    header
+    {
+        margin-left: 10px;
+        justify-content: left;
+    }
+
+    .header-menu ul
+    {
+        flex-direction: column;
+        display: none;
+    }
+
+    .header-menu ul.show {
+        width: 250px;
+        height: 100%;
+        display: flex; /* Mostrar el menú cuando se activa el botón de menú */
+      }
+
+    .header-menu li
+    {
+        margin: 10px 0px;
+    }
+
+    .toggle-button
+    {
+        display: block; /* Mostrar el botón en pantallas pequeñas */
+    }
 }

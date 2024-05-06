@@ -12,6 +12,29 @@
 </head>
 
 <body>
+    <header>
+        <nav class="header-menu">
+            <button class="toggle-button">&#9776;</button>
+            <ul>
+                <li><a href="#about-section">About me</a></li>
+                <li><a href="#skills-section">Skills</a></li>
+                <li><a href="#projects-section">Projects</a></li>
+                <li><a href="#education-section">Education</a></li>
+                <li><a href="#contact-section">Contact</a></li>
+                <li>
+                    <label for="english">
+                        <input type="radio" name="language" id="english" value="english" checked> English
+                    </label>
+                </li>
+                <li>
+                    <label for="spanish">
+                        <input type="radio" name="language" id="spanish" value="spanish"> Español
+                    </label>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
     <section class="full-vh" id="about-section">
         <div class="row-div">
             <img src="https://avatars.githubusercontent.com/u/46000191" id="profile-image"/>
@@ -59,7 +82,7 @@
             </div>
 
             <div class="gray-background card-div">
-                <a href="https://github.com/mrmalvicino/meeni-erp" class="div-link">
+                <a href="https://github.com/mrmalvicino/meeni-erp" class="project-link">
                     <h2>Meeni ERP</h2>
                     <img src="https://img.freepik.com/vetores-gratis/ilustracao-de-gradiente-de-erp_23-2149379180.jpg" class="project-image"/>
                     <h6>Simple enterprise resource planning software. Performs quotations, registers sales, manages stock, schedules purchases, and keep the accounting.</h6>
@@ -73,7 +96,7 @@
             </div>
 
             <div class="gray-background card-div">
-                <a href="https://github.com/mrmalvicino/binary-calculator" class="div-link">
+                <a href="https://github.com/mrmalvicino/binary-calculator" class="project-link">
                     <h2>Binary Calculator</h2>
                     <img src="https://www.electronics-tutorials.ws/wp-content/uploads/2022/08/binary-numbers.jpg" class="project-image"/>
                     <h6> Scripts to convert numbers in different bases.</h6>
@@ -85,7 +108,7 @@
             </div>
 
             <div class="gray-background card-div">
-                <a href="https://github.com/mrmalvicino/dsp-package" class="div-link">
+                <a href="https://github.com/mrmalvicino/dsp-package" class="project-link">
                     <h2>DSP Package</h2>
                     <img src="https://media.licdn.com/dms/image/C4E12AQGuynTn8T917A/article-cover_image-shrink_600_2000/0/1625806113240?e=2147483647&v=beta&t=zQtggrtYFeJLxr0MxRHbg4pLz39GtBYHa2R8xCeUVmY" class="project-image"/>
                     <h6>The DSP object oriented Python package provides a set of tools for digital signal processing. It is designed to facilitate the generation, manipulation, and visualization of signals, as well as the application of filters and signals processing.</h6>
@@ -97,7 +120,7 @@
             </div>
 
             <div class="gray-background card-div">
-                <a href="https://github.com/mrmalvicino/stus-calculator" class="div-link">
+                <a href="https://github.com/mrmalvicino/stus-calculator" class="project-link">
                     <h2>Stus Calculator</h2>
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Fourier_Series.svg/640px-Fourier_Series.svg.png" class="project-image"/>
                     <h6>Graphic calculator that aproximates periodic functions by calculating it's orthogonal projection over a trigonometric polynomials vector space.</h6>
@@ -186,22 +209,6 @@
             </div>
         </div>
     </section>
-
-
-
-
-
-
-
-    <label for="english">
-        <input type="radio" name="language" id="english" value="english" checked> English
-    </label>
-
-    <br>
-
-    <label for="spanish">
-        <input type="radio" name="language" id="spanish" value="spanish"> Español
-    </label>
 </body>
 
 </html>
