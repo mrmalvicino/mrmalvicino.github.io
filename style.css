@@ -233,7 +233,7 @@ button {
 
 #projects-section
 {
-    padding: 40px 0px;
+    padding: 35px 0px;
 }
 
 /* Header */
@@ -287,6 +287,29 @@ header
 
 @media screen and (max-width: 768px)
 {
+    /* Clases de contenedores */
+
+    .label-div
+    {
+        margin: 20px;
+        flex-direction: column;
+    }
+
+    .label-div h4
+    {
+        margin: 0px;
+    }
+
+    /* Identificadores individuales */
+
+    #profile-image
+    {
+        margin-top: 70px;
+        width: 50%;
+    }
+
+    /* Responsive header */
+
     header
     {
         margin-left: 10px;
