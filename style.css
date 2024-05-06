@@ -42,7 +42,7 @@ section
 {
     margin: 20px 0px;
     width: 500px;
-    height: 85vh;
+    height: 70vh;
     border-radius: 10px;
     display: flex;
     flex-direction: column; /* Ordenar elementos verticalmente, uno abajo de otro. */
@@ -76,6 +76,12 @@ h2 /* Título de proyectos */
     text-align: center;
 }
 
+h3 /* Campos laborales */
+{
+    font-size: 22px;
+    text-align: center;
+}
+
 h4 /* Labels */
 {
     margin: 50px;
@@ -84,6 +90,7 @@ h4 /* Labels */
 
 h5 /* Párrafo de presentación */
 {
+    margin-bottom: 15px;
     width:90%;
     font-size: 18px;
     text-align: center;
@@ -197,7 +204,7 @@ button {
 
 .light-shadow
 {
-    box-shadow: 0px 0px 30px rgba(200, 200, 200, 0.5);
+    box-shadow: 0px 0px 30px rgba(180, 180, 180, 0.7);
 }
 
 .dark-shadow
@@ -210,9 +217,9 @@ button {
 
 #profile-image
 {
-    margin-top: 50px;
-    width: 300px;
-    height: 300px;
+    margin-top: 70px;
+    width: 20%;
+    height: auto;
     border-radius: 50%;
     display: block; /* En vez de mostrarse en línea con el texto, se muestra como un bloque. */
     object-fit: cover; /* Escalar el contenido manteniendo la relación de aspecto. */
