@@ -40,13 +40,14 @@ section
 
 .card-div
 {
-    margin: 20px 0px;
+    margin: 20px 10px;
     width: 500px;
     height: 70vh;
     border-radius: 10px;
     display: flex;
     flex-direction: column; /* Ordenar elementos verticalmente, uno abajo de otro. */
     align-items: center; /* Centrar elementos con respecto al eje vertical. */
+    text-align: center; /* Centrar imágenes con respecto al eje vertical. */
     justify-content: space-between;
 }
 
@@ -100,6 +101,12 @@ h6 /* Descripción de proyectos */
 {
     padding: 0% 5%;
     font-size: 16px;
+    text-align: center;
+}
+
+p
+{
+    font-size: 14px;
     text-align: left;
     text-indent: 20px;
 }
@@ -123,9 +130,8 @@ button {
 
 .project-image
 {
-    margin-left: 5%;
-    height: 70%;
-    width: 90%;
+    max-width: 90%;
+    max-height: 65%;
     background-color: white;
 }
 
@@ -160,7 +166,7 @@ button {
 
 .project-link
 {
-    max-height: 88%;
+    max-height: 80%;
     width: 100%;
     text-decoration: none;
     color: inherit;
