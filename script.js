@@ -23,22 +23,24 @@ document.addEventListener("DOMContentLoaded", function()
 
     /* Traducciones */
 
-    var languageRadiobuttons = document.getElementsByName("language");
-    var presentationParagraph = document.getElementById("presentation-paragraph");
-    var cvButton = document.getElementById("cv-button");
+    var languageRads = document.getElementsByName("languageRad");
+    var presentationTxt = document.getElementById("presentationTxt");
+    var resumeBtn = document.getElementById("resumeBtn");
 
     function getSelectedLanguage()
     {
-        for (var i = 0; i < languageRadiobuttons.length; i++) {
-            if (languageRadiobuttons[i].checked) {
-                return languageRadiobuttons[i].value;
+        for (var i = 0; i < languageRads.length; i++)
+        {
+            if (languageRads[i].checked)
+            {
+                return languageRads[i].value;
             }
         }
 
         return null;
     }
 
-    function translatePresentation(selectedLanguage)
+    function translatePresentationTxt(selectedLanguage)
     {
         var text = "";
 
@@ -51,45 +53,45 @@ document.addEventListener("DOMContentLoaded", function()
             text = "¡Hola! Soy Maxi, y me apasiona la acústica y la programación. A lo largo de mi carrera trabajé en proyectos que combinan estos campos y convergen en el procesamiento de señales. Hasta ahora mi experiencia laboral se centró mayoritariamente en la docencia. Motivado por los nuevos desafíos que implica el crecimiento de la industria tecnológica, actualmente estoy buscando mi primera experiencia en el campo de las TI como desarrollador de software.";
         }
 
-        presentationParagraph.textContent = text;
+        presentationTxt.textContent = text;
     }
 
-    function translateCVButton(selectedLanguage)
+    function translateResumeBtn(selectedLanguage)
     {
         var text = "";
         var href = "";
         var download = "";
 
         if (selectedLanguage == "english")
-            {
-                text = "Download CV";
-                href = "./cv/cv-malvicino-en.pdf";
-                download = "cv-malvicino-en";
-            }
-            else if (selectedLanguage == "spanish")
-            {
-                text = "Descargar CV";
-                href = "./cv/cv-malvicino-es.pdf";
-                download = "cv-malvicino-es";
-            }
+        {
+            text = "Download CV";
+            href = "./cv/cv-malvicino-en.pdf";
+            download = "cv-malvicino-en.pdf";
+        }
+        else if (selectedLanguage == "spanish")
+        {
+            text = "Descargar CV";
+            href = "./cv/cv-malvicino-es.pdf";
+            download = "cv-malvicino-es.pdf";
+        }
 
-            cvButton.textContent = text;
-            cvButton.setAttribute("href", href);
-            cvButton.setAttribute("download", download);
+        resumeBtn.textContent = text;
+        resumeBtn.setAttribute("href", href);
+        resumeBtn.setAttribute("download", download);
     }
 
     function translate()
     {
         var selectedLanguage = getSelectedLanguage();
-        translatePresentation(selectedLanguage);
-        translateCVButton(selectedLanguage);
+        translatePresentationTxt(selectedLanguage);
+        translateResumeBtn(selectedLanguage);
     }
 
     translate();
 
-    for (var i = 0; i < languageRadiobuttons.length; i++)
+    for (var i = 0; i < languageRads.length; i++)
     {
-        languageRadiobuttons[i].addEventListener("change", translate);
+        languageRads[i].addEventListener("change", translate);
     }
 }
 );

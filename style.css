@@ -1,4 +1,4 @@
-/* Body */
+/* Control */
 
 *
 {
@@ -8,15 +8,73 @@
     font-weight: 300;
 }
 
-/* Clases de contenedores */
+header
+{
+    margin-top: 10px;
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 section
 {
     display: flex;
-    flex-direction: column; /* Ordenar elementos verticalmente, uno abajo de otro. */
-    align-items: center; /* Centrar elementos con respecto al eje vertical. */
+    flex-direction: column;
+    align-items: center;
     justify-content: space-around;
 }
+
+h1
+{
+    padding: 20px;
+    font-size: 26px;
+    text-align: center;
+}
+
+h2
+{
+    padding: 3% 5%;
+    font-size: 24px;
+    text-align: center;
+}
+
+h3
+{
+    font-size: 22px;
+    text-align: center;
+}
+
+h4
+{
+    margin: 50px;
+    font-size: 20px;
+}
+
+h5
+{
+    margin-bottom: 15px;
+    width:90%;
+    font-size: 18px;
+    text-align: center;
+}
+
+h6
+{
+    padding: 0% 5%;
+    font-size: 16px;
+    text-align: center;
+}
+
+p
+{
+    font-size: 14px;
+    text-align: left;
+    text-indent: 20px;
+}
+
+/* Div */
 
 .column-div
 {
@@ -67,57 +125,9 @@ section
     justify-content: space-between;
 }
 
-/* Clases de componentes */
+/* Button */
 
-h1 /* Título de secciones */
-{
-    padding: 20px;
-    font-size: 26px;
-    text-align: center;
-}
-
-h2 /* Título de proyectos */
-{
-    padding: 3% 5%;
-    font-size: 24px;
-    text-align: center;
-}
-
-h3 /* Campos laborales */
-{
-    font-size: 22px;
-    text-align: center;
-}
-
-h4 /* Labels */
-{
-    margin: 50px;
-    font-size: 20px;
-}
-
-h5 /* Párrafo de presentación */
-{
-    margin-bottom: 15px;
-    width:90%;
-    font-size: 18px;
-    text-align: center;
-}
-
-h6 /* Descripción de proyectos */
-{
-    padding: 0% 5%;
-    font-size: 16px;
-    text-align: center;
-}
-
-p
-{
-    font-size: 14px;
-    text-align: left;
-    text-indent: 20px;
-}
-
-button
+.btn
 {
     margin: 0px;
     padding: 10px 20px;
@@ -129,6 +139,8 @@ button
     text-decoration: none;
     display: inline-block;
 }
+
+/* Image */
 
 .button-image
 {
@@ -163,6 +175,8 @@ button
     height: 40px;
 }
 
+/* Link */
+
 .invisible-link
 {
     margin: 0px;
@@ -179,14 +193,14 @@ button
     color: inherit;
 }
 
-/* Clases de modificadores de geometría */
+/* Geometry */
 
 .full-vh
 {
     height: 100vh; /* El elemento tiene la misma altura que la altura del viewport o ventana. */
 }
 
-/* Clases de modificadores de colores */
+/* Color */
 
 .hover-button:hover
 {
@@ -223,9 +237,9 @@ button
     box-shadow: 0px 0px 30px rgba(34, 34, 34, 0.8);
 }
 
-/* Identificadores individuales */
+/* ID */
 
-#profile-image
+#profileImg
 {
     margin-top: 70px;
     width: 35vh;
@@ -235,22 +249,12 @@ button
     object-fit: cover; /* Escalar el contenido manteniendo la relación de aspecto. */
 }
 
-#projects-section
+#projectsSec
 {
     padding: 35px 0px;
 }
 
 /* Header */
-
-header
-{
-    margin-top: 10px;
-    position: fixed;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 .header-menu ul
 {
@@ -289,7 +293,7 @@ header
 
 @media screen and (max-width: 575px)
 {
-    /* Clases de contenedores */
+    /* Div */
 
     .label-div
     {
@@ -302,15 +306,15 @@ header
         margin: 0px;
     }
 
-    /* Identificadores individuales */
+    /* ID */
 
-    #profile-image
+    #profileImg
     {
         margin-top: 20px;
         width: 50%;
     }
 
-    /* Responsive header */
+    /* Header */
 
     header
     {

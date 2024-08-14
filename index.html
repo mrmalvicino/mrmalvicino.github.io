@@ -14,30 +14,30 @@
 <body>
     <header>
         <nav class="header-menu">
-            <button class="toggle-button">&#9776;</button>
+            <button class="btn toggle-button">&#9776;</button>
             <ul>
-                <li><a href="#about-section">About me</a></li>
-                <li><a href="#skills-section">Skills</a></li>
-                <li><a href="#projects-section">Projects</a></li>
-                <li><a href="#education-section">Education</a></li>
-                <li><a href="#contact-section">Contact</a></li>
+                <li><a href="#aboutSec">About me</a></li>
+                <li><a href="#skillsSec">Skills</a></li>
+                <li><a href="#projectsSec">Projects</a></li>
+                <li><a href="#educationSec">Education</a></li>
+                <li><a href="#contactSec">Contact</a></li>
                 <li>
-                    <label for="english">
-                        <input type="radio" name="language" id="english" value="english" checked> English
+                    <label for="englishRad">
+                        <input type="radio" name="languageRad" id="englishRad" value="english" checked> English
                     </label>
                 </li>
                 <li>
-                    <label for="spanish">
-                        <input type="radio" name="language" id="spanish" value="spanish"> Español
+                    <label for="spanishRad">
+                        <input type="radio" name="languageRad" id="spanishRad" value="spanish"> Español
                     </label>
                 </li>
             </ul>
         </nav>
     </header>
 
-    <section class="full-vh" id="about-section">
+    <section class="full-vh" id="aboutSec">
         <div class="row-div">
-            <img src="https://avatars.githubusercontent.com/u/46000191" id="profile-image"/>
+            <img src="https://avatars.githubusercontent.com/u/46000191" id="profileImg"/>
         </div>
 
         <div class="column-div">
@@ -46,7 +46,7 @@
         </div>
 
         <div class="row-div">
-            <h5 id="presentation-paragraph"></h5>
+            <h5 id="presentationTxt"></h5>
         </div>
 
         <div class="wrapped-div">
@@ -54,7 +54,7 @@
                 <img src="images/linkedin.png" class="button-image"/>
             </a>
 
-            <button class="dark-background hover-button" id="cv-button"></button>
+            <a class="btn dark-background hover-button" id="resumeBtn"></a>
 
             <a href="https://www.github.com/mrmalvicino" class="invisible-link">
                 <img src="images/github-long.png" class="button-image"/>
@@ -62,25 +62,21 @@
         </div>
     </section>
 
-    <section class="full-vh" id="skills-section">
+    <section class="full-vh" id="skillsSec">
         <div class="light-background light-shadow wrapped-div">
             <div class="row-div">
                 <h1>SKILLS</h1>
             </div>
 
-            <img src="images/python.png" class="skill-image"/>
-            <img src="images/c-plus-plus.png" class="skill-image"/>
             <img src="images/c-sharp.png" class="skill-image"/>
-            <img src="images/javascript.png" class="skill-image"/>
-            <img src="images/html.png" class="skill-image"/>
-            <img src="images/css.png" class="skill-image"/>
+            <img src="images/python.png" class="skill-image"/>
             <img src="images/sql.png" class="skill-image"/>
             <img src="images/dotnet.png" class="skill-image"/>
             <img src="images/git.png" class="skill-image"/>
         </div>
     </section>
 
-    <section id="projects-section">
+    <section id="projectsSec">
         <div class="dark-background dark-shadow wrapped-div">
             <div class="row-div">
                 <h1>FEATURED PROJECTS</h1>
@@ -163,13 +159,13 @@
             </div>
 
             <div class="row-div">
-                <button class="light-background hover-button">All projects</button>
+                <button class="btn light-background hover-button">All projects</button>
             </div>
 
         </div>
     </section>
 
-    <section class="full-vh" id="education-section">
+    <section class="full-vh" id="educationSec">
         <div class="light-background light-shadow wrapped-div">
             <div class="row-div">
                 <h1>EDUCATION</h1>
@@ -203,7 +199,7 @@
         </div>
     </section>
 
-    <section class="full-vh" id="contact-section">
+    <section class="full-vh" id="contactSec">
         <div class="light-background light-shadow wrapped-div">
             <div class="row-div">
                 <h1>CONTACT</h1>
