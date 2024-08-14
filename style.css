@@ -1,5 +1,4 @@
-/* Aplica a todo el body */
-/* _____________________ */
+/* Body */
 
 *
 {
@@ -10,12 +9,20 @@
 }
 
 /* Clases de contenedores */
-/* ______________________ */
 
 section
 {
     display: flex;
     flex-direction: column; /* Ordenar elementos verticalmente, uno abajo de otro. */
+    align-items: center; /* Centrar elementos con respecto al eje vertical. */
+    justify-content: space-around;
+}
+
+.column-div
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Ordenar elementos verticalmente, uno abajo del otro. */
     align-items: center; /* Centrar elementos con respecto al eje vertical. */
     justify-content: space-around;
 }
@@ -61,7 +68,6 @@ section
 }
 
 /* Clases de componentes */
-/* _____________________ */
 
 h1 /* Título de secciones */
 {
@@ -111,7 +117,8 @@ p
     text-indent: 20px;
 }
 
-button {
+button
+{
     margin: 0px;
     padding: 10px 20px;
     border-radius: 20px;
@@ -173,7 +180,6 @@ button {
 }
 
 /* Clases de modificadores de geometría */
-/* ____________________________________ */
 
 .full-vh
 {
@@ -181,7 +187,6 @@ button {
 }
 
 /* Clases de modificadores de colores */
-/* __________________________________ */
 
 .hover-button:hover
 {
@@ -219,12 +224,11 @@ button {
 }
 
 /* Identificadores individuales */
-/* ____________________________ */
 
 #profile-image
 {
     margin-top: 70px;
-    width: 20%;
+    width: 35vh;
     height: auto;
     border-radius: 50%;
     display: block; /* En vez de mostrarse en línea con el texto, se muestra como un bloque. */
@@ -237,7 +241,6 @@ button {
 }
 
 /* Header */
-/* ______ */
 
 header
 {
@@ -283,7 +286,6 @@ header
 }
 
 /* Responsive */
-/* __________ */
 
 @media screen and (max-width: 575px)
 {
@@ -304,7 +306,7 @@ header
 
     #profile-image
     {
-        margin-top: 70px;
+        margin-top: 20px;
         width: 50%;
     }
 
