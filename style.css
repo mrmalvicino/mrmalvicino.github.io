@@ -31,6 +31,7 @@ h1
 {
     font-size: 26px;
     text-align: center;
+    margin: 20px 0px;
 }
 
 h2
@@ -61,7 +62,7 @@ h6
 {
     font-size: 16px;
     text-align: center;
-    padding: 5px 0px;
+    margin: 5px 0px;
 }
 
 p
@@ -69,6 +70,13 @@ p
     font-size: 16px;
     text-align: left;
     text-indent: 20px;
+}
+
+iframe
+{
+    width: 100%;
+    aspect-ratio: 1/1;
+    display: block; /* Elimina espacio en blanco debajo */
 }
 
 /* Geometry */
@@ -118,12 +126,22 @@ p
     margin: 30px;
 }
 
+.margin-30-0-px
+{
+    margin: 30px 0px;
+}
+
 .padding-15-px
 {
     padding: 15px;
 }
 
 /* Color */
+
+.opacity-60-pct
+{
+    opacity: 0.6;
+}
 
 .gray-hover:hover
 {
@@ -247,11 +265,12 @@ p
 
 .project-image
 {
-    width: 450px;
-    height: 450px;
-    background-color: white;
+    width: 100%;
+    aspect-ratio: 1/1;
+    aspect-ratio: 1/1;
     object-fit: cover;
-    clip-path: inset(0);
+    background-color: white;
+    display: block;
 }
 
 /* Link */
@@ -314,14 +333,15 @@ p
 
 @media screen and (max-width: 575px)
 {
-    /* ID */
+    .project-card
+    {
+        width: 95%;
+    }
 
     #profileImg
     {
         width: 50%;
     }
-
-    /* Header */
 
     header
     {
