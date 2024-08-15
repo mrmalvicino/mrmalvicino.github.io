@@ -353,17 +353,6 @@ iframe
 
 @media screen and (max-width: 575px)
 {
-    .project-card
-    {
-        width: 95%;
-    }
-
-    #profileImg
-    {
-        margin-top: 0px;
-        width: 50%;
-    }
-
     header
     {
         margin-left: 10px;
@@ -376,11 +365,12 @@ iframe
         display: none;
     }
 
-    .header-menu ul.show {
+    .header-menu ul.show
+    {
         width: 250px;
         height: 100%;
         display: flex; /* Mostrar el menú cuando se activa el botón de menú */
-      }
+    }
 
     .header-menu li
     {
@@ -390,5 +380,37 @@ iframe
     .toggle-button
     {
         display: block; /* Mostrar el botón en pantallas pequeñas */
+    }
+
+    #profileImg
+    {
+        margin-top: 0px;
+        width: 50%;
+    }
+
+    #aboutSec h5
+    {
+        font-size: 14px;
+    }
+
+    #skillsSec .margin-30-px
+    {
+        margin: 5px;
+    }
+
+    .project-card
+    {
+        width: 95%;
+        height: 650px;
+    }
+
+    #educationSec .margin-30-px
+    {
+        margin: 0px;
+    }
+
+    #socialMediaDiv .margin-0-10-px
+    {
+        margin: 0px;
     }
 }
