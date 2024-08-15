@@ -382,9 +382,9 @@ iframe
         display: block; /* Mostrar el botón en pantallas pequeñas */
     }
 
-    #aboutSec .height-100-vh
+    #aboutSec
     {
-        height: 85vh;
+        height: 90vh;
     }
 
     #aboutSec h1
@@ -431,7 +431,7 @@ iframe
     .project-card
     {
         width: 95%;
-        height: 650px;
+        height: 600px;
     }
 
     #educationSec .margin-30-px
