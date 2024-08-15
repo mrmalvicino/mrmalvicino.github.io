@@ -307,7 +307,7 @@ iframe
 
 #profileImg
 {
-    margin-top: 70px;
+    margin-top: 50px;
     width: 35vh;
     height: auto;
     border-radius: 50%;
@@ -384,7 +384,7 @@ iframe
 
     #profileImg
     {
-        margin-top: 5px;
+        margin-top: 0px;
         width: 50%;
     }
 
