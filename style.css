@@ -384,7 +384,7 @@ iframe
 
     #profileImg
     {
-        margin-top: 0px;
+        margin-top: 10px;
         width: 50%;
     }
 
@@ -393,9 +393,24 @@ iframe
         font-size: 14px;
     }
 
+    #aboutSec .height-50-px
+    {
+        height: 40px;
+    }
+
+    #aboutSec .big-button
+    {
+        font-size: 16px;
+    }
+
     #skillsSec .margin-30-px
     {
         margin: 5px;
+    }
+
+    #skillsSec .padding-15-px
+    {
+        padding: 10px;
     }
 
     .project-card
@@ -412,5 +427,10 @@ iframe
     #socialMediaDiv .margin-0-10-px
     {
         margin: 0px;
+    }
+
+    #socialMediaDiv .padding-15-px
+    {
+        padding: 5px;
     }
 }
