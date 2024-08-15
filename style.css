@@ -50,12 +50,14 @@ h4
 {
     font-size: 20px;
     text-align: center;
+    margin: 15px 0px;
 }
 
 h5
 {
     font-size: 18px;
     text-align: center;
+    margin: 10px 0px;
 }
 
 h6
@@ -129,6 +131,11 @@ iframe
 .margin-30-0-px
 {
     margin: 30px 0px;
+}
+
+.margin-0-10-px
+{
+    margin: 0px 10px;
 }
 
 .padding-15-px
@@ -255,12 +262,14 @@ iframe
 {
     width: auto;
     height: 50px;
+    display: block; /* Elimina espacio en blanco debajo */
 }
 
 .image-80-px
 {
     width: auto;
     height: 80px;
+    display: block; /* Elimina espacio en blanco debajo */
 }
 
 .project-image
@@ -270,7 +279,7 @@ iframe
     aspect-ratio: 1/1;
     object-fit: cover;
     background-color: white;
-    display: block;
+    display: block; /* Elimina espacio en blanco debajo */
 }
 
 /* Link */
