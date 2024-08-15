@@ -57,7 +57,6 @@ h5
 {
     font-size: 18px;
     text-align: center;
-    margin: 10px 0px;
 }
 
 h6
@@ -385,8 +384,13 @@ iframe
 
     #profileImg
     {
-        margin-top: 10px;
+        margin-top: 5px;
         width: 50%;
+    }
+
+    #aboutSec h1
+    {
+        margin: 10px 0px;
     }
 
     #aboutSec h5
@@ -409,6 +413,11 @@ iframe
         font-size: 14px;
     }
 
+    #projectsSec .image-50-px
+    {
+        height: 30px;
+    }
+
     .project-card
     {
         width: 95%;
@@ -427,7 +436,7 @@ iframe
 
     #socialMediaDiv .margin-0-10-px
     {
-        margin: 0px;
+        margin: 10px 0px 25px;
     }
 
     #socialMediaDiv .padding-15-px
