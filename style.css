@@ -390,7 +390,12 @@ iframe
 
     #aboutSec h1
     {
-        margin: 10px 0px;
+        margin: 5px 0px;
+    }
+
+    #aboutSec h3
+    {
+        font-size: 18px;
     }
 
     #aboutSec h5
