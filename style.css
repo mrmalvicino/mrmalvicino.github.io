@@ -382,10 +382,9 @@ iframe
         display: block; /* Mostrar el botón en pantallas pequeñas */
     }
 
-    #profileImg
+    #aboutSec .height-100-vh
     {
-        margin-top: 0px;
-        width: 50%;
+        height: 85vh;
     }
 
     #aboutSec h1
@@ -401,6 +400,12 @@ iframe
     #aboutSec h5
     {
         font-size: 14px;
+    }
+
+    #profileImg
+    {
+        margin-top: 0px;
+        width: 50%;
     }
 
     #skillsSec .margin-30-px
