@@ -382,11 +382,6 @@ iframe
         display: block; /* Mostrar el botón en pantallas pequeñas */
     }
 
-    #aboutSec
-    {
-        height: 90vh;
-    }
-
     #aboutSec h1
     {
         margin: 5px 0px;
