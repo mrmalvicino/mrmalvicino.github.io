@@ -74,6 +74,11 @@ p
     text-indent: 20px;
 }
 
+img
+{
+    display: block; /* Elimina espacio en blanco debajo */
+}
+
 iframe
 {
     width: 100%;
@@ -272,14 +277,12 @@ iframe
 {
     width: auto;
     height: 50px;
-    display: block; /* Elimina espacio en blanco debajo */
 }
 
 .image-80-px
 {
     width: auto;
     height: 80px;
-    display: block; /* Elimina espacio en blanco debajo */
 }
 
 .project-image
@@ -289,7 +292,6 @@ iframe
     aspect-ratio: 1/1;
     object-fit: cover;
     background-color: white;
-    display: block; /* Elimina espacio en blanco debajo */
 }
 
 /* Link */
@@ -310,7 +312,6 @@ iframe
     width: 35vh;
     height: auto;
     border-radius: 50%;
-    display: block; /* En vez de mostrarse en línea con el texto, se muestra como un bloque. */
     object-fit: cover; /* Escalar el contenido manteniendo la relación de aspecto. */
 }
 
@@ -393,16 +394,6 @@ iframe
         font-size: 14px;
     }
 
-    #aboutSec .height-50-px
-    {
-        height: 40px;
-    }
-
-    #aboutSec .big-button
-    {
-        font-size: 16px;
-    }
-
     #skillsSec .margin-30-px
     {
         margin: 5px;
@@ -411,6 +402,11 @@ iframe
     #skillsSec .padding-15-px
     {
         padding: 10px;
+    }
+
+    #projectsSec p
+    {
+        font-size: 14px;
     }
 
     .project-card
@@ -422,6 +418,11 @@ iframe
     #educationSec .margin-30-px
     {
         margin: 0px;
+    }
+
+    #educationSec .image-50-px
+    {
+        height: 30px;
     }
 
     #socialMediaDiv .margin-0-10-px
