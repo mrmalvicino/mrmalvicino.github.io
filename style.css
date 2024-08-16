@@ -334,6 +334,11 @@ iframe
     object-fit: cover; /* Escalar el contenido manteniendo la relación de aspecto. */
 }
 
+#portfolioBtn
+{
+    font-weight: bold;
+}
+
 /* Header */
 
 .header-menu ul
