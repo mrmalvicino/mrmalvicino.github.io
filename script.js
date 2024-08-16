@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", function()
     var languageRads = document.getElementsByName("languageRad");
     var presentationTxt = document.getElementById("presentationTxt");
     var resumeBtn = document.getElementById("resumeBtn");
+    var sourceCodeBtns = document.getElementsByName('sourceCodeBtn');
 
     function getSelectedLanguage()
     {
@@ -80,11 +81,31 @@ document.addEventListener("DOMContentLoaded", function()
         resumeBtn.setAttribute("download", download);
     }
 
+    function translateSourceCodeBtns(selectedLanguage)
+    {
+        var text = "";
+
+        if (selectedLanguage == "english")
+        {
+            text = "Source Code";
+        }
+        else if (selectedLanguage == "spanish")
+        {
+            text = "Código fuente";
+        }
+
+        for (var i = 0; i < sourceCodeBtns.length; i++)
+        {
+            sourceCodeBtns[i].textContent = text;
+        }
+    }
+
     function translate()
     {
         var selectedLanguage = getSelectedLanguage();
         translatePresentationTxt(selectedLanguage);
         translateResumeBtn(selectedLanguage);
+        translateSourceCodeBtns(selectedLanguage);
     }
 
     translate();
