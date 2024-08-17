@@ -2,6 +2,17 @@ document.addEventListener("DOMContentLoaded",
     function()
     {
         var languageRads = document.getElementsByName("languageRad");
+
+        /* Header */
+
+        var aboutBtn = document.getElementById("aboutBtn");
+        var skillsBtn = document.getElementById("skillsBtn");
+        var projectsBtn = document.getElementById("projectsBtn");
+        var educationBtn = document.getElementById("educationBtn");
+        var contactBtn = document.getElementById("contactBtn");
+
+        /* About */
+
         var degreesTxt = document.getElementById("degreesTxt");
         var presentationTxt = document.getElementById("presentationTxt");
         var resumeBtn = document.getElementById("resumeBtn");
@@ -18,6 +29,90 @@ document.addEventListener("DOMContentLoaded",
 
             return null;
         }
+
+        /* Header */
+
+        function translateAboutBtn(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "About me";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Sobre mi";
+            }
+
+            aboutBtn.textContent = text;
+        }
+
+        function translateSkillsBtn(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "Skills";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Habilidades";
+            }
+
+            skillsBtn.textContent = text;
+        }
+
+        function translateProjectsBtn(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "Projects";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Proyectos";
+            }
+
+            projectsBtn.textContent = text;
+        }
+
+        function translateEducationBtn(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "Education";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Estudios";
+            }
+
+            educationBtn.textContent = text;
+        }
+
+        function translateContactBtn(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "Contact";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Contacto";
+            }
+
+            contactBtn.textContent = text;
+        }
+
+        /* About */
 
         function translateDegreesTxt(selectedLanguage)
         {
@@ -78,6 +173,17 @@ document.addEventListener("DOMContentLoaded",
         function translate()
         {
             var selectedLanguage = getSelectedLanguage();
+
+            /* Header */
+
+            translateAboutBtn(selectedLanguage);
+            translateSkillsBtn(selectedLanguage);
+            translateProjectsBtn(selectedLanguage);
+            translateEducationBtn(selectedLanguage);
+            translateContactBtn(selectedLanguage);
+
+            /* About */
+
             translateDegreesTxt(selectedLanguage);
             translatePresentationTxt(selectedLanguage);
             translateResumeBtn(selectedLanguage);
