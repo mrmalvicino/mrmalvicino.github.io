@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded",
     function()
     {
         var languageRads = document.getElementsByName("languageRad");
+        var degreesTxt = document.getElementById("degreesTxt");
         var presentationTxt = document.getElementById("presentationTxt");
         var resumeBtn = document.getElementById("resumeBtn");
         var sourceCodeBtns = document.getElementsByName('sourceCodeBtn');
@@ -19,6 +20,22 @@ document.addEventListener("DOMContentLoaded",
             }
 
             return null;
+        }
+
+        function translateDegreesTxt(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "Software developer | Sound Engineer";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Programador | Ingeniero de Sonido";
+            }
+
+            degreesTxt.textContent = text;
         }
 
         function translatePresentationTxt(selectedLanguage)
@@ -121,6 +138,7 @@ document.addEventListener("DOMContentLoaded",
         function translate()
         {
             var selectedLanguage = getSelectedLanguage();
+            translateDegreesTxt(selectedLanguage);
             translatePresentationTxt(selectedLanguage);
             translateResumeBtn(selectedLanguage);
             translateSourceCodeBtns(selectedLanguage);
