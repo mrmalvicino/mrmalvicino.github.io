@@ -32,6 +32,9 @@ document.addEventListener("DOMContentLoaded",
         /* Education */
 
         var educationTxt = document.getElementById("educationTxt");
+        var soundEngineeringTxt = document.getElementById("soundEngineeringTxt");
+        var tupTxt = document.getElementById("tupTxt");
+        var portugueseTxt = document.getElementById("portugueseTxt");
 
         /* Contact */
 
@@ -308,6 +311,54 @@ document.addEventListener("DOMContentLoaded",
             educationTxt.textContent = text;
         }
 
+        function translateSoundEngineeringTxt(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "Sound Engineering (60%)";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Ingeniería de Sonido (60%)";
+            }
+
+            soundEngineeringTxt.textContent = text;
+        }
+
+        function translateTupTxt(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "Technical Degree in Programming";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Tecnicatura Universitaria en Programación";
+            }
+
+            tupTxt.textContent = text;
+        }
+
+        function translatePortugueseTxt(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "Portuguese Course (UTN level 3)";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Curso de Portugués (Nivel 3 UTN)";
+            }
+
+            portugueseTxt.textContent = text;
+        }
+
         /* Contact */
 
         function translateContactTxt(selectedLanguage)
@@ -359,6 +410,9 @@ document.addEventListener("DOMContentLoaded",
             /* Education */
 
             translateEducationTxt(selectedLanguage);
+            translateSoundEngineeringTxt(selectedLanguage);
+            translateTupTxt(selectedLanguage);
+            translatePortugueseTxt(selectedLanguage);
 
             /* Contact */
 
