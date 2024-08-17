@@ -5,9 +5,6 @@ document.addEventListener("DOMContentLoaded",
         var degreesTxt = document.getElementById("degreesTxt");
         var presentationTxt = document.getElementById("presentationTxt");
         var resumeBtn = document.getElementById("resumeBtn");
-        var sourceCodeBtns = document.getElementsByName('sourceCodeBtn');
-        var downloadBinaryBtns = document.getElementsByName('downloadBinaryBtn');
-        var openOnlineBtns = document.getElementsByName('openOnlineBtn');
 
         function getSelectedLanguage()
         {
@@ -78,72 +75,12 @@ document.addEventListener("DOMContentLoaded",
             resumeBtn.setAttribute("download", download);
         }
 
-        function translateSourceCodeBtns(selectedLanguage)
-        {
-            var text = "";
-
-            if (selectedLanguage == "english")
-            {
-                text = "Source Code";
-            }
-            else if (selectedLanguage == "spanish")
-            {
-                text = "Código fuente";
-            }
-
-            for (var i = 0; i < sourceCodeBtns.length; i++)
-            {
-                sourceCodeBtns[i].textContent = text;
-            }
-        }
-
-        function translateDownloadBinaryBtns(selectedLanguage)
-        {
-            var text = "";
-
-            if (selectedLanguage == "english")
-            {
-                text = "Download";
-            }
-            else if (selectedLanguage == "spanish")
-            {
-                text = "Descargar";
-            }
-
-            for (var i = 0; i < downloadBinaryBtns.length; i++)
-            {
-                downloadBinaryBtns[i].textContent = text;
-            }
-        }
-
-        function translateOpenOnlineBtns(selectedLanguage)
-        {
-            var text = "";
-
-            if (selectedLanguage == "english")
-            {
-                text = "Open Online";
-            }
-            else if (selectedLanguage == "spanish")
-            {
-                text = "Abrir en línea";
-            }
-
-            for (var i = 0; i < openOnlineBtns.length; i++)
-            {
-                openOnlineBtns[i].textContent = text;
-            }
-        }
-
         function translate()
         {
             var selectedLanguage = getSelectedLanguage();
             translateDegreesTxt(selectedLanguage);
             translatePresentationTxt(selectedLanguage);
             translateResumeBtn(selectedLanguage);
-            translateSourceCodeBtns(selectedLanguage);
-            translateDownloadBinaryBtns(selectedLanguage);
-            translateOpenOnlineBtns(selectedLanguage);
         }
 
         translate();
