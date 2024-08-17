@@ -352,9 +352,9 @@ document.addEventListener("DOMContentLoaded",
 
             translateProjectsTxt(selectedLanguage);
             translateAllProjectsBtn(selectedLanguage);
-            translateMeeniErpTxt(selectedLanguage)
-            translateEcommerceNetTxt(selectedLanguage)
-            translateDspPackageTxt(selectedLanguage)
+            translateMeeniErpTxt(selectedLanguage);
+            translateEcommerceNetTxt(selectedLanguage);
+            translateDspPackageTxt(selectedLanguage);
 
             /* Education */
 
