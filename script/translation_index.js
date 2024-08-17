@@ -24,6 +24,10 @@ document.addEventListener("DOMContentLoaded",
         /* Projects */
 
         var projectsTxt = document.getElementById("projectsTxt");
+        var allProjectsBtn = document.getElementById("allProjectsBtn");
+        var meeniErpTxt = document.getElementById("meeniErpTxt");
+        var ecommerceNetTxt = document.getElementById("ecommerceNetTxt");
+        var dspPackageTxt = document.getElementById("dspPackageTxt");
 
         /* Education */
 
@@ -222,6 +226,70 @@ document.addEventListener("DOMContentLoaded",
             projectsTxt.textContent = text;
         }
 
+        function translateAllProjectsBtn(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "All Projects";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Más proyectos";
+            }
+
+            allProjectsBtn.textContent = text;
+        }
+
+        function translateMeeniErpTxt(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "Simple enterprise resource planning software. Performs quotations, registers sales, manages stock, schedules purchases, and keeps the accounting.";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Software de planificación de recursos empresariales sencillo. Realiza cotizaciones, registra ventas, gestiona stock, programa compras y lleva la contabilidad.";
+            }
+
+            meeniErpTxt.textContent = text;
+        }
+
+        function translateEcommerceNetTxt(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "Ecommerce developed with ASP.NET and C# that includes product management, shopping cart, user accounts, and order management.";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Comercio electrónico desarrollado con ASP.NET y C# que incluye gestión de productos, carrito de compra, cuentas de usuario y gestión de pedidos.";
+            }
+
+            ecommerceNetTxt.textContent = text;
+        }
+
+        function translateDspPackageTxt(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "Provides a set of tools for digital signal processing. Designed to facilitate the generation, manipulation, and visualization of signals, as well as the application of filters.";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Proporciona un conjunto de herramientas para el procesamiento digital de señales. Diseñado para facilitar la generación, manipulación y visualización de señales, así como la aplicación de filtros.";
+            }
+
+            dspPackageTxt.textContent = text;
+        }
+
         /* Education */
 
         function translateEducationTxt(selectedLanguage)
@@ -283,6 +351,10 @@ document.addEventListener("DOMContentLoaded",
             /* Projects */
 
             translateProjectsTxt(selectedLanguage);
+            translateAllProjectsBtn(selectedLanguage);
+            translateMeeniErpTxt(selectedLanguage)
+            translateEcommerceNetTxt(selectedLanguage)
+            translateDspPackageTxt(selectedLanguage)
 
             /* Education */
 
