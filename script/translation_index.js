@@ -143,11 +143,11 @@ document.addEventListener("DOMContentLoaded",
 
             if (selectedLanguage == "english")
             {
-                text = "Software developer | Sound Engineer";
+                text = "Backend developer | Sound Engineering student";
             }
             else if (selectedLanguage == "spanish")
             {
-                text = "Programador | Ingeniero de Sonido";
+                text = "Desarrollador Backend | Est. de Ing. de Sonido";
             }
 
             degreesTxt.textContent = text;
