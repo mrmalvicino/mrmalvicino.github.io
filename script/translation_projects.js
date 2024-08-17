@@ -124,11 +124,11 @@ document.addEventListener("DOMContentLoaded",
 
             if (selectedLanguage == "english")
             {
-                text = "Research plan that involves a subjective evaluation of active noise cancellation performance in headphones. It includes statistical analysis using Python's Statistics module and the generation of dummy data through a custom algorithm.";
+                text = "Research plan that involves a subjective evaluation of active noise cancellation in headphones. Statistical analysis performed using Statistics module and the generation of dummy data through a custom algorithm.";
             }
             else if (selectedLanguage == "spanish")
             {
-                text = "Plan de investigación que implica una evaluación subjetiva del rendimiento de la cancelación activa de ruido en auriculares. Incluye análisis estadístico mediante el módulo Statistics de Python y la generación de datos ficticios mediante un algoritmo propio.";
+                text = "Plan de investigación que implica una evaluación subjetiva de la cancelación activa de ruido en auriculares. Análisis estadístico hecho mediante el módulo Statistics y la generación de datos ficticios mediante un algoritmo propio.";
             }
 
             ancResearchPlanTxt.textContent = text;
@@ -174,11 +174,11 @@ document.addEventListener("DOMContentLoaded",
 
             if (selectedLanguage == "english")
             {
-                text = "Demonstration of enterprice resource planning software with modules to manage the chain supply from end to end, being able to register sales, manage inventory stock, schedule purchases from suppliers, and keep an accounting of the activity.";
+                text = "Demonstration of enterprice resource planning software with modules to register sales, manage inventory stock, schedule purchases from suppliers, and keep the accounting.";
             }
             else if (selectedLanguage == "spanish")
             {
-                text = "Demostración de software de planificación de recursos empresariales con módulos para gestionar la cadena de abastecimiento de punta a punta, pudiendo registrar ventas, administrar stock de inventario, programar compras a proveedores y llevar una contabilidad de la actividad.";
+                text = "Demostración de software de planificación de recursos empresariales con módulos para registrar ventas, administrar stock de inventario, programar compras a proveedores y llevar la contabilidad.";
             }
 
             balumaErpTxt.textContent = text;
@@ -190,11 +190,11 @@ document.addEventListener("DOMContentLoaded",
 
             if (selectedLanguage == "english")
             {
-                text = "Two player dice game with terminal interface. Players compete in two phases: collecting elemental statuettes in the Expedition Phase and forming winning dice combinations in the Final Phase. The player with the best use of their collected statuettes wins.";
+                text = "Two player dice game with terminal interface. Players compete in two phases: collecting statuettes in the Expedition Phase and forming dice combinations in the Final Phase. The player with the best use of their collected statuettes wins.";
             }
             else if (selectedLanguage == "spanish")
             {
-                text = "Juego de dados para dos jugadores con interfaz de terminal. Los jugadores compiten en dos fases: recolectando estatuillas elementales en la fase de expedición y formando combinaciones de dados ganadoras en la fase final. El jugador que mejor utilice las estatuillas recolectadas gana.";
+                text = "Juego de dados para dos jugadores con interfaz de terminal. Los jugadores compiten en dos fases: recolectando estatuillas en la fase de expedición y formando combinaciones de dados en la fase final. El jugador que mejor utilice las estatuillas recolectadas gana.";
             }
 
             irwinsRevengeTxt.textContent = text;
@@ -206,11 +206,11 @@ document.addEventListener("DOMContentLoaded",
 
             if (selectedLanguage == "english")
             {
-                text = "Arduino project that implements LED light effects controlled by a button panel using an Arduino. Matrices and vectors are used to manage dynamic lighting patterns, allowing users to select and activate different effects with the press of a button.";
+                text = "Arduino project that implements LED light effects controlled by a button panel using an Arduino. Matrices and vectors are used to manage dynamic lighting patterns, allowing users to activate different effects.";
             }
             else if (selectedLanguage == "spanish")
             {
-                text = "Proyecto Arduino que implementa efectos de luz LED controlados por una botonera mediante un Arduino. Se utilizan matrices y vectores para gestionar patrones de iluminación dinámicos, permitiendo a los usuarios seleccionar y activar diferentes efectos con solo pulsar un botón.";
+                text = "Proyecto Arduino que implementa efectos de luz LED controlados por una botonera mediante un Arduino. Se utilizan matrices y vectores para gestionar patrones de iluminación dinámicos, permitiendo a los usuarios activar diferentes efectos.";
             }
 
             arduinoTxt.textContent = text;
@@ -224,11 +224,11 @@ document.addEventListener("DOMContentLoaded",
 
             if (selectedLanguage == "english")
             {
-                text = "Responsive website to showcase projects and achievements, built with HTML, CSS, and JavaScript. Features include a dynamic portfolio section, interactive elements, and seamless deployment via GitHub Pages.";
+                text = "Responsive website to showcase projects and achievements, built with HTML, CSS, and JavaScript. Features include a dynamic portfolio section, interactive elements, and deployment via GitHub Pages.";
             }
             else if (selectedLanguage == "spanish")
             {
-                text = "Sitio web responsivo para mostrar proyectos y logros, creado con HTML, CSS y JavaScript. Las características incluyen una sección de portafolio dinámica, elementos interactivos y una implementación sin inconvenientes a través de GitHub Pages.";
+                text = "Sitio web responsivo para mostrar proyectos y logros, creado con HTML, CSS y JavaScript. Las características incluyen una sección de portafolio dinámica, elementos interactivos y fue implementado con GitHub Pages.";
             }
 
             portfolioTxt.textContent = text;
