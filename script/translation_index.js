@@ -17,6 +17,22 @@ document.addEventListener("DOMContentLoaded",
         var presentationTxt = document.getElementById("presentationTxt");
         var resumeBtn = document.getElementById("resumeBtn");
 
+        /* Skills */
+
+        var skillsTxt = document.getElementById("skillsTxt");
+
+        /* Projects */
+
+        var projectsTxt = document.getElementById("projectsTxt");
+
+        /* Education */
+
+        var educationTxt = document.getElementById("educationTxt");
+
+        /* Contact */
+
+        var contactTxt = document.getElementById("contactTxt");
+
         function getSelectedLanguage()
         {
             for (var i = 0; i < languageRads.length; i++)
@@ -170,6 +186,78 @@ document.addEventListener("DOMContentLoaded",
             resumeBtn.setAttribute("download", download);
         }
 
+        /* Skills */
+
+        function translateSkillsTxt(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "SKILLS";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "HABILIDADES";
+            }
+
+            skillsTxt.textContent = text;
+        }
+
+        /* Projects */
+
+        function translateProjectsTxt(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "PROJECTS";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "PROYECTOS";
+            }
+
+            projectsTxt.textContent = text;
+        }
+
+        /* Education */
+
+        function translateEducationTxt(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "EDUCATION";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "ESTUDIOS";
+            }
+
+            educationTxt.textContent = text;
+        }
+
+        /* Contact */
+
+        function translateContactTxt(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "CONTACT";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "CONTACTO";
+            }
+
+            contactTxt.textContent = text;
+        }
+
         function translate()
         {
             var selectedLanguage = getSelectedLanguage();
@@ -187,6 +275,22 @@ document.addEventListener("DOMContentLoaded",
             translateDegreesTxt(selectedLanguage);
             translatePresentationTxt(selectedLanguage);
             translateResumeBtn(selectedLanguage);
+
+            /* Skills */
+
+            translateSkillsTxt(selectedLanguage);
+
+            /* Projects */
+
+            translateProjectsTxt(selectedLanguage);
+
+            /* Education */
+
+            translateEducationTxt(selectedLanguage);
+
+            /* Contact */
+
+            translateContactTxt(selectedLanguage);
         }
 
         translate();
