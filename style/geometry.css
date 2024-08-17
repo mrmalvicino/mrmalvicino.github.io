@@ -1,0 +1,89 @@
+.width-100-pct
+{
+    width: 100%;
+}
+
+.width-90-pct
+{
+    width: 90%;
+}
+
+.height-100-vh
+{
+    height: 100vh; /* Totalidad del viewport según el dispositivo */
+}
+
+.height-50-px
+{
+    height: 50px;
+}
+
+.height-100-px
+{
+    height: 100px;
+}
+
+.space-around
+{
+    justify-content: space-around;
+}
+
+.space-evenly
+{
+    justify-content: space-evenly;
+}
+
+.space-between
+{
+    justify-content: space-between;
+}
+
+.justify-center
+{
+    justify-content: center;
+}
+
+.margin-20-px
+{
+    margin: 20px;
+}
+
+.margin-30-px
+{
+    margin: 30px;
+}
+
+.margin-20-0-px
+{
+    margin: 20px 0px;
+}
+
+.margin-30-0-px
+{
+    margin: 30px 0px;
+}
+
+.margin-80-0-px
+{
+    margin: 80px 0px;
+}
+
+.margin-0-10-px
+{
+    margin: 0px 10px;
+}
+
+.margin-bottom-20-px
+{
+    margin-bottom: 20px;
+}
+
+.padding-15-px
+{
+    padding: 15px;
+}
+
+.padding-bottom-20-px
+{
+    padding-bottom: 20px;
+}

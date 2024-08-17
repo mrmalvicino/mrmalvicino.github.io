@@ -1,0 +1,20 @@
+.image-50-px
+{
+    width: auto;
+    height: 50px;
+}
+
+.image-80-px
+{
+    width: auto;
+    height: 80px;
+}
+
+.project-image
+{
+    width: 100%;
+    aspect-ratio: 1/1;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    background-color: white;
+}

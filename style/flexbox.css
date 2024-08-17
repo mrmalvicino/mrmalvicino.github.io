@@ -1,0 +1,19 @@
+.col-flex
+{
+    display: flex;
+    flex-direction: column; /* Ordenar elementos verticalmente, uno abajo del otro. */
+    align-items: center; /* Centrar elementos con respecto al eje vertical. */
+}
+
+.row-flex
+{
+    display: flex;
+    flex-direction: row; /* Ordenar elementos horizontalmente, uno al lado del otro. */
+    align-items: center; /* Centrar elementos con respecto al eje horizontal. */
+}
+
+.wrapped-flex
+{
+    display: flex;
+    flex-wrap: wrap; /* Ordenar elementos horizontalmente en varias filas si no entran en una sola. */
+}
