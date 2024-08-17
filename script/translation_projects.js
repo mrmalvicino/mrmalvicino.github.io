@@ -11,12 +11,31 @@ document.addEventListener("DOMContentLoaded",
         /* Python */
 
         var dspPackageTxt = document.getElementById("dspPackageTxt");
+        var stusCalculatorTxt = document.getElementById("stusCalculatorTxt");
+        var ancResearchPlanTxt = document.getElementById("ancResearchPlanTxt");
 
         /* C++ */
 
+        var dugunAutoClickerTxt = document.getElementById("dugunAutoClickerTxt");
+        var binaryCalculatorTxt = document.getElementById("binaryCalculatorTxt");
+        var balumaErpTxt = document.getElementById("balumaErpTxt");
+        var irwinsRevengeTxt = document.getElementById("irwinsRevengeTxt");
+        var arduinoTxt = document.getElementById("arduinoTxt");
+
         /* HTML */
 
+        var portfolioTxt = document.getElementById("portfolioTxt");
+
         /* Notes */
+
+        var dspNotesTxt = document.getElementById("dspNotesTxt");
+        var acousticsNotesTxt = document.getElementById("acousticsNotesTxt");
+        var electronicsNotesTxt = document.getElementById("electronicsNotesTxt");
+        var mathNotesTxt = document.getElementById("mathNotesTxt");
+        var physicsBookTxt = document.getElementById("physicsBookTxt");
+        var physicsGuideTxt = document.getElementById("physicsGuideTxt");
+        var physicsExercisesTxt = document.getElementById("physicsExercisesTxt");
+        var physicsNotesTxt = document.getElementById("physicsNotesTxt");
 
         function getSelectedLanguage()
         {
@@ -83,11 +102,267 @@ document.addEventListener("DOMContentLoaded",
             dspPackageTxt.textContent = text;
         }
 
+        function translateStusCalculatorTxt(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "Graphic calculator that aproximates periodic functions by calculating it's orthogonal projection over a trigonometric polynomials vector space.";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Calculadora gráfica que aproxima funciones periódicas calculando su proyección ortogonal sobre un espacio vectorial de polinomios trigonométricos.";
+            }
+
+            stusCalculatorTxt.textContent = text;
+        }
+
+        function translateAncResearchPlanTxt(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "Research plan that involves a subjective evaluation of active noise cancellation performance in headphones. It includes statistical analysis using Python's Statistics module and the generation of dummy data through a custom algorithm.";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Plan de investigación que implica una evaluación subjetiva del rendimiento de la cancelación activa de ruido en auriculares. Incluye análisis estadístico mediante el módulo Statistics de Python y la generación de datos ficticios mediante un algoritmo propio.";
+            }
+
+            ancResearchPlanTxt.textContent = text;
+        }
+
         /* C++ */
+
+        function translateDugunAutoClickerTxt(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "Mouse automation macro software that enables users to createate squencies of mouse actions with each action customizable position, duration and mouse click.";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Software de macro automatización del mouse que permite a los usuarios crear secuencias de acciones del mouse con posición, duración y clic del mouse personalizables para cada acción.";
+            }
+
+            dugunAutoClickerTxt.textContent = text;
+        }
+
+        function translateBinaryCalculatorTxt(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "Script that converts numbers between different numeral bases using pointers and dynamic memory allocation to manage the conversion process.";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Script que convierte números entre diferentes bases numéricas utilizando punteros y asignación de memoria dinámica para gestionar el proceso de conversión.";
+            }
+
+            binaryCalculatorTxt.textContent = text;
+        }
+
+        function translateBalumaErpTxt(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "Demonstration of enterprice resource planning software with modules to manage the chain supply from end to end, being able to register sales, manage inventory stock, schedule purchases from suppliers, and keep an accounting of the activity.";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Demostración de software de planificación de recursos empresariales con módulos para gestionar la cadena de abastecimiento de punta a punta, pudiendo registrar ventas, administrar stock de inventario, programar compras a proveedores y llevar una contabilidad de la actividad.";
+            }
+
+            balumaErpTxt.textContent = text;
+        }
+
+        function translateIrwinsRevengeTxt(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "Two player dice game with terminal interface. Players compete in two phases: collecting elemental statuettes in the Expedition Phase and forming winning dice combinations in the Final Phase. The player with the best use of their collected statuettes wins.";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Juego de dados para dos jugadores con interfaz de terminal. Los jugadores compiten en dos fases: recolectando estatuillas elementales en la fase de expedición y formando combinaciones de dados ganadoras en la fase final. El jugador que mejor utilice las estatuillas recolectadas gana.";
+            }
+
+            irwinsRevengeTxt.textContent = text;
+        }
+
+        function translateArduinoTxt(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "Arduino project that implements LED light effects controlled by a button panel using an Arduino. Matrices and vectors are used to manage dynamic lighting patterns, allowing users to select and activate different effects with the press of a button.";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Proyecto Arduino que implementa efectos de luz LED controlados por una botonera mediante un Arduino. Se utilizan matrices y vectores para gestionar patrones de iluminación dinámicos, permitiendo a los usuarios seleccionar y activar diferentes efectos con solo pulsar un botón.";
+            }
+
+            arduinoTxt.textContent = text;
+        }
 
         /* HTML */
 
+        function translatePortfolioTxt(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "Responsive website to showcase projects and achievements, built with HTML, CSS, and JavaScript. Features include a dynamic portfolio section, interactive elements, and seamless deployment via GitHub Pages.";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Sitio web responsivo para mostrar proyectos y logros, creado con HTML, CSS y JavaScript. Las características incluyen una sección de portafolio dinámica, elementos interactivos y una implementación sin inconvenientes a través de GitHub Pages.";
+            }
+
+            portfolioTxt.textContent = text;
+        }
+
         /* Notes */
+
+        function translateDspNotesTxt(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "Digital signal processing notes for sound engineering.";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Notas de procesamiento de señales digitales para ingeniería de sonido.";
+            }
+
+            dspNotesTxt.textContent = text;
+        }
+
+        function translateAcousticsNotesTxt(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "Acoustics notes for sound engineering.";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Notas de acústica para ingeniería de sonido.";
+            }
+
+            acousticsNotesTxt.textContent = text;
+        }
+
+        function translateElectronicsNotesTxt(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "Electronics notes for sound engineering.";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Notas de electrónica para ingeniería de sonido.";
+            }
+
+            electronicsNotesTxt.textContent = text;
+        }
+
+        function translateMathNotesTxt(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "Math notes for sound engineering.";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Apuntes de matemática para ingeniería de sonido.";
+            }
+
+            mathNotesTxt.textContent = text;
+        }
+
+        function translatePhysicsBookTxt(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "Mechanical physics book for sound engineering.";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Libro de física mecánica para ingeniería de sonido.";
+            }
+
+            physicsBookTxt.textContent = text;
+        }
+
+        function translatePhysicsGuideTxt(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "Exercise guide for the subject Physics 1 of Sound Engineering at Untref.";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Guía de ejercicios para la asignatura Física 1 de Ingeniería de Sonido en la Untref.";
+            }
+
+            physicsGuideTxt.textContent = text;
+        }
+
+        function translatePhysicsExercisesTxt(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "Solved exercises of the subject Physics 1 of Sound Engineering at Untref.";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Ejercicios resueltos de la asignatura Física 1 de Ingeniería de Sonido en la Untref.";
+            }
+
+            physicsExercisesTxt.textContent = text;
+        }
+
+        function translatePhysicsNotesTxt(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "Notes of the subject Physics 2 of Sound Engineering at Untref.";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Apuntes de la asignatura Física 2 de Ingeniería del Sonido en la Untref.";
+            }
+
+            physicsNotesTxt.textContent = text;
+        }
 
         function translate()
         {
@@ -101,12 +376,31 @@ document.addEventListener("DOMContentLoaded",
             /* Python */
 
             translateDspPackageTxt(selectedLanguage);
+            translateStusCalculatorTxt(selectedLanguage);
+            translateAncResearchPlanTxt(selectedLanguage);
 
             /* C++ */
 
+            translateDugunAutoClickerTxt(selectedLanguage);
+            translateBinaryCalculatorTxt(selectedLanguage);
+            translateBalumaErpTxt(selectedLanguage);
+            translateIrwinsRevengeTxt(selectedLanguage);
+            translateArduinoTxt(selectedLanguage);
+
             /* HTML */
 
+            translatePortfolioTxt(selectedLanguage);
+
             /* Notes */
+
+            translateDspNotesTxt(selectedLanguage);
+            translateAcousticsNotesTxt(selectedLanguage);
+            translateElectronicsNotesTxt(selectedLanguage);
+            translateMathNotesTxt(selectedLanguage);
+            translatePhysicsBookTxt(selectedLanguage);
+            translatePhysicsGuideTxt(selectedLanguage);
+            translatePhysicsExercisesTxt(selectedLanguage);
+            translatePhysicsNotesTxt(selectedLanguage);
         }
 
         translate();
