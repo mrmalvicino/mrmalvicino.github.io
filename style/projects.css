@@ -6,8 +6,56 @@
 }
 
 /* Responsive */
-/*
+
 @media screen and (max-width: 575px)
 {
-    
-}*/
+    #dotNetSec p
+    {
+        font-size: 14px;
+    }
+
+    #dotNetSec .image-50-px
+    {
+        height: 30px;
+    }
+
+    #pythonSec p
+    {
+        font-size: 14px;
+    }
+
+    #pythonSec .image-50-px
+    {
+        height: 30px;
+    }
+
+    #cppSec p
+    {
+        font-size: 14px;
+    }
+
+    #cppSec .image-50-px
+    {
+        height: 30px;
+    }
+
+    #htmlSec p
+    {
+        font-size: 14px;
+    }
+
+    #htmlSec .image-50-px
+    {
+        height: 30px;
+    }
+
+    #notesSec p
+    {
+        font-size: 14px;
+    }
+
+    #notesSec .image-50-px
+    {
+        height: 30px;
+    }
+}
