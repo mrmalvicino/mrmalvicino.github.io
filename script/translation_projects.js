@@ -125,11 +125,11 @@ document.addEventListener("DOMContentLoaded",
 
             if (selectedLanguage == "english")
             {
-                text = "Research plan that involves a subjective evaluation of active noise cancellation in headphones. Statistical analysis performed using Statistics module and the generation of dummy data through a custom algorithm.";
+                text = "Research plan that involves a subjective evaluation of active noise cancellation in headphones. Statistical analysis was performed using SciPy module and the generation of dummy data through a custom algorithm.";
             }
             else if (selectedLanguage == "spanish")
             {
-                text = "Plan de investigación que implica una evaluación subjetiva de la cancelación activa de ruido en auriculares. Análisis estadístico hecho mediante el módulo Statistics y la generación de datos ficticios mediante un algoritmo propio.";
+                text = "Plan de investigación que implica una evaluación subjetiva de la cancelación activa de ruido en auriculares. Análisis estadístico fue hecho mediante el módulo SciPy y la generación de datos ficticios mediante un algoritmo propio.";
             }
 
             ancResearchPlanTxt.textContent = text;
