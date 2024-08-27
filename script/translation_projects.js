@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded",
 
         /* HTML */
 
+        var mokaLandingTxt = document.getElementById("mokaLandingTxt");
         var portfolioTxt = document.getElementById("portfolioTxt");
 
         /* Notes */
@@ -218,6 +219,22 @@ document.addEventListener("DOMContentLoaded",
 
         /* HTML */
 
+        function translateMokaLandingTxt(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "Landing page created with HTML, CSS and JavaScript for a business specialized in the sale of baskets, bags, placemats and rugs. A custom domain was linked with the respective DNS settings.";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Landing page creada con HTML, CSS y JavaScript para un negocio especializado en la venta de cestas, bolsos, manteles individuales y alfombras. Se vinculó un dominio personalizado con la configuración de DNS correspondiente.";
+            }
+
+            mokaLandingTxt.textContent = text;
+        }
+
         function translatePortfolioTxt(selectedLanguage)
         {
             var text = "";
@@ -389,6 +406,7 @@ document.addEventListener("DOMContentLoaded",
 
             /* HTML */
 
+            translateMokaLandingTxt(selectedLanguage);
             translatePortfolioTxt(selectedLanguage);
 
             /* Notes */
