@@ -10,7 +10,7 @@
 
 .height-100-vh
 {
-    height: 100vh; /* Totalidad del viewport según el dispositivo */
+    min-height: 100vh; /* Totalidad del viewport según el dispositivo */
 }
 
 .height-50-px

@@ -10,6 +10,14 @@
     height: 80px;
 }
 
+.square-image
+{
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    background-color: white;
+}
+
 .project-image
 {
     width: 100%;

@@ -1,51 +1,51 @@
-.opacity-60-pct
-{
-    opacity: 0.6;
-}
-
-.gray-hover:hover
-{
-    color: white;
-    background-color: #666;
-}
-
-.green-hover:hover
+.hover-4:hover
 {
     color: white;
     background-color: #07c311;
 }
 
-.light-background
+.hover-2:hover
+{
+    color: white;
+    background-color: #666;
+}
+
+.background-5
 {
     color: black;
     background-color: #F8F8F8;
 }
 
-.gray-background
+.background-3
+{
+    color: white;
+    background-color: #118a0f;
+}
+
+.background-2
 {
     color: white;
     background-color: #666;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.dark-background
+.background-1
 {
     color: white;
     background-color: #222;
 }
 
-.green-background
-{
-    color: white;
-    background-color: #118a0f;
-}
-
-.light-shadow
+.light-box-shadow
 {
     box-shadow: 0px 0px 30px rgba(180, 180, 180, 0.7);
 }
 
-.dark-shadow
+.dark-box-shadow
 {
     box-shadow: 0px 0px 30px rgba(34, 34, 34, 0.8);
+}
+
+.opacity-60-pct
+{
+    opacity: 0.6;
 }
