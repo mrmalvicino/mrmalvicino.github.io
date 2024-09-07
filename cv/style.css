@@ -1,8 +1,5 @@
-/* ------------------- */
-/* GENERAL DEFINITIONS */
-/* ------------------- */
-
-*{
+*
+{
     margin: 0;
     padding: 0;
     font-family: "IBM Plex Sans Condensed", sans-serif;
@@ -10,68 +7,76 @@
     font-style: normal;
 }
 
-html{
+html
+{
     background-color: rgb(28, 0, 136);
 }
 
-body{
+body
+{
     width: 1050px;
     height: 1485px;
     margin: 0px auto;
     display: flex;
 }
 
-#left-column{
+#left-column
+{
     width: 410px;
     height: 1440px;
     padding: 20px;
     background-color: rgb(240, 240, 240);
 }
 
-#right-column{
+#right-column
+{
     width: 560px;
     height: 1440px;
     padding: 20px;
     background-color: white;
 }
 
-.entry{
+.entry
+{
     padding: 5px 0px 5px 0px;
     align-items: center;
 }
 
-.hbox{
+.hbox
+{
     margin: 0px;
     padding: 0px;
     display: flex;
     align-items: center;
 }
 
-#center{
+#center
+{
     justify-content: center;
 }
 
-h2{
+h2
+{
     padding: 10px 0px 5px 0px;
     font-family: 'Jost', sans-serif;
     font-size: xx-large;
     color: rgb(28, 0, 136);
 }
 
-h3{
+h3
+{
     font-family: 'Jost', sans-serif;
     font-size: 28px;
 }
 
-h4{
+h4
+{
     font-size: 24px;
     color: rgb(50, 50, 50);
 }
 
-
-/* PERSONAL INFORMATION */
-
-#profile-pic{
+#profile-pic
+{
     margin-bottom: 10px;
     width: 350px;
     height: 350px;
@@ -80,30 +85,29 @@ h4{
     object-fit: cover;
 }
 
-.logo-img{
+.logo-img
+{
     margin-right: 20px;
     max-width: 50px;
     max-height: 50px;
     align-items: center;
 }
 
-
-/* PRESENTATION */
-
-#presentation{
+#presentation
+{
     margin: 30px 0px;
     padding: 10px;
 }
 
-h1{
+h1
+{
     margin-bottom: 10px;
     font-family: 'Jost', sans-serif;
     font-size: 46px;
     color: rgb(28, 0, 136);;
 }
 
-/* EXPERIENCE */
-
-#exp-entry{
+#exp-entry
+{
     border-top: 2px solid rgb(28, 0, 136);
 }
