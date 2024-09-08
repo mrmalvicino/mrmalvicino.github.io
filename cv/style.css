@@ -20,39 +20,12 @@ body
     display: flex;
 }
 
-#left-column
+h1
 {
-    width: 410px;
-    height: 1440px;
-    padding: 20px;
-    background-color: rgb(240, 240, 240);
-}
-
-#right-column
-{
-    width: 560px;
-    height: 1440px;
-    padding: 20px;
-    background-color: white;
-}
-
-.entry
-{
-    padding: 5px 0px 5px 0px;
-    align-items: center;
-}
-
-.hbox
-{
-    margin: 0px;
-    padding: 0px;
-    display: flex;
-    align-items: center;
-}
-
-#center
-{
-    justify-content: center;
+    margin-bottom: 10px;
+    font-family: 'Jost', sans-serif;
+    font-size: 46px;
+    color: rgb(28, 0, 136);
 }
 
 h2
@@ -75,14 +48,25 @@ h4
     color: rgb(50, 50, 50);
 }
 
-#profile-pic
+.padding-5-0-px
 {
-    margin-bottom: 10px;
-    width: 350px;
-    height: 350px;
-    display: block;
-    border-radius: 50%;
-    object-fit: cover;
+    padding: 5px 0px;
+}
+
+.border-bottom
+{
+    border-bottom: 2px solid rgb(28, 0, 136);
+}
+
+.display-flex
+{
+    display: flex;
+    align-items: center;
+}
+
+.justify-center
+{
+    justify-content: center;
 }
 
 .logo-img
@@ -93,21 +77,33 @@ h4
     align-items: center;
 }
 
-#presentation
-{
-    margin: 30px 0px;
-    padding: 10px;
-}
-
-h1
+#profileImg
 {
     margin-bottom: 10px;
-    font-family: 'Jost', sans-serif;
-    font-size: 46px;
-    color: rgb(28, 0, 136);;
+    width: 350px;
+    height: 350px;
+    display: block;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
-#exp-entry
+#leftColumn
 {
-    border-top: 2px solid rgb(28, 0, 136);
+    width: 410px;
+    height: 1440px;
+    padding: 20px;
+    background-color: rgb(240, 240, 240);
+}
+
+#rightColumn
+{
+    width: 560px;
+    height: 1440px;
+    padding: 20px;
+    background-color: white;
+}
+
+#presentationSec
+{
+    margin: 30px 0px;
 }
