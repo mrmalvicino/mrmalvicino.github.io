@@ -246,27 +246,39 @@
             </div>
             <form action="https://formspree.io/f/mvgpjkjn" method="POST">
                 <div class="col-flex space-around margin-20-0-px">
-                    <label for="name">Nombre:</label>
+                    <label
+                        for="name"
+                        id="nameLbl">
+                    </label>
                     <input
                         type="text"
                         id="name"
                         name="name"
                         placeholder="Nombre"
                         required>
-                    <label for="email">Email:</label>
+                    <label
+                        for="email">
+                        Email:
+                    </label>
                     <input
                         type="email"
                         id="email"
                         name="email"
                         placeholder="Email"
                         required>
-                    <label for="phone">Teléfono:</label>
+                    <label
+                        for="phone"
+                        id="phoneLbl">
+                    </label>
                     <input
                         type="tel"
                         id="phone"
                         name="phone"
                         placeholder="Teléfono">
-                    <label for="message">Mensaje:</label>
+                    <label
+                        for="message"
+                        id="messageLbl">
+                    </label>
                     <textarea
                         id="message"
                         name="message"
@@ -276,8 +288,8 @@
                     </textarea>
                     <button
                         type="submit"
-                        class="mid-button background-2 hover-1 margin-10-0-px">
-                        Enviar
+                        class="mid-button background-2 hover-1 margin-10-0-px"
+                        id="submitBtn">
                     </button>
                 </div>
             </form>

@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded",
             }
             else if (selectedLanguage == "spanish")
             {
-                text = "Plan de investigación que implica una evaluación subjetiva de la cancelación activa de ruido en auriculares. Análisis estadístico fue hecho mediante el módulo SciPy y la generación de datos ficticios mediante un algoritmo propio.";
+                text = "Plan de investigación que implica una evaluación subjetiva de la cancelación activa de ruido en auriculares. Análisis estadístico hecho mediante el módulo SciPy y la generación de datos ficticios mediante un algoritmo propio.";
             }
 
             ancResearchPlanTxt.textContent = text;

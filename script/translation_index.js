@@ -39,6 +39,13 @@ document.addEventListener("DOMContentLoaded",
         /* Contact */
 
         var contactTxt = document.getElementById("contactTxt");
+        var nameTxt = document.getElementById("name");
+        var phoneTxt = document.getElementById("phone");
+        var messageTxt = document.getElementById("message");
+        var nameLbl = document.getElementById("nameLbl");
+        var phoneLbl = document.getElementById("phoneLbl");
+        var messageLbl = document.getElementById("messageLbl");
+        var submitBtn = document.getElementById("submitBtn");
 
         function getSelectedLanguage()
         {
@@ -377,6 +384,118 @@ document.addEventListener("DOMContentLoaded",
             contactTxt.textContent = text;
         }
 
+        function translateNameTxt(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "Name";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Nombre";
+            }
+
+            nameTxt.placeholder = text;
+        }
+
+        function translatePhoneTxt(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "Phone";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Teléfono";
+            }
+
+            phoneTxt.placeholder = text;
+        }
+
+        function translateMessageTxt(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "Message";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Mensaje";
+            }
+
+            messageTxt.placeholder = text;
+        }
+
+        function translateNameLbl(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "Name:";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Nombre:";
+            }
+
+            nameLbl.textContent = text;
+        }
+
+        function translatePhoneLbl(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "Phone:";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Teléfono:";
+            }
+
+            phoneLbl.textContent = text;
+        }
+
+        function translateMessageLbl(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "Message:";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Mensaje:";
+            }
+
+            messageLbl.textContent = text;
+        }
+
+        function translateSubmitBtn(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "Submit";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "Enviar";
+            }
+
+            submitBtn.textContent = text;
+        }
+
         function translate()
         {
             var selectedLanguage = getSelectedLanguage();
@@ -417,6 +536,13 @@ document.addEventListener("DOMContentLoaded",
             /* Contact */
 
             translateContactTxt(selectedLanguage);
+            translateNameTxt(selectedLanguage);
+            translatePhoneTxt(selectedLanguage);
+            translateMessageTxt(selectedLanguage);
+            translateNameLbl(selectedLanguage);
+            translatePhoneLbl(selectedLanguage);
+            translateMessageLbl(selectedLanguage);
+            translateSubmitBtn(selectedLanguage);
         }
 
         translate();
