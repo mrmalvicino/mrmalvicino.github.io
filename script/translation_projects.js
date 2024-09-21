@@ -259,11 +259,11 @@ document.addEventListener("DOMContentLoaded",
 
             if (selectedLanguage == "english")
             {
-                text = "Digital signal processing notes for sound engineering.";
+                text = "Digital signal processing notes for sound engineering. A Yaml script was implemented with GitHub Actions to run LuaLaTex or pdfLaTex and compile a PDF that is automatically uploaded as a Release.";
             }
             else if (selectedLanguage == "spanish")
             {
-                text = "Notas de procesamiento de señales digitales para ingeniería de sonido.";
+                text = "Apuntes de procesamiento digital de señales para ingeniería de sonido. Se implementó un script Yaml con GitHub Actions para correr LuaLaTex o pdfLaTex y compilar un PDF que se sube automáticamente como Release.";
             }
 
             dspNotesTxt.textContent = text;
@@ -275,11 +275,11 @@ document.addEventListener("DOMContentLoaded",
 
             if (selectedLanguage == "english")
             {
-                text = "Acoustics notes for sound engineering.";
+                text = "Acoustics notes for sound engineering. A Yaml script was implemented with GitHub Actions to run LuaLaTex or pdfLaTex and compile a PDF that is automatically uploaded as a Release.";
             }
             else if (selectedLanguage == "spanish")
             {
-                text = "Notas de acústica para ingeniería de sonido.";
+                text = "Apuntes de acústica para ingeniería de sonido. Se implementó un script Yaml con GitHub Actions para correr LuaLaTex o pdfLaTex y compilar un PDF que se sube automáticamente como Release.";
             }
 
             acousticsNotesTxt.textContent = text;
@@ -291,11 +291,11 @@ document.addEventListener("DOMContentLoaded",
 
             if (selectedLanguage == "english")
             {
-                text = "Electronics notes for sound engineering.";
+                text = "Electronics notes for sound engineering. A Yaml script was implemented with GitHub Actions to run LuaLaTex or pdfLaTex and compile a PDF that is automatically uploaded as a Release.";
             }
             else if (selectedLanguage == "spanish")
             {
-                text = "Notas de electrónica para ingeniería de sonido.";
+                text = "Apuntes de electrónica para ingeniería de sonido. Se implementó un script Yaml con GitHub Actions para correr LuaLaTex o pdfLaTex y compilar un PDF que se sube automáticamente como Release.";
             }
 
             electronicsNotesTxt.textContent = text;
@@ -307,11 +307,11 @@ document.addEventListener("DOMContentLoaded",
 
             if (selectedLanguage == "english")
             {
-                text = "Math notes for sound engineering.";
+                text = "Math notes for sound engineering. A Yaml script was implemented with GitHub Actions to run LuaLaTex or pdfLaTex and compile a PDF that is automatically uploaded as a Release.";
             }
             else if (selectedLanguage == "spanish")
             {
-                text = "Apuntes de matemática para ingeniería de sonido.";
+                text = "Apuntes de matemática para ingeniería de sonido. Se implementó un script Yaml con GitHub Actions para correr LuaLaTex o pdfLaTex y compilar un PDF que se sube automáticamente como Release.";
             }
 
             mathNotesTxt.textContent = text;
@@ -323,11 +323,11 @@ document.addEventListener("DOMContentLoaded",
 
             if (selectedLanguage == "english")
             {
-                text = "Mechanical physics book for sound engineering.";
+                text = "Mechanical physics book for sound engineering. A Yaml script was implemented with GitHub Actions to run LuaLaTex or pdfLaTex and compile a PDF that is automatically uploaded as a Release.";
             }
             else if (selectedLanguage == "spanish")
             {
-                text = "Libro de física mecánica para ingeniería de sonido.";
+                text = "Libro de física mecánica para ingeniería de sonido. Se implementó un script Yaml con GitHub Actions para correr LuaLaTex o pdfLaTex y compilar un PDF que se sube automáticamente como Release.";
             }
 
             physicsBookTxt.textContent = text;
@@ -339,11 +339,11 @@ document.addEventListener("DOMContentLoaded",
 
             if (selectedLanguage == "english")
             {
-                text = "Exercise guide for the subject Physics 1 of Sound Engineering at Untref.";
+                text = "Exercise guide for the subject Physics 1 of Sound Engineering at Untref. A Yaml script was implemented with GitHub Actions to run LuaLaTex or pdfLaTex and compile a PDF that is automatically uploaded as a Release.";
             }
             else if (selectedLanguage == "spanish")
             {
-                text = "Guía de ejercicios para la asignatura Física 1 de Ingeniería de Sonido en la Untref.";
+                text = "Guía de ejercicios para la asignatura Física 1 de Ingeniería de Sonido en la Untref. Se implementó un script Yaml con GitHub Actions para correr LuaLaTex o pdfLaTex y compilar un PDF que se sube automáticamente como Release.";
             }
 
             physicsGuideTxt.textContent = text;
