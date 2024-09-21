@@ -31,3 +31,8 @@
     text-decoration: none;
     display: inline-flex; /* El link toma el tamaño de su contenido. */
 }
+
+.transition
+{
+    transition: background-color 0.5s ease, transform 0.5s ease;
+}

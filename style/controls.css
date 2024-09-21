@@ -82,3 +82,8 @@ iframe
     aspect-ratio: 1/1;
     display: block; /* Elimina espacio en blanco debajo */
 }
+
+button
+{
+    transition: background-color 0.5s ease, transform 0.5s ease;
+}

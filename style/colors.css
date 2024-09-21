@@ -2,18 +2,21 @@
 {
     color: white;
     background-color: #07c311;
+    transform: scale(1.1);
 }
 
 .hover-2:hover
 {
     color: white;
     background-color: #666;
+    transform: scale(1.1);
 }
 
 .hover-1:hover
 {
     color: white;
     background-color: #222;
+    transform: scale(1.1);
 }
 
 .background-5
