@@ -11,6 +11,19 @@
     display: inline-block;
 }
 
+.mid-button
+{
+    margin: 0px;
+    padding: 7px 14px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
 .big-button
 {
     margin: 0px;
