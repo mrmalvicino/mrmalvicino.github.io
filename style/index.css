@@ -9,6 +9,19 @@
     object-fit: cover; /* Escalar el contenido manteniendo la relación de aspecto. */
 }
 
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea
+{
+    width: 550px;
+    font-size: 16px;
+    border-radius: 25px;
+    border: 1px solid #F8F8F8;
+    margin: 5px;
+    padding: 5px 10px;
+}
+
 /* Responsive */
 
 @media screen and (max-width: 575px)
@@ -82,5 +95,13 @@
     #socialMediaDiv .padding-15-px
     {
         padding: 5px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea
+    {
+        width: 250px;
     }
 }

@@ -10,6 +10,12 @@
     background-color: #666;
 }
 
+.hover-1:hover
+{
+    color: white;
+    background-color: #222;
+}
+
 .background-5
 {
     color: black;

@@ -244,43 +244,69 @@
                     </div>
                 </div>
             </div>
+            <form action="https://formspree.io/f/mvgpjkjn" method="POST">
+                <div class="col-flex space-around margin-20-0-px">
+                    <label for="name">Nombre:</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Nombre"
+                        required>
+                    <label for="email">Email:</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Email"
+                        required>
+                    <label for="phone">Teléfono:</label>
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="Teléfono">
+                    <label for="message">Mensaje:</label>
+                    <textarea
+                        id="message"
+                        name="message"
+                        rows="3"
+                        placeholder="Mensaje"
+                        required>
+                    </textarea>
+                    <button
+                        type="submit"
+                        class="small-button background-2 hover-1 margin-20-0-px width-90-pct">
+                        Enviar
+                    </button>
+                </div>
+            </form>
             <div class="wrapped-flex space-around" id="socialMediaDiv">
-                <div class="margin-0-10-px padding-15-px">
+                <div class="padding-15-px">
                     <a href="https://t.me/mrmalvicino" class="invisible-link">
                         <img src="images/telegram.png" class="height-50-px"/>
                     </a>
                 </div>
-                <div class="margin-0-10-px padding-15-px">
+                <div class="padding-15-px">
                     <a href="https://www.facebook.com/malvicinomaximilianoraul" class="invisible-link">
                         <img src="images/facebook.png" class="height-50-px"/>
                     </a>
                 </div>
-                <div class="margin-0-10-px padding-15-px">
+                <div class="padding-15-px">
                     <a href="https://www.instagram.com/mmrsonido" class="invisible-link">
                         <img src="images/instagram.png" class="height-50-px"/>
                     </a>
                 </div>
-                <div class="margin-0-10-px padding-15-px">
+                <div class="padding-15-px">
                     <a href="https://twitter.com/mmrsonido" class="invisible-link">
                         <img src="images/twitter.png" class="height-50-px"/>
                     </a>
                 </div>
-                <div class="margin-0-10-px padding-15-px">
+                <div class="padding-15-px">
                     <a href="https://www.youtube.com/@mmrsonido" class="invisible-link">
                         <img src="images/youtube.png" class="height-50-px"/>
                     </a>
                 </div>
-            </div>
-            <div class="wrapped-flex space-around" id="socialMediaDiv">
-                <form action="https://formspree.io/f/mvgpjkjn" method="POST">
-                    <label for="name">Nombre:</label>
-                    <input type="text" id="name" name="name" required>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                    <label for="message">Mensaje:</label>
-                    <textarea id="message" name="message" required></textarea>
-                    <button type="submit">Enviar</button>
-                </form>
             </div>
         </div>
     </section>
