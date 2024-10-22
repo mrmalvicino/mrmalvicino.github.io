@@ -11,11 +11,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="style/buttons.css" rel="stylesheet" type="text/css">
     <link href="style/colors.css" rel="stylesheet" type="text/css">
     <link href="style/containers.css" rel="stylesheet" type="text/css">
     <link href="style/controls.css" rel="stylesheet" type="text/css">
     <link href="style/flexbox.css" rel="stylesheet" type="text/css">
+    <link href="style/fonts.css" rel="stylesheet" type="text/css">
     <link href="style/geometry.css" rel="stylesheet" type="text/css">
     <link href="style/images.css" rel="stylesheet" type="text/css">
     <link href="style/justify.css" rel="stylesheet" type="text/css">
@@ -64,8 +66,8 @@
         <div class="wrapped-flex space-evenly width-90-pct">
             <a href="https://www.linkedin.com/in/malvicinomaximilianoraul/" class="invisible-link">
                 <picture>
-                    <source srcset="images/linkedin-logo.png" media="(max-width: 575px)">
-                    <img src="images/linkedin.png" class="height-50-px"/>
+                    <source srcset="images/linkedin.png" media="(max-width: 575px)">
+                    <img src="images/linkedin-long.png" class="height-50-px"/>
                 </picture>
             </a>
             <a class="transition big-button font-larger background-1 hover-2" id="resumeBtn"></a>
@@ -164,25 +166,6 @@
                 </div>
             </div>
 
-            <div class="background-2 project-card col-flex space-evenly margin-20-px">
-                <div>
-                    <h2>DSP Package</h2>
-                </div>
-                <div class="width-90-pct row-flex space-evenly">
-                    <button class="small-button background-3 hover-4" name="sourceCodeBtn" onclick="window.location.href='https://github.com/mrmalvicino/dsp-package';">Source code</button>
-                </div>
-                <div class="width-90-pct">
-                    <img src="https://i.pinimg.com/564x/c1/61/fe/c161fe8e33aedf395aed191ad0e75797.jpg" class="project-image"/>
-                </div>
-                <div class="width-90-pct height-100-px row-flex">
-                    <p id="dspPackageTxt"></p>
-                </div>
-                <div class="width-90-pct row-flex space-evenly opacity-60-pct">
-                    <img src="images/python.png" class="image-50-px"/>
-                    <img src="images/github.png" class="image-50-px"/>
-                </div>
-            </div>
-
             <div class="row-flex space-around width-100-pct margin-bottom-20-px">
                 <button class="big-button background-5 hover-2" id="allProjectsBtn" onclick="location.href='projects.html'">All projects</button>
             </div>
@@ -228,17 +211,21 @@
             </div>
             <div class="wrapped-flex space-around">
                 <div class="row-flex space-around padding-15-px">
-                    <a href="mailto:mrmalvicino@gmail.com">
-                        <img src="images/icon-mail.png" class="image-40-px"/>
-                    </a>
+                    <div class="image-40-px">
+                        <a href="mailto:mrmalvicino@gmail.com" class="invisible-link">
+                            <i class="bi bi-envelope font-size-40"></i>
+                        </a>
+                    </div>
                     <div class="margin-0-10-px">
                         <h4>mrmalvicino@gmail.com</h4>
                     </div>
                 </div>
                 <div class="row-flex space-around padding-15-px">
-                    <a href="phone:1159058729">
-                        <img src="images/icon-phone.png" class="image-40-px"/>
-                    </a>
+                    <div class="image-40-px">
+                        <a href="phone:1159058729" class="invisible-link">
+                            <i class="bi bi-whatsapp font-size-40"></i>
+                        </a>
+                    </div>
                     <div class="margin-0-10-px">
                         <h4>+54 (911) 15-5905-8729</h4>
                     </div>
@@ -288,35 +275,30 @@
                     </textarea>
                     <button
                         type="submit"
-                        class="mid-button background-2 hover-1 margin-10-0-px"
+                        class="mid-button background-1 hover-2 margin-10-0-px"
                         id="submitBtn">
                     </button>
                 </div>
             </form>
-            <div class="wrapped-flex space-around" id="socialMediaDiv">
-                <div class="padding-15-px">
+            <div class="wrapped-flex space-around margin-bottom-20-px" id="socialMediaDiv">
+                <div class="padding-15-px image-40-px">
                     <a href="https://t.me/mrmalvicino" class="invisible-link">
-                        <img src="images/telegram.png" class="image-40-px"/>
+                        <i class="bi bi-telegram font-size-40"></i>
                     </a>
                 </div>
-                <div class="padding-15-px">
+                <div class="padding-15-px image-40-px">
                     <a href="https://www.facebook.com/malvicinomaximilianoraul" class="invisible-link">
-                        <img src="images/facebook.png" class="image-40-px"/>
+                        <i class="bi bi-facebook font-size-40"></i>
                     </a>
                 </div>
-                <div class="padding-15-px">
-                    <a href="https://www.instagram.com/mmrsonido" class="invisible-link">
-                        <img src="images/instagram.png" class="image-40-px"/>
+                <div class="padding-15-px image-40-px">
+                    <a href="https://www.linkedin.com/in/malvicinomaximilianoraul/" class="invisible-link">
+                        <i class="bi bi-linkedin font-size-40"></i>
                     </a>
                 </div>
-                <div class="padding-15-px">
-                    <a href="https://twitter.com/mmrsonido" class="invisible-link">
-                        <img src="images/twitter.png" class="image-40-px"/>
-                    </a>
-                </div>
-                <div class="padding-15-px">
-                    <a href="https://www.youtube.com/@mmrsonido" class="invisible-link">
-                        <img src="images/youtube.png" class="image-40-px"/>
+                <div class="padding-15-px image-40-px">
+                    <a href="https://www.github.com/mrmalvicino" class="invisible-link">
+                        <i class="bi bi-github font-size-40"></i>
                     </a>
                 </div>
             </div>
