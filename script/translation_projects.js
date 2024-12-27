@@ -14,6 +14,10 @@ document.addEventListener("DOMContentLoaded",
         var stusCalculatorTxt = document.getElementById("stusCalculatorTxt");
         var ancResearchPlanTxt = document.getElementById("ancResearchPlanTxt");
 
+        /* Java */
+
+        var bancarTxt = document.getElementById("bancarTxt");
+
         /* C++ */
 
         var dugunAutoClickerTxt = document.getElementById("dugunAutoClickerTxt");
@@ -133,6 +137,24 @@ document.addEventListener("DOMContentLoaded",
             }
 
             ancResearchPlanTxt.textContent = text;
+        }
+
+        /* Java */
+
+        function translateBancarTxt(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "BancAr is a banking management system designed to manage the operations of a banking entity, allowing the management of clients, accounts, loans and transfers.";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "BancAr es un sistema de gestión bancaria diseñado para administrar las operaciones de una entidad bancaria, permitiendo la gestión de clientes, cuentas, préstamos y transferencias.";
+            }
+
+            bancarTxt.textContent = text;
         }
 
         /* C++ */
@@ -395,6 +417,10 @@ document.addEventListener("DOMContentLoaded",
             translateDspPackageTxt(selectedLanguage);
             translateStusCalculatorTxt(selectedLanguage);
             translateAncResearchPlanTxt(selectedLanguage);
+
+            /* Java */
+
+            translateBancarTxt(selectedLanguage);
 
             /* C++ */
 

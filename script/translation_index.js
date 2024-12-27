@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded",
         var allProjectsBtn = document.getElementById("allProjectsBtn");
         var meeniErpTxt = document.getElementById("meeniErpTxt");
         var ecommerceNetTxt = document.getElementById("ecommerceNetTxt");
+        var bancarTxt = document.getElementById("bancarTxt");
 
         /* Education */
 
@@ -283,6 +284,22 @@ document.addEventListener("DOMContentLoaded",
             ecommerceNetTxt.textContent = text;
         }
 
+        function translateBancarTxt(selectedLanguage)
+        {
+            var text = "";
+
+            if (selectedLanguage == "english")
+            {
+                text = "BancAr is a banking management system designed to manage the operations of a banking entity, allowing the management of clients, accounts, loans and transfers.";
+            }
+            else if (selectedLanguage == "spanish")
+            {
+                text = "BancAr es un sistema de gestión bancaria diseñado para administrar las operaciones de una entidad bancaria, permitiendo la gestión de clientes, cuentas, préstamos y transferencias.";
+            }
+
+            bancarTxt.textContent = text;
+        }
+
         /* Education */
 
         function translateEducationTxt(selectedLanguage)
@@ -507,6 +524,7 @@ document.addEventListener("DOMContentLoaded",
             translateAllProjectsBtn(selectedLanguage);
             translateMeeniErpTxt(selectedLanguage);
             translateEcommerceNetTxt(selectedLanguage);
+            translateBancarTxt(selectedLanguage);
 
             /* Education */
 
