@@ -1,0 +1,107 @@
+{
+    "images":
+    [
+        {
+            "title": "Profile photograph",
+            "alt": "Foto de perfil de Maximiliano Malvicino.",
+            "src": "https://avatars.githubusercontent.com/u/46000191",
+            "id": "profileImg"
+        },
+        {
+            "title": "C++",
+            "alt": "Logo de C++.",
+            "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg",
+            "id": "cppImg"
+        },
+        {
+            "title": "C#",
+            "alt": "Logo de C#.",
+            "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg",
+            "id": "cSharpImg"
+        },
+        {
+            "title": "Python",
+            "alt": "Logo de Python.",
+            "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg",
+            "id": "pythonImg"
+        },
+        {
+            "title": "Java",
+            "alt": "Logo de Java.",
+            "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg",
+            "id": "javaImg"
+        },
+        {
+            "title": "JavaScript",
+            "alt": "Logo de JavaScript.",
+            "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg",
+            "id": "javaScriptImg"
+        },
+        {
+            "title": "HTML",
+            "alt": "Logo de HTML.",
+            "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg",
+            "id": "htmlImg"
+        },
+        {
+            "title": "CSS",
+            "alt": "Logo de CSS.",
+            "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg",
+            "id": "cssImg"
+        },
+        {
+            "title": "Bootstrap",
+            "alt": "Logo de Bootstrap.",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/1200px-Bootstrap_logo.svg.png",
+            "id": "bootstrapImg"
+        },
+        {
+            "title": "Tailwind",
+            "alt": "Logo de Tailwind.",
+            "src": "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg",
+            "id": "tailwindImg"
+        },
+        {
+            "title": "Microsoft .Net",
+            "alt": "Logo de Microsoft .Net.",
+            "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/dot-net/dot-net-original-wordmark.svg",
+            "id": "dotNetImg"
+        },
+        {
+            "title": "Microsoft SQL Server",
+            "alt": "Logo de Microsoft SQL Server.",
+            "src": "https://www.svgrepo.com/show/303229/microsoft-sql-server-logo.svg",
+            "id": "sqlServerImg"
+        },
+        {
+            "title": "MySQL",
+            "alt": "Logo de MySQL.",
+            "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg",
+            "id": "mySqlImg"
+        },
+        {
+            "title": "Git",
+            "alt": "Logo de Git.",
+            "src": "https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg",
+            "id": "gitImg"
+        },
+        {
+            "title": "LaTex",
+            "alt": "Logo de LaTex.",
+            "src": "https://cdn.pixabay.com/photo/2013/03/30/00/10/latex-97866_640.png",
+            "id": "latexImg"
+        },
+        {
+            "title": "Overleaf",
+            "alt": "Logo de Overleaf.",
+            "src": "https://images.ctfassets.net/nrgyaltdicpt/wwNSIPYEZa2OCOsuGweSY/0142fa5bce2f40f4168bad08acc8a52d/Sticker_square_colour_light_bg.png",
+            "id": "overleafImg"
+        },
+        {
+            "title": "WIP",
+            "alt": "Work In Progress construction sign.",
+            "src": "https://t3.ftcdn.net/jpg/02/33/17/50/360_F_233175040_hwqRyiZlQkXimeLz2AIZhajyfiU9El1m.jpg",
+            "id": "wipImg"
+        }
+    ]
+  }

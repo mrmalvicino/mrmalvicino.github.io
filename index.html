@@ -54,7 +54,7 @@
 
     <section class="height-100-vh col-flex space-evenly" id="aboutSec">
         <div class="row-flex justify-center width-90-pct">
-            <img src="https://avatars.githubusercontent.com/u/46000191" id="profileImg"/>
+            <img id="profileImg" data-image-id="profileImg"/>
         </div>
         <div class="col-flex space-around width-90-pct">
             <h1>Maximiliano Raúl Malvicino</h1>
@@ -65,17 +65,11 @@
         </div>
         <div class="wrapped-flex space-evenly width-90-pct">
             <a href="https://www.linkedin.com/in/malvicinomaximilianoraul/" class="invisible-link">
-                <picture>
-                    <source srcset="images/linkedin.png" media="(max-width: 575px)">
-                    <img src="images/linkedin-long.png" class="height-50-px"/>
-                </picture>
+                <i class="bi bi-linkedin font-size-32"></i>
             </a>
-            <a class="transition big-button font-larger background-1 hover-2" id="resumeBtn"></a>
+            <a class="transition big-button background-1 hover-2" id="resumeBtn"></a>
             <a href="https://www.github.com/mrmalvicino" class="invisible-link">
-                <picture>
-                    <source srcset="images/github.png" media="(max-width: 575px)">
-                    <img src="images/github-long.png" class="height-50-px"/>
-                </picture>
+                <i class="bi bi-github font-size-32"></i>
             </a>
         </div>
     </section>
@@ -87,23 +81,23 @@
             </div>
             <div class="wrapped-flex space-around">
                 <div class="col-flex space-around margin-30-px padding-15-px">
-                    <img src="images/c-sharp.png" class="image-80-px"/>
+                    <img data-image-id="cSharpImg" class="image-80-px"/>
                     <h6>C#</h6>
                 </div>
                 <div class="col-flex space-around margin-30-px padding-15-px">
-                    <img src="images/python.png" class="image-80-px"/>
+                    <img data-image-id="pythonImg" class="image-80-px"/>
                     <h6>NumPy & MatPlotLib</h6>
                 </div>
                 <div class="col-flex space-around margin-30-px padding-15-px">
-                    <img src="images/sql.png" class="image-80-px"/>
-                    <h6>Microsoft SQL Server</h6>
+                    <img data-image-id="sqlServerImg" class="image-80-px"/>
+                    <h6>T SQL</h6>
                 </div>
                 <div class="col-flex space-around margin-30-px padding-15-px">
-                    <img src="images/dotnet.png" class="image-80-px"/>
+                    <img data-image-id="dotNetImg" class="image-80-px"/>
                     <h6>WinForms & WebForms</h6>
                 </div>
                 <div class="col-flex space-around margin-30-px padding-15-px">
-                    <img src="images/git.png" class="image-80-px"/>
+                    <img data-image-id="gitImg" class="image-80-px"/>
                     <h6>Git & GitHub</h6>
                 </div>
             </div>
@@ -124,16 +118,16 @@
                     <button class="small-button background-3 hover-4" name="sourceCodeBtn" onclick="window.location.href='https://github.com/mrmalvicino/meeni-erp';">Source code</button>
                 </div>
                 <div class="width-90-pct">
-                    <img src="https://t3.ftcdn.net/jpg/02/33/17/50/360_F_233175040_hwqRyiZlQkXimeLz2AIZhajyfiU9El1m.jpg" class="project-image"/>
+                    <img data-image-id="wipImg" class="project-image"/>
                 </div>
                 <div class="width-90-pct height-100-px row-flex">
                     <p id="meeniErpTxt"></p>
                 </div>
                 <div class="width-90-pct row-flex space-evenly opacity-60-pct">
-                    <img src="images/c-sharp.png" class="image-50-px"/>
-                    <img src="images/dotnet.png" class="image-50-px"/>
-                    <img src="images/sql.png" class="image-50-px"/>
-                    <img src="images/github.png" class="image-50-px"/>
+                    <img data-image-id="cSharpImg" class="image-50-px"/>
+                    <img data-image-id="dotNetImg" class="image-50-px"/>
+                    <img data-image-id="sqlServerImg" class="image-50-px"/>
+                    <img data-image-id="gitImg" class="image-50-px"/>
                 </div>
             </div>
 
@@ -153,17 +147,17 @@
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         referrerpolicy="strict-origin-when-cross-origin"
                         allowfullscreen>
-                    </iframe>
+                    </iframe> 
                 </div>
                 <div class="width-90-pct height-100-px row-flex">
                     <p id="ecommerceNetTxt"></p>
                 </div>
                 <div class="width-90-pct row-flex space-evenly opacity-60-pct">
-                    <img src="images/c-sharp.png" class="image-50-px"/>
-                    <img src="images/dotnet.png" class="image-50-px"/>
-                    <img src="images/sql.png" class="image-50-px"/>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/1200px-Bootstrap_logo.svg.png" class="image-50-px"/>
-                    <img src="images/github.png" class="image-50-px"/>
+                    <img data-image-id="cSharpImg" class="image-50-px"/>
+                    <img data-image-id="dotNetImg" class="image-50-px"/>
+                    <img data-image-id="sqlServerImg" class="image-50-px"/>
+                    <img data-image-id="bootstrapImg" class="image-50-px"/>
+                    <img data-image-id="gitImg" class="image-50-px"/>
                 </div>
             </div>
 
@@ -188,10 +182,10 @@
                     <p id="bancarTxt"></p>
                 </div>
                 <div class="width-90-pct row-flex space-evenly opacity-60-pct">
-                    <img src="https://static-00.iconduck.com/assets.00/java-original-icon-756x1024-j3tx11wk.png" class="image-50-px"/>
-                    <img src="https://1000marcas.net/wp-content/uploads/2020/11/MySQL-logo.png" class="image-50-px"/>
-                    <img src="https://files.raycast.com/83afy69l6wjib1zd62gya59tpc76" class="image-50-px"/>
-                    <img src="images/github.png" class="image-50-px"/>
+                    <img data-image-id="javaImg" class="image-50-px"/>
+                    <img data-image-id="mySqlImg" class="image-50-px"/>
+                    <img data-image-id="tailwindImg" class="image-50-px"/>
+                    <img data-image-id="gitImg" class="image-50-px"/>
                 </div>
             </div>
 
@@ -338,6 +332,7 @@
 </html>
 
 <script src=script/index.js ></script>
+<script src=script/load_images.js ></script>
 <script src=script/menu.js ></script>
 <script src=script/translation.js ></script>
 <script src=script/translation_index.js ></script>
