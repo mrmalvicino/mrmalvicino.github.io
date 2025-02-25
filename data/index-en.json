@@ -1,0 +1,249 @@
+{
+    "menu_items": [
+        {
+            "label": "About me",
+            "href": "#heroSec"
+        },
+        {
+            "label": "Skills",
+            "href": "#skillsSec"
+        },
+        {
+            "label": "Projects",
+            "href": "#projectsSec"
+        },
+        {
+            "label": "Education",
+            "href": "#educationSec"
+        },
+        {
+            "label": "Contact",
+            "href": "#contactSec"
+        }
+    ],
+    "banner_ids": [
+        "dotnetImg",
+        "csImg",
+        "htmlImg",
+        "cssImg",
+        "js",
+        "mssqlImg"
+    ],
+    "stacks": [
+        {
+            "id": "mainStack",
+            "title": "Main Stack",
+            "items": [
+                "Frameworks: .NET Framework, .NET Core",
+                "Backend: C#",
+                "Frontend: HTML5, CSS3, JavaScript",
+                "Database: Microsoft SQL Server"
+            ]
+        },
+        {
+            "id": "secondaryStack",
+            "title": "Worked with",
+            "items": [
+                "Libraries: JSTL",
+                "Backend: Java",
+                "Frontend: Bootstrap, Tailwind",
+                "Database: MySQL"
+            ]
+        },
+        {
+            "id": "otherSkills",
+            "title": "Other technologies",
+            "items": [
+                "Version Control: Git, GitHub",
+                "Technical Reports: LaTex",
+                "Signal Processing: C++, Python",
+                "DevOps: GitLab, YML"
+            ]
+        }
+    ],
+    "projects": [
+        {
+            "title": "Meeni ERP",
+            "description": "Simple enterprise resource planning software. Performs quotations, registers sales, manages stock, schedules purchases, and keeps the accounting.",
+            "technologies_ids": [
+                "dotnetImg",
+                "csImg",
+                "htmlImg",
+                "cssImg",
+                "jsImg",
+                "mssqlImg",
+                "gitImg"
+            ],
+            "source_code": "https://github.com/mrmalvicino/meeni-erp",
+            "live_demo": "https://meenierp.somee.com",
+            "video_url": null,
+            "mockup_id": null
+        },
+        {
+            "title": "Ecommerce Net",
+            "description": "Ecommerce developed with ASP.NET and C# that includes product management, shopping cart, user accounts, and order management.",
+            "technologies_ids": [
+                "dotnetImg",
+                "csImg",
+                "bootstrapImg",
+                "jsImg",
+                "mssqlImg",
+                "gitImg"
+            ],
+            "source_code": "https://github.com/mrmalvicino/ecommerce-net",
+            "live_demo": "https://ecommercenet.somee.com",
+            "video_url": "https://www.youtube-nocookie.com/embed/H7AISursM2M",
+            "mockup_id": null
+        },
+        {
+            "title": "BancAr",
+            "description": "BancAr is a banking management system designed to manage the operations of a banking entity, allowing the management of clients, accounts, loans and transfers.",
+            "technologies_ids": [
+                "javaImg",
+                "jsImg",
+                "tailwindImg",
+                "mysqlImg",
+                "gitImg"
+            ],
+            "source_code": "https://github.com/mrmalvicino/bancar",
+            "live_demo": null,
+            "video_url": "https://www.youtube-nocookie.com/embed/D8P1URMdCHU",
+            "mockup_id": null
+        }
+    ],
+    "careers": [
+        {
+            "institution_id": "untrefImg",
+            "title": "Sound Engineering (60%)",
+            "study_plan": "https://untref.edu.ar/carrera/ingenieria-de-sonido",
+            "certificate": null
+        },
+        {
+            "institution_id": "utnImg",
+            "title": "Technical Degree in Programming",
+            "study_plan": "https://www.frgp.utn.edu.ar/carreras/tup_tuss",
+            "certificate": "./assets/pdf/tup.pdf"
+        },
+        {
+            "institution_id": "educacionitImg",
+            "title": "Web API .NET Core",
+            "study_plan": "./assets/pdf/web-api-plan.pdf",
+            "certificate": null
+        },
+        {
+            "institution_id": "educacionitImg",
+            "title": "Entity Framework & LINQ",
+            "study_plan": "./assets/pdf/linq-entity-plan.pdf",
+            "certificate": null
+        },
+        {
+            "institution_id": "educacionitImg",
+            "title": "Web .NET Core Programming",
+            "study_plan": "./assets/pdf/net-core-plan.pdf",
+            "certificate": null
+        },
+        {
+            "institution_id": "cambridgeImg",
+            "title": "First Certificate in English (CEFR B2)",
+            "study_plan": null,
+            "certificate": "./assets/pdf/fce.pdf"
+        },
+        {
+            "institution_id": "utnImg",
+            "title": "Portuguese Level 3",
+            "study_plan": null,
+            "certificate": null
+        }
+    ],
+    "images": [
+        {
+            "id": "profileImg",
+            "title": "Maximiliano Malvicino",
+            "alt": "Maximiliano Malvicino profile photo.",
+            "src": "https://avatars.githubusercontent.com/u/46000191"
+        }
+    ],
+    "labels": [
+        {
+            "id": "degreesLbl",
+            "text_content": "JR .NET Developer"
+        },
+        {
+            "id": "presentationLbl",
+            "text_content": "Hi! I am Max, and I am passionate about acoustics and programming. Throughout my career, I have been working on projects that combine these fields and converge in signals processing. Until now, my work experience has been mostly focused on teaching. Motivated by the new challenges that the growth of the technology industry implies, I am currently looking for my first permanent employment in the IT field as a software developer."
+        },
+        {
+            "id": "resumeLbl",
+            "text_content": "Download CV"
+        },
+        {
+            "id": "skillsLbl",
+            "text_content": "SKILLS"
+        },
+        {
+            "id": "projectsLbl",
+            "text_content": "PROJECTS"
+        },
+        {
+            "id": "allProjectsLbl",
+            "text_content": "All projects"
+        },
+        {
+            "id": "educationLbl",
+            "text_content": "EDUCATION"
+        },
+        {
+            "id": "contactTitleLbl",
+            "text_content": "Get in touch"
+        },
+        {
+            "id": "contactDescriptionLbl",
+            "text_content": "If you have any questions or suggestions, please do not hesitate to contact me. I am always open to new opportunities and collaborations."
+        },
+        {
+            "id": "nameLbl",
+            "text_content": "Name"
+        },
+        {
+            "id": "emailLbl",
+            "text_content": "Email"
+        },
+        {
+            "id": "phoneLbl",
+            "text_content": "Phone"
+        },
+        {
+            "id": "messageLbl",
+            "text_content": "Message"
+        }
+    ],
+    "textboxes": [
+        {
+            "id": "nameTxt",
+            "placeholder": "Carlos Berlinguieri"
+        },
+        {
+            "id": "emailTxt",
+            "placeholder": "your@email.com"
+        },
+        {
+            "id": "phoneTxt",
+            "placeholder": "+54 911 5678 8765"
+        },
+        {
+            "id": "messageTxt",
+            "placeholder": "¡Hi! I am contacting you to..."
+        }
+    ],
+    "buttons": [
+        {
+            "id": "resumeBtn",
+            "href": "./../assets/cv/malvicino-en.pdf",
+            "download": "malvicino-en.pdf"
+        },
+        {
+            "id": "submitBtn",
+            "text_content": "Send"
+        }
+    ]
+}

@@ -1,0 +1,249 @@
+{
+    "menu_items": [
+        {
+            "label": "Sobre mi",
+            "href": "#heroSec"
+        },
+        {
+            "label": "Habilidades",
+            "href": "#skillsSec"
+        },
+        {
+            "label": "Proyectos",
+            "href": "#projectsSec"
+        },
+        {
+            "label": "Estudios",
+            "href": "#educationSec"
+        },
+        {
+            "label": "Contacto",
+            "href": "#contactSec"
+        }
+    ],
+    "banner_ids": [
+        "dotnetImg",
+        "csImg",
+        "htmlImg",
+        "cssImg",
+        "js",
+        "mssqlImg"
+    ],
+    "stacks": [
+        {
+            "id": "mainStack",
+            "title": "Stack principal",
+            "items": [
+                "Frameworks: .NET Framework, .NET Core",
+                "Backend: C#",
+                "Frontend: HTML5, CSS3, JavaScript",
+                "Base de datos: Microsoft SQL Server"
+            ]
+        },
+        {
+            "id": "secondaryStack",
+            "title": "Conocimientos en",
+            "items": [
+                "Bibliotecas: JSTL",
+                "Backend: Java",
+                "Frontend: Bootstrap, Tailwind",
+                "Base de datos: MySQL"
+            ]
+        },
+        {
+            "id": "otherSkills",
+            "title": "Otras tecnologías",
+            "items": [
+                "Versionado: Git, GitHub",
+                "Informes técnicos: LaTex",
+                "Procesamiento de señales: C++, Python",
+                "DevOps: GitLab, YML"
+            ]
+        }
+    ],
+    "projects": [
+        {
+            "title": "Meeni ERP",
+            "description": "Software de planificación de recursos empresariales sencillo. Realiza cotizaciones, registra ventas, gestiona stock, programa compras y lleva la contabilidad.",
+            "technologies_ids": [
+                "dotnetImg",
+                "csImg",
+                "htmlImg",
+                "cssImg",
+                "jsImg",
+                "mssqlImg",
+                "gitImg"
+            ],
+            "source_code": "https://github.com/mrmalvicino/meeni-erp",
+            "live_demo": "https://meenierp.somee.com",
+            "video_url": null,
+            "mockup_id": null
+        },
+        {
+            "title": "Ecommerce Net",
+            "description": "Comercio electrónico desarrollado con ASP.NET y C# que incluye gestión de productos, carrito de compra, cuentas de usuario y gestión de pedidos.",
+            "technologies_ids": [
+                "dotnetImg",
+                "csImg",
+                "bootstrapImg",
+                "jsImg",
+                "mssqlImg",
+                "gitImg"
+            ],
+            "source_code": "https://github.com/mrmalvicino/ecommerce-net",
+            "live_demo": "https://ecommercenet.somee.com",
+            "video_url": "https://www.youtube-nocookie.com/embed/H7AISursM2M",
+            "mockup_id": null
+        },
+        {
+            "title": "BancAr",
+            "description": "BancAr es un sistema de gestión bancaria diseñado para administrar las operaciones de una entidad bancaria, permitiendo la gestión de clientes, cuentas, préstamos y transferencias.",
+            "technologies_ids": [
+                "javaImg",
+                "jsImg",
+                "tailwindImg",
+                "mysqlImg",
+                "gitImg"
+            ],
+            "source_code": "https://github.com/mrmalvicino/bancar",
+            "live_demo": null,
+            "video_url": "https://www.youtube-nocookie.com/embed/D8P1URMdCHU",
+            "mockup_id": null
+        }
+    ],
+    "careers": [
+        {
+            "institution_id": "untrefImg",
+            "title": "Ingeniería de Sonido (60%)",
+            "study_plan": "https://untref.edu.ar/carrera/ingenieria-de-sonido",
+            "certificate": null
+        },
+        {
+            "institution_id": "utnImg",
+            "title": "Tecnicatura Universitaria en Programación",
+            "study_plan": "https://www.frgp.utn.edu.ar/carreras/tup_tuss",
+            "certificate": "./assets/pdf/tup.pdf"
+        },
+        {
+            "institution_id": "educacionitImg",
+            "title": "Web API .NET Core",
+            "study_plan": "./assets/pdf/web-api-plan.pdf",
+            "certificate": null
+        },
+        {
+            "institution_id": "educacionitImg",
+            "title": "Entity Framework & LINQ",
+            "study_plan": "./assets/pdf/linq-entity-plan.pdf",
+            "certificate": null
+        },
+        {
+            "institution_id": "educacionitImg",
+            "title": "Programación Web .NET Core",
+            "study_plan": "./assets/pdf/net-core-plan.pdf",
+            "certificate": null
+        },
+        {
+            "institution_id": "cambridgeImg",
+            "title": "First Certificate in English (CEFR B2)",
+            "study_plan": null,
+            "certificate": "./assets/pdf/fce.pdf"
+        },
+        {
+            "institution_id": "utnImg",
+            "title": "Portugués Nivel 3",
+            "study_plan": null,
+            "certificate": null
+        }
+    ],
+    "images": [
+        {
+            "id": "profileImg",
+            "title": "Maximiliano Malvicino",
+            "alt": "Foto de perfil de Maximiliano Malvicino.",
+            "src": "https://avatars.githubusercontent.com/u/46000191"
+        }
+    ],
+    "labels": [
+        {
+            "id": "degreesLbl",
+            "text_content": "Desarrollador .NET JR"
+        },
+        {
+            "id": "presentationLbl",
+            "text_content": "¡Hola! Soy Maxi, y me apasiona la acústica y la programación. A lo largo de mi carrera trabajé en proyectos que combinan estos campos y convergen en el procesamiento de señales. Hasta ahora mi experiencia laboral se centró mayoritariamente en la docencia. Motivado por los nuevos desafíos que implica el crecimiento de la industria tecnológica, actualmente estoy buscando mi primera experiencia en el campo de las TI como desarrollador de software en relación de dependencia."
+        },
+        {
+            "id": "resumeLbl",
+            "text_content": "Descargar CV"
+        },
+        {
+            "id": "skillsLbl",
+            "text_content": "HABILIDADES"
+        },
+        {
+            "id": "projectsLbl",
+            "text_content": "PROYECTOS"
+        },
+        {
+            "id": "allProjectsLbl",
+            "text_content": "Más proyectos"
+        },
+        {
+            "id": "educationLbl",
+            "text_content": "ESTUDIOS"
+        },
+        {
+            "id": "contactTitleLbl",
+            "text_content": "Contactame"
+        },
+        {
+            "id": "contactDescriptionLbl",
+            "text_content": "Si tenés alguna consulta o propuesta, no dudes en contactarme. Estoy siempre abierto a nuevas oportunidades y colaboraciones."
+        },
+        {
+            "id": "nameLbl",
+            "text_content": "Nombre"
+        },
+        {
+            "id": "emailLbl",
+            "text_content": "Email"
+        },
+        {
+            "id": "phoneLbl",
+            "text_content": "Teléfono"
+        },
+        {
+            "id": "messageLbl",
+            "text_content": "Mensaje"
+        }
+    ],
+    "textboxes": [
+        {
+            "id": "nameTxt",
+            "placeholder": "Carlos Berlinguieri"
+        },
+        {
+            "id": "emailTxt",
+            "placeholder": "tudireccionde@email.com"
+        },
+        {
+            "id": "phoneTxt",
+            "placeholder": "+54 911 5678 8765"
+        },
+        {
+            "id": "messageTxt",
+            "placeholder": "¡Hola! Te estoy contactando para..."
+        }
+    ],
+    "buttons": [
+        {
+            "id": "resumeBtn",
+            "href": "./../assets/cv/malvicino-es.pdf",
+            "download": "malvicino-es.pdf"
+        },
+        {
+            "id": "submitBtn",
+            "text_content": "Enviar"
+        }
+    ]
+}
