@@ -13,8 +13,8 @@
     margin: 20px;
     border-radius: 15px;
     overflow: hidden;
-    color: var(--soft-black);
-    background-color: var(--light-gray);
+    color: var(--light-gray);
+    background-color: var(--pale-black);
     display: flex;
     flex-direction: column;
 }

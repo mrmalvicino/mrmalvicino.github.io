@@ -14,6 +14,22 @@
 }
 
 .almost-black-background {
-    color: var(--light-gray);
+    color: var(--soft-gray);
     background-color: var(--almost-black);
+}
+
+.pure-white-text {
+    color: var(--pure-white);
+}
+
+.light-gray-text {
+    color: var(--light-gray);
+}
+
+.soft-black-text {
+    color: var(--soft-black);
+}
+
+.pure-black-text {
+    color: var(--pure-black);
 }
