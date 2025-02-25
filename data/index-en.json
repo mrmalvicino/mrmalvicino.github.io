@@ -26,7 +26,7 @@
         "csImg",
         "htmlImg",
         "cssImg",
-        "js",
+        "jsImg",
         "mssqlImg"
     ],
     "stacks": [
@@ -34,10 +34,10 @@
             "id": "mainStack",
             "title": "Main Stack",
             "items": [
-                "Frameworks: .NET Framework, .NET Core",
+                ".NET Framework, .NET Core",
                 "Backend: C#",
                 "Frontend: HTML5, CSS3, JavaScript",
-                "Database: Microsoft SQL Server"
+                "Database: MSSQL, ADO.NET"
             ]
         },
         {
@@ -47,7 +47,7 @@
                 "Libraries: JSTL",
                 "Backend: Java",
                 "Frontend: Bootstrap, Tailwind",
-                "Database: MySQL"
+                "Database: MySQL, JDBC"
             ]
         },
         {
@@ -56,7 +56,7 @@
             "items": [
                 "Version Control: Git, GitHub",
                 "Technical Reports: LaTex",
-                "Signal Processing: C++, Python",
+                "DSP: C++, Python",
                 "DevOps: GitLab, YML"
             ]
         }
@@ -178,11 +178,11 @@
         },
         {
             "id": "skillsLbl",
-            "text_content": "SKILLS"
+            "text_content": "Skills"
         },
         {
             "id": "projectsLbl",
-            "text_content": "PROJECTS"
+            "text_content": "Projects"
         },
         {
             "id": "allProjectsLbl",
@@ -190,7 +190,7 @@
         },
         {
             "id": "educationLbl",
-            "text_content": "EDUCATION"
+            "text_content": "Education"
         },
         {
             "id": "contactTitleLbl",

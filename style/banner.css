@@ -1,0 +1,29 @@
+.banner-container {
+    padding: 10px 20px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    display: flex;
+    flex-direction: row;
+}
+
+.banner-container:hover .banner-slide {
+    animation-play-state: paused;
+}
+
+.banner-slide {
+    display: flex;
+    white-space: nowrap;
+    animation: scroll 15s linear infinite;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}

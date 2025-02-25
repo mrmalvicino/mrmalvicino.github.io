@@ -1,0 +1,24 @@
+.header-tag {
+    position: fixed;
+    width: 100%;
+    height: var(--menu-height);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    background-color: rgba(51, 51, 51, 0.85);
+}
+
+.header-nav {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-nav ul li {
+    display: inline-block;
+    margin-left: 10px;
+}

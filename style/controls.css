@@ -1,0 +1,61 @@
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+}
+
+h2 {
+    font-size: 2rem;
+    text-align: center;
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+p {
+    font-size: 1rem;
+}
+
+a {
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+img {
+    display: block;
+}
+
+iframe {
+    width: 100%;
+    aspect-ratio: 1/1;
+    display: block;
+}
+
+textarea {
+    resize: none;
+}

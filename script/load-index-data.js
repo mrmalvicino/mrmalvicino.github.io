@@ -45,6 +45,7 @@ function renderMenu(indexData) {
 
         a.href = x.href;
         a.textContent = x.label;
+        a.classList.add("invisible-link");
 
         li.appendChild(a);
         ul.appendChild(li);
@@ -55,17 +56,18 @@ function renderBanner(indexData) {
     const banner = document.getElementById("bannerDiv");
     banner.innerHTML = "";
 
-    const slideDiv = document.createElement("div");
+    for (let i = 0; i < 4; i++) {
+        const slideDiv = document.createElement("div");
+        slideDiv.classList.add("banner-slide");
 
-    indexData.banner_ids.forEach(x => {
-        const img = document.createElement("img");
-        img.setAttribute("data-id", x);
-        slideDiv.appendChild(img);
-    });
+        indexData.banner_ids.forEach(x => {
+            const img = document.createElement("img");
+            img.setAttribute("data-id", x);
+            img.classList.add("width-100-px", "margin-10-px");
+            slideDiv.appendChild(img);
+        });
 
-    for (let i = 0; i < 1; i++) {
-        const slideClone = slideDiv.cloneNode(true);
-        banner.appendChild(slideClone);
+        banner.appendChild(slideDiv);
     }
 }
 
@@ -75,6 +77,7 @@ function renderStacks(indexData) {
 
     indexData.stacks.forEach(x => {
         const div = document.createElement("div");
+        div.classList.add("stack-div");
 
         const h3 = document.createElement("h3");
         h3.textContent = x.title;
@@ -100,10 +103,11 @@ function renderProjects(indexData) {
 
     indexData.projects.forEach(x => {
         const container = document.createElement("div");
+        container.classList.add("project-div");
 
         // Video o mockup
-
         const coverDiv = document.createElement("div");
+        coverDiv.classList.add("cover-div");
 
         if (x.video_url) {
             const iframe = document.createElement("iframe");
@@ -128,9 +132,13 @@ function renderProjects(indexData) {
 
         container.appendChild(coverDiv);
 
-        // Título y descripción
+        // Contenido
+        const contentDiv = document.createElement("div");
+        contentDiv.classList.add("padding-0-20-px", "height-300-px", "col-flex", "space-between");
 
+        // Contenido: Título y descripción
         const textDiv = document.createElement("div");
+        textDiv.classList.add("margin-10-0-px");
 
         const h3 = document.createElement("h3");
         h3.textContent = x.title;
@@ -140,59 +148,65 @@ function renderProjects(indexData) {
         p.textContent = x.description;
         textDiv.appendChild(p);
 
-        container.appendChild(textDiv);
+        contentDiv.appendChild(textDiv);
 
-        // Tecnologías
-
-        const stackDiv = document.createElement("div");
+        // Contenido: Tecnologías
+        const technologiesDiv = document.createElement("div");
         const ul = document.createElement("ul");
+        ul.classList.add("row-flex", "justify-center");
 
         x.technologies_ids.forEach(y => {
             const li = document.createElement("li");
             const img = document.createElement("img");
             img.setAttribute("data-id", y);
+            img.classList.add("width-40-px", "margin-10-px");
             li.appendChild(img);
             ul.appendChild(li);
         });
 
-        stackDiv.appendChild(ul);
-        container.appendChild(stackDiv);
+        technologiesDiv.appendChild(ul);
+        contentDiv.appendChild(technologiesDiv);
 
-        // Botones
-
+        // Contenido: Botones
         const buttonsDiv = document.createElement("div");
+        buttonsDiv.classList.add("row-flex", "justify-center", "padding-bottom-10-px");
 
         if (x.source_code) {
             const a1 = document.createElement("a");
             a1.href = x.source_code;
+            a1.classList.add("dark-button", "margin-10-px");
 
             const i1 = document.createElement("i");
-            i1.classList = "bi bi-code-slash"
-            a1.appendChild(i1);
+            i1.classList.add("bi", "bi-code-slash");
+            i1.style.marginRight = "5px";
 
             const span1 = document.createElement("span");
             span1.setAttribute("data-id", "sourceCodeLbl");
-            a1.appendChild(span1);
 
+            a1.appendChild(i1);
+            a1.appendChild(span1);
             buttonsDiv.appendChild(a1);
         }
 
         if (x.live_demo) {
             const a2 = document.createElement("a");
             a2.href = x.live_demo;
+            a2.classList.add("dark-button", "margin-10-px");
 
             const i2 = document.createElement("i");
-            i2.classList = "bi bi-eye"
-            a2.appendChild(i2);
+            i2.classList.add("bi", "bi-eye");
+            i2.style.marginRight = "5px";
 
             const span2 = document.createElement("span");
             span2.setAttribute("data-id", "openOnlineLbl");
-            a2.appendChild(span2);
 
+            a2.appendChild(i2);
+            a2.appendChild(span2);
             buttonsDiv.appendChild(a2);
         }
 
-        container.appendChild(buttonsDiv);
+        contentDiv.appendChild(buttonsDiv);
+        container.appendChild(contentDiv);
 
         // Agregar proyecto
 
@@ -211,6 +225,7 @@ function renderCareers(indexData) {
         const institution = document.createElement("td");
         const img = document.createElement("img");
         img.setAttribute("data-id", x.institution_id);
+        img.classList.add("height-30-px");
         institution.appendChild(img);
         tr.appendChild(institution);
 
@@ -228,9 +243,10 @@ function renderCareers(indexData) {
         if (x.study_plan) {
             const a1 = document.createElement("a");
             a1.href = x.study_plan;
+            a1.classList.add("link-button", "margin-10-px");
 
             const i1 = document.createElement("i");
-            i1.classList = "bi bi-mortarboard"
+            i1.classList.add("bi", "bi-mortarboard", "mid-font-size");
             a1.appendChild(i1);
 
             buttonsDiv.appendChild(a1);
@@ -239,9 +255,10 @@ function renderCareers(indexData) {
         if (x.certificate) {
             const a2 = document.createElement("a");
             a2.href = x.certificate;
+            a2.classList.add("link-button", "margin-10-px");
 
             const i2 = document.createElement("i");
-            i2.classList = "bi bi-award"
+            i2.classList.add("bi", "bi-award", "mid-font-size");
             a2.appendChild(i2);
 
             buttonsDiv.appendChild(a2);

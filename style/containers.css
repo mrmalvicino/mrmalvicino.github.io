@@ -1,0 +1,43 @@
+.stack-div {
+    width: 300px;
+    height: 170px;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    border: 2px solid var(--light-gray);
+}
+
+.project-div {
+    width: 100%;
+    max-width: 500px;
+    margin: 20px;
+    border-radius: 15px;
+    overflow: hidden;
+    color: var(--soft-black);
+    background-color: var(--light-gray);
+    display: flex;
+    flex-direction: column;
+}
+
+.cover-div {
+    width: 100%;
+    height: 280px;
+    aspect-ratio: 16/9;
+}
+
+.cover-div iframe,
+.cover-div img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.form-div {
+    width: 600px;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: var(--pure-white);
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,16 @@
+.textbox-input {
+    width: 100%;
+    margin: 5px 0px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+    background-color: transparent;
+    border: 2px solid var(--medium-gray);
+}
+
+.textbox-input:focus {
+    outline: none;
+    border: 2px solid var(--dark-gray);
+}

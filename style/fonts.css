@@ -1,0 +1,44 @@
+.jost-font {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+}
+
+.open-sans-font {
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 350;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
+
+.big-font-size {
+    font-size: 2rem;
+}
+
+.mid-font-size {
+    font-size: 1.5rem;
+}
+
+.small-font-size {
+    font-size: 1rem;
+}
+
+.uppercase-text {
+    text-transform: uppercase;
+}
+
+.bold-text {
+    font-weight: 800;
+}
+
+.left-text {
+    text-align: left;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.indent-text {
+    text-indent: 20px;
+}

@@ -1,0 +1,9 @@
+.light-background {
+    color: var(--soft-black);
+    background-color: var(--pale-white);
+}
+
+.dark-background {
+    color: var(--soft-gray);
+    background-color: var(--soft-black);
+}

@@ -15,18 +15,32 @@
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="style/constants.css" rel="stylesheet" type="text/css">
+    <link href="style/banner.css" rel="stylesheet" type="text/css">
+    <link href="style/buttons.css" rel="stylesheet" type="text/css">
+    <link href="style/colors.css" rel="stylesheet" type="text/css">
+    <link href="style/containers.css" rel="stylesheet" type="text/css">
+    <link href="style/controls.css" rel="stylesheet" type="text/css">
+    <link href="style/flexbox.css" rel="stylesheet" type="text/css">
+    <link href="style/fonts.css" rel="stylesheet" type="text/css">
+    <link href="style/header.css" rel="stylesheet" type="text/css">
+    <link href="style/heights.css" rel="stylesheet" type="text/css">
+    <link href="style/images.css" rel="stylesheet" type="text/css">
+    <link href="style/inputs.css" rel="stylesheet" type="text/css">
+    <link href="style/justify.css" rel="stylesheet" type="text/css">
+    <link href="style/margins.css" rel="stylesheet" type="text/css">
+    <link href="style/paddings.css" rel="stylesheet" type="text/css">
+    <link href="style/widths.css" rel="stylesheet" type="text/css">
 </head>
 
-<body>
+<body class="open-sans-font light-background">
 
     <!-- Header -->
 
-    <header>
-        <nav>
+    <header class="header-tag">
+        <nav class="header-nav">
             <div>
-                <a href="https://mrmalvicino.com">
-                    <img data-id="logoImg" />
-                    <span>M. R. Malvicino</span>
+                <a href="https://mrmalvicino.com" class="invisible-link row-flex">
+                    <img data-id="logoImg" class="width-30-px" />
                 </a>
             </div>
             <div>
@@ -34,30 +48,29 @@
                 </ul>
             </div>
             <div>
-                <a href="https://mrmalvicino.com?lang=es">ES</a>
-                <span>/</span>
-                <a href="https://mrmalvicino.com?lang=en">EN</a>
+                <a href="https://mrmalvicino.com/?lang=es" class="invisible-link">ES</a>
+                <a href="https://mrmalvicino.com/?lang=en" class="invisible-link">EN</a>
             </div>
         </nav>
     </header>
 
     <!-- Hero -->
 
-    <section id="heroSec">
-        <div>
-            <img id="profileImg" />
+    <section id="heroSec" class="height-100-vh col-flex justify-center padding-top-menu">
+        <div class="width-350-px margin-20-0-px">
+            <img id="profileImg" class="circle-image" />
         </div>
-        <div>
+        <div class="width-90-pct margin-top-20-px">
             <h1>Maximiliano Raúl Malvicino</h1>
         </div>
-        <div>
-            <p id="degreesLbl"></p>
+        <div class="width-90-pct margin-bottom-20-px">
+            <p id="degreesLbl" class="mid-font-size jost-font center-text"></p>
         </div>
-        <div>
-            <p id="presentationLbl"></p>
+        <div class="width-90-pct margin-20-0-px">
+            <p id="presentationLbl" class="center-text"></p>
         </div>
-        <div>
-            <a id="resumeBtn">
+        <div class="width-90-pct row-flex justify-center margin-20-0-px">
+            <a id="resumeBtn" class="dark-button big-hover">
                 <i class="bi bi-download"></i>
                 <span id="resumeLbl"></span>
             </a>
@@ -66,25 +79,25 @@
 
     <!-- Skills -->
 
-    <section id="skillsSec">
-        <div>
+    <section id="skillsSec" class="height-100-vh col-flex justify-center">
+        <div class="margin-20-0-px">
             <h2 id="skillsLbl"></h2>
         </div>
-        <div id="bannerDiv">
+        <div id="bannerDiv" class="banner-container margin-10-0-px">
         </div>
-        <div id="stacksDiv">
+        <div id="stacksDiv" class="wrapped-flex justify-center">
         </div>
     </section>
 
     <!-- Projects -->
 
-    <section id="projectsSec">
-        <div>
+    <section id="projectsSec" class="height-100-vh col-flex justify-center dark-background">
+        <div class="width-90-pct margin-20-0-px">
             <h2 id="projectsLbl"></h2>
         </div>
-        <div id="projectsDiv"></div>
-        <div>
-            <a href="projects.html">
+        <div id="projectsDiv" class="wrapped-flex justify-center"></div>
+        <div class="width-90-pct row-flex justify-center">
+            <a href="projects.html" class="big-hover transparent-button margin-20-px">
                 <i class="bi bi-plus-circle"></i>
                 <span id="allProjectsLbl"></span>
             </a>
@@ -93,7 +106,7 @@
 
     <!-- Education -->
 
-    <section id="educationSec">
+    <section id="educationSec" class="height-100-vh">
         <div>
             <h2 id="educationLbl"></h2>
         </div>
@@ -107,69 +120,83 @@
 
     <!-- Contact -->
 
-    <section id="contactSec">
-        <div>
-            <h2 id="contactTitleLbl"></h2>
-            <p id="contactDescriptionLbl"></p>
-        </div>
-        <div>
-            <form action="https://formspree.io/f/mvgpjkjn" method="POST">
+    <section id="contactSec" class="height-100-vh">
+        <div class="width-90-pct">
+            <div class="wrapped-flex space-around">
                 <div>
-                    <label for="nameTxt" id="nameLbl"></label>
-                    <input type="text" id="nameTxt" name="nameTxt" required>
-
-                    <label for="emailTxt" id="emailLbl"></label>
-                    <input type="email" id="emailTxt" name="emailTxt" required>
-
-                    <label for="phoneTxt" id="phoneLbl"></label>
-                    <input type="tel" id="phoneTxt" name="phoneTxt">
-
-                    <label for="messageTxt" id="messageLbl"></label>
-                    <textarea id="messageTxt" name="messageTxt" rows="3" required></textarea>
-
-                    <button type="submit" id="submitBtn"></button>
+                    <h2 id="contactTitleLbl" class="left-text"></h2>
+                    <p id="contactDescriptionLbl" class="left-text indent-text width-500-px"></p>
                 </div>
-            </form>
+                <div>
+                    <form action="https://formspree.io/f/mvgpjkjn" method="POST">
+                        <div class="form-div">
+                            <label for="nameTxt" id="nameLbl"></label>
+                            <input type="text" id="nameTxt" name="nameTxt" required
+                                class="textbox-input margin-bottom-10-px">
+
+                            <label for="emailTxt" id="emailLbl"></label>
+                            <input type="email" id="emailTxt" name="emailTxt" required
+                                class="textbox-input margin-bottom-10-px">
+
+                            <label for="phoneTxt" id="phoneLbl"></label>
+                            <input type="tel" id="phoneTxt" name="phoneTxt" class="textbox-input margin-bottom-10-px">
+
+                            <label for="messageTxt" id="messageLbl"></label>
+                            <textarea id="messageTxt" name="messageTxt" rows="3" required
+                                class="textbox-input margin-bottom-10-px"></textarea>
+
+                            <button type="submit" id="submitBtn" class="dark-button margin-top-10-px width-100-pct"></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
 
-    <footer>
-        <div>
-            <ul>
-                <li>
-                    <a href="mailto:mrmalvicino@gmail.com">
-                        <i class="bi bi-envelope"></i>
-                        <span>mrmalvicino@gmail.com</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="tel:+5491159058729">
-                        <i class="bi bi-telephone"></i>
-                        <span>+54 (911) 5905-8729</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div>
-            <ul>
-                <li>
-                    <a href="https://t.me/mrmalvicino" target="_blank">
-                        <i class="bi bi-telegram"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.linkedin.com/in/malvicinomaximilianoraul/" target="_blank">
-                        <i class="bi bi-linkedin"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.github.com/mrmalvicino" target="_blank">
-                        <i class="bi bi-github"></i>
-                    </a>
-                </li>
-            </ul>
+    <footer class="min-height-200-px dark-background row-flex justify-center">
+        <div class="width-90-pct">
+            <div class="wrapped-flex space-between">
+                <div class="margin-20-px col-flex">
+                    <ul>
+                        <li>
+                            <a href="mailto:mrmalvicino@gmail.com" class="invisible-link row-flex">
+                                <i class="bi bi-envelope mid-font-size"></i>
+                                &nbsp
+                                <span>mrmalvicino@gmail.com</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tel:+5491159058729" class="invisible-link row-flex">
+                                <i class="bi bi-telephone mid-font-size"></i>
+                                &nbsp
+                                <span>+54 (911) 5905-8729</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="margin-20-px">
+                    <ul class="row-flex">
+                        <li class="margin-20-px">
+                            <a href="https://t.me/mrmalvicino" target="_blank" class="invisible-link">
+                                <i class="bi bi-telegram mid-font-size"></i>
+                            </a>
+                        </li>
+                        <li class="margin-20-px">
+                            <a href="https://www.linkedin.com/in/malvicinomaximilianoraul/" target="_blank"
+                                class="invisible-link">
+                                <i class="bi bi-linkedin mid-font-size"></i>
+                            </a>
+                        </li>
+                        <li class="margin-20-px">
+                            <a href="https://www.github.com/mrmalvicino" target="_blank" class="invisible-link">
+                                <i class="bi bi-github mid-font-size"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </footer>
 

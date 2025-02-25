@@ -1,0 +1,39 @@
+.padding-top-menu {
+    padding-top: var(--menu-height);
+}
+
+.padding-10-px {
+    padding: 10px;
+}
+
+.padding-20-px {
+    padding: 20px;
+}
+
+.padding-0-10-px {
+    padding: 0px 10px;
+}
+
+.padding-0-20-px {
+    padding: 0px 20px;
+}
+
+.padding-top-20-px {
+    padding-top: 20px;
+}
+
+.padding-top-40-px {
+    padding-top: 40px;
+}
+
+.padding-bottom-10-px {
+    padding-bottom: 10px;
+}
+
+.padding-bottom-20-px {
+    padding-bottom: 20px;
+}
+
+.padding-bottom-40-px {
+    padding-bottom: 40px;
+}

@@ -1,0 +1,17 @@
+.col-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row-flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.wrapped-flex {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
