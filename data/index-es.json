@@ -150,9 +150,9 @@
         },
         {
             "institution_id": "utnImg",
-            "title": "Portugués Nivel 3",
+            "title": "Portugués Nivel 2",
             "study_plan": null,
-            "certificate": null
+            "certificate": "./assets/pdf/portuguese.pdf"
         }
     ],
     "images": [
@@ -198,7 +198,7 @@
         },
         {
             "id": "contactDescriptionLbl",
-            "text_content": "Si tenés alguna consulta o propuesta, no dudes en contactarme. Estoy siempre abierto a nuevas oportunidades y colaboraciones."
+            "text_content": "Si tenés alguna consulta, propuesta o estás buscando un desarrollador para tu equipo, no dudes en contactarme. Estoy siempre abierto a nuevas oportunidades, ya sea un proyecto freelance o un empleo en relación de dependencia."
         },
         {
             "id": "nameLbl",
@@ -228,7 +228,7 @@
         },
         {
             "id": "phoneTxt",
-            "placeholder": "+54 911 5678 8765"
+            "placeholder": "+54 (911) 1234-5678"
         },
         {
             "id": "messageTxt",

@@ -1,9 +1,19 @@
-.light-background {
+.pure-white-background {
+    color: var(--soft-black);
+    background-color: var(--pure-white);
+}
+
+.pale-white-background {
     color: var(--soft-black);
     background-color: var(--pale-white);
 }
 
-.dark-background {
+.soft-black-background {
     color: var(--soft-gray);
     background-color: var(--soft-black);
+}
+
+.almost-black-background {
+    color: var(--light-gray);
+    background-color: var(--almost-black);
 }

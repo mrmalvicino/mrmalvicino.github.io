@@ -129,3 +129,43 @@
 .width-1000-px {
     width: 1000px;
 }
+
+.min-width-100-px {
+    min-width: 100px;
+}
+
+.min-width-200-px {
+    min-width: 200px;
+}
+
+.min-width-300-px {
+    min-width: 300px;
+}
+
+.min-width-400-px {
+    min-width: 400px;
+}
+
+.min-width-500-px {
+    min-width: 500px;
+}
+
+.max-width-100-px {
+    max-width: 100px;
+}
+
+.max-width-200-px {
+    max-width: 200px;
+}
+
+.max-width-300-px {
+    max-width: 300px;
+}
+
+.max-width-400-px {
+    max-width: 400px;
+}
+
+.max-width-500-px {
+    max-width: 500px;
+}

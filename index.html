@@ -32,7 +32,7 @@
     <link href="style/widths.css" rel="stylesheet" type="text/css">
 </head>
 
-<body class="open-sans-font light-background">
+<body class="open-sans-font pale-white-background">
 
     <!-- Header -->
 
@@ -91,7 +91,7 @@
 
     <!-- Projects -->
 
-    <section id="projectsSec" class="height-100-vh col-flex justify-center dark-background">
+    <section id="projectsSec" class="almost-black-background height-100-vh col-flex justify-center">
         <div class="width-90-pct margin-20-0-px">
             <h2 id="projectsLbl"></h2>
         </div>
@@ -106,30 +106,32 @@
 
     <!-- Education -->
 
-    <section id="educationSec" class="height-100-vh">
-        <div>
-            <h2 id="educationLbl"></h2>
-        </div>
-        <div>
-            <table>
-                <tbody id="careersTab">
-                </tbody>
-            </table>
+    <section id="educationSec" class="height-100-vh col-flex space-evenly">
+        <div class="light-box">
+            <div>
+                <h2 id="educationLbl"></h2>
+            </div>
+            <div>
+                <table>
+                    <tbody id="careersTab">
+                    </tbody>
+                </table>
+            </div>
         </div>
     </section>
 
     <!-- Contact -->
 
-    <section id="contactSec" class="height-100-vh">
+    <section id="contactSec" class="almost-black-background height-100-vh">
         <div class="width-90-pct">
-            <div class="wrapped-flex space-around">
-                <div>
+            <div class="row-flex space-between">
+                <div class="width-50-pct padding-20-px">
                     <h2 id="contactTitleLbl" class="left-text"></h2>
-                    <p id="contactDescriptionLbl" class="left-text indent-text width-500-px"></p>
+                    <p id="contactDescriptionLbl" class="margin-10-0-px"></p>
                 </div>
-                <div>
+                <div class="width-50-pct padding-20-px">
                     <form action="https://formspree.io/f/mvgpjkjn" method="POST">
-                        <div class="form-div">
+                        <div>
                             <label for="nameTxt" id="nameLbl"></label>
                             <input type="text" id="nameTxt" name="nameTxt" required
                                 class="textbox-input margin-bottom-10-px">
@@ -139,13 +141,16 @@
                                 class="textbox-input margin-bottom-10-px">
 
                             <label for="phoneTxt" id="phoneLbl"></label>
-                            <input type="tel" id="phoneTxt" name="phoneTxt" class="textbox-input margin-bottom-10-px">
+                            <input type="tel" id="phoneTxt" name="phoneTxt" required
+                                class="textbox-input margin-bottom-10-px">
 
                             <label for="messageTxt" id="messageLbl"></label>
                             <textarea id="messageTxt" name="messageTxt" rows="3" required
-                                class="textbox-input margin-bottom-10-px"></textarea>
+                                class="textbox-input margin-bottom-10-px">
+                            </textarea>
 
-                            <button type="submit" id="submitBtn" class="dark-button margin-top-10-px width-100-pct"></button>
+                            <button type="submit" id="submitBtn" class="dark-button margin-top-10-px width-100-pct">
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -155,7 +160,7 @@
 
     <!-- Footer -->
 
-    <footer class="min-height-200-px dark-background row-flex justify-center">
+    <footer class="soft-black-background min-height-200-px row-flex justify-center">
         <div class="width-90-pct">
             <div class="wrapped-flex space-between">
                 <div class="margin-20-px col-flex">

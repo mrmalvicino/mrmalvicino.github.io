@@ -220,25 +220,34 @@ function renderCareers(indexData) {
 
     indexData.careers.forEach(x => {
         const tr = document.createElement("tr");
+        tr.classList.add("height-80-px");
 
         // Institución
         const institution = document.createElement("td");
+
+        const institutionDiv = document.createElement("div");
+        institutionDiv.classList.add("height-100-pct", "row-flex", "justify-center", "margin-10-px");
+
         const img = document.createElement("img");
         img.setAttribute("data-id", x.institution_id);
-        img.classList.add("height-30-px");
-        institution.appendChild(img);
+        img.classList.add("height-20-px");
+
+        institutionDiv.appendChild(img);
+        institution.appendChild(institutionDiv);
         tr.appendChild(institution);
 
-        // Carrera
-        const career = document.createElement("td");
+        // Nombre de la carrera o curso
+        const name = document.createElement("td");
+        name.classList.add("margin-10-px");
         const span = document.createElement("span");
         span.textContent = x.title;
-        career.appendChild(span);
-        tr.appendChild(career);
+        name.appendChild(span);
+        tr.appendChild(name);
 
         // Acciones
         const actions = document.createElement("td");
         const buttonsDiv = document.createElement("div");
+        buttonsDiv.classList.add("row-flex", "justify-center" ,"margin-10-px");
 
         if (x.study_plan) {
             const a1 = document.createElement("a");
@@ -265,11 +274,12 @@ function renderCareers(indexData) {
         }
 
         if (!x.study_plan && !x.certificate) {
-            actions.textContent = "N/A";
+            const span = document.createElement("span");
+            span.textContent = "N/A";
+            buttonsDiv.appendChild(span);
         }
-        else {
-            actions.appendChild(buttonsDiv);
-        }
+
+        actions.appendChild(buttonsDiv);
 
         // Agregar carrera
 
@@ -286,6 +296,8 @@ function bindTextboxes(indexData) {
             textbox.placeholder = x.placeholder;
         }
     });
+
+    document.getElementById("messageTxt").value = "";
 }
 
 function bindButtons(indexData) {
