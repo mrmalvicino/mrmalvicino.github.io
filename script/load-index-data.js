@@ -264,7 +264,7 @@ function renderCareers(indexData) {
         if (x.certificate) {
             const a2 = document.createElement("a");
             a2.href = x.certificate;
-            a2.classList.add("link-button", "margin-10-px");
+            a2.classList.add("invisible-link", "margin-10-px");
 
             const i2 = document.createElement("i");
             i2.classList.add("bi", "bi-award", "mid-font-size");

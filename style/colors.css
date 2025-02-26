@@ -1,20 +1,15 @@
-.pure-white-background {
-    color: var(--soft-black);
-    background-color: var(--pure-white);
-}
-
 .pale-white-background {
     color: var(--soft-black);
     background-color: var(--pale-white);
 }
 
-.soft-black-background {
+.pale-black-background {
     color: var(--soft-gray);
-    background-color: var(--soft-black);
+    background-color: var(--pale-black);
 }
 
 .almost-black-background {
-    color: var(--soft-gray);
+    color: var(--medium-gray);
     background-color: var(--almost-black);
 }
 
@@ -26,10 +21,26 @@
     color: var(--light-gray);
 }
 
-.soft-black-text {
-    color: var(--soft-black);
+.pale-white-link {
+    color: var(--pale-white);
 }
 
-.pure-black-text {
-    color: var(--pure-black);
+.pale-white-link:hover {
+    color: var(--dark-gray);
+}
+
+.medium-gray-link {
+    color: var(--medium-gray);
+}
+
+.medium-gray-link:hover {
+    color: var(--light-gray);
+}
+
+.medium-gray-link {
+    color: var(--medium-gray);
+}
+
+.medium-gray-link:hover {
+    color: var(--light-gray);
 }

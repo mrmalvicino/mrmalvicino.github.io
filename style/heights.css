@@ -102,16 +102,32 @@
     min-height: 100px;
 }
 
+.min-height-150-px {
+    min-height: 150px;
+}
+
 .min-height-200-px {
     min-height: 200px;
+}
+
+.min-height-250-px {
+    min-height: 250px;
 }
 
 .min-height-300-px {
     min-height: 300px;
 }
 
+.min-height-350-px {
+    min-height: 350px;
+}
+
 .min-height-400-px {
     min-height: 400px;
+}
+
+.min-height-450-px {
+    min-height: 450px;
 }
 
 .min-height-500-px {

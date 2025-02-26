@@ -1,17 +1,17 @@
 :root {
     /* Colors */
-    --pure-white: #FFFFFF;
-    --pale-white: #FAFAFA;
-    --light-gray: #F2F2F2;
-    --soft-gray: #E5E5E5;
-    --medium-gray: #CCCCCC;
-    --dark-gray: #808080;
-    --soft-black: #333333;
-    --pale-black: #282828;
-    --almost-black: #1c1c1c;
-    --pure-black: #000000;
+    --pure-white: #FFFFFF; /* Texto en títulos */
+    --pale-white: #FAFAFA; /* Fondo por defecto */
+    --light-gray: #F2F2F2; /* Texto resaltado */
+    --soft-gray: #E5E5E5; /* Texto sobre fondo pale-black */
+    --medium-gray: #CCCCCC; /* Texto sobre fondo almost-black */
+    --dark-gray: #808080; /* Bordes de Textboxes y Buttons */
+    --soft-black: #333333; /* Texto sobre fondo por defecto */
+    --pale-black: #282828; /* Fondo de Footer */
+    --almost-black: #1c1c1c; /* Fondo de Projects y Contact */
+    --pure-black: #000000; /* Texto resaltado, Texto en títulos */
 
     /* Measures */
-    --menu-height: 50px;
+    --menu-height: 60px;
     --button-width: 180px;
 }

@@ -47,10 +47,6 @@
                 <ul id="menuLst">
                 </ul>
             </div>
-            <div>
-                <a href="https://mrmalvicino.com/?lang=es" class="invisible-link">ES</a>
-                <a href="https://mrmalvicino.com/?lang=en" class="invisible-link">EN</a>
-            </div>
         </nav>
     </header>
 
@@ -107,7 +103,7 @@
     <!-- Education -->
 
     <section id="educationSec" class="height-100-vh col-flex space-evenly">
-        <div class="light-box">
+        <div class="light-box width-90-pct">
             <div>
                 <h2 id="educationLbl"></h2>
             </div>
@@ -123,87 +119,94 @@
     <!-- Contact -->
 
     <section id="contactSec" class="almost-black-background height-100-vh">
-        <div class="width-90-pct">
-            <div class="row-flex space-between">
-                <div class="width-50-pct margin-bottom-auto padding-20-px">
-                    <h2 id="contactTitleLbl" class="left-text bold-text pure-white-text open-sans-font"></h2>
-                    <p id="contactDescriptionLbl" class="margin-10-0-px"></p>
+        <div class="width-90-pct row-flex space-between">
+            <div class="width-50-pct margin-bottom-auto padding-20-px">
+                <h2 id="contactTitleLbl" class="left-text bold-text pure-white-text open-sans-font"></h2>
+                <p id="contactDescriptionLbl" class="margin-top-10-px"></p>
+                <div class="wrapped-flex justify-center">
+                    <a href="mailto:mrmalvicino@gmail.com" class="invisible-link pale-white-link margin-10-px"
+                        onclick="copyToClipboard(event, 'mrmalvicino@gmail.com')">
+                        <i class="bi bi-envelope"></i>
+                        <span>&nbsp;</span>
+                        <span>mrmalvicino@gmail.com</span>
+                    </a>
+                    <a href="tel:+5491159058729" class="invisible-link pale-white-link margin-10-px">
+                        <i class="bi bi-telephone"></i>
+                        <span>&nbsp;</span>
+                        <span>+54 (911) 5905-8729</span>
+                    </a>
                 </div>
-                <div class="width-50-pct padding-20-px">
-                    <form action="https://formspree.io/f/mvgpjkjn" method="POST">
-                        <div>
-                            <label for="nameTxt" id="nameLbl"></label>
-                            <input type="text" id="nameTxt" name="nameTxt" required class="textbox-input">
+            </div>
+            <div class="width-50-pct padding-20-px">
+                <form action="https://formspree.io/f/mvgpjkjn" method="POST">
+                    <div>
+                        <label for="nameTxt" id="nameLbl" class="light-gray-text"></label>
+                        <input type="text" id="nameTxt" name="nameTxt" required class="textbox-input">
 
-                            <label for="emailTxt" id="emailLbl"></label>
-                            <input type="email" id="emailTxt" name="emailTxt" required class="textbox-input">
+                        <label for="emailTxt" id="emailLbl" class="light-gray-text"></label>
+                        <input type="email" id="emailTxt" name="emailTxt" required class="textbox-input">
 
-                            <label for="phoneTxt" id="phoneLbl"></label>
-                            <input type="tel" id="phoneTxt" name="phoneTxt" required class="textbox-input">
+                        <label for="phoneTxt" id="phoneLbl" class="light-gray-text"></label>
+                        <input type="tel" id="phoneTxt" name="phoneTxt" required class="textbox-input">
 
-                            <label for="messageTxt" id="messageLbl"></label>
-                            <textarea id="messageTxt" name="messageTxt" rows="3" required class="textbox-input">
-                            </textarea>
+                        <label for="messageTxt" id="messageLbl" class="light-gray-text"></label>
+                        <textarea id="messageTxt" name="messageTxt" rows="3" required class="textbox-input">
+                        </textarea>
 
-                            <button type="submit" id="submitBtn" class="light-button margin-top-10-px width-100-pct">
-                            </button>
-                        </div>
-                    </form>
-                </div>
+                        <button type="submit" id="submitBtn" class="light-button margin-top-10-px width-100-pct">
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
 
-    <footer class="soft-black-background min-height-200-px row-flex justify-center">
-        <div class="width-90-pct">
-            <div class="wrapped-flex space-between">
-                <div class="col-flex">
-                    <ul>
-                        <li>
-                            <a href="mailto:mrmalvicino@gmail.com" class="invisible-link row-flex">
-                                <i class="bi bi-envelope mid-font-size"></i>
-                                &nbsp
-                                <span>mrmalvicino@gmail.com</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="tel:+5491159058729" class="invisible-link row-flex">
-                                <i class="bi bi-telephone mid-font-size"></i>
-                                &nbsp
-                                <span>+54 (911) 5905-8729</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <ul class="row-flex">
-                        <li class="margin-20-px">
-                            <a href="https://t.me/mrmalvicino" target="_blank" class="invisible-link">
-                                <i class="bi bi-telegram mid-font-size"></i>
-                            </a>
-                        </li>
-                        <li class="margin-20-px">
-                            <a href="https://www.linkedin.com/in/malvicinomaximilianoraul/" target="_blank"
-                                class="invisible-link">
-                                <i class="bi bi-linkedin mid-font-size"></i>
-                            </a>
-                        </li>
-                        <li class="margin-20-px">
-                            <a href="https://www.github.com/mrmalvicino" target="_blank" class="invisible-link">
-                                <i class="bi bi-github mid-font-size"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-flex">
-                    <a href="https://maps.app.goo.gl/6Zy59hyx4na4zXvy8" class="invisible-link row-flex">
-                        <i class="bi bi-geo-alt mid-font-size"></i>
-                        &nbsp
-                        <span>Buenos Aires, Argentina</span>
-                    </a>
-                </div>
+    <footer class="pale-black-background min-height-150-px row-flex justify-center">
+        <div class="width-90-pct wrapped-flex space-between">
+            <div class="row-flex width-100-px margin-20-px">
+                <i class="bi bi-translate"></i>
+                <span>&nbsp;</span>
+                <a href="https://mrmalvicino.com/?lang=es" class="invisible-link medium-gray-link">ES</a>
+                <span>&nbsp;</span>
+                <span>/</span>
+                <span>&nbsp;</span>
+                <a href="https://mrmalvicino.com/?lang=en" class="invisible-link medium-gray-link">EN</a>
+            </div>
+            <div>
+                <ul class="row-flex">
+                    <li class="margin-20-px">
+                        <a href="https://wa.me/5491159058729" target="_blank" class="invisible-link medium-gray-link">
+                            <i class="bi bi-whatsapp big-font-size"></i>
+                        </a>
+                    </li>
+                    <li class="margin-20-px">
+                        <a href="https://t.me/mrmalvicino" target="_blank" class="invisible-link medium-gray-link">
+                            <i class="bi bi-telegram big-font-size"></i>
+                        </a>
+                    </li>
+                    <li class="margin-20-px">
+                        <a href="https://www.linkedin.com/in/malvicinomaximilianoraul/" target="_blank"
+                            class="invisible-link medium-gray-link">
+                            <i class="bi bi-linkedin big-font-size"></i>
+                        </a>
+                    </li>
+                    <li class="margin-20-px">
+                        <a href="https://www.github.com/mrmalvicino" target="_blank"
+                            class="invisible-link medium-gray-link">
+                            <i class="bi bi-github big-font-size"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="row-flex width-100-px margin-20-px">
+                <a href="https://maps.app.goo.gl/6Zy59hyx4na4zXvy8"
+                    class="invisible-link medium-gray-link row-flex margin-left-auto">
+                    <i class="bi bi-geo-alt"></i>
+                    <span>&nbsp;</span>
+                    <span>Argentina</span>
+                </a>
             </div>
         </div>
     </footer>

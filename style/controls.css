@@ -59,3 +59,7 @@ iframe {
 textarea {
     resize: none;
 }
+
+i {
+    font-size: 1.5rem;
+}

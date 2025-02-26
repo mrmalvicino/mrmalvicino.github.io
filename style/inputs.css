@@ -6,7 +6,7 @@
     box-sizing: border-box;
     font-family: "Open Sans", sans-serif;
     font-size: 1rem;
-    color: var(--soft-gray);
+    color: var(--light-gray);
     background-color: var(--pale-black);
     border: 2px solid var(--soft-black);
 }

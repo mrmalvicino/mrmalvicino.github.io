@@ -62,25 +62,8 @@
 .invisible-link {
     margin: 0px;
     padding: 0px;
-    color: var(--light-gray);
     display: inline-flex;
-}
-
-.invisible-link:hover {
-    color: var(--soft-gray);
-}
-
-.link-button {
-    margin: 0px;
-    padding: 0px;
-    color: var(--soft-black);
-    display: inline-flex;
-    transition: transform 0.5s ease;
-}
-
-.link-button:hover {
-    color: var(--pure-black);
-    transform: scale(1.5);
+    align-items: center;
 }
 
 .big-hover {

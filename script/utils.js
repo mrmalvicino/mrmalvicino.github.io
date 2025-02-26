@@ -1,3 +1,21 @@
+// Events
+
+function copyToClipboard(event, text) {
+    event.preventDefault();
+    const lang = getLang();
+
+    navigator.clipboard.writeText(text).then(() => {
+        if (lang === "es") {
+            alert("Email copiado al portapapeles: " + text);
+        }
+        else if (lang === "en") {
+            alert("Email copied to clipboard: " + text);
+        }
+    }).catch(err => {
+        console.error("Error: ", err);
+    });
+}
+
 // URL fetching
 
 function getLang() {
