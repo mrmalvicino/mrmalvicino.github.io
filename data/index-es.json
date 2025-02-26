@@ -174,7 +174,7 @@
         },
         {
             "id": "resumeLbl",
-            "text_content": "Descargar CV"
+            "text_content": "Currículum"
         },
         {
             "id": "skillsLbl",
@@ -186,7 +186,7 @@
         },
         {
             "id": "allProjectsLbl",
-            "text_content": "Más proyectos"
+            "text_content": "Ver todos"
         },
         {
             "id": "educationLbl",

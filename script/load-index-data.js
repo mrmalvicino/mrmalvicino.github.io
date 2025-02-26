@@ -107,9 +107,9 @@ function renderProjects(indexData) {
         const container = document.createElement("div");
         container.classList.add("project-div");
 
-        // Video o mockup
-        const coverDiv = document.createElement("div");
-        coverDiv.classList.add("cover-div");
+        // Top Div
+        const topDiv = document.createElement("div");
+        topDiv.classList.add("project-top-div");
 
         if (x.video_url) {
             const iframe = document.createElement("iframe");
@@ -119,64 +119,73 @@ function renderProjects(indexData) {
             iframe.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
             iframe.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
             iframe.setAttribute("allowfullscreen", "true");
-            coverDiv.appendChild(iframe);
+            topDiv.appendChild(iframe);
         }
         else if (x.mockup_id) {
             const img = document.createElement("img");
             img.id = x.mockup_id;
-            coverDiv.appendChild(img);
+            topDiv.appendChild(img);
         }
         else {
             const img = document.createElement("img");
             img.setAttribute("data-id", "wipImg");
-            coverDiv.appendChild(img);
+            topDiv.appendChild(img);
         }
 
-        container.appendChild(coverDiv);
+        container.appendChild(topDiv);
 
-        // Contenido
-        const contentDiv = document.createElement("div");
-        contentDiv.classList.add("padding-0-20-px", "height-300-px", "col-flex", "space-between");
+        // Bottom Div
+        const bottomDiv = document.createElement("div");
+        bottomDiv.classList.add("project-bot-div");
 
-        // Contenido: Título y descripción
+        // Título y descripción
         const textDiv = document.createElement("div");
-        textDiv.classList.add("margin-10-0-px");
+        textDiv.classList.add("margin-10-px");
 
         const h3 = document.createElement("h3");
         h3.textContent = x.title;
+        h3.classList.add("pure-white-text");
         textDiv.appendChild(h3);
 
         const p = document.createElement("p");
         p.textContent = x.description;
         textDiv.appendChild(p);
 
-        contentDiv.appendChild(textDiv);
+        bottomDiv.appendChild(textDiv);
 
-        // Contenido: Tecnologías
+        // Tecnologías
         const technologiesDiv = document.createElement("div");
+        technologiesDiv.classList.add("width-100-pct", "padding-0-10-px");
         const ul = document.createElement("ul");
-        ul.classList.add("row-flex", "justify-center");
+        ul.classList.add("row-flex", "space-between");
 
         x.technologies_ids.forEach(y => {
             const li = document.createElement("li");
             const img = document.createElement("img");
             img.setAttribute("data-id", y);
-            img.classList.add("width-40-px", "margin-10-px");
+            img.classList.add("width-40-px");
             li.appendChild(img);
             ul.appendChild(li);
         });
 
         technologiesDiv.appendChild(ul);
-        contentDiv.appendChild(technologiesDiv);
+        bottomDiv.appendChild(technologiesDiv);
 
-        // Contenido: Botones
+        // Botones
         const buttonsDiv = document.createElement("div");
-        buttonsDiv.classList.add("row-flex", "justify-center", "padding-bottom-10-px");
+        buttonsDiv.classList.add("row-flex", "width-100-pct");
+
+        if (x.source_code && x.live_demo) {
+            buttonsDiv.classList.add("space-between");
+        }
+        else {
+            buttonsDiv.classList.add("justify-center");
+        }
 
         if (x.source_code) {
             const a1 = document.createElement("a");
             a1.href = x.source_code;
-            a1.classList.add("dark-button", "margin-10-px");
+            a1.classList.add("light-button", "margin-10-px");
 
             const i1 = document.createElement("i");
             i1.classList.add("bi", "bi-code-slash");
@@ -193,7 +202,7 @@ function renderProjects(indexData) {
         if (x.live_demo) {
             const a2 = document.createElement("a");
             a2.href = x.live_demo;
-            a2.classList.add("dark-button", "margin-10-px");
+            a2.classList.add("light-button", "margin-10-px");
 
             const i2 = document.createElement("i");
             i2.classList.add("bi", "bi-eye");
@@ -207,8 +216,8 @@ function renderProjects(indexData) {
             buttonsDiv.appendChild(a2);
         }
 
-        contentDiv.appendChild(buttonsDiv);
-        container.appendChild(contentDiv);
+        bottomDiv.appendChild(buttonsDiv);
+        container.appendChild(bottomDiv);
 
         // Agregar proyecto
 
@@ -249,7 +258,7 @@ function renderCareers(indexData) {
         // Acciones
         const actions = document.createElement("td");
         const buttonsDiv = document.createElement("div");
-        buttonsDiv.classList.add("row-flex", "justify-center" ,"margin-10-px");
+        buttonsDiv.classList.add("row-flex", "justify-center", "margin-10-px");
 
         if (x.study_plan) {
             const a1 = document.createElement("a");

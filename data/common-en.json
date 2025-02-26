@@ -130,11 +130,11 @@
     "labels": [
         {
             "id": "sourceCodeLbl",
-            "text_content": "Source Code"
+            "text_content": "Code"
         },
         {
             "id": "openOnlineLbl",
-            "text_content": "Open Online"
+            "text_content": "Open"
         }
     ]
 }
