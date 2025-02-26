@@ -7,7 +7,8 @@
     align-items: center;
     justify-content: center;
     z-index: 1000;
-    background-color: rgba(51, 51, 51, 0.85);
+    background-color: rgba(20, 20, 20, 0.85);
+    box-shadow: 0px 5px 50px rgba(150, 150, 150, 0.1);
 }
 
 .header-nav {
@@ -21,4 +22,9 @@
 .header-nav ul li {
     display: inline-block;
     margin-left: 10px;
+}
+
+.header-nav a {
+    font-size: 1.3rem;
+    font-weight: 400;
 }

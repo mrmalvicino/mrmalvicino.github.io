@@ -45,7 +45,7 @@ function renderMenu(indexData) {
 
         a.href = x.href;
         a.textContent = x.label;
-        a.classList.add("invisible-link", "light-gray-link");
+        a.classList.add("invisible-link", "medium-gray-link");
 
         li.appendChild(a);
         ul.appendChild(li);

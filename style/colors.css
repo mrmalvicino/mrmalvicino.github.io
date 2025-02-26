@@ -21,14 +21,6 @@
     color: var(--light-gray);
 }
 
-.light-gray-link {
-    color: var(--light-gray);
-}
-
-.light-gray-link:hover {
-    color: var(--pure-white);
-}
-
 .medium-gray-link {
     color: var(--medium-gray);
 }
