@@ -21,11 +21,11 @@
     color: var(--light-gray);
 }
 
-.pale-white-link {
+.light-gray-link {
     color: var(--light-gray);
 }
 
-.pale-white-link:hover {
+.light-gray-link:hover {
     color: var(--pure-white);
 }
 
