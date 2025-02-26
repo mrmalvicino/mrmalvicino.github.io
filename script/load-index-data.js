@@ -242,7 +242,7 @@ function renderCareers(indexData) {
 
         const img = document.createElement("img");
         img.setAttribute("data-id", x.institution_id);
-        img.classList.add("height-20-px");
+        img.classList.add("small-logo");
 
         institutionDiv.appendChild(img);
         institution.appendChild(institutionDiv);
@@ -258,6 +258,10 @@ function renderCareers(indexData) {
         // Acciones
         const actions = document.createElement("td");
         const buttonsDiv = document.createElement("div");
+
+        if (x.study_plan && x.certificate) {
+            buttonsDiv.classList.add("row-flex", "justify-center");
+        }
 
         if (x.study_plan) {
             const a1 = document.createElement("a");
@@ -281,12 +285,6 @@ function renderCareers(indexData) {
             a2.appendChild(i2);
 
             buttonsDiv.appendChild(a2);
-        }
-
-        if (!x.study_plan && !x.certificate) {
-            const span = document.createElement("span");
-            span.textContent = "N/A";
-            buttonsDiv.appendChild(span);
         }
 
         actions.appendChild(buttonsDiv);

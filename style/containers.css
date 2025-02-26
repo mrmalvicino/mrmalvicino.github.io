@@ -46,6 +46,7 @@
 }
 
 .light-box {
+    margin: 10px;
     padding: 20px;
     border-radius: 5px;
     background-color: var(--pure-white);

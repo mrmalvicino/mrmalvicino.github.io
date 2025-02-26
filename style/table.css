@@ -1,0 +1,21 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    border-top: 2px solid var(--light-gray);
+}
+
+td:nth-child(1) {
+    width: 10%;
+}
+
+td:nth-child(2) {
+    width: 80%;
+}
+
+td:nth-child(3) {
+    width: 10%;
+    text-align: center;
+}
