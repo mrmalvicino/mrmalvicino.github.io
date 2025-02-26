@@ -1,10 +1,14 @@
 .stack-div {
-    width: 300px;
-    height: 170px;
-    margin: 20px;
+    width: 100%;
+    max-width: 500px;
+    height: 210px;
+    margin: 10px;
     padding: 20px;
     border-radius: 5px;
-    border: 2px solid var(--light-gray);
+    background-color: var(--pure-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .project-div {
@@ -35,6 +39,6 @@
 .light-box {
     padding: 20px;
     border-radius: 5px;
-    color: var(--soft-black);
+    /*color: var(--soft-black);*/
     background-color: var(--pure-white);
 }

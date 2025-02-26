@@ -56,7 +56,7 @@ function renderBanner(indexData) {
     const banner = document.getElementById("bannerDiv");
     banner.innerHTML = "";
 
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 2; i++) {
         const slideDiv = document.createElement("div");
         slideDiv.classList.add("banner-slide");
 
@@ -81,6 +81,7 @@ function renderStacks(indexData) {
 
         const h3 = document.createElement("h3");
         h3.textContent = x.title;
+        h3.classList.add("center-text", "jost-font");
         div.appendChild(h3);
 
         const ul = document.createElement("ul");
@@ -88,6 +89,7 @@ function renderStacks(indexData) {
         x.items.forEach(y => {
             const li = document.createElement("li");
             li.textContent = y;
+            li.classList.add("margin-10-0-px");
             ul.appendChild(li);
         });
 

@@ -34,20 +34,20 @@
             "id": "mainStack",
             "title": "Main Stack",
             "items": [
-                ".NET Framework, .NET Core",
-                "Backend: C#",
-                "Frontend: HTML5, CSS3, JavaScript",
-                "Database: MSSQL, ADO.NET"
+                ".Net Framework, ASP.NET, .NET Core",
+                "C# (backend)",
+                "HTML5, CSS3 and JavaScript (frontend)",
+                "Database: SQL Server and ADO.NET"
             ]
         },
         {
             "id": "secondaryStack",
-            "title": "Worked with",
+            "title": "Secondary Stack",
             "items": [
-                "Libraries: JSTL",
-                "Backend: Java",
-                "Frontend: Bootstrap, Tailwind",
-                "Database: MySQL, JDBC"
+                "JSTL library",
+                "Java (backend)",
+                "Bootstrap or Tailwind (frontend)",
+                "Database: MySQL and JDBC"
             ]
         },
         {

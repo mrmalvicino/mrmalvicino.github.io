@@ -1,11 +1,33 @@
 .banner-container {
     padding: 10px 20px;
-    width: 100%;
+    width: 720px;
+    max-width: 90%;
     position: relative;
     overflow: hidden;
     white-space: nowrap;
     display: flex;
     flex-direction: row;
+    position: relative;
+}
+
+.banner-container:before,
+.banner-container:after {
+    position: absolute;
+    z-index: 2;
+    top: 0px;
+    content: "";
+    width: 200px;
+    height: 100%;
+}
+
+.banner-container:before {
+    left: 0px;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0), var(--pale-white));
+}
+
+.banner-container:after {
+    right: 0px;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), var(--pale-white));
 }
 
 .banner-container:hover .banner-slide {
