@@ -185,7 +185,7 @@ function renderProjects(indexData) {
         if (x.source_code) {
             const a1 = document.createElement("a");
             a1.href = x.source_code;
-            a1.classList.add("light-button", "margin-10-px");
+            a1.classList.add("transparent-button", "margin-10-px");
 
             const i1 = document.createElement("i");
             i1.classList.add("bi", "bi-code-slash");
@@ -202,7 +202,7 @@ function renderProjects(indexData) {
         if (x.live_demo) {
             const a2 = document.createElement("a");
             a2.href = x.live_demo;
-            a2.classList.add("light-button", "margin-10-px");
+            a2.classList.add("transparent-button", "margin-10-px");
 
             const i2 = document.createElement("i");
             i2.classList.add("bi", "bi-eye");
@@ -227,17 +227,18 @@ function renderProjects(indexData) {
 
 function renderCareers(indexData) {
     const tbody = document.getElementById("careersTab");
+    tbody.classList.add("height-80-px");
     tbody.innerHTML = "";
 
     indexData.careers.forEach(x => {
         const tr = document.createElement("tr");
-        tr.classList.add("height-80-px");
+        tr.classList.add("height-60-px");
 
         // Institución
         const institution = document.createElement("td");
 
         const institutionDiv = document.createElement("div");
-        institutionDiv.classList.add("height-100-pct", "row-flex", "justify-center", "margin-10-px");
+        institutionDiv.classList.add("height-100-pct", "row-flex", "justify-center", "margin-0-10-px");
 
         const img = document.createElement("img");
         img.setAttribute("data-id", x.institution_id);
@@ -249,7 +250,6 @@ function renderCareers(indexData) {
 
         // Nombre de la carrera o curso
         const name = document.createElement("td");
-        name.classList.add("margin-10-px");
         const span = document.createElement("span");
         span.textContent = x.title;
         name.appendChild(span);
@@ -258,7 +258,6 @@ function renderCareers(indexData) {
         // Acciones
         const actions = document.createElement("td");
         const buttonsDiv = document.createElement("div");
-        buttonsDiv.classList.add("row-flex", "justify-center", "margin-10-px");
 
         if (x.study_plan) {
             const a1 = document.createElement("a");

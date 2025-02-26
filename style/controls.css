@@ -63,3 +63,21 @@ textarea {
 i {
     font-size: 1.5rem;
 }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td:nth-child(1) {
+    width: 15%;
+}
+
+td:nth-child(2) {
+    width: 60%;
+}
+
+td:nth-child(3) {
+    width: 25%;
+    text-align: center;
+}
