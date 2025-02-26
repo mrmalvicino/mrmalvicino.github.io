@@ -22,11 +22,11 @@
 }
 
 .pale-white-link {
-    color: var(--pale-white);
+    color: var(--light-gray);
 }
 
 .pale-white-link:hover {
-    color: var(--dark-gray);
+    color: var(--pure-white);
 }
 
 .medium-gray-link {
@@ -37,10 +37,10 @@
     color: var(--light-gray);
 }
 
-.medium-gray-link {
-    color: var(--medium-gray);
+.soft-black-link {
+    color: var(--soft-black);
 }
 
-.medium-gray-link:hover {
-    color: var(--light-gray);
+.soft-black-link:hover {
+    color: var(--pure-black);
 }
