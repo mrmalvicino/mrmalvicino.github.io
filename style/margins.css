@@ -61,3 +61,13 @@
 .margin-bottom-auto {
     margin-bottom: auto;
 }
+
+.margin-vertical-auto {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.margin-horizontal-auto {
+    margin-right: auto;
+    margin-left: auto;
+}

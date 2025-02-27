@@ -37,3 +37,13 @@
 .padding-bottom-40-px {
     padding-bottom: 40px;
 }
+
+.padding-vertical-auto {
+    padding-top: auto;
+    padding-bottom: auto;
+}
+
+.padding-horizontal-auto {
+    padding-right: auto;
+    padding-left: auto;
+}

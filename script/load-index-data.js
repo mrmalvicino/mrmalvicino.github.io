@@ -149,6 +149,7 @@ function renderProjects(indexData) {
 
         const p = document.createElement("p");
         p.textContent = x.description;
+        p.classList.add("height-90-px");
         textDiv.appendChild(p);
 
         bottomDiv.appendChild(textDiv);
