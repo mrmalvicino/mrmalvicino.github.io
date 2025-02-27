@@ -227,12 +227,10 @@ function renderProjects(indexData) {
 
 function renderCareers(indexData) {
     const tbody = document.getElementById("careersTab");
-    tbody.classList.add("height-80-px");
     tbody.innerHTML = "";
 
     indexData.careers.forEach(x => {
         const tr = document.createElement("tr");
-        tr.classList.add("height-60-px");
 
         // Institución
         const institution = document.createElement("td");
@@ -252,6 +250,7 @@ function renderCareers(indexData) {
         const name = document.createElement("td");
         const span = document.createElement("span");
         span.textContent = x.title;
+        span.classList.add("uppercase-text", "pure-black-text", "bold-text");
         name.appendChild(span);
         tr.appendChild(name);
 

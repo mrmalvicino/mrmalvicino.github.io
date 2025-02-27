@@ -21,6 +21,10 @@
     color: var(--light-gray);
 }
 
+.pure-black-text {
+    color: var(--pure-black);
+}
+
 .medium-gray-link {
     color: var(--medium-gray);
 }
