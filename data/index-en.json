@@ -64,7 +64,7 @@
     "projects": [
         {
             "title": "Meeni ERP",
-            "description": "Simple enterprise resource planning software. Performs quotations, registers sales, manages stock, schedules purchases, and keeps the accounting.",
+            "description": "Business management software that manages stock, makes quotes, records transactions, and keeps the accounting.",
             "technologies_ids": [
                 "dotnetImg",
                 "csImg",
@@ -81,7 +81,7 @@
         },
         {
             "title": "Ecommerce Net",
-            "description": "Ecommerce developed with ASP.NET and C# that includes product management, shopping cart, user accounts, and order management.",
+            "description": "Ecommerce that includes product management, shopping cart, user roles and order tracking.",
             "technologies_ids": [
                 "dotnetImg",
                 "csImg",
@@ -97,7 +97,7 @@
         },
         {
             "title": "BancAr",
-            "description": "BancAr is a banking management system designed to manage the operations of a banking entity, allowing the management of clients, accounts, loans and transfers.",
+            "description": "Home Banking to carry out banking operations and manage clients, accounts, loans and transfers.",
             "technologies_ids": [
                 "javaImg",
                 "jsImg",
