@@ -169,3 +169,7 @@
 .max-width-500-px {
     max-width: 500px;
 }
+
+.content-width{
+    width: var(--content-width);
+}

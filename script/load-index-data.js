@@ -149,7 +149,6 @@ function renderProjects(indexData) {
 
         const p = document.createElement("p");
         p.textContent = x.description;
-        p.classList.add("height-90-px");
         textDiv.appendChild(p);
 
         bottomDiv.appendChild(textDiv);
@@ -174,14 +173,7 @@ function renderProjects(indexData) {
 
         // Botones
         const buttonsDiv = document.createElement("div");
-        buttonsDiv.classList.add("row-flex", "width-100-pct");
-
-        if (x.source_code && x.live_demo) {
-            buttonsDiv.classList.add("space-between");
-        }
-        else {
-            buttonsDiv.classList.add("justify-center");
-        }
+        buttonsDiv.classList.add("row-flex", "width-100-pct", "justify-center");
 
         if (x.source_code) {
             const a1 = document.createElement("a");

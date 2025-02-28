@@ -13,5 +13,6 @@
 
     /* Measures */
     --menu-height: 60px;
+    --content-width: 90%;
     --button-width: 150px;
 }

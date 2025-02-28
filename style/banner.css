@@ -22,12 +22,12 @@
 
 .banner-container:before {
     left: 0px;
-    background: linear-gradient(to left, rgba(255, 255, 255, 0), var(--pale-white));
+    background: linear-gradient(to left, rgba(255, 255, 255, 0), var(--light-gray));
 }
 
 .banner-container:after {
     right: 0px;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0), var(--pale-white));
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), var(--light-gray));
 }
 
 .banner-container:hover .banner-slide {

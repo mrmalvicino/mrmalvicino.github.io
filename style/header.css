@@ -8,8 +8,6 @@
 }
 
 .header-nav {
-    width: 90%;
-    height: var(--menu-height);
     margin: auto;
     display: flex;
     flex-direction: row;

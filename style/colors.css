@@ -1,6 +1,6 @@
-.pale-white-background {
+.light-gray-background {
     color: var(--soft-black);
-    background-color: var(--pale-white);
+    background-color: var(--light-gray);
 }
 
 .pale-black-background {
