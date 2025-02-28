@@ -133,7 +133,3 @@
 .min-height-500-px {
     min-height: 500px;
 }
-
-.menu-height{
-    height: var(--menu-height);
-}

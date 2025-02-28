@@ -8,6 +8,7 @@
 }
 
 .header-nav {
+    height: var(--menu-height);
     margin: auto;
     display: flex;
     flex-direction: row;
@@ -60,19 +61,19 @@
         align-items: center;
         justify-content: center;
     }
-    
+
     .menu-active ul li {
         margin: 20px;
     }
-    
+
     .menu-active ul li a {
         font-size: 1.6rem;
     }
-    
+
     .menu-active span {
         display: none;
     }
-    
+
     .menu-active .toggle-button {
         display: block;
         margin: 0 auto 110px auto;
