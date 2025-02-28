@@ -157,13 +157,13 @@ function renderProjects(indexData) {
         const technologiesDiv = document.createElement("div");
         technologiesDiv.classList.add("width-100-pct", "padding-0-10-px");
         const ul = document.createElement("ul");
-        ul.classList.add("row-flex", "space-between");
+        ul.classList.add("row-flex", "space-around");
 
         x.technologies_ids.forEach(y => {
             const li = document.createElement("li");
             const img = document.createElement("img");
             img.setAttribute("data-id", y);
-            img.classList.add("width-40-px");
+            img.classList.add("width-30-px");
             li.appendChild(img);
             ul.appendChild(li);
         });
