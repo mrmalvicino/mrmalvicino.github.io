@@ -1,4 +1,25 @@
-// Events
+document.addEventListener("DOMContentLoaded", function () {
+    const nav = document.getElementById("menuNav");
+    closesMenu(nav);
+
+    document.getElementById("toggleBtn").addEventListener("click", function (event) {
+        event.stopPropagation();
+    });
+});
+
+// Called from HTML document
+
+function closesMenu(clickable) {
+    const nav = document.querySelector(".header-nav");
+    clickable.addEventListener("click", function () {
+        nav.classList.remove('menu-active');
+    });
+}
+
+function toggleMenu() {
+    const nav = document.querySelector(".header-nav");
+    nav.classList.toggle("menu-active");
+}
 
 function copyToClipboard(event, text) {
     event.preventDefault();

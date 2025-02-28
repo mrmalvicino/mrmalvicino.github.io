@@ -65,7 +65,7 @@
     border: 2px solid var(--medium-gray);
 }
 
-.invisible-link {
+.plain-link {
     padding: 0px;
     display: inline-flex;
     align-items: center;

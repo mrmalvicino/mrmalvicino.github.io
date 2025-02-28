@@ -45,7 +45,7 @@ function renderMenu(indexData) {
 
         a.href = x.href;
         a.textContent = x.label;
-        a.classList.add("invisible-link", "medium-gray-link");
+        a.classList.add("plain-link", "medium-gray-link");
 
         li.appendChild(a);
         ul.appendChild(li);
@@ -266,7 +266,7 @@ function renderCareers(indexData) {
         if (x.study_plan) {
             const a1 = document.createElement("a");
             a1.href = x.study_plan;
-            a1.classList.add("invisible-link", "soft-black-link", "margin-10-px");
+            a1.classList.add("plain-link", "soft-black-link", "margin-10-px");
 
             const i1 = document.createElement("i");
             i1.classList.add("bi", "bi-mortarboard", "mid-font-size");
@@ -278,7 +278,7 @@ function renderCareers(indexData) {
         if (x.certificate) {
             const a2 = document.createElement("a");
             a2.href = x.certificate;
-            a2.classList.add("invisible-link", "soft-black-link", "margin-10-px");
+            a2.classList.add("plain-link", "soft-black-link", "margin-10-px");
 
             const i2 = document.createElement("i");
             i2.classList.add("bi", "bi-award", "mid-font-size");
