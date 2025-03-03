@@ -1,5 +1,5 @@
-.padding-top-menu {
-    padding-top: var(--menu-height);
+.menu-padding {
+    padding: var(--menu-height) 0px;
 }
 
 .padding-10-px {

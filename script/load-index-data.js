@@ -243,7 +243,7 @@ function renderCareers(indexData) {
         const name = document.createElement("td");
         const span = document.createElement("span");
         span.textContent = x.title;
-        span.classList.add("uppercase-text", "pure-black-text", "bold-text");
+        span.classList.add("pure-black-text", "bold-text");
         name.appendChild(span);
         tr.appendChild(name);
 
