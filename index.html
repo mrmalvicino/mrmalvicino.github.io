@@ -22,12 +22,12 @@
     <link href="style/controls.css" rel="stylesheet" type="text/css">
     <link href="style/flexbox.css" rel="stylesheet" type="text/css">
     <link href="style/fonts.css" rel="stylesheet" type="text/css">
-    <link href="style/header.css" rel="stylesheet" type="text/css">
     <link href="style/heights.css" rel="stylesheet" type="text/css">
     <link href="style/images.css" rel="stylesheet" type="text/css">
     <link href="style/inputs.css" rel="stylesheet" type="text/css">
     <link href="style/justify.css" rel="stylesheet" type="text/css">
     <link href="style/margins.css" rel="stylesheet" type="text/css">
+    <link href="style/menu.css" rel="stylesheet" type="text/css">
     <link href="style/paddings.css" rel="stylesheet" type="text/css">
     <link href="style/table.css" rel="stylesheet" type="text/css">
     <link href="style/widths.css" rel="stylesheet" type="text/css">
@@ -37,16 +37,16 @@
 
     <!-- Header -->
 
-    <header class="header-tag jost-font">
-        <nav id="menuNav" class="header-nav content-width">
-            <div class="margin-0-20-px margin-vertical-auto">
+    <header>
+        <nav id="menuNav" class="menu-nav">
+            <div class="margin-vertical-auto">
                 <a href="https://mrmalvicino.com" class="plain-link pure-white-text">
                     <img data-id="logoImg" class="width-40-px" />
                     <span>&nbsp;</span>
                     <span>Maximiliano Malvicino</span>
                 </a>
             </div>
-            <div class="margin-0-20-px">
+            <div>
                 <ul id="menuLst"></ul>
                 <button id="toggleBtn" class="toggle-button" onclick="toggleMenu()">
                     <i class="bi bi-list"></i>
@@ -57,18 +57,18 @@
 
     <!-- Hero -->
 
-    <section id="heroSec" class="height-100-vh col-flex justify-center menu-padding">
-        <div class="width-250-px margin-0-10-px padding-10-px">
+    <section id="heroSec" class="height-100-vh menu-padding col-flex justify-center">
+        <div class="width-250-px margin-10-0-px">
             <img id="profileImg" class="circle-image" />
         </div>
-        <div class="content-width margin-0-10-px padding-10-px">
+        <div class="content-width margin-10-0-px">
             <h1>Maximiliano Raúl Malvicino</h1>
             <p id="degreesLbl" class="mid-font-size jost-font center-text"></p>
         </div>
-        <div class="content-width margin-0-10-px padding-10-px">
+        <div class="content-width margin-10-0-px">
             <p id="presentationLbl" class="center-text"></p>
         </div>
-        <div class="content-width row-col-1000 justify-center margin-10-px padding-10-px">
+        <div class="content-width margin-20-0-px row-col-800 justify-center">
             <a id="resumeBtn" class="dark-button big-hover">
                 <i class="bi bi-download"></i>
                 <span>&nbsp;</span>
@@ -79,25 +79,26 @@
 
     <!-- Skills -->
 
-    <section id="skillsSec" class="height-100-vh col-flex space-evenly menu-padding">
-        <div class="content-width padding-10-px margin-top-10-px">
+    <section id="skillsSec" class="height-100-vh menu-padding col-flex space-evenly">
+        <div class="content-width">
             <h2 id="skillsLbl"></h2>
         </div>
         <div id="bannerDiv" class="banner-container">
         </div>
-        <div id="stacksDiv" class="content-width row-col-1300 space-between padding-10-px">
+        <div id="stacksDiv" class="row-col-1300 stacks-container">
         </div>
     </section>
 
     <!-- Projects -->
 
-    <section id="projectsSec" class="almost-black-background height-100-vh col-flex justify-center menu-padding">
-        <div class="content-width padding-10-px margin-top-10-px">
+    <section id="projectsSec"
+        class="height-100-vh menu-padding gap-20-px col-flex space-evenly almost-black-background">
+        <div class="content-width">
             <h2 id="projectsLbl" class="pure-white-text"></h2>
         </div>
-        <div id="projectsDiv" class="content-width row-col-1300 space-between padding-0-10-px"></div>
-        <div class="content-width row-col-1000 justify-center padding-0-10-px margin-bottom-10-px">
-            <a href="projects.html" class="big-hover light-button margin-10-px">
+        <div id="projectsDiv" class="projects-container"></div>
+        <div class="content-width row-col-800 justify-center">
+            <a href="projects.html" class="big-hover light-button">
                 <i class="bi bi-plus-circle"></i>
                 <span>&nbsp;</span>
                 <span id="allProjectsLbl"></span>
@@ -107,28 +108,26 @@
 
     <!-- Education -->
 
-    <section id="educationSec" class="height-100-vh col-flex space-evenly menu-padding">
-        <div class="content-width padding-10-px">
-            <div class="light-box">
-                <h2 id="educationLbl" class="margin-bottom-20-px"></h2>
-                <table>
-                    <tbody id="careersTab">
-                    </tbody>
-                </table>
-            </div>
+    <section id="educationSec" class="height-100-vh menu-padding">
+        <div class="content-width light-box">
+            <h2 id="educationLbl" class="margin-bottom-20-px"></h2>
+            <table>
+                <tbody id="careersTab">
+                </tbody>
+            </table>
         </div>
     </section>
 
     <!-- Contact -->
 
-    <section id="contactSec" class="almost-black-background height-100-vh menu-padding">
-        <div class="content-width row-col-800 space-between">
-            <div class="width-100-pct padding-20-px margin-bottom-auto">
+    <section id="contactSec" class="height-100-vh menu-padding almost-black-background">
+        <div class="content-width row-col-800 space-between gap-40-px">
+            <div class="width-100-pct margin-bottom-auto">
                 <h2 id="contactTitleLbl" class="left-text bold-text pure-white-text open-sans-font"></h2>
                 <p id="contactDescriptionLbl" class="margin-top-10-px"></p>
                 <div class="wrapped-flex justify-center">
                     <a href="mailto:mrmalvicino@gmail.com" class="plain-link light-gray-text margin-10-px"
-                        onclick="copyToClipboard(event, 'mrmalvicino@gmail.com')">
+                    onclick="copyToClipboard(event, 'mrmalvicino@gmail.com')">
                         <i class="bi bi-envelope"></i>
                         <span>&nbsp;</span>
                         <span>mrmalvicino@gmail.com</span>
@@ -140,7 +139,7 @@
                     </a>
                 </div>
             </div>
-            <div class="width-100-pct padding-20-px">
+            <div class="width-100-pct">
                 <form action="https://formspree.io/f/mvgpjkjn" method="POST">
                     <div>
                         <label for="nameTxt" id="nameLbl" class="light-gray-text"></label>
@@ -166,9 +165,9 @@
 
     <!-- Footer -->
 
-    <footer class="pale-black-background min-height-150-px align-content-center">
-        <div class="margin-horizontal-auto content-width row-col-800 space-between padding-10-px">
-            <div class="row-flex width-100-px margin-10-px">
+    <footer class="min-height-150-px padding-vertical-20-px align-content-center pale-black-background">
+        <div class="content-width margin-horizontal-auto row-col-800 space-between gap-20-px">
+            <div class="row-flex width-100-px">
                 <i class="bi bi-translate"></i>
                 <span>&nbsp;</span>
                 <a href="https://mrmalvicino.com/?lang=es" class="plain-link medium-gray-link">ES</a>
@@ -176,24 +175,24 @@
                 <a href="https://mrmalvicino.com/?lang=en" class="plain-link medium-gray-link">EN</a>
             </div>
             <div>
-                <ul class="row-flex">
-                    <li class="margin-10-px">
+                <ul class="row-flex gap-20-px">
+                    <li>
                         <a href="https://wa.me/5491159058729" target="_blank" class="plain-link medium-gray-link">
                             <i class="bi bi-whatsapp big-font-size"></i>
                         </a>
                     </li>
-                    <li class="margin-10-px">
+                    <li>
                         <a href="https://t.me/mrmalvicino" target="_blank" class="plain-link medium-gray-link">
                             <i class="bi bi-telegram big-font-size"></i>
                         </a>
                     </li>
-                    <li class="margin-10-px">
+                    <li>
                         <a href="https://www.linkedin.com/in/malvicinomaximilianoraul/" target="_blank"
                             class="plain-link medium-gray-link">
                             <i class="bi bi-linkedin big-font-size"></i>
                         </a>
                     </li>
-                    <li class="margin-10-px">
+                    <li>
                         <a href="https://www.github.com/mrmalvicino" target="_blank"
                             class="plain-link medium-gray-link">
                             <i class="bi bi-github big-font-size"></i>
@@ -201,7 +200,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="width-100-px margin-10-px">
+            <div class="width-100-px">
                 <a href="https://maps.app.goo.gl/6Zy59hyx4na4zXvy8"
                     class="plain-link medium-gray-link margin-left-auto">
                     <i class="bi bi-geo-alt"></i>

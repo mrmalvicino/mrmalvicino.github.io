@@ -7,17 +7,15 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// Called from HTML document
-
 function closesMenu(clickable) {
-    const nav = document.querySelector(".header-nav");
+    const nav = document.querySelector(".menu-nav");
     clickable.addEventListener("click", function () {
         nav.classList.remove('menu-active');
     });
 }
 
 function toggleMenu() {
-    const nav = document.querySelector(".header-nav");
+    const nav = document.querySelector(".menu-nav");
     nav.classList.toggle("menu-active");
 }
 

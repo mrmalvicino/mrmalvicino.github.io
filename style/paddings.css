@@ -38,6 +38,11 @@
     padding-bottom: 40px;
 }
 
+.padding-vertical-20-px{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
 .padding-vertical-auto {
     padding-top: auto;
     padding-bottom: auto;

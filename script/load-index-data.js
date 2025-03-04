@@ -77,7 +77,7 @@ function renderStacks(indexData) {
 
     indexData.stacks.forEach(x => {
         const div = document.createElement("div");
-        div.classList.add("stack-div");
+        div.classList.add("stack-card");
 
         const h3 = document.createElement("h3");
         h3.textContent = x.title;
@@ -105,7 +105,7 @@ function renderProjects(indexData) {
 
     indexData.projects.forEach(x => {
         const container = document.createElement("div");
-        container.classList.add("project-div");
+        container.classList.add("project-card");
 
         // Top Div
         const topDiv = document.createElement("div");

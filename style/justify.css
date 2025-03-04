@@ -15,5 +15,6 @@
 }
 
 .align-content-center {
+    display: flex;
     align-content: center;
 }
