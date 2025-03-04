@@ -19,9 +19,9 @@ header {
     justify-content: space-between;
 }
 
-.menu-nav ul li {
-    display: inline-block;
-    margin-left: 10px;
+.menu-nav ul {
+    gap: 20px;
+    display: flex;
 }
 
 .menu-nav a {
@@ -38,6 +38,15 @@ header {
     display: none;
 }
 
+.hidden {
+    display: none !important;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+
 @media (max-width: 1000px) {
     header {
         background-color: var(--almost-black);
@@ -53,32 +62,19 @@ header {
 
     .menu-active {
         flex-direction: column;
-        height: 100vh;
+        min-height: 100vh;
     }
 
     .menu-active ul {
-        height: 60vh;
-        margin: 10px;
+        height: 100vh;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-    }
-
-    .menu-active ul li {
-        margin: 20px;
+        gap: 40px;
     }
 
     .menu-active ul li a {
         font-size: 1.6rem;
-    }
-
-    .menu-active span {
-        display: none;
-    }
-
-    .menu-active .toggle-button {
-        display: block;
-        margin: 0 auto 110px auto;
     }
 }

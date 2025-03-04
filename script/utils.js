@@ -1,22 +1,62 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const nav = document.getElementById("menuNav");
-    closesMenu(nav);
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+        defineMenuClosers();
+    }
+);
 
-    document.getElementById("toggleBtn").addEventListener("click", function (event) {
-        event.stopPropagation();
-    });
-});
+function defineMenuClosers() {
+    const menuNav = document.getElementById("menuNav");
+    closesMenu(menuNav);
 
-function closesMenu(clickable) {
-    const nav = document.querySelector(".menu-nav");
-    clickable.addEventListener("click", function () {
-        nav.classList.remove('menu-active');
-    });
+    const toggleBtn = document.getElementById("toggleBtn");
+    toggleBtn.addEventListener(
+        "click",
+        function (event) {
+            event.stopPropagation();
+        }
+    );
+
+    window.addEventListener(
+        "resize",
+        function () {
+            if (window.innerWidth >= 1000) {
+                closeMenu();
+            }
+        }
+    );
 }
 
+function closesMenu(clickable) {
+    clickable.addEventListener("click", closeMenu);
+}
+
+function closeMenu() {
+    const menuNav = document.getElementById("menuNav");
+    const toggleBtn = document.getElementById("toggleBtn");
+    const logoBtn = document.getElementById("logoBtn");
+
+    if (menuNav.classList.contains("menu-active")) {
+        menuNav.classList.remove("menu-active");
+        toggleBtn.classList.remove("hidden");
+        logoBtn.classList.remove("hidden");
+        document.body.classList.remove("no-scroll");
+    }
+}
+
+// Invoked from HTML
+
 function toggleMenu() {
-    const nav = document.querySelector(".menu-nav");
-    nav.classList.toggle("menu-active");
+    const menuNav = document.getElementById("menuNav");
+    menuNav.classList.toggle("menu-active");
+
+    const toggleBtn = document.getElementById("toggleBtn");
+    toggleBtn.classList.toggle("hidden");
+
+    const logoBtn = document.getElementById("logoBtn");
+    logoBtn.classList.toggle("hidden");
+
+    document.body.classList.toggle("no-scroll", menuNav.classList.contains("menu-active"));
 }
 
 function copyToClipboard(event, text) {
