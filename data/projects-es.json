@@ -1,0 +1,350 @@
+{
+    "projects": [
+        {
+            "title": "Meeni ERP",
+            "description": "Software de gestión empresarial que administra el stock, realiza cotizaciones, registra movimientos, y lleva la contabilidad.",
+            "technologies_ids": [
+                "dotnetImg",
+                "csImg",
+                "htmlImg",
+                "cssImg",
+                "jsImg",
+                "mssqlImg",
+                "gitImg"
+            ],
+            "source_code": "https://github.com/mrmalvicino/meeni-erp",
+            "live_demo": "https://meenierp.somee.com",
+            "video_url": null,
+            "mockup_id": null
+        },
+        {
+            "title": "Ecommerce Net",
+            "description": "Comercio electrónico que incluye gestión de productos, carrito de compra, roles de usuario y seguimiento de pedidos.",
+            "technologies_ids": [
+                "dotnetImg",
+                "csImg",
+                "bootstrapImg",
+                "jsImg",
+                "mssqlImg",
+                "gitImg"
+            ],
+            "source_code": "https://github.com/mrmalvicino/ecommerce-net",
+            "live_demo": "https://ecommercenet.somee.com",
+            "video_url": "https://www.youtube-nocookie.com/embed/H7AISursM2M",
+            "mockup_id": null
+        },
+        {
+            "title": "BancAr",
+            "description": "Home Banking para realizar operaciones bancarias y gestionar clientes, cuentas, préstamos y transferencias.",
+            "technologies_ids": [
+                "javaImg",
+                "jsImg",
+                "tailwindImg",
+                "mysqlImg",
+                "gitImg"
+            ],
+            "source_code": "https://github.com/mrmalvicino/bancar",
+            "live_demo": null,
+            "video_url": "https://www.youtube-nocookie.com/embed/D8P1URMdCHU",
+            "mockup_id": null
+        },
+        {
+            "title": "DSP Package",
+            "description": "Proporciona un conjunto de herramientas para facilitar la generación, manipulación y visualización de señales, así como la aplicación de filtros.",
+            "technologies_ids": [
+                "pythonImg",
+                "gitImg"
+            ],
+            "source_code": "https://github.com/mrmalvicino/dsp-package",
+            "live_demo": null,
+            "video_url": null,
+            "mockup_id": null
+        },
+        {
+            "title": "STUS Calculator",
+            "description": "Calculadora gráfica que aproxima funciones periódicas calculando su proyección ortogonal sobre un espacio vectorial de polinomios trigonométricos.",
+            "technologies_ids": [
+                "pythonImg",
+                "gitImg"
+            ],
+            "source_code": "https://github.com/mrmalvicino/stus-calculator",
+            "live_demo": null,
+            "video_url": null,
+            "mockup_id": "stusImg"
+        },
+        {
+            "title": "Plan de investigación ANC",
+            "description": "Plan de investigación para evaluación subjetiva de la cancelación activa de ruido en auriculares mediante un análisis estadístico hecho con el módulo SciPy.",
+            "technologies_ids": [
+                "pythonImg",
+                "gitImg"
+            ],
+            "source_code": "https://github.com/mrmalvicino/anc-research-plan",
+            "live_demo": null,
+            "video_url": null,
+            "mockup_id": "ancImg"
+        },
+        {
+            "title": "Dugun Auto Clicker",
+            "description": "Software de macro automatización del mouse que permite a los usuarios crear secuencias de acciones del mouse con posición y duración.",
+            "technologies_ids": [
+                "cppImg",
+                "gitImg"
+            ],
+            "source_code": "https://github.com/mrmalvicino/dugun-auto-clicker",
+            "live_demo": null,
+            "video_url": null,
+            "mockup_id": "dugunImg"
+        },
+        {
+            "title": "Binary Calculator",
+            "description": "Script que convierte números entre diferentes bases numéricas utilizando punteros y asignación de memoria dinámica.",
+            "technologies_ids": [
+                "cppImg",
+                "gitImg"
+            ],
+            "source_code": "https://github.com/mrmalvicino/binary-calculator",
+            "live_demo": null,
+            "video_url": null,
+            "mockup_id": "binaryImg"
+        },
+        {
+            "title": "Baluma ERP",
+            "description": "Software de gestión para automatizar el stock de los productos registrando compras y ventas.",
+            "technologies_ids": [
+                "cppImg",
+                "gitImg"
+            ],
+            "source_code": "https://github.com/mrmalvicino/baluma-erp",
+            "live_demo": null,
+            "video_url": null,
+            "mockup_id": "balumaImg"
+        },
+        {
+            "title": "Irwin's Revenge",
+            "description": "Juego de dados para dos jugadores con interfaz de terminal, en el que hay que recolectar estatuillas y formar combinaciones de dados para sumar puntos.",
+            "technologies_ids": [
+                "cppImg",
+                "gitImg"
+            ],
+            "source_code": "https://github.com/mrmalvicino/irwins-revenge",
+            "live_demo": null,
+            "video_url": null,
+            "mockup_id": "irwinImg"
+        },
+        {
+            "title": "Controlador LED Arduino",
+            "description": "Algoritmos de efectos de luz LED controlados por una botonera mediante Arduino.",
+            "technologies_ids": [
+                "cppImg",
+                "gitImg"
+            ],
+            "source_code": "https://github.com/mrmalvicino/arduino",
+            "live_demo": null,
+            "video_url": null,
+            "mockup_id": "arduinoImg"
+        },
+        {
+            "title": "Portafolio personal",
+            "description": "Sitio web responsivo para mostrar proyectos y logros personales.",
+            "technologies_ids": [
+                "htmlImg",
+                "cssImg",
+                "jsImg",
+                "gitImg"
+            ],
+            "source_code": "https://github.com/mrmalvicino/mrmalvicino.github.io",
+            "live_demo": "https://mrmalvicino.com",
+            "video_url": null,
+            "mockup_id": null
+        },
+        {
+            "title": "Notas de DSP",
+            "description": "Apuntes de procesamiento digital de señales para ingeniería de sonido.",
+            "technologies_ids": [
+                "latexImg",
+                "gitImg"
+            ],
+            "source_code": "https://github.com/mrmalvicino/dsp-notes",
+            "live_demo": null,
+            "video_url": null,
+            "mockup_id": "waveformImg"
+        },
+        {
+            "title": "Notas de Acústica",
+            "description": "Apuntes de acústica para ingeniería de sonido.",
+            "technologies_ids": [
+                "latexImg",
+                "gitImg"
+            ],
+            "source_code": "https://github.com/mrmalvicino/acoustics-notes",
+            "live_demo": null,
+            "video_url": null,
+            "mockup_id": "transmissibilityImg"
+        },
+        {
+            "title": "Notas de Electrónica",
+            "description": "Apuntes de electrónica para ingeniería de sonido.",
+            "technologies_ids": [
+                "latexImg",
+                "gitImg"
+            ],
+            "source_code": "https://github.com/mrmalvicino/electronics-notes",
+            "live_demo": null,
+            "video_url": null,
+            "mockup_id": "circuitImg"
+        },
+        {
+            "title": "Notas de Matemática",
+            "description": "Apuntes de matemática para ingeniería de sonido.",
+            "technologies_ids": [
+                "latexImg",
+                "gitImg"
+            ],
+            "source_code": "https://github.com/mrmalvicino/math-notes",
+            "live_demo": null,
+            "video_url": null,
+            "mockup_id": "mathImg"
+        },
+        {
+            "title": "Libro de Física",
+            "description": "Libro de física mecánica para ingeniería de sonido.",
+            "technologies_ids": [
+                "latexImg",
+                "gitImg"
+            ],
+            "source_code": "https://github.com/mrmalvicino/physics-book",
+            "live_demo": null,
+            "video_url": null,
+            "mockup_id": "newtonImg"
+        },
+        {
+            "title": "Guías de Física 1",
+            "description": "Guía de ejercicios para la asignatura Física 1 de Ingeniería de Sonido en la Untref.",
+            "technologies_ids": [
+                "latexImg",
+                "gitImg"
+            ],
+            "source_code": "https://github.com/RosarioEs/guias_fisica_1",
+            "live_demo": null,
+            "video_url": "https://www.youtube-nocookie.com/embed/2pfTixTPAOM",
+            "mockup_id": null
+        },
+        {
+            "title": "Resueltos de Física 1",
+            "description": "Ejercicios resueltos de la asignatura Física 1 de Ingeniería de Sonido en la Untref.",
+            "technologies_ids": [
+                "latexImg",
+                "overleafImg"
+            ],
+            "source_code": "https://www.overleaf.com/read/xpxqmxnstrjv#b007e9",
+            "live_demo": null,
+            "video_url": null,
+            "mockup_id": "planeImg"
+        },
+        {
+            "title": "Demostraciones de Física 2",
+            "description": "Apuntes de la asignatura Física 2 de Ingeniería del Sonido en la Untref.",
+            "technologies_ids": [
+                "latexImg",
+                "overleafImg"
+            ],
+            "source_code": "https://www.overleaf.com/read/xctdtdcmzzdw#407aad",
+            "live_demo": null,
+            "video_url": null,
+            "mockup_id": "einsteinImg"
+        }
+    ],
+    "images": [
+        {
+            "id": "stusImg",
+            "title": "STUS Calculator",
+            "alt": "Gráfico de una aproximación de Fourier a una onda cuadrada.",
+            "src": "https://github.com/mrmalvicino/stus-calculator/blob/main/images/dim_11.png?raw=true"
+        },
+        {
+            "id": "ancImg",
+            "title": "Plan de investigación sobre ANC",
+            "alt": "Gráfico de barras de un análisis estadístico Chi Cuadrado.",
+            "src": "https://github.com/mrmalvicino/anc-research-plan/blob/main/Latex/images/cross_Y2.png?raw=true"
+        },
+        {
+            "id": "dugunImg",
+            "title": "Dugun Auto Clicker",
+            "alt": "Fragmento de código de C++ con una clase que representa un timer.",
+            "src": "https://i.imgur.com/EwCy5hL.png"
+        },
+        {
+            "id": "binaryImg",
+            "title": "Binary Calculator",
+            "alt": "Fragmento de código de C++ con punteros y vectores dinámicos.",
+            "src": "https://i.imgur.com/PmQGGe1.png"
+        },
+        {
+            "id": "balumaImg",
+            "title": "Baluma ERP",
+            "alt": "Captura de la interfaz de terminal.",
+            "src": "https://github.com/mrmalvicino/baluma-erp/raw/main/images/screenshot-stock.png?raw=true"
+        },
+        {
+            "id": "irwinImg",
+            "title": "Irwin's Revenge",
+            "alt": "Fragmento de código de C++ con ciclos combinados.",
+            "src": "https://i.imgur.com/XiWHbjK.png"
+        },
+        {
+            "id": "arduinoImg",
+            "title": "Controlador LED Arduino",
+            "alt": "Fotografía de una mano operando sobre una placa Arduino.",
+            "src": "https://content.instructables.com/FNO/ZIKG/K6HPDHBU/FNOZIKGK6HPDHBU.jpg?auto=webp&crop=1.2%3A1&frame=1&width=420"
+        },
+        {
+            "id": "waveformImg",
+            "title": "Notas de DSP",
+            "alt": "Forma de onda de una señal.",
+            "src": "https://i.imgur.com/oWak3t1.png"
+        },
+        {
+            "id": "transmissibilityImg",
+            "title": "Notas de Acústica",
+            "alt": "Curva de transmisibilidad de vibraciones.",
+            "src": "https://i.imgur.com/1qQWsXr.png"
+        },
+        {
+            "id": "circuitImg",
+            "title": "Notas de Electrónica",
+            "alt": "Circuito RLC con fuente de corriente alterna.",
+            "src": "https://i.imgur.com/bXjmNw4.png"
+        },
+        {
+            "id": "mathImg",
+            "title": "Notas de Matemática",
+            "alt": "Gráfico de dos superficies",
+            "src": "https://i.imgur.com/2kqj9Xn.png"
+        },
+        {
+            "id": "newtonImg",
+            "title": "Libro de Física",
+            "alt": "Portada con una caricatura de Isaac Newton",
+            "src": "https://i.imgur.com/4WfJHib.png"
+        },
+        {
+            "id": "planeImg",
+            "title": "Ejercicios resueltos de Física 1",
+            "alt": "Gráfico de un plano inclinado con poleas.",
+            "src": "https://i.imgur.com/9WHXRsg.png"
+        },
+        {
+            "id": "einsteinImg",
+            "title": "Notas de Física 2",
+            "alt": "Portada con una caricatura de Albert Einstein.",
+            "src": "https://i.imgur.com/Sq4x0DT.png"
+        }
+    ],
+    "labels": [
+        {
+            "id": "projectsLbl",
+            "text_content": "Todos mis proyectos"
+        }
+    ]
+}

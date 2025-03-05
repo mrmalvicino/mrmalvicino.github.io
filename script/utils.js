@@ -1,9 +1,4 @@
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
-        defineMenuClosers();
-    }
-);
+// Menu related
 
 function defineMenuClosers() {
     const menuNav = document.getElementById("menuNav");
@@ -44,8 +39,6 @@ function closeMenu() {
     }
 }
 
-// Invoked from HTML
-
 function toggleMenu() {
     const menuNav = document.getElementById("menuNav");
     menuNav.classList.toggle("menu-active");
@@ -58,6 +51,8 @@ function toggleMenu() {
 
     document.body.classList.toggle("no-scroll", menuNav.classList.contains("menu-active"));
 }
+
+// Tools
 
 function copyToClipboard(event, text) {
     event.preventDefault();
@@ -74,8 +69,6 @@ function copyToClipboard(event, text) {
         console.error("Error: ", err);
     });
 }
-
-// URL fetching
 
 function getLang() {
     const urlParam = getQueryParameters("lang");
@@ -142,10 +135,10 @@ function bindUniqueLabels(data) {
     });
 }
 
-// Global
+// Available in other JS files globally
 
+window.defineMenuClosers = defineMenuClosers;
 window.getLang = getLang;
-window.getQueryParameters = getQueryParameters;
 window.bindCommonImages = bindCommonImages;
 window.bindCommonLabels = bindCommonLabels;
 window.bindUniqueImages = bindUniqueImages;

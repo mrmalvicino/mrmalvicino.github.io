@@ -1,4 +1,12 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+        fetchIndexData();
+        defineMenuClosers();
+    }
+);
+
+function fetchIndexData() {
     const lang = getLang();
     const indexData = `data/index-${lang}.json`;
     const commonData = `data/common-${lang}.json`;
@@ -13,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
             bindCommonElements(commonData);
         })
         .catch(error => console.error(`Error al cargar index-${lang}.json y common-${lang}.json:`, error));
-});
+}
 
 function renderPage(indexData) {
     renderMenu(indexData);
