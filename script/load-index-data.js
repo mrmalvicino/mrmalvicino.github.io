@@ -2,6 +2,7 @@ document.addEventListener(
     "DOMContentLoaded",
     function () {
         fetchIndexData();
+        fetchFooter();
         defineMenuClosers();
     }
 );

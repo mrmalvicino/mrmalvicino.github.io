@@ -91,6 +91,12 @@ function getQueryParameters(param) {
 
 // Data binding
 
+function fetchFooter() {
+    fetch("footer.html")
+        .then(response => response.text())
+        .then(data => document.getElementById("footer").innerHTML = data);
+}
+
 function bindCommonImages(commonData) {
     commonData.images.forEach(x => {
         const images = document.querySelectorAll(`[data-id="${x.id}"]`);
@@ -139,6 +145,7 @@ function bindUniqueLabels(data) {
 
 window.defineMenuClosers = defineMenuClosers;
 window.getLang = getLang;
+window.fetchFooter = fetchFooter;
 window.bindCommonImages = bindCommonImages;
 window.bindCommonLabels = bindCommonLabels;
 window.bindUniqueImages = bindUniqueImages;
