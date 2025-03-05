@@ -50,7 +50,7 @@
         },
         {
             "title": "DSP Package",
-            "description": "Proporciona un conjunto de herramientas para facilitar la generación, manipulación y visualización de señales, así como la aplicación de filtros.",
+            "description": "Proporciona un conjunto de herramientas para generar, manipular y visualizar señales.",
             "technologies_ids": [
                 "pythonImg",
                 "gitImg"
@@ -145,7 +145,7 @@
             "mockup_id": "arduinoImg"
         },
         {
-            "title": "Portafolio personal",
+            "title": "Portafolio",
             "description": "Sitio web responsivo para mostrar proyectos y logros personales.",
             "technologies_ids": [
                 "htmlImg",
@@ -244,7 +244,7 @@
         },
         {
             "title": "Demostraciones de Física 2",
-            "description": "Apuntes de la asignatura Física 2 de Ingeniería del Sonido en la Untref.",
+            "description": "Demostraciones de la asignatura Física 2 de Ingeniería del Sonido en la Untref.",
             "technologies_ids": [
                 "latexImg",
                 "overleafImg"
@@ -319,13 +319,13 @@
         {
             "id": "mathImg",
             "title": "Notas de Matemática",
-            "alt": "Gráfico de dos superficies",
+            "alt": "Gráfico de dos superficies.",
             "src": "https://i.imgur.com/2kqj9Xn.png"
         },
         {
             "id": "newtonImg",
             "title": "Libro de Física",
-            "alt": "Portada con una caricatura de Isaac Newton",
+            "alt": "Portada con una caricatura de Isaac Newton.",
             "src": "https://i.imgur.com/4WfJHib.png"
         },
         {
