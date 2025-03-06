@@ -105,14 +105,6 @@
             "certificate": "./assets/pdf/portuguese.pdf"
         }
     ],
-    "images": [
-        {
-            "id": "profileImg",
-            "title": "Maximiliano Malvicino",
-            "alt": "Maximiliano Malvicino profile photo.",
-            "src": "https://avatars.githubusercontent.com/u/46000191"
-        }
-    ],
     "labels": [
         {
             "id": "degreesLbl",

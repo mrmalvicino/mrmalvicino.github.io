@@ -1,6 +1,12 @@
 {
     "images": [
         {
+            "id": "profileImg",
+            "title": "Maximiliano Malvicino",
+            "alt": "Profile picture of Maximiliano Malvicino.",
+            "src": "https://avatars.githubusercontent.com/u/46000191"
+        },
+        {
             "id": "logoImg",
             "title": "M. R. Malvicino",
             "alt": "Maximiliano Malvicino's personal logo.",

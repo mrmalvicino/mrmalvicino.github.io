@@ -32,7 +32,6 @@ function renderIndexData(indexData) {
     renderBanner(indexData);
     renderStacks(indexData);
     renderCareers(indexData);
-    bindUniqueImages(indexData);
     bindUniqueLabels(indexData);
     bindTextboxes(indexData);
     bindButtons(indexData);
