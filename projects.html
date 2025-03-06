@@ -32,19 +32,43 @@
 
 <body class="open-sans-font light-gray-background">
 
-    <!-- Projects -->
+    <!-- Header -->
 
-    <section id="projectsSec"
-        class="height-100-vh menu-padding gap-40-px col-flex space-evenly almost-black-background">
-        <div class="content-width">
-            <h2 id="projectsLbl" class="pure-white-text"></h2>
-        </div>
-        <div id="projectsDiv" class="projects-container"></div>
-    </section>
+    <header>
+        <nav id="menuNav" class="menu-nav">
+            <a id="logoBtn" href="https://mrmalvicino.com" class="plain-link pure-white-text margin-vertical-auto">
+                <img data-id="logoImg" class="width-40-px" />
+                <span>&nbsp;</span>
+                <span>Maximiliano Malvicino</span>
+            </a>
+            <div>
+                <ul id="menuLst"></ul>
+                <button id="toggleBtn" class="toggle-button" onclick="toggleMenu()">
+                    <i class="bi bi-list"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main -->
+
+    <main>
+
+        <!-- Projects -->
+
+        <section id="projectsSec"
+            class="height-100-vh menu-padding gap-40-px col-flex space-evenly almost-black-background">
+            <div class="content-width">
+                <h2 id="projectsLbl" class="pure-white-text"></h2>
+            </div>
+            <div id="projectsDiv" class="projects-container"></div>
+        </section>
+    </main>
 
     <!-- Footer -->
 
-    <div id="footer"></div>
+    <footer id="footer" class="min-height-150-px padding-vertical-20-px align-content-center pale-black-background">
+    </footer>
 
     <!-- Scripts -->
 
