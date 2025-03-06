@@ -385,6 +385,10 @@
         {
             "id": "projectsLbl",
             "text_content": "Todos mis proyectos"
+        },
+        {
+            "id": "backLbl",
+            "text_content": "Volver al portafolio"
         }
     ]
 }
