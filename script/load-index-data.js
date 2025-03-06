@@ -3,6 +3,7 @@ document.addEventListener(
     function () {
         fetchIndexData();
         fetchFooter();
+        keepQueryParameters();
         defineMenuClosers();
     }
 );

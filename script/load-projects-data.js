@@ -3,6 +3,7 @@ document.addEventListener(
     function () {
         fetchProjectsData();
         fetchFooter();
+        keepQueryParameters();
     }
 );
 

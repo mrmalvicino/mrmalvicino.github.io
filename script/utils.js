@@ -89,6 +89,16 @@ function getQueryParameters(param) {
     return urlParams.get(param);
 }
 
+function keepQueryParameters() {
+    const params = window.location.search;
+
+    document.querySelectorAll("a").forEach(link => {
+        if (link.href.startsWith(window.location.origin) && !link.href.includes("?")) {
+            link.href += params;
+        }
+    });
+}
+
 // Data binding
 
 function fetchFooter() {
@@ -146,6 +156,7 @@ function bindUniqueLabels(data) {
 
 window.defineMenuClosers = defineMenuClosers;
 window.getLang = getLang;
+window.keepQueryParameters = keepQueryParameters;
 window.fetchFooter = fetchFooter;
 window.bindCommonImages = bindCommonImages;
 window.bindCommonLabels = bindCommonLabels;
