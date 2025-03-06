@@ -8,31 +8,27 @@ document.addEventListener(
 
 function fetchProjectsData() {
     const lang = getLang();
-    const projectsData = `data/projects-${lang}.json`;
-    const commonData = `data/common-${lang}.json`;
+    const projectsDataUrl = `data/projects-${lang}.json`;
+    const commonDataUrl = `data/common-${lang}.json`;
 
     Promise.all([
-        fetch(projectsData).then(response => response.json()),
-        fetch(commonData).then(response => response.json())
+        fetch(projectsDataUrl).then(response => response.json()),
+        fetch(commonDataUrl).then(response => response.json())
     ])
         .then(([projectsData, commonData]) => {
-            renderPage(projectsData);
-            bindProjectsElements(projectsData);
-            bindCommonElements(commonData);
+            renderProjectsData(projectsData);
+            renderCommonData(commonData);
         })
-        .catch(error => console.error(`Error al cargar projects-${lang}.json y common-${lang}.json:`, error));
+        .catch(error => console.error(`Error al cargar los archivos JSON:`, error));
 }
 
-function renderPage(projectsData) {
+function renderProjectsData(projectsData) {
     renderProjects(projectsData);
-}
-
-function bindProjectsElements(projectsData) {
     bindUniqueImages(projectsData);
     bindUniqueLabels(projectsData);
 }
 
-function bindCommonElements(commonData) {
+function renderCommonData(commonData) {
     bindCommonImages(commonData);
     bindCommonLabels(commonData);
 }

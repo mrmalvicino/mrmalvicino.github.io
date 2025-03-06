@@ -9,37 +9,35 @@ document.addEventListener(
 
 function fetchIndexData() {
     const lang = getLang();
-    const indexData = `data/index-${lang}.json`;
-    const commonData = `data/common-${lang}.json`;
+    const indexDataUrl = `data/index-${lang}.json`;
+    const commonDataUrl = `data/common-${lang}.json`;
+    const projectsDataUrl = `data/projects-${lang}.json`;
 
     Promise.all([
-        fetch(indexData).then(response => response.json()),
-        fetch(commonData).then(response => response.json())
+        fetch(indexDataUrl).then(response => response.json()),
+        fetch(commonDataUrl).then(response => response.json()),
+        fetch(projectsDataUrl).then(response => response.json())
     ])
-        .then(([indexData, commonData]) => {
-            renderPage(indexData);
-            bindIndexElements(indexData);
-            bindCommonElements(commonData);
+        .then(([indexData, commonData, projectsData]) => {
+            renderIndexData(indexData);
+            renderProjects(projectsData);
+            renderCommonData(commonData);
         })
-        .catch(error => console.error(`Error al cargar index-${lang}.json y common-${lang}.json:`, error));
+        .catch(error => console.error(`Error al cargar los archivos JSON:`, error));
 }
 
-function renderPage(indexData) {
+function renderIndexData(indexData) {
     renderMenu(indexData);
     renderBanner(indexData);
     renderStacks(indexData);
-    renderProjects(indexData);
     renderCareers(indexData);
-}
-
-function bindIndexElements(indexData) {
     bindUniqueImages(indexData);
     bindUniqueLabels(indexData);
     bindTextboxes(indexData);
     bindButtons(indexData);
 }
 
-function bindCommonElements(commonData) {
+function renderCommonData(commonData) {
     bindCommonImages(commonData);
     bindCommonLabels(commonData);
 }
@@ -108,11 +106,13 @@ function renderStacks(indexData) {
     });
 }
 
-function renderProjects(indexData) {
+function renderProjects(projectsData) {
+    const portfolioProjects = projectsData.projects.filter(x => x.shown_in_portfolio);
+
     const projects = document.getElementById("projectsDiv");
     projects.innerHTML = "";
 
-    indexData.projects.forEach(x => {
+    portfolioProjects.forEach(x => {
         const container = document.createElement("div");
         container.classList.add("project-card");
 

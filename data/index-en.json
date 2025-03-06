@@ -61,56 +61,6 @@
             ]
         }
     ],
-    "projects": [
-        {
-            "title": "Meeni ERP",
-            "description": "Business management software that manages stock, makes quotes, records transactions, and keeps the accounting.",
-            "technologies_ids": [
-                "dotnetImg",
-                "csImg",
-                "htmlImg",
-                "cssImg",
-                "jsImg",
-                "mssqlImg",
-                "gitImg"
-            ],
-            "source_code": "https://github.com/mrmalvicino/meeni-erp",
-            "live_demo": "https://meenierp.somee.com",
-            "video_url": null,
-            "mockup_id": null
-        },
-        {
-            "title": "Ecommerce Net",
-            "description": "Ecommerce that includes product management, shopping cart, user roles and order tracking.",
-            "technologies_ids": [
-                "dotnetImg",
-                "csImg",
-                "bootstrapImg",
-                "jsImg",
-                "mssqlImg",
-                "gitImg"
-            ],
-            "source_code": "https://github.com/mrmalvicino/ecommerce-net",
-            "live_demo": "https://ecommercenet.somee.com",
-            "video_url": "https://www.youtube-nocookie.com/embed/H7AISursM2M",
-            "mockup_id": null
-        },
-        {
-            "title": "BancAr",
-            "description": "Home Banking to carry out banking operations and manage clients, accounts, loans and transfers.",
-            "technologies_ids": [
-                "javaImg",
-                "jsImg",
-                "tailwindImg",
-                "mysqlImg",
-                "gitImg"
-            ],
-            "source_code": "https://github.com/mrmalvicino/bancar",
-            "live_demo": null,
-            "video_url": "https://www.youtube-nocookie.com/embed/D8P1URMdCHU",
-            "mockup_id": null
-        }
-    ],
     "careers": [
         {
             "institution_id": "untrefImg",

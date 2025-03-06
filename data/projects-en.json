@@ -15,7 +15,9 @@
             "source_code": "https://github.com/mrmalvicino/meeni-erp",
             "live_demo": "https://meenierp.somee.com",
             "video_url": null,
-            "mockup_id": null
+            "mockup_id": null,
+            "shown_in_portfolio": true,
+            "shown_in_cv": true
         },
         {
             "title": "Ecommerce Net",
@@ -31,7 +33,9 @@
             "source_code": "https://github.com/mrmalvicino/ecommerce-net",
             "live_demo": "https://ecommercenet.somee.com",
             "video_url": "https://www.youtube-nocookie.com/embed/H7AISursM2M",
-            "mockup_id": null
+            "mockup_id": null,
+            "shown_in_portfolio": true,
+            "shown_in_cv": true
         },
         {
             "title": "BancAr",
@@ -46,7 +50,9 @@
             "source_code": "https://github.com/mrmalvicino/bancar",
             "live_demo": null,
             "video_url": "https://www.youtube-nocookie.com/embed/D8P1URMdCHU",
-            "mockup_id": null
+            "mockup_id": null,
+            "shown_in_portfolio": true,
+            "shown_in_cv": false
         },
         {
             "title": "DSP Package",
@@ -58,7 +64,9 @@
             "source_code": "https://github.com/mrmalvicino/dsp-package",
             "live_demo": null,
             "video_url": null,
-            "mockup_id": null
+            "mockup_id": null,
+            "shown_in_portfolio": false,
+            "shown_in_cv": false
         },
         {
             "title": "STUS Calculator",
@@ -70,7 +78,9 @@
             "source_code": "https://github.com/mrmalvicino/stus-calculator",
             "live_demo": null,
             "video_url": null,
-            "mockup_id": "stusImg"
+            "mockup_id": "stusImg",
+            "shown_in_portfolio": false,
+            "shown_in_cv": false
         },
         {
             "title": "ANC Research Plan",
@@ -82,7 +92,9 @@
             "source_code": "https://github.com/mrmalvicino/anc-research-plan",
             "live_demo": null,
             "video_url": null,
-            "mockup_id": "ancImg"
+            "mockup_id": "ancImg",
+            "shown_in_portfolio": false,
+            "shown_in_cv": false
         },
         {
             "title": "Dugun Auto Clicker",
@@ -94,7 +106,9 @@
             "source_code": "https://github.com/mrmalvicino/dugun-auto-clicker",
             "live_demo": null,
             "video_url": null,
-            "mockup_id": "dugunImg"
+            "mockup_id": "dugunImg",
+            "shown_in_portfolio": false,
+            "shown_in_cv": false
         },
         {
             "title": "Binary Calculator",
@@ -106,7 +120,9 @@
             "source_code": "https://github.com/mrmalvicino/binary-calculator",
             "live_demo": null,
             "video_url": null,
-            "mockup_id": "binaryImg"
+            "mockup_id": "binaryImg",
+            "shown_in_portfolio": false,
+            "shown_in_cv": false
         },
         {
             "title": "Baluma ERP",
@@ -118,7 +134,9 @@
             "source_code": "https://github.com/mrmalvicino/baluma-erp",
             "live_demo": null,
             "video_url": null,
-            "mockup_id": "balumaImg"
+            "mockup_id": "balumaImg",
+            "shown_in_portfolio": false,
+            "shown_in_cv": false
         },
         {
             "title": "Irwin's Revenge",
@@ -130,7 +148,9 @@
             "source_code": "https://github.com/mrmalvicino/irwins-revenge",
             "live_demo": null,
             "video_url": null,
-            "mockup_id": "irwinImg"
+            "mockup_id": "irwinImg",
+            "shown_in_portfolio": false,
+            "shown_in_cv": false
         },
         {
             "title": "Arduino LED Controller",
@@ -142,7 +162,9 @@
             "source_code": "https://github.com/mrmalvicino/arduino",
             "live_demo": null,
             "video_url": null,
-            "mockup_id": "arduinoImg"
+            "mockup_id": "arduinoImg",
+            "shown_in_portfolio": false,
+            "shown_in_cv": false
         },
         {
             "title": "Portfolio",
@@ -156,7 +178,9 @@
             "source_code": "https://github.com/mrmalvicino/mrmalvicino.github.io",
             "live_demo": "https://mrmalvicino.com",
             "video_url": null,
-            "mockup_id": null
+            "mockup_id": null,
+            "shown_in_portfolio": false,
+            "shown_in_cv": false
         },
         {
             "title": "DSP Notes",
@@ -168,7 +192,9 @@
             "source_code": "https://github.com/mrmalvicino/dsp-notes",
             "live_demo": null,
             "video_url": null,
-            "mockup_id": "waveformImg"
+            "mockup_id": "waveformImg",
+            "shown_in_portfolio": false,
+            "shown_in_cv": false
         },
         {
             "title": "Acoustics Notes",
@@ -180,7 +206,9 @@
             "source_code": "https://github.com/mrmalvicino/acoustics-notes",
             "live_demo": null,
             "video_url": null,
-            "mockup_id": "transmissibilityImg"
+            "mockup_id": "transmissibilityImg",
+            "shown_in_portfolio": false,
+            "shown_in_cv": false
         },
         {
             "title": "Electronics Notes",
@@ -192,7 +220,9 @@
             "source_code": "https://github.com/mrmalvicino/electronics-notes",
             "live_demo": null,
             "video_url": null,
-            "mockup_id": "circuitImg"
+            "mockup_id": "circuitImg",
+            "shown_in_portfolio": false,
+            "shown_in_cv": false
         },
         {
             "title": "Math Notes",
@@ -204,7 +234,9 @@
             "source_code": "https://github.com/mrmalvicino/math-notes",
             "live_demo": null,
             "video_url": null,
-            "mockup_id": "mathImg"
+            "mockup_id": "mathImg",
+            "shown_in_portfolio": false,
+            "shown_in_cv": false
         },
         {
             "title": "Physics Book",
@@ -216,7 +248,9 @@
             "source_code": "https://github.com/mrmalvicino/physics-book",
             "live_demo": null,
             "video_url": null,
-            "mockup_id": "newtonImg"
+            "mockup_id": "newtonImg",
+            "shown_in_portfolio": false,
+            "shown_in_cv": false
         },
         {
             "title": "Physics 1 Exercises",
@@ -228,7 +262,9 @@
             "source_code": "https://github.com/RosarioEs/guias_fisica_1",
             "live_demo": null,
             "video_url": "https://www.youtube-nocookie.com/embed/2pfTixTPAOM",
-            "mockup_id": null
+            "mockup_id": null,
+            "shown_in_portfolio": false,
+            "shown_in_cv": false
         },
         {
             "title": "Physics 1 Solved",
@@ -240,7 +276,9 @@
             "source_code": "https://www.overleaf.com/read/xpxqmxnstrjv#b007e9",
             "live_demo": null,
             "video_url": null,
-            "mockup_id": "planeImg"
+            "mockup_id": "planeImg",
+            "shown_in_portfolio": false,
+            "shown_in_cv": false
         },
         {
             "title": "Physics 2 Demonstrations",
@@ -252,7 +290,9 @@
             "source_code": "https://www.overleaf.com/read/xctdtdcmzzdw#407aad",
             "live_demo": null,
             "video_url": null,
-            "mockup_id": "einsteinImg"
+            "mockup_id": "einsteinImg",
+            "shown_in_portfolio": false,
+            "shown_in_cv": false
         }
     ],
     "images": [
@@ -344,7 +384,7 @@
     "labels": [
         {
             "id": "projectsLbl",
-            "text_content": "All my projects"
+            "text_content": "All My Projects"
         }
     ]
 }
