@@ -2,16 +2,29 @@
     margin: 10px;
 }
 
-.margin-10-0-px {
-    margin: 10px 0px;
+.margin-vertical-10-px {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-.margin-20-0-px {
-    margin: 20px 0px;
+.margin-vertical-20-px {
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-.margin-0-10-px {
-    margin: 0px 10px;
+.margin-vertical-auto {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.margin-horizontal-10-px {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.margin-horizontal-auto {
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .margin-top-10-px {
@@ -26,20 +39,10 @@
     margin-bottom: 20px;
 }
 
-.margin-left-auto {
-    margin-left: auto;
-}
-
 .margin-bottom-auto {
     margin-bottom: auto;
 }
 
-.margin-vertical-auto {
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
-.margin-horizontal-auto {
-    margin-right: auto;
+.margin-left-auto {
     margin-left: auto;
 }

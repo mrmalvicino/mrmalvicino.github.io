@@ -96,7 +96,7 @@ function renderStacks(indexData) {
         x.items.forEach(y => {
             const li = document.createElement("li");
             li.textContent = y;
-            li.classList.add("margin-10-0-px");
+            li.classList.add("margin-vertical-10-px");
             ul.appendChild(li);
         });
 
@@ -238,7 +238,7 @@ function renderCareers(indexData) {
         const institution = document.createElement("td");
 
         const institutionDiv = document.createElement("div");
-        institutionDiv.classList.add("height-100-pct", "row-flex", "justify-center", "margin-0-10-px");
+        institutionDiv.classList.add("height-100-pct", "row-flex", "justify-center", "margin-horizontal-10-px");
 
         const img = document.createElement("img");
         img.setAttribute("data-id", x.institution_id);
