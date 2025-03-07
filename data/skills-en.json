@@ -1,0 +1,42 @@
+{
+    "banner_items": [
+        "dotnetImg",
+        "csImg",
+        "htmlImg",
+        "cssImg",
+        "jsImg",
+        "mssqlImg"
+    ],
+    "stacks": [
+        {
+            "id": "mainStack",
+            "title": "Main Stack",
+            "items": [
+                ".Net Framework, ASP.NET, .NET Core",
+                "C# (backend)",
+                "HTML5, CSS3 and JavaScript (frontend)",
+                "Database: SQL Server and ADO.NET"
+            ]
+        },
+        {
+            "id": "secondaryStack",
+            "title": "Secondary Stack",
+            "items": [
+                "JSTL library",
+                "Java (backend)",
+                "Bootstrap or Tailwind (frontend)",
+                "Database: MySQL and JDBC"
+            ]
+        },
+        {
+            "id": "otherSkills",
+            "title": "Other technologies",
+            "items": [
+                "Version Control: Git, GitHub",
+                "Technical Reports: LaTex",
+                "DSP: C++, Python",
+                "DevOps: GitLab, YML"
+            ]
+        }
+    ]
+}

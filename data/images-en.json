@@ -1,5 +1,5 @@
 {
-    "images": [
+    "common_images": [
         {
             "id": "profileImg",
             "title": "Maximiliano Malvicino",
@@ -11,7 +11,9 @@
             "title": "M. R. Malvicino",
             "alt": "Maximiliano Malvicino's personal logo.",
             "src": "./assets/images/logo.png"
-        },
+        }
+    ],
+    "technologies_images": [
         {
             "id": "cppImg",
             "title": "C++",
@@ -101,13 +103,9 @@
             "title": "Overleaf",
             "alt": "Overleaf Logo.",
             "src": "https://images.ctfassets.net/nrgyaltdicpt/wwNSIPYEZa2OCOsuGweSY/0142fa5bce2f40f4168bad08acc8a52d/Sticker_square_colour_light_bg.png"
-        },
-        {
-            "id": "wipImg",
-            "title": "WIP",
-            "alt": "Work In Progress sign.",
-            "src": "https://t3.ftcdn.net/jpg/02/33/17/50/360_F_233175040_hwqRyiZlQkXimeLz2AIZhajyfiU9El1m.jpg"
-        },
+        }
+    ],
+    "institutions_images": [
         {
             "id": "untrefImg",
             "title": "Untref",
@@ -133,14 +131,96 @@
             "src": "./assets/images/cambridge.png"
         }
     ],
-    "labels": [
+    "projects_images": [
         {
-            "id": "sourceCodeLbl",
-            "text_content": "Code"
+            "id": "wipImg",
+            "title": "WIP",
+            "alt": "Work In Progress sign.",
+            "src": "https://t3.ftcdn.net/jpg/02/33/17/50/360_F_233175040_hwqRyiZlQkXimeLz2AIZhajyfiU9El1m.jpg"
         },
         {
-            "id": "openOnlineLbl",
-            "text_content": "Open"
+            "id": "stusImg",
+            "title": "STUS Calculator",
+            "alt": "Graph of a Fourier approximation to a square wave.",
+            "src": "https://github.com/mrmalvicino/stus-calculator/blob/main/images/dim_11.png?raw=true"
+        },
+        {
+            "id": "ancImg",
+            "title": "ANC Research Plan",
+            "alt": "Bar graph of a Chi Square statistical analysis.",
+            "src": "https://github.com/mrmalvicino/anc-research-plan/blob/main/Latex/images/cross_Y2.png?raw=true"
+        },
+        {
+            "id": "dugunImg",
+            "title": "Dugun Auto Clicker",
+            "alt": "C++ code snippet with a class representing a timer.",
+            "src": "https://i.imgur.com/EwCy5hL.png"
+        },
+        {
+            "id": "binaryImg",
+            "title": "Binary Calculator",
+            "alt": "C++ code snippet with dynamic pointers and arrays.",
+            "src": "https://i.imgur.com/PmQGGe1.png"
+        },
+        {
+            "id": "balumaImg",
+            "title": "Baluma ERP",
+            "alt": "Terminal interface capture.",
+            "src": "https://github.com/mrmalvicino/baluma-erp/raw/main/images/screenshot-stock.png?raw=true"
+        },
+        {
+            "id": "irwinImg",
+            "title": "Irwin's Revenge",
+            "alt": "C++ code snippet with combined loops.",
+            "src": "https://i.imgur.com/XiWHbjK.png"
+        },
+        {
+            "id": "arduinoImg",
+            "title": "Arduino LED Controller",
+            "alt": "Photograph of a hand operating on an Arduino board.",
+            "src": "https://content.instructables.com/FNO/ZIKG/K6HPDHBU/FNOZIKGK6HPDHBU.jpg?auto=webp&crop=1.2%3A1&frame=1&width=420"
+        },
+        {
+            "id": "waveformImg",
+            "title": "DSP Notes",
+            "alt": "Waveform of a signal.",
+            "src": "https://i.imgur.com/oWak3t1.png"
+        },
+        {
+            "id": "transmissibilityImg",
+            "title": "Acoustics Notes",
+            "alt": "Vibration transmissibility curve.",
+            "src": "https://i.imgur.com/1qQWsXr.png"
+        },
+        {
+            "id": "circuitImg",
+            "title": "Electronics Notes",
+            "alt": "RLC circuit with alternating current source.",
+            "src": "https://i.imgur.com/bXjmNw4.png"
+        },
+        {
+            "id": "mathImg",
+            "title": "Math Notes",
+            "alt": "Two-surface graph.",
+            "src": "https://i.imgur.com/2kqj9Xn.png"
+        },
+        {
+            "id": "newtonImg",
+            "title": "Physics Book",
+            "alt": "Cover with a caricature of Isaac Newton",
+            "src": "https://i.imgur.com/4WfJHib.png"
+        },
+        {
+            "id": "planeImg",
+            "title": "Physics 1 Solved",
+            "alt": "Graph of an inclined plane with pulleys.",
+            "src": "https://i.imgur.com/9WHXRsg.png"
+        },
+        {
+            "id": "einsteinImg",
+            "title": "Physics 2 Demonstrations",
+            "alt": "Cover with a caricature of Albert Einstein.",
+            "src": "https://i.imgur.com/Sq4x0DT.png"
         }
     ]
 }

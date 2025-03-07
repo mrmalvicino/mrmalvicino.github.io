@@ -1,0 +1,76 @@
+{
+    "common_labels": [
+        {
+            "id": "sourceCodeLbl",
+            "text_content": "Code"
+        },
+        {
+            "id": "openOnlineLbl",
+            "text_content": "Open"
+        },
+        {
+            "id": "degreesLbl",
+            "text_content": "JR .NET Developer"
+        },
+        {
+            "id": "presentationLbl",
+            "text_content": "Hi! I'm Max, and I'm passionate about acoustics and programming. Until now, my work experience has been mostly focused on teaching. I'm currently looking for opportunities in the IT field as a software developer."
+        }
+    ],
+    "index_page_labels": [
+        {
+            "id": "resumeLbl",
+            "text_content": "Resume"
+        },
+        {
+            "id": "skillsLbl",
+            "text_content": "Skills"
+        },
+        {
+            "id": "projectsLbl",
+            "text_content": "Projects"
+        },
+        {
+            "id": "allProjectsLbl",
+            "text_content": "All projects"
+        },
+        {
+            "id": "educationLbl",
+            "text_content": "Education"
+        },
+        {
+            "id": "contactTitleLbl",
+            "text_content": "Get in touch"
+        },
+        {
+            "id": "contactDescriptionLbl",
+            "text_content": "If you have any questions, proposals, or are looking for a developer to join your team, feel free to contact me. I am always open to new opportunities, whether it is a freelance project or an employment position."
+        },
+        {
+            "id": "nameLbl",
+            "text_content": "Name"
+        },
+        {
+            "id": "emailLbl",
+            "text_content": "Email"
+        },
+        {
+            "id": "phoneLbl",
+            "text_content": "Phone"
+        },
+        {
+            "id": "messageLbl",
+            "text_content": "Message"
+        }
+    ],
+    "projects_page_labels": [
+        {
+            "id": "projectsLbl",
+            "text_content": "All My Projects"
+        },
+        {
+            "id": "backLbl",
+            "text_content": "Portfolio"
+        }
+    ]
+}

@@ -1,0 +1,46 @@
+{
+    "studies": [
+        {
+            "institution_id": "untrefImg",
+            "title": "Ingeniería de Sonido (60%)",
+            "study_plan": "https://untref.edu.ar/carrera/ingenieria-de-sonido",
+            "certificate": null
+        },
+        {
+            "institution_id": "utnImg",
+            "title": "Tecnicatura Universitaria en Programación",
+            "study_plan": "https://www.frgp.utn.edu.ar/carreras/tup_tuss",
+            "certificate": "./assets/pdf/tup.pdf"
+        },
+        {
+            "institution_id": "educacionitImg",
+            "title": "Web API .NET Core",
+            "study_plan": "./assets/pdf/web-api-plan.pdf",
+            "certificate": null
+        },
+        {
+            "institution_id": "educacionitImg",
+            "title": "Entity Framework & LINQ",
+            "study_plan": "./assets/pdf/linq-entity-plan.pdf",
+            "certificate": null
+        },
+        {
+            "institution_id": "educacionitImg",
+            "title": "Programación Web .NET Core",
+            "study_plan": "./assets/pdf/net-core-plan.pdf",
+            "certificate": null
+        },
+        {
+            "institution_id": "cambridgeImg",
+            "title": "First Certificate in English (CEFR B2)",
+            "study_plan": null,
+            "certificate": "./assets/pdf/fce.pdf"
+        },
+        {
+            "institution_id": "utnImg",
+            "title": "Portugués Nivel 4",
+            "study_plan": null,
+            "certificate": "./assets/pdf/portuguese.pdf"
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+    "menu_items": [
+        {
+            "label": "Sobre mi",
+            "href": "#heroSec"
+        },
+        {
+            "label": "Habilidades",
+            "href": "#skillsSec"
+        },
+        {
+            "label": "Proyectos",
+            "href": "#projectsSec"
+        },
+        {
+            "label": "Estudios",
+            "href": "#educationSec"
+        },
+        {
+            "label": "Contacto",
+            "href": "#contactSec"
+        }
+    ]
+}

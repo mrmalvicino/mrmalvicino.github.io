@@ -1,0 +1,20 @@
+{
+    "index_page_textboxes": [
+        {
+            "id": "nameTxt",
+            "placeholder": "Carlos Berlinguieri"
+        },
+        {
+            "id": "emailTxt",
+            "placeholder": "your@email.com"
+        },
+        {
+            "id": "phoneTxt",
+            "placeholder": "+54 (911) 1234-5678"
+        },
+        {
+            "id": "messageTxt",
+            "placeholder": "¡Hi! I am contacting you to..."
+        }
+    ]
+}

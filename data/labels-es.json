@@ -1,0 +1,76 @@
+{
+    "common_labels": [
+        {
+            "id": "sourceCodeLbl",
+            "text_content": "Código"
+        },
+        {
+            "id": "openOnlineLbl",
+            "text_content": "Abrir"
+        },
+        {
+            "id": "degreesLbl",
+            "text_content": "Desarrollador .NET JR"
+        },
+        {
+            "id": "presentationLbl",
+            "text_content": "¡Hola! Soy Maxi, y me apasiona la acústica y la programación. Hasta ahora mi experiencia laboral se centró mayoritariamente en la docencia. Actualmente estoy buscando oportunidades en el campo de las TI como desarrollador de software."
+        }
+    ],
+    "index_page_labels": [
+        {
+            "id": "resumeLbl",
+            "text_content": "Currículum"
+        },
+        {
+            "id": "skillsLbl",
+            "text_content": "Habilidades"
+        },
+        {
+            "id": "projectsLbl",
+            "text_content": "Proyectos"
+        },
+        {
+            "id": "allProjectsLbl",
+            "text_content": "Ver todos"
+        },
+        {
+            "id": "educationLbl",
+            "text_content": "Estudios"
+        },
+        {
+            "id": "contactTitleLbl",
+            "text_content": "Contactame"
+        },
+        {
+            "id": "contactDescriptionLbl",
+            "text_content": "Si tenés alguna consulta, propuesta o estás buscando un desarrollador para tu equipo, no dudes en contactarme. Estoy siempre abierto a nuevas oportunidades, ya sea un proyecto freelance o un empleo en relación de dependencia."
+        },
+        {
+            "id": "nameLbl",
+            "text_content": "Nombre"
+        },
+        {
+            "id": "emailLbl",
+            "text_content": "Email"
+        },
+        {
+            "id": "phoneLbl",
+            "text_content": "Teléfono"
+        },
+        {
+            "id": "messageLbl",
+            "text_content": "Mensaje"
+        }
+    ],
+    "projects_page_labels": [
+        {
+            "id": "projectsLbl",
+            "text_content": "Todos mis proyectos"
+        },
+        {
+            "id": "backLbl",
+            "text_content": "Portafolio"
+        }
+    ]
+}

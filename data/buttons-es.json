@@ -1,0 +1,17 @@
+{
+    "index_page_buttons": {
+        "a_items": [
+            {
+                "id": "resumeBtn",
+                "href": "./../assets/cv/malvicino-es.pdf",
+                "download": "malvicino-es.pdf"
+            }
+        ],
+        "button_items": [
+            {
+                "id": "submitBtn",
+                "text_content": "Enviar"
+            }
+        ]
+    }
+}
