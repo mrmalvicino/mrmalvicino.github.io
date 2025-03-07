@@ -1,52 +1,8 @@
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
-        fetchIndexData();
-        fetchFooter();
-        keepQueryParameters();
-        defineMenuClosers();
-    }
-);
-
-function fetchIndexData() {
-    const lang = getLang();
-    const indexDataUrl = `data/index-${lang}.json`;
-    const commonDataUrl = `data/common-${lang}.json`;
-    const projectsDataUrl = `data/projects-${lang}.json`;
-
-    Promise.all([
-        fetch(indexDataUrl).then(response => response.json()),
-        fetch(commonDataUrl).then(response => response.json()),
-        fetch(projectsDataUrl).then(response => response.json())
-    ])
-        .then(([indexData, commonData, projectsData]) => {
-            renderIndexData(indexData);
-            renderProjects(projectsData);
-            renderCommonData(commonData);
-        })
-        .catch(error => console.error(`Error al cargar los archivos JSON:`, error));
-}
-
-function renderIndexData(indexData) {
-    renderMenu(indexData);
-    renderBanner(indexData);
-    renderStacks(indexData);
-    renderCareers(indexData);
-    bindUniqueLabels(indexData);
-    bindTextboxes(indexData);
-    bindButtons(indexData);
-}
-
-function renderCommonData(commonData) {
-    bindCommonImages(commonData);
-    bindCommonLabels(commonData);
-}
-
-function renderMenu(indexData) {
+function renderMenu(menuItemsData) {
     const ul = document.getElementById("menuLst");
     ul.innerHTML = "";
 
-    indexData.menu_items.forEach(x => {
+    menuItemsData.forEach(x => {
         const li = document.createElement("li");
         const a = document.createElement("a");
 
@@ -59,7 +15,7 @@ function renderMenu(indexData) {
     });
 }
 
-function renderBanner(indexData) {
+function renderBanner(bannerItemsData) {
     const banner = document.getElementById("bannerDiv");
     banner.innerHTML = "";
 
@@ -67,7 +23,7 @@ function renderBanner(indexData) {
         const slideDiv = document.createElement("div");
         slideDiv.classList.add("banner-slide");
 
-        indexData.banner_ids.forEach(x => {
+        bannerItemsData.forEach(x => {
             const img = document.createElement("img");
             img.setAttribute("data-id", x);
             img.classList.add("width-100-px", "margin-10-px");
@@ -78,11 +34,11 @@ function renderBanner(indexData) {
     }
 }
 
-function renderStacks(indexData) {
+function renderStacks(stacksData) {
     const stacks = document.getElementById("stacksDiv");
     stacks.innerHTML = "";
 
-    indexData.stacks.forEach(x => {
+    stacksData.forEach(x => {
         const div = document.createElement("div");
         div.classList.add("stack-card");
 
@@ -107,12 +63,10 @@ function renderStacks(indexData) {
 }
 
 function renderProjects(projectsData) {
-    const portfolioProjects = projectsData.projects.filter(x => x.shown_in_portfolio);
-
     const projects = document.getElementById("projectsDiv");
     projects.innerHTML = "";
 
-    portfolioProjects.forEach(x => {
+    projectsData.forEach(x => {
         const container = document.createElement("div");
         container.classList.add("project-card");
 
@@ -132,7 +86,7 @@ function renderProjects(projectsData) {
         }
         else if (x.mockup_id) {
             const img = document.createElement("img");
-            img.id = x.mockup_id;
+            img.setAttribute("data-id", x.mockup_id);
             topDiv.appendChild(img);
         }
         else {
@@ -227,11 +181,11 @@ function renderProjects(projectsData) {
     });
 }
 
-function renderCareers(indexData) {
-    const tbody = document.getElementById("careersTab");
+function renderStudies(studiesData) {
+    const tbody = document.getElementById("studiesTab");
     tbody.innerHTML = "";
 
-    indexData.careers.forEach(x => {
+    studiesData.forEach(x => {
         const tr = document.createElement("tr");
 
         // Institución
@@ -297,26 +251,10 @@ function renderCareers(indexData) {
     });
 }
 
-function bindTextboxes(indexData) {
-    indexData.textboxes.forEach(x => {
-        const textbox = document.getElementById(x.id);
+// Available in other JS files globally
 
-        if (textbox) {
-            textbox.placeholder = x.placeholder;
-        }
-    });
-
-    document.getElementById("messageTxt").value = "";
-}
-
-function bindButtons(indexData) {
-    // Descargar CV
-    const a = document.getElementById("resumeBtn");
-    a.href = indexData.buttons[0].href;
-    a.download = indexData.buttons[0].download;
-
-    // Enviar formulario
-    const button = document.getElementById("submitBtn");
-    button.innerHTML = "";
-    button.textContent = indexData.buttons[1].text_content;
-}
+window.renderMenu = renderMenu;
+window.renderBanner = renderBanner;
+window.renderStacks = renderStacks;
+window.renderProjects = renderProjects;
+window.renderStudies = renderStudies;
