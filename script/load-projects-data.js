@@ -90,7 +90,7 @@ function renderProjects(projectsData) {
 
         // Tecnologías
         const technologiesDiv = document.createElement("div");
-        technologiesDiv.classList.add("width-100-pct", "padding-0-10-px");
+        technologiesDiv.classList.add("width-100-pct");
         const ul = document.createElement("ul");
         ul.classList.add("row-flex", "space-around");
 

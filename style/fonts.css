@@ -19,14 +19,6 @@
     font-size: 1.5rem;
 }
 
-.small-font-size {
-    font-size: 1rem;
-}
-
-.uppercase-text {
-    text-transform: uppercase;
-}
-
 .bold-text {
     font-weight: 400;
 }
@@ -37,8 +29,4 @@
 
 .center-text {
     text-align: center;
-}
-
-.indent-text {
-    text-indent: 20px;
 }

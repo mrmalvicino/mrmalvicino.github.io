@@ -1,4 +1,4 @@
-header {
+.menu-header {
     position: fixed;
     width: 100%;
     align-content: center;
@@ -46,9 +46,8 @@ header {
     overflow: hidden;
 }
 
-
 @media (max-width: 1000px) {
-    header {
+    .menu-header {
         background-color: var(--almost-black);
     }
 
@@ -60,12 +59,12 @@ header {
         display: block;
     }
 
-    .menu-active {
+    .nav-toggle {
         flex-direction: column;
         min-height: 100vh;
     }
 
-    .menu-active ul {
+    .nav-toggle ul {
         height: 100vh;
         display: flex;
         flex-direction: column;
@@ -74,7 +73,7 @@ header {
         gap: 40px;
     }
 
-    .menu-active ul li a {
+    .nav-toggle ul li a {
         font-size: 1.6rem;
     }
 }

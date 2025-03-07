@@ -31,8 +31,8 @@ function closeMenu() {
     const toggleBtn = document.getElementById("toggleBtn");
     const logoBtn = document.getElementById("logoBtn");
 
-    if (menuNav.classList.contains("menu-active")) {
-        menuNav.classList.remove("menu-active");
+    if (menuNav.classList.contains("nav-toggle")) {
+        menuNav.classList.remove("nav-toggle");
         toggleBtn.classList.remove("hidden");
         logoBtn.classList.remove("hidden");
         document.body.classList.remove("no-scroll");
@@ -41,7 +41,7 @@ function closeMenu() {
 
 function toggleMenu() {
     const menuNav = document.getElementById("menuNav");
-    menuNav.classList.toggle("menu-active");
+    menuNav.classList.toggle("nav-toggle");
 
     const toggleBtn = document.getElementById("toggleBtn");
     toggleBtn.classList.toggle("hidden");
@@ -49,7 +49,7 @@ function toggleMenu() {
     const logoBtn = document.getElementById("logoBtn");
     logoBtn.classList.toggle("hidden");
 
-    document.body.classList.toggle("no-scroll", menuNav.classList.contains("menu-active"));
+    document.body.classList.toggle("no-scroll", menuNav.classList.contains("nav-toggle"));
 }
 
 // Tools

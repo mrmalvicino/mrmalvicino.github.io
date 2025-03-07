@@ -1,16 +1,4 @@
-.fit-image {
-    width: 100%;
-    object-fit: cover;
-}
-
-.square-image {
-    width: 100%;
-    aspect-ratio: 1/1;
-    object-fit: cover;
-}
-
 .circle-image {
-    width: 100%;
     height: auto;
     object-fit: cover;
     background-color: white;
