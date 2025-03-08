@@ -1,0 +1,26 @@
+:root {
+    --body-width: 1050px;
+    --body-height: 1485px;
+    --header-height: 290px;
+}
+
+.cv-body {
+    width: var(--body-width);
+    height: var(--body-height);
+    margin: auto;
+}
+
+.cv-header {
+    width: var(--body-width);
+    height: var(--header-height);
+}
+
+.cv-left-column {
+    width: calc(var(--body-width) / 2);
+    height: calc(var(--body-height) - var(--header-height));
+}
+
+.cv-right-column {
+    width: calc(var(--body-width) / 2);
+    height: calc(var(--body-height) - var(--header-height));
+}
