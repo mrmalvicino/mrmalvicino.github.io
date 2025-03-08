@@ -4,6 +4,7 @@ document.addEventListener(
         fetchJsonFiles();
         insertFooter();
         keepQueryParameters();
+        setLangAuto();
     }
 );
 

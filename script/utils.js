@@ -14,6 +14,28 @@ function copyToClipboard(event, text) {
     });
 }
 
+function setLangAuto() {
+    if (!getQueryParameters("lang") && getUserLang() !== getDefaultLang()) {
+        const newUrl = new URL(window.location.href);
+        newUrl.searchParams.set("lang", getUserLang());
+        window.location.href = newUrl.toString();
+    }
+
+    document.documentElement.lang = getLang();
+}
+
+function getUserLang() {
+    if (navigator.language.startsWith("en")) {
+        return "en";
+    }
+
+    if (navigator.language.startsWith("es")) {
+        return "es";
+    }
+
+    return getDefaultLang();
+}
+
 function getLang() {
     const urlParam = getQueryParameters("lang");
 
@@ -25,6 +47,10 @@ function getLang() {
         return "en";
     }
 
+    return getDefaultLang();
+}
+
+function getDefaultLang() {
     return "es";
 }
 
@@ -52,6 +78,7 @@ function insertFooter() {
 
 // Available in other JS files globally
 
+window.setLangAuto = setLangAuto;
 window.getLang = getLang;
 window.keepQueryParameters = keepQueryParameters;
 window.insertFooter = insertFooter;
