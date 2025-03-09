@@ -37,6 +37,14 @@
     align-content: center;
 }
 
+.gap-20-px {
+    gap: 20px;
+}
+
+.gap-40-px {
+    gap: 40px;
+}
+
 .row-col-800 {
     display: flex;
     flex-direction: row;
