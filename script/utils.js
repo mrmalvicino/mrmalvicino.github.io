@@ -16,6 +16,7 @@ function copyToClipboard(event, text) {
 
 function setLangAuto() {
     if (!getQueryParameters("lang") && getUserLang() !== getDefaultLang()) {
+        redirecting = true;
         const newUrl = new URL(window.location.href);
         newUrl.searchParams.set("lang", getUserLang());
         window.location.href = newUrl.toString();
@@ -75,6 +76,10 @@ function insertFooter() {
         .then(data => document.getElementById("footer").innerHTML = data)
         .catch(error => console.error('Error al cargar el footer:', error));
 }
+
+// Gobal variables
+
+let redirecting = false;
 
 // Available in other JS files globally
 

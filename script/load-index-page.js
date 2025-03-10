@@ -1,11 +1,14 @@
 document.addEventListener(
     "DOMContentLoaded",
     function () {
-        fetchJsonFiles();
-        insertFooter();
-        keepQueryParameters();
         setLangAuto();
-        defineMenuClosers();
+
+        if (!redirecting) {
+            fetchJsonFiles();
+            insertFooter();
+            keepQueryParameters();
+            defineMenuClosers();
+        }
     }
 );
 
