@@ -1,17 +1,22 @@
-function renderCvStacks() {
+function renderCvStacks(stacksData) {
 
 }
 
-function renderCvProjects() {
+function renderCvStudies(studiesData) {
 
 }
 
-function renderCvStudies() {
+function renderCvProjects(projectsData) {
+
+}
+
+function renderCvJobs(jobsData) {
 
 }
 
 // Available in other JS files globally
 
 window.renderCvStacks = renderCvStacks;
-window.renderCvProjects = renderCvProjects;
 window.renderCvStudies = renderCvStudies;
+window.renderCvProjects = renderCvProjects;
+window.renderCvJobs = renderCvJobs;

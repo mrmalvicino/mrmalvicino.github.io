@@ -1,0 +1,22 @@
+{
+    "jobs": [
+        {
+            "organization": "Universidad Tecnológica Nacional",
+            "position": "Teaching Assistant for Programming 2",
+            "time": "August 2024 - Present",
+            "description": "Assistance to students in classes and forums, development of exercises on Object Oriented Programming in C++."
+        },
+        {
+            "organization": "Universidad Nacional de Tres de Febrero",
+            "position": "Teaching Assistant for Physics 1",
+            "time": "August 2019 - July 2023",
+            "description": "Design and resolution of exercises, preparation and correction of exams, simulations and experimental demonstrations with Python."
+        },
+        {
+            "organization": "Biblioteca Popular Leonardo Favio",
+            "position": "English Teacher",
+            "time": "March 2014 - December 2017",
+            "description": "English courses planning, private tutoring for secondary school students."
+        }
+    ]
+}

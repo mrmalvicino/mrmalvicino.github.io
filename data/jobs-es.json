@@ -1,0 +1,22 @@
+{
+    "jobs": [
+        {
+            "organization": "Universidad Tecnológica Nacional",
+            "position": "Ayudante de cátedra de Programación 2",
+            "time": "Agosto 2024 - Actualidad",
+            "description": "Asistencia a estudiantes en clases y foros, desarrollo de ejercitaciones sobre Programación Orientada a Objetos en C++."
+        },
+        {
+            "organization": "Universidad Nacional de Tres de Febrero",
+            "position": "Ayudante de cátedra de Física 1",
+            "time": "Agosto 2019 - Julio 2023",
+            "description": "Diseño y resolución de ejercicios, confección y corrección de exámenes, simulaciones y demostraciones experimentales con Python."
+        },
+        {
+            "organization": "Biblioteca Popular Leonardo Favio",
+            "position": "Profesor de Inglés",
+            "time": "Marzo 2014 - Diciembre 2017",
+            "description": "Planificación de cursos de inglés, dictado de clases particulares para alumnos de nivel secundario."
+        }
+    ]
+}

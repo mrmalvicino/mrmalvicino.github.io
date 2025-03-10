@@ -19,11 +19,13 @@
 .cv-left-column {
     width: calc(var(--body-width) / 2);
     height: calc(var(--body-height) - var(--header-height) - var(--footer-height));
+    gap: 20px;
 }
 
 .cv-right-column {
     width: calc(var(--body-width) / 2);
     height: calc(var(--body-height) - var(--header-height) - var(--footer-height));
+    gap: 20px;
 }
 
 .cv-footer {
