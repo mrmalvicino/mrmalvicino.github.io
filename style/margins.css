@@ -2,6 +2,11 @@
     margin: 10px;
 }
 
+.margin-vertical-5-px {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 .margin-vertical-10-px {
     margin-top: 10px;
     margin-bottom: 10px;
