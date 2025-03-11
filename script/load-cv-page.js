@@ -42,6 +42,7 @@ function fetchJsonFiles() {
                 renderCvProjects(projectsData.projects.filter(x => x.shown_in_cv));
                 renderCvJobs(jobsData.jobs);
                 bindCommonImages(imagesData.common_images);
+                bindUniqueLabels(labelsData.cv_page_labels);
                 bindCommonLabels(labelsData.common_labels);
             }
         )

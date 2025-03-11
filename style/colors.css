@@ -21,6 +21,14 @@
     color: var(--light-gray);
 }
 
+.dark-gray-text {
+    color: var(--dark-gray);
+}
+
+.soft-black-text {
+    color: var(--soft-black);
+}
+
 .pure-black-text {
     color: var(--pure-black);
 }

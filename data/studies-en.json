@@ -2,45 +2,59 @@
     "studies": [
         {
             "institution_id": "untrefImg",
+            "institution_name": "Universidad Nacional de Tres de Febrero",
             "title": "Sound Engineering (60%)",
             "study_plan": "https://untref.edu.ar/carrera/ingenieria-de-sonido",
-            "certificate": null
+            "certificate": null,
+            "type": "career"
         },
         {
             "institution_id": "utnImg",
+            "institution_name": "Universidad Tecnológica Nacional",
             "title": "Technical Degree in Programming",
             "study_plan": "https://www.frgp.utn.edu.ar/carreras/tup_tuss",
-            "certificate": "./assets/pdf/tup.pdf"
+            "certificate": "./assets/pdf/tup.pdf",
+            "type": "career"
         },
         {
             "institution_id": "educacionitImg",
+            "institution_name": "Educación IT",
             "title": "Web API .NET Core",
             "study_plan": "./assets/pdf/web-api-plan.pdf",
-            "certificate": null
+            "certificate": null,
+            "type": "course"
         },
         {
             "institution_id": "educacionitImg",
+            "institution_name": "Educación IT",
             "title": "Entity Framework & LINQ",
             "study_plan": "./assets/pdf/linq-entity-plan.pdf",
-            "certificate": null
+            "certificate": null,
+            "type": "course"
         },
         {
             "institution_id": "educacionitImg",
+            "institution_name": "Educación IT",
             "title": "Web .NET Core Programming",
             "study_plan": "./assets/pdf/net-core-plan.pdf",
-            "certificate": null
+            "certificate": null,
+            "type": "course"
         },
         {
             "institution_id": "cambridgeImg",
+            "institution_name": "Cambridge",
             "title": "First Certificate in English (CEFR B2)",
             "study_plan": null,
-            "certificate": "./assets/pdf/fce.pdf"
+            "certificate": "./assets/pdf/fce.pdf",
+            "type": "language"
         },
         {
             "institution_id": "utnImg",
+            "institution_name": "Universidad Tecnológica Nacional",
             "title": "Portuguese Level 4",
             "study_plan": null,
-            "certificate": "./assets/pdf/portuguese.pdf"
+            "certificate": "./assets/pdf/portuguese.pdf",
+            "type": "language"
         }
     ]
 }

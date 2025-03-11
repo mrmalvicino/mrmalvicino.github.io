@@ -72,5 +72,39 @@
             "id": "backLbl",
             "text_content": "Portafolio"
         }
+    ],
+    "cv_page_labels": [
+        {
+            "id": "skillsLbl",
+            "text_content": "Habilidades"
+        },
+        {
+            "id": "educationLbl",
+            "text_content": "Estudios"
+        },
+        {
+            "id": "careersLbl",
+            "text_content": "Carreras universitarias"
+        },
+        {
+            "id": "coursesLbl",
+            "text_content": "Cursos de especialización"
+        },
+        {
+            "id": "languagesLbl",
+            "text_content": "Idiomas"
+        },
+        {
+            "id": "experienceLbl",
+            "text_content": "Experiencia"
+        },
+        {
+            "id": "projectsLbl",
+            "text_content": "Proyectos freelance"
+        },
+        {
+            "id": "jobsLbl",
+            "text_content": "Trabajos en relación de dependencia"
+        }
     ]
 }

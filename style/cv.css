@@ -19,12 +19,14 @@
 .cv-left-column {
     width: calc(var(--body-width) / 2);
     height: calc(var(--body-height) - var(--header-height) - var(--footer-height));
+    padding: 20px;
     gap: 20px;
 }
 
 .cv-right-column {
     width: calc(var(--body-width) / 2);
     height: calc(var(--body-height) - var(--header-height) - var(--footer-height));
+    padding: 20px;
     gap: 20px;
 }
 
@@ -34,4 +36,15 @@
     padding: 20px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+}
+
+@media print {
+    html {
+        background: var(--light-gray) !important;
+    }
+
+    .cv-left-column,
+    .cv-right-column {
+        background-clip: content-box;
+    }
 }
