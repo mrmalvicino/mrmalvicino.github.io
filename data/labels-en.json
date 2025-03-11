@@ -76,11 +76,11 @@
     "cv_page_labels": [
         {
             "id": "skillsLbl",
-            "text_content": "Skills"
+            "text_content": "< Skills />"
         },
         {
             "id": "educationLbl",
-            "text_content": "Education"
+            "text_content": "< Education />"
         },
         {
             "id": "careersLbl",
@@ -96,7 +96,7 @@
         },
         {
             "id": "experienceLbl",
-            "text_content": "Experience"
+            "text_content": "< Experience />"
         },
         {
             "id": "projectsLbl",

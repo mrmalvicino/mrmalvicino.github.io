@@ -4,6 +4,7 @@ function renderCvStacks(stacksData) {
 
     stacksData.forEach(x => {
         const stackLi = document.createElement("li");
+        stackLi.classList.add("margin-vertical-10-px");
 
         const h3 = document.createElement("h3");
         h3.textContent = x.title;

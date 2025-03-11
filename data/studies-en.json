@@ -55,6 +55,14 @@
             "study_plan": null,
             "certificate": "./assets/pdf/portuguese.pdf",
             "type": "language"
+        },
+        {
+            "institution_id": "argImg",
+            "institution_name": "Born in Argentina",
+            "title": "Native Spanish",
+            "study_plan": null,
+            "certificate": null,
+            "type": "language"
         }
     ]
 }

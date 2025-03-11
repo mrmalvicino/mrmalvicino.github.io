@@ -213,33 +213,44 @@ function renderStudies(studiesData) {
         // Acciones
         const actions = document.createElement("td");
         const buttonsDiv = document.createElement("div");
+        buttonsDiv.classList.add("row-flex", "justify-center");
 
-        if (x.study_plan && x.certificate) {
-            buttonsDiv.classList.add("row-flex", "justify-center");
+        if (!x.study_plan && !x.certificate) {
+            const a3 = document.createElement("a");
+            a3.href = "#";
+            a3.classList.add("plain-link", "soft-black-link", "margin-10-px");
+            a3.style.visibility = "hidden";
+
+            const i3 = document.createElement("i");
+            i3.classList.add("bi", "bi-x-circle", "mid-font-size");
+            a3.appendChild(i3);
+
+            buttonsDiv.appendChild(a3);
         }
+        else {
+            if (x.study_plan) {
+                const a1 = document.createElement("a");
+                a1.href = x.study_plan;
+                a1.classList.add("plain-link", "soft-black-link", "margin-10-px");
 
-        if (x.study_plan) {
-            const a1 = document.createElement("a");
-            a1.href = x.study_plan;
-            a1.classList.add("plain-link", "soft-black-link", "margin-10-px");
+                const i1 = document.createElement("i");
+                i1.classList.add("bi", "bi-mortarboard", "mid-font-size");
+                a1.appendChild(i1);
 
-            const i1 = document.createElement("i");
-            i1.classList.add("bi", "bi-mortarboard", "mid-font-size");
-            a1.appendChild(i1);
+                buttonsDiv.appendChild(a1);
+            }
 
-            buttonsDiv.appendChild(a1);
-        }
+            if (x.certificate) {
+                const a2 = document.createElement("a");
+                a2.href = x.certificate;
+                a2.classList.add("plain-link", "soft-black-link", "margin-10-px");
 
-        if (x.certificate) {
-            const a2 = document.createElement("a");
-            a2.href = x.certificate;
-            a2.classList.add("plain-link", "soft-black-link", "margin-10-px");
+                const i2 = document.createElement("i");
+                i2.classList.add("bi", "bi-award", "mid-font-size");
+                a2.appendChild(i2);
 
-            const i2 = document.createElement("i");
-            i2.classList.add("bi", "bi-award", "mid-font-size");
-            a2.appendChild(i2);
-
-            buttonsDiv.appendChild(a2);
+                buttonsDiv.appendChild(a2);
+            }
         }
 
         actions.appendChild(buttonsDiv);

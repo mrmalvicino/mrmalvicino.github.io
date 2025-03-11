@@ -129,6 +129,12 @@
             "title": "Cambridge",
             "alt": "Cambridge Logo.",
             "src": "./assets/images/cambridge.png"
+        },
+        {
+            "id": "argImg",
+            "title": "Argentina",
+            "alt": "Flag of Argentina.",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Flag_of_Argentina.png/1200px-Flag_of_Argentina.png"
         }
     ],
     "projects_images": [

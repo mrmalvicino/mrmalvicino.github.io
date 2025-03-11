@@ -38,13 +38,9 @@
     grid-template-columns: repeat(2, 1fr);
 }
 
-@media print {
-    html {
-        background: var(--light-gray) !important;
-    }
-
-    .cv-left-column,
-    .cv-right-column {
-        background-clip: content-box;
-    }
+.title-box {
+    margin-bottom: 10px;
+    color: var(--light-gray);
+    background-color: var(--soft-black);
+    border-radius: 5px;
 }
