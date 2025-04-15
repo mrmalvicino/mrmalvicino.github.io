@@ -75,6 +75,18 @@
             "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/dot-net/dot-net-original-wordmark.svg"
         },
         {
+            "id": "reactImg",
+            "title": "React",
+            "alt": "Logo de React.",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/React.svg/800px-React.svg.png"
+        },
+        {
+            "id": "fastapiImg",
+            "title": "Fast API",
+            "alt": "Logo de Fast API.",
+            "src": "https://avatars.githubusercontent.com/u/156354296?s=280&v=4"
+        },
+        {
             "id": "mssqlImg",
             "title": "Microsoft SQL Server",
             "alt": "Logo de Microsoft SQL Server.",
@@ -227,6 +239,18 @@
             "title": "Notas de Física 2",
             "alt": "Portada con una caricatura de Albert Einstein.",
             "src": "https://i.imgur.com/Sq4x0DT.png"
+        },
+        {
+            "id": "matrixImg",
+            "title": "Link Tree",
+            "alt": "Menú con fondo de lluvia de caracteres estilo Matrix.",
+            "src": "https://i.imgur.com/5dHwYZL.png"
+        },
+        {
+            "id": "biblioImg",
+            "title": "Biblio API",
+            "alt": "Libros en una biblioteca.",
+            "src": "https://i.imgur.com/U4aYLo2.jpeg"
         }
     ]
 }

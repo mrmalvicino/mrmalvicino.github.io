@@ -20,6 +20,24 @@
             "shown_in_cv": true
         },
         {
+            "title": "Membriana",
+            "description": "Sistema de gestión de membresías diseñado para realizar el seguimiento de los miembros y administrar pagos de afiliados.",
+            "technologies_ids": [
+                "dotnetImg",
+                "csImg",
+                "bootstrapImg",
+                "jsImg",
+                "mssqlImg",
+                "gitImg"
+            ],
+            "source_code": "https://github.com/mrmalvicino/membriana",
+            "live_demo": null,
+            "video_url": null,
+            "mockup_id": null,
+            "shown_in_portfolio": true,
+            "shown_in_cv": true
+        },
+        {
             "title": "Ecommerce Net",
             "description": "Comercio electrónico que incluye gestión de productos, carrito de compra, roles de usuario y seguimiento de pedidos.",
             "technologies_ids": [
@@ -31,7 +49,7 @@
                 "gitImg"
             ],
             "source_code": "https://github.com/mrmalvicino/ecommerce-net",
-            "live_demo": "https://ecommercenet.somee.com",
+            "live_demo": null,
             "video_url": "https://www.youtube-nocookie.com/embed/H7AISursM2M",
             "mockup_id": null,
             "shown_in_portfolio": true,
@@ -51,7 +69,54 @@
             "live_demo": null,
             "video_url": "https://www.youtube-nocookie.com/embed/D8P1URMdCHU",
             "mockup_id": null,
-            "shown_in_portfolio": true,
+            "shown_in_portfolio": false,
+            "shown_in_cv": false
+        },
+        {
+            "title": "Link Tree",
+            "description": "Link Tree personal para acceder fácilmente a mis perfiles sociales y profesionales.",
+            "technologies_ids": [
+                "reactImg",
+                "cssImg",
+                "jsImg",
+                "gitImg"
+            ],
+            "source_code": "https://github.com/mrmalvicino/link-tree",
+            "live_demo": "https://mrmalvicino.com/link-tree",
+            "video_url": null,
+            "mockup_id": "matrixImg",
+            "shown_in_portfolio": false,
+            "shown_in_cv": false
+        },
+        {
+            "title": "Portafolio",
+            "description": "Sitio web responsivo para mostrar proyectos y logros personales.",
+            "technologies_ids": [
+                "htmlImg",
+                "cssImg",
+                "jsImg",
+                "gitImg"
+            ],
+            "source_code": "https://github.com/mrmalvicino/mrmalvicino.github.io",
+            "live_demo": "https://mrmalvicino.com",
+            "video_url": null,
+            "mockup_id": null,
+            "shown_in_portfolio": false,
+            "shown_in_cv": false
+        },
+        {
+            "title": "Biblio API",
+            "description": "Proporciona puntos de enrutamiento para administrar libros, autores, categorías y géneros, incluyendo creación, listado y filtrado.",
+            "technologies_ids": [
+                "fastapiImg",
+                "pythonImg",
+                "gitImg"
+            ],
+            "source_code": "https://github.com/mrmalvicino/biblio-api",
+            "live_demo": null,
+            "video_url": null,
+            "mockup_id": "biblioImg",
+            "shown_in_portfolio": false,
             "shown_in_cv": false
         },
         {
@@ -163,22 +228,6 @@
             "live_demo": null,
             "video_url": null,
             "mockup_id": "arduinoImg",
-            "shown_in_portfolio": false,
-            "shown_in_cv": false
-        },
-        {
-            "title": "Portafolio",
-            "description": "Sitio web responsivo para mostrar proyectos y logros personales.",
-            "technologies_ids": [
-                "htmlImg",
-                "cssImg",
-                "jsImg",
-                "gitImg"
-            ],
-            "source_code": "https://github.com/mrmalvicino/mrmalvicino.github.io",
-            "live_demo": "https://mrmalvicino.com",
-            "video_url": null,
-            "mockup_id": null,
             "shown_in_portfolio": false,
             "shown_in_cv": false
         },

@@ -20,6 +20,24 @@
             "shown_in_cv": true
         },
         {
+            "title": "Membriana",
+            "description": "Membership management system designed to track members and manage affiliate payments.",
+            "technologies_ids": [
+                "dotnetImg",
+                "csImg",
+                "bootstrapImg",
+                "jsImg",
+                "mssqlImg",
+                "gitImg"
+            ],
+            "source_code": "https://github.com/mrmalvicino/membriana",
+            "live_demo": null,
+            "video_url": null,
+            "mockup_id": null,
+            "shown_in_portfolio": true,
+            "shown_in_cv": true
+        },
+        {
             "title": "Ecommerce Net",
             "description": "Ecommerce that includes product management, shopping cart, user roles and order tracking.",
             "technologies_ids": [
@@ -31,7 +49,7 @@
                 "gitImg"
             ],
             "source_code": "https://github.com/mrmalvicino/ecommerce-net",
-            "live_demo": "https://ecommercenet.somee.com",
+            "live_demo": null,
             "video_url": "https://www.youtube-nocookie.com/embed/H7AISursM2M",
             "mockup_id": null,
             "shown_in_portfolio": true,
@@ -51,7 +69,54 @@
             "live_demo": null,
             "video_url": "https://www.youtube-nocookie.com/embed/D8P1URMdCHU",
             "mockup_id": null,
-            "shown_in_portfolio": true,
+            "shown_in_portfolio": false,
+            "shown_in_cv": false
+        },
+        {
+            "title": "Link Tree",
+            "description": "Personal Link Tree for easy access to my social and professional profiles.",
+            "technologies_ids": [
+                "reactImg",
+                "cssImg",
+                "jsImg",
+                "gitImg"
+            ],
+            "source_code": "https://github.com/mrmalvicino/link-tree",
+            "live_demo": "https://mrmalvicino.com/link-tree",
+            "video_url": null,
+            "mockup_id": "matrixImg",
+            "shown_in_portfolio": false,
+            "shown_in_cv": false
+        },
+        {
+            "title": "Portfolio",
+            "description": "Responsive website to showcase projects and personal achievements.",
+            "technologies_ids": [
+                "htmlImg",
+                "cssImg",
+                "jsImg",
+                "gitImg"
+            ],
+            "source_code": "https://github.com/mrmalvicino/mrmalvicino.github.io",
+            "live_demo": "https://mrmalvicino.com",
+            "video_url": null,
+            "mockup_id": null,
+            "shown_in_portfolio": false,
+            "shown_in_cv": false
+        },
+        {
+            "title": "Biblio API",
+            "description": "Provides endpoints to manage books, authors, categories, and genres including creation, listing and filtering.",
+            "technologies_ids": [
+                "fastapiImg",
+                "pythonImg",
+                "gitImg"
+            ],
+            "source_code": "https://github.com/mrmalvicino/biblio-api",
+            "live_demo": null,
+            "video_url": null,
+            "mockup_id": "biblioImg",
+            "shown_in_portfolio": false,
             "shown_in_cv": false
         },
         {
@@ -163,22 +228,6 @@
             "live_demo": null,
             "video_url": null,
             "mockup_id": "arduinoImg",
-            "shown_in_portfolio": false,
-            "shown_in_cv": false
-        },
-        {
-            "title": "Portfolio",
-            "description": "Responsive website to showcase projects and personal achievements.",
-            "technologies_ids": [
-                "htmlImg",
-                "cssImg",
-                "jsImg",
-                "gitImg"
-            ],
-            "source_code": "https://github.com/mrmalvicino/mrmalvicino.github.io",
-            "live_demo": "https://mrmalvicino.com",
-            "video_url": null,
-            "mockup_id": null,
             "shown_in_portfolio": false,
             "shown_in_cv": false
         },
