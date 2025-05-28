@@ -21,7 +21,7 @@
             "institution_name": "Educación IT",
             "title": "Web API .NET Core",
             "study_plan": "./assets/pdf/web-api-plan.pdf",
-            "certificate": null,
+            "certificate": "./assets/pdf/web-api-certificate.pdf",
             "type": "course"
         },
         {
@@ -29,7 +29,7 @@
             "institution_name": "Educación IT",
             "title": "Entity Framework & LINQ",
             "study_plan": "./assets/pdf/linq-entity-plan.pdf",
-            "certificate": null,
+            "certificate": "./assets/pdf/linq-entity-certificate.pdf",
             "type": "course"
         },
         {
@@ -37,7 +37,7 @@
             "institution_name": "Educación IT",
             "title": "Web .NET Core Programming",
             "study_plan": "./assets/pdf/net-core-plan.pdf",
-            "certificate": null,
+            "certificate": "./assets/pdf/net-core-certificate.pdf",
             "type": "course"
         },
         {
