@@ -45,6 +45,12 @@
             "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg"
         },
         {
+            "id": "tsImg",
+            "title": "TypeScript",
+            "alt": "TypeScript Logo.",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/512px-Typescript_logo_2020.svg.png"
+        },
+        {
             "id": "htmlImg",
             "title": "HTML",
             "alt": "HTML Logo.",
@@ -73,6 +79,12 @@
             "title": "Microsoft .Net",
             "alt": "Microsoft .Net Logo.",
             "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/dot-net/dot-net-original-wordmark.svg"
+        },
+        {
+            "id": "angularImg",
+            "title": "Angular",
+            "alt": "Angular Logo.",
+            "src": "https://i.imgur.com/X0wgeXR.png"
         },
         {
             "id": "reactImg",

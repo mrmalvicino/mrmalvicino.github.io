@@ -2,9 +2,9 @@
     "banner_items": [
         "dotnetImg",
         "csImg",
-        "htmlImg",
-        "cssImg",
-        "jsImg",
+        "bootstrapImg",
+        "angularImg",
+        "tsImg",
         "mssqlImg"
     ],
     "stacks": [
