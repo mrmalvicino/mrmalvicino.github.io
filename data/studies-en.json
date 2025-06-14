@@ -19,6 +19,14 @@
         {
             "institution_id": "educacionitImg",
             "institution_name": "Educación IT",
+            "title": "Angular",
+            "study_plan": "./assets/pdf/angular-plan.pdf",
+            "certificate": null,
+            "type": "course"
+        },
+        {
+            "institution_id": "educacionitImg",
+            "institution_name": "Educación IT",
             "title": "Web API .NET Core",
             "study_plan": "./assets/pdf/web-api-plan.pdf",
             "certificate": "./assets/pdf/web-api-certificate.pdf",
