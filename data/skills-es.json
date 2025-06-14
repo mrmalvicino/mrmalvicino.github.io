@@ -10,32 +10,31 @@
     "stacks": [
         {
             "id": "mainStack",
-            "title": "Stack principal",
+            "title": "⭐️ Stack principal",
             "items": [
-                ".Net Framework, ASP.NET, .NET Core",
-                "C# (backend)",
-                "HTML5, CSS3 and JavaScript (frontend)",
-                "Base de datos: SQL Server y ADO.NET"
+                "✔ Framework: .NET Core | .NET Framework",
+                "✔ Backend: C# | Entity Framework | ADO.NET",
+                "✔ Frontend: Razor | Bootstrap | Angular",
+                "✔ Base de datos: Microsoft SQL Server"
             ]
         },
         {
             "id": "secondaryStack",
-            "title": "Stack secundario",
+            "title": "🧪 Conocimientos en",
             "items": [
-                "Biblioteca JSTL",
-                "Java (backend)",
-                "Bootstrap o Tailwind (frontend)",
-                "Base de datos: MySQL y JDBC"
+                "✔ Framework: JSTL library | FastAPI",
+                "✔ Backend: Java | JDBC | Python",
+                "✔ Frontend: Tailwind | React",
+                "✔ Base de datos: MySQL | MongoDB"
             ]
         },
         {
             "id": "otherSkills",
-            "title": "Otras tecnologías",
+            "title": "🛠️ Otras tecnologías",
             "items": [
-                "Versionado: Git, GitHub",
-                "Informes técnicos: LaTex",
-                "DSP: C++, Python",
-                "DevOps: GitLab, YML"
+                "✔ Versionado: Git | GitHub | GitFlow",
+                "✔ Documentación: LaTeX | Doxygen ",
+                "✔ DevOps: GitHub Actions | YML | Docker"
             ]
         }
     ]
