@@ -27,7 +27,9 @@ function renderCvStudies(studiesData) {
     const careersUl = document.getElementById("careersLst");
     careersUl.innerHTML = "";
 
-    const careers = studiesData.filter(x => x.type === "career");
+    const careers = studiesData.filter(
+        x => x.type === "career" && x.shown_in_cv === true
+    );
 
     careers.forEach(x => {
         const careerLi = document.createElement("li");
@@ -47,7 +49,9 @@ function renderCvStudies(studiesData) {
     const coursesUl = document.getElementById("coursesLst");
     coursesUl.innerHTML = "";
 
-    const courses = studiesData.filter(x => x.type === "course");
+    const courses = studiesData.filter(
+        x => x.type === "course" && x.shown_in_cv === true
+    );
 
     courses.forEach(x => {
         const courseLi = document.createElement("li");
@@ -67,7 +71,9 @@ function renderCvStudies(studiesData) {
     const languagesUl = document.getElementById("languagesLst");
     languagesUl.innerHTML = "";
 
-    const languages = studiesData.filter(x => x.type === "language");
+    const languages = studiesData.filter(
+        x => x.type === "language" && x.shown_in_cv === true
+    );
 
     languages.forEach(x => {
         const languageLi = document.createElement("li");
