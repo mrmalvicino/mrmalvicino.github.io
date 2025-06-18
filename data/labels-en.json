@@ -10,11 +10,11 @@
         },
         {
             "id": "degreesLbl",
-            "text_content": "JR .NET Developer"
+            "text_content": "JR .NET Fullstack Developer"
         },
         {
             "id": "presentationLbl",
-            "text_content": "Hi! I'm Max, and I'm passionate about acoustics and programming. I graduated from the Technical Degree in Programming at UTN and I am currently studying Sound Engineering at Untref. I have experience developing .NET systems with C# for the backend and HTML, CSS and JavaScript for the frontend, using MSSQL relational databases. I'm currently looking for opportunities in the IT field as a software developer."
+            "text_content": "Hi! I'm Max, and I'm passionate about acoustics and programming. I graduated from the Technical Degree in Programming at UTN and I am currently studying Sound Engineering at Untref. I have experience developing .NET systems with layered client-server architecture, using Razor MVC Views with Bootstrap on the frontend, and Entity Framework with SQL Server on the backend. I'm currently looking for opportunities in the IT field as a software developer."
         }
     ],
     "index_page_labels": [

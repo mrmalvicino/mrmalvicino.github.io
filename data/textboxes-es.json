@@ -2,7 +2,7 @@
     "index_page_textboxes": [
         {
             "id": "nameTxt",
-            "placeholder": "Carlos Berlinguieri"
+            "placeholder": "Tu nombre"
         },
         {
             "id": "emailTxt",
