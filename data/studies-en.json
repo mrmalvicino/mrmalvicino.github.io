@@ -23,7 +23,7 @@
             "institution_name": "Educación IT",
             "title": "Angular",
             "study_plan": "./assets/pdf/angular-plan.pdf",
-            "certificate": null,
+            "certificate": "./assets/pdf/angular-certificate.pdf",
             "type": "course",
             "shown_in_cv": true
         },
