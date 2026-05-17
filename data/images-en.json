@@ -48,7 +48,7 @@
             "id": "tsImg",
             "title": "TypeScript",
             "alt": "TypeScript Logo.",
-            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/512px-Typescript_logo_2020.svg.png"
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1280px-Typescript_logo_2020.svg.png"
         },
         {
             "id": "htmlImg",
@@ -66,7 +66,7 @@
             "id": "bootstrapImg",
             "title": "Bootstrap",
             "alt": "Bootstrap Logo.",
-            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/1200px-Bootstrap_logo.svg.png"
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/1280px-Bootstrap_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail"
         },
         {
             "id": "tailwindImg",
@@ -158,7 +158,7 @@
             "id": "argImg",
             "title": "Argentina",
             "alt": "Flag of Argentina.",
-            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Flag_of_Argentina.png/1200px-Flag_of_Argentina.png"
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/330px-Flag_of_Argentina.svg.png"
         }
     ],
     "projects_images": [
