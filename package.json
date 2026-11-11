@@ -1,0 +1,14 @@
+{
+  "name": "mrmalvicino.github.io",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portfolio and resume static site",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "validate": "node tools/validate.mjs",
+    "test": "node --test",
+    "build": "npm run validate && node tools/build.mjs"
+  }
+}
