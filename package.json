@@ -8,7 +8,14 @@
   },
   "scripts": {
     "validate": "node tools/validate.mjs",
-    "test": "node --test",
+    "test": "npm run test:unit && npm run test:browser",
+    "test:unit": "node --test test/*.test.mjs",
+    "pretest:browser": "playwright install chromium",
+    "test:browser": "playwright test",
+    "test:browser:update": "playwright test --update-snapshots",
     "build": "npm run validate && node tools/build.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1"
   }
 }

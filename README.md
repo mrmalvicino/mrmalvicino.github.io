@@ -21,11 +21,30 @@ Run the structural checks, JSON parsing, and local-reference validation:
 npm run validate
 ```
 
-Run the automated tests:
+Run the complete automated suite. The first execution downloads the pinned Chromium version required by Playwright:
 
 ```bash
 npm test
 ```
+
+The suite runs fast build and validation tests first, followed by browser tests for `index.html`, `projects.html`, and `cv.html` in Spanish and English. Browser tests verify rendered entity counts and relationships, navigation, language selection, interactive controls, unhandled JavaScript errors, failed local requests, and desktop/mobile visual baselines.
+
+Run only one layer while diagnosing a failure:
+
+```bash
+npm run test:unit
+npm run test:browser
+```
+
+Playwright starts its own local HTTP server. External fonts, images, styles, and embeds are replaced during tests so network availability does not affect the result; all local site resources still load normally and any local failure fails the test.
+
+Visual references are stored under `test/browser/snapshots/`. Review the generated differences before accepting an intentional content or design change, then update the references with:
+
+```bash
+npm run test:browser:update
+```
+
+Do not update references to make an unexplained failure pass. Functional assertions and the visual difference should first confirm that the new result is expected.
 
 Generate the publishable site:
 
