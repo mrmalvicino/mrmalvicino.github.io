@@ -1,0 +1,73 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mrmalvicino.com/schemas/common.schema.json",
+  "$defs": {
+    "domainId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "domId": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9]*$"
+    },
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "nullableString": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "yearMonth": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-(?:0[1-9]|1[0-2])$"
+    },
+    "image": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "alt",
+        "src"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/domId"
+        },
+        "title": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "alt": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "src": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "label": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "text_content"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/domId"
+        },
+        "text_content": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    }
+  }
+}

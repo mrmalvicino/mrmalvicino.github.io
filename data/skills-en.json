@@ -10,6 +10,7 @@
     "stacks": [
         {
             "id": "mainStack",
+            "order": 1,
             "title": "⭐️ Main Stack",
             "items": [
                 "✔ Framework: .NET Core | .NET Framework",
@@ -20,6 +21,7 @@
         },
         {
             "id": "secondaryStack",
+            "order": 2,
             "title": "🧪 Worked with",
             "items": [
                 "✔ Framework: JSTL library | FastAPI",
@@ -30,6 +32,7 @@
         },
         {
             "id": "otherSkills",
+            "order": 3,
             "title": "🛠️ Other technologies",
             "items": [
                 "✔ Version Control: Git | GitHub | GitFlow",

@@ -1,6 +1,8 @@
 {
     "studies": [
         {
+            "id": "sound-engineering-untref",
+            "order": 1,
             "institution_id": "untrefImg",
             "institution_name": "Universidad Nacional de Tres de Febrero",
             "title": "Ingeniería de Sonido (60%)",
@@ -10,6 +12,8 @@
             "shown_in_cv": true
         },
         {
+            "id": "programming-technical-degree-utn",
+            "order": 2,
             "institution_id": "utnImg",
             "institution_name": "Universidad Tecnológica Nacional",
             "title": "Tecnicatura Universitaria en Programación",
@@ -19,6 +23,8 @@
             "shown_in_cv": true
         },
         {
+            "id": "angular-course-educacion-it",
+            "order": 3,
             "institution_id": "educacionitImg",
             "institution_name": "Educación IT",
             "title": "Angular",
@@ -28,6 +34,8 @@
             "shown_in_cv": true
         },
         {
+            "id": "web-api-dotnet-core-course-educacion-it",
+            "order": 4,
             "institution_id": "educacionitImg",
             "institution_name": "Educación IT",
             "title": "Web API .NET Core",
@@ -37,6 +45,8 @@
             "shown_in_cv": true
         },
         {
+            "id": "entity-framework-linq-course-educacion-it",
+            "order": 5,
             "institution_id": "educacionitImg",
             "institution_name": "Educación IT",
             "title": "Entity Framework & LINQ",
@@ -46,6 +56,8 @@
             "shown_in_cv": true
         },
         {
+            "id": "web-dotnet-core-programming-course-educacion-it",
+            "order": 6,
             "institution_id": "educacionitImg",
             "institution_name": "Educación IT",
             "title": "Programación Web .NET Core",
@@ -55,6 +67,8 @@
             "shown_in_cv": false
         },
         {
+            "id": "english-fce-b2-cambridge",
+            "order": 7,
             "institution_id": "cambridgeImg",
             "institution_name": "Cambridge",
             "title": "First Certificate in English (CEFR B2)",
@@ -64,6 +78,8 @@
             "shown_in_cv": true
         },
         {
+            "id": "portuguese-level-4-utn",
+            "order": 8,
             "institution_id": "utnImg",
             "institution_name": "Universidad Tecnológica Nacional",
             "title": "Portugués Nivel 4",
@@ -73,6 +89,8 @@
             "shown_in_cv": true
         },
         {
+            "id": "native-spanish-argentina",
+            "order": 9,
             "institution_id": "argImg",
             "institution_name": "Nacido en Argentina",
             "title": "Español nativo",

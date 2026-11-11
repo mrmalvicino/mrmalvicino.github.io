@@ -2,7 +2,7 @@ function renderMenu(menuItemsData) {
     const ul = document.getElementById("menuLst");
     ul.innerHTML = "";
 
-    menuItemsData.forEach(x => {
+    [...menuItemsData].sort((a, b) => a.order - b.order).forEach(x => {
         const li = document.createElement("li");
         const a = document.createElement("a");
 
@@ -38,7 +38,7 @@ function renderStacks(stacksData) {
     const stacks = document.getElementById("stacksDiv");
     stacks.innerHTML = "";
 
-    stacksData.forEach(x => {
+    [...stacksData].sort((a, b) => a.order - b.order).forEach(x => {
         const div = document.createElement("div");
         div.classList.add("stack-card");
 
@@ -66,7 +66,7 @@ function renderProjects(projectsData) {
     const projects = document.getElementById("projectsDiv");
     projects.innerHTML = "";
 
-    projectsData.forEach(x => {
+    [...projectsData].sort((a, b) => a.order - b.order).forEach(x => {
         const container = document.createElement("div");
         container.classList.add("project-card");
 
@@ -185,7 +185,7 @@ function renderStudies(studiesData) {
     const tbody = document.getElementById("studiesTab");
     tbody.innerHTML = "";
 
-    studiesData.forEach(x => {
+    [...studiesData].sort((a, b) => a.order - b.order).forEach(x => {
         const tr = document.createElement("tr");
 
         // Institución

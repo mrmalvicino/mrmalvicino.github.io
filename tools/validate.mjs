@@ -1,6 +1,7 @@
 import { access, readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
+import Ajv from "ajv";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const languages = ["en", "es"];
@@ -18,6 +19,52 @@ const dataShapes = {
 
 const htmlFiles = ["index.html", "projects.html", "cv.html", "footer.html"];
 const localJsonKeys = new Set(["href", "src", "study_plan", "certificate"]);
+const schemaBaseUrl = "https://mrmalvicino.com/schemas/";
+
+const idCollections = {
+	buttons: ["index_page_buttons.a_items", "index_page_buttons.button_items"],
+	images: ["common_images", "technologies_images", "institutions_images", "projects_images"],
+	jobs: ["jobs"],
+	labels: ["common_labels", "index_page_labels", "projects_page_labels", "cv_page_labels"],
+	menu: ["menu_items"],
+	projects: ["projects"],
+	skills: ["stacks"],
+	studies: ["studies"],
+	textboxes: ["index_page_textboxes"]
+};
+
+const invariantFields = {
+	jobs: {
+		jobs: ["order", "start_date", "end_date"]
+	},
+	images: {
+		common_images: ["src"],
+		technologies_images: ["src"],
+		institutions_images: ["src"],
+		projects_images: ["src"]
+	},
+	menu: {
+		menu_items: ["order", "href"]
+	},
+	projects: {
+		projects: [
+			"order",
+			"technologies_ids",
+			"source_code",
+			"live_demo",
+			"video_url",
+			"mockup_id",
+			"shown_in_portfolio",
+			"shown_in_cv"
+		]
+	},
+	skills: {
+		stacks: ["order"]
+	},
+	studies: {
+		studies: ["order", "institution_id", "study_plan", "certificate", "type", "shown_in_cv"]
+	}
+};
 
 function isExternalReference(reference) {
 	return /^(?:[a-z][a-z\d+.-]*:|\/\/)/i.test(reference);
@@ -89,6 +136,56 @@ function collectJsonReferences(value, references, key = "") {
 	}
 }
 
+function getAtPath(value, propertyPath) {
+	return propertyPath.split(".").reduce((current, key) => current?.[key], value);
+}
+
+function formatSchemaError(error) {
+	const location = error.instancePath || "/";
+	return `${location} ${error.message}`;
+}
+
+async function readSchemaValidators(root, errors) {
+	const ajv = new Ajv({ allErrors: true, allowUnionTypes: true });
+	const schemas = new Map();
+	const schemaNames = ["common", ...Object.keys(dataShapes)];
+
+	for (const name of schemaNames) {
+		const fileName = `${name}.schema.json`;
+
+		try {
+			const contents = await readFile(path.join(root, "schemas", fileName), "utf8");
+			schemas.set(name, JSON.parse(contents));
+		} catch (error) {
+			errors.push(`schemas/${fileName}: schema could not be read (${error.message})`);
+		}
+	}
+
+	const commonSchema = schemas.get("common");
+
+	if (commonSchema) {
+		ajv.addSchema(commonSchema, `${schemaBaseUrl}common.schema.json`);
+	}
+
+	const validators = new Map();
+
+	for (const category of Object.keys(dataShapes)) {
+		const schema = schemas.get(category);
+
+		if (!schema) {
+			continue;
+		}
+
+		try {
+			validators.set(category, ajv.compile(schema));
+		} catch (error) {
+			errors.push(`schemas/${category}.schema.json: schema is invalid (${error.message})`);
+		}
+	}
+
+	return validators;
+}
+
 async function readJsonData(root, errors) {
 	const data = new Map();
 	let fileNames = [];
@@ -144,56 +241,203 @@ function validateDataFiles(data, errors) {
 	}
 }
 
+function validateDataSchemas(data, validators, errors) {
+	for (const [category, validate] of validators) {
+		for (const language of languages) {
+			const fileName = `${category}-${language}.json`;
+			const contents = data.get(fileName);
+
+			if (!contents || validate(contents)) {
+				continue;
+			}
+
+			for (const error of validate.errors) {
+				errors.push(`data/${fileName}: schema violation: ${formatSchemaError(error)}`);
+			}
+		}
+	}
+}
+
+function validateUniqueIds(data, errors) {
+	for (const category of Object.keys(idCollections)) {
+		for (const language of languages) {
+			const fileName = `${category}-${language}.json`;
+			const contents = data.get(fileName);
+
+			if (!contents) {
+				continue;
+			}
+
+			for (const collectionPath of idCollections[category]) {
+				const items = getAtPath(contents, collectionPath);
+
+				if (!Array.isArray(items)) {
+					continue;
+				}
+
+				const ids = new Set();
+				const orders = new Set();
+
+				for (const item of items) {
+					if (!item?.id) {
+						continue;
+					}
+
+					if (ids.has(item.id)) {
+						errors.push(`data/${fileName}: duplicate id in ${collectionPath}: ${item.id}`);
+					}
+
+					ids.add(item.id);
+
+					if (item.order !== undefined) {
+						if (orders.has(item.order)) {
+							errors.push(`data/${fileName}: duplicate order in ${collectionPath}: ${item.order}`);
+						}
+
+						orders.add(item.order);
+					}
+				}
+			}
+		}
+	}
+}
+
+function validateLocalizedParity(data, errors) {
+	for (const [category, collectionPaths] of Object.entries(idCollections)) {
+		const english = data.get(`${category}-en.json`);
+		const spanish = data.get(`${category}-es.json`);
+
+		if (!english || !spanish) {
+			continue;
+		}
+
+		for (const collectionPath of collectionPaths) {
+			const englishItems = getAtPath(english, collectionPath);
+			const spanishItems = getAtPath(spanish, collectionPath);
+
+			if (!Array.isArray(englishItems) || !Array.isArray(spanishItems)) {
+				continue;
+			}
+
+			const englishIds = englishItems.map(item => item.id);
+			const spanishIds = spanishItems.map(item => item.id);
+			const sortedEnglishIds = [...englishIds].sort();
+			const sortedSpanishIds = [...spanishIds].sort();
+
+			if (JSON.stringify(sortedEnglishIds) !== JSON.stringify(sortedSpanishIds)) {
+				errors.push(`data/${category}-*.json: localized id set differs in ${collectionPath}`);
+				continue;
+			}
+
+			const fields = invariantFields[category]?.[collectionPath] ?? [];
+			const spanishItemsById = new Map(spanishItems.map(item => [item.id, item]));
+
+			for (const englishItem of englishItems) {
+				const spanishItem = spanishItemsById.get(englishItem.id);
+
+				for (const field of fields) {
+					if (JSON.stringify(englishItem[field]) !== JSON.stringify(spanishItem[field])) {
+						errors.push(
+						`data/${category}-*.json: invariant field differs for ${englishItem.id}.${field}`
+					);
+					}
+				}
+			}
+		}
+	}
+
+	const englishBanner = data.get("skills-en.json")?.banner_items;
+	const spanishBanner = data.get("skills-es.json")?.banner_items;
+
+	if (englishBanner && spanishBanner && JSON.stringify(englishBanner) !== JSON.stringify(spanishBanner)) {
+		errors.push("data/skills-*.json: localized banner_items sequence differs");
+	}
+}
+
 function validateIdReferences(data, indexHtml, errors) {
 	const pageIds = new Set([...indexHtml.matchAll(/\bid=["']([^"']+)["']/g)].map(match => match[1]));
 
 	for (const language of languages) {
+		const buttons = data.get(`buttons-${language}.json`);
 		const images = data.get(`images-${language}.json`);
+		const labels = data.get(`labels-${language}.json`);
 		const projects = data.get(`projects-${language}.json`);
 		const skills = data.get(`skills-${language}.json`);
 		const studies = data.get(`studies-${language}.json`);
 		const menu = data.get(`menu-${language}.json`);
+		const textboxes = data.get(`textboxes-${language}.json`);
 
 		if (!images || !projects || !skills || !studies || !menu) {
 			continue;
 		}
 
-		const imageGroups = [
-			images.common_images,
-			images.technologies_images,
-			images.institutions_images,
-			images.projects_images
+		const commonImageIds = new Set((images.common_images ?? []).map(image => image.id));
+		const technologyImageIds = new Set((images.technologies_images ?? []).map(image => image.id));
+		const institutionImageIds = new Set((images.institutions_images ?? []).map(image => image.id));
+		const projectImageIds = new Set((images.projects_images ?? []).map(image => image.id));
+
+		const allImageIds = [
+			...commonImageIds,
+			...technologyImageIds,
+			...institutionImageIds,
+			...projectImageIds
 		];
 
-		const imageIds = new Set(imageGroups.flat().map(image => image.id));
+		if (new Set(allImageIds).size !== allImageIds.length) {
+			errors.push(`data/images-${language}.json: image ids must be unique across all groups`);
+		}
 
-		for (const id of skills.banner_items) {
-			if (!imageIds.has(id)) {
-				errors.push(`data/skills-${language}.json: unknown image id: ${id}`);
+		for (const id of skills.banner_items ?? []) {
+			if (!technologyImageIds.has(id)) {
+				errors.push(`data/skills-${language}.json: unknown technology image id: ${id}`);
 			}
 		}
 
-		for (const project of projects.projects) {
-			for (const id of project.technologies_ids) {
-				if (!imageIds.has(id)) {
-					errors.push(`data/projects-${language}.json: unknown image id: ${id}`);
+		for (const project of projects.projects ?? []) {
+			for (const id of project.technologies_ids ?? []) {
+				if (!technologyImageIds.has(id)) {
+					errors.push(`data/projects-${language}.json: unknown technology image id: ${id}`);
 				}
 			}
 
-			if (project.mockup_id && !imageIds.has(project.mockup_id)) {
-				errors.push(`data/projects-${language}.json: unknown image id: ${project.mockup_id}`);
+			if (project.mockup_id && !projectImageIds.has(project.mockup_id)) {
+				errors.push(`data/projects-${language}.json: unknown project image id: ${project.mockup_id}`);
 			}
 		}
 
-		for (const study of studies.studies) {
-			if (!imageIds.has(study.institution_id)) {
-				errors.push(`data/studies-${language}.json: unknown image id: ${study.institution_id}`);
+		for (const study of studies.studies ?? []) {
+			if (!institutionImageIds.has(study.institution_id)) {
+				errors.push(`data/studies-${language}.json: unknown institution image id: ${study.institution_id}`);
 			}
 		}
 
-		for (const item of menu.menu_items) {
+		if (!projectImageIds.has("wipImg")) {
+			errors.push(`data/images-${language}.json: required project image id is missing: wipImg`);
+		}
+
+		const commonLabelIds = new Set((labels?.common_labels ?? []).map(label => label.id));
+
+		for (const requiredId of ["sourceCodeLbl", "openOnlineLbl"]) {
+			if (!commonLabelIds.has(requiredId)) {
+				errors.push(`data/labels-${language}.json: required common label id is missing: ${requiredId}`);
+			}
+		}
+
+		for (const item of menu.menu_items ?? []) {
 			if (item.href?.startsWith("#") && !pageIds.has(item.href.slice(1))) {
 				errors.push(`data/menu-${language}.json: unknown index.html fragment: ${item.href}`);
+			}
+		}
+
+		const controls = [
+			...(buttons?.index_page_buttons?.a_items ?? []),
+			...(buttons?.index_page_buttons?.button_items ?? []),
+			...(textboxes?.index_page_textboxes ?? [])
+		];
+
+		for (const control of controls) {
+			if (!pageIds.has(control.id)) {
+				errors.push(`data/*-${language}.json: unknown index.html control id: ${control.id}`);
 			}
 		}
 	}
@@ -238,14 +482,18 @@ export async function validateSite(root = projectRoot) {
 		}
 	}
 
-	for (const requiredPath of ["CNAME", "assets", "script", "style"]) {
+	for (const requiredPath of ["CNAME", "assets", "schemas", "script", "style"]) {
 		if (!(await pathExists(path.join(root, requiredPath)))) {
 			errors.push(`${requiredPath}: required build input is missing`);
 		}
 	}
 
+	const validators = await readSchemaValidators(root, errors);
 	const data = await readJsonData(root, errors);
 	validateDataFiles(data, errors);
+	validateDataSchemas(data, validators, errors);
+	validateUniqueIds(data, errors);
+	validateLocalizedParity(data, errors);
 	await validateHtmlAndCss(root, htmlContents, errors);
 
 	for (const [fileName, contents] of data) {

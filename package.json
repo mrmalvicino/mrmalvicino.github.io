@@ -16,6 +16,7 @@
     "build": "npm run validate && node tools/build.mjs"
   },
   "devDependencies": {
-    "@playwright/test": "1.56.1"
+    "@playwright/test": "1.56.1",
+    "ajv": "^8.20.0"
   }
 }

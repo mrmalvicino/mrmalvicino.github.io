@@ -21,6 +21,33 @@ Run the structural checks, JSON parsing, and local-reference validation:
 npm run validate
 ```
 
+The validation also applies the JSON Schemas in `schemas/`, checks stable ID and order uniqueness, verifies typed references between entities, and compares structural fields shared by the English and Spanish records.
+
+## Data model
+
+The nine localized data categories remain as English/Spanish pairs under `data/`. This preserves the current browser consumers while giving every domain entity a stable identity and explicit ordering.
+
+| Category | Identified entities | Main relationships |
+| --- | --- | --- |
+| `projects` | Projects | `technologies_ids` references technology images; `mockup_id` references project images |
+| `studies` | Studies | `institution_id` references institution images |
+| `jobs` | Work experiences | Structured `start_date` and nullable `end_date` use `YYYY-MM` |
+| `menu` | Navigation entries | `href` references a section in `index.html` |
+| `skills` | Skill stacks | `banner_items` references technology images |
+| `images` | Common, technology, institution, and project images | IDs are unique across every image group |
+| `labels`, `textboxes`, `buttons` | Presentation bindings | IDs reference existing DOM contracts where applicable |
+
+Data conventions:
+
+- Domain IDs use stable, language-independent `kebab-case` values. Existing DOM binding IDs remain `camelCase` for compatibility.
+- Ordered domain collections use a positive, unique `order` value. Renderers sort by this property instead of relying on array position.
+- Relationships use IDs and are validated against the appropriate target category, not a shared untyped namespace.
+- Localized pairs contain the same entity IDs. Structural fields such as references, visibility, dates, URLs, and order must match between languages.
+- Visibility and classification are represented by booleans and enums rather than display text.
+- Schemas reject unknown properties, missing required fields, invalid types, malformed IDs, invalid dates, and unsupported study types.
+
+The migration is additive: existing property names and localized files remain available, so the current renderers and deployment routes stay compatible. The schemas are development inputs and are intentionally excluded from the publishable `dist/` artifact.
+
 Run the complete automated suite. The first execution downloads the pinned Chromium version required by Playwright:
 
 ```bash

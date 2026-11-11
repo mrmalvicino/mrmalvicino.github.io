@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mrmalvicino.com/schemas/jobs.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "jobs"
+  ],
+  "properties": {
+    "jobs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "order",
+          "start_date",
+          "end_date",
+          "organization",
+          "position",
+          "time",
+          "description"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "common.schema.json#/$defs/domainId"
+          },
+          "order": {
+            "$ref": "common.schema.json#/$defs/order"
+          },
+          "start_date": {
+            "$ref": "common.schema.json#/$defs/yearMonth"
+          },
+          "end_date": {
+            "anyOf": [
+              {
+                "$ref": "common.schema.json#/$defs/yearMonth"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "organization": {
+            "$ref": "common.schema.json#/$defs/nonEmptyString"
+          },
+          "position": {
+            "$ref": "common.schema.json#/$defs/nonEmptyString"
+          },
+          "time": {
+            "$ref": "common.schema.json#/$defs/nonEmptyString"
+          },
+          "description": {
+            "$ref": "common.schema.json#/$defs/nonEmptyString"
+          }
+        }
+      }
+    }
+  }
+}

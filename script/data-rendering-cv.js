@@ -2,7 +2,7 @@ function renderCvStacks(stacksData) {
     const skillsUl = document.getElementById("skillsLst");
     skillsUl.innerHTML = "";
 
-    stacksData.forEach(x => {
+    [...stacksData].sort((a, b) => a.order - b.order).forEach(x => {
         const stackLi = document.createElement("li");
         stackLi.classList.add("margin-vertical-10-px");
 
@@ -26,8 +26,9 @@ function renderCvStacks(stacksData) {
 function renderCvStudies(studiesData) {
     const careersUl = document.getElementById("careersLst");
     careersUl.innerHTML = "";
+    const orderedStudies = [...studiesData].sort((a, b) => a.order - b.order);
 
-    const careers = studiesData.filter(
+    const careers = orderedStudies.filter(
         x => x.type === "career" && x.shown_in_cv === true
     );
 
@@ -49,7 +50,7 @@ function renderCvStudies(studiesData) {
     const coursesUl = document.getElementById("coursesLst");
     coursesUl.innerHTML = "";
 
-    const courses = studiesData.filter(
+    const courses = orderedStudies.filter(
         x => x.type === "course" && x.shown_in_cv === true
     );
 
@@ -71,7 +72,7 @@ function renderCvStudies(studiesData) {
     const languagesUl = document.getElementById("languagesLst");
     languagesUl.innerHTML = "";
 
-    const languages = studiesData.filter(
+    const languages = orderedStudies.filter(
         x => x.type === "language" && x.shown_in_cv === true
     );
 
@@ -95,7 +96,7 @@ function renderCvProjects(projectsData) {
     const projectsUl = document.getElementById("projectsLst");
     projectsUl.innerHTML = "";
 
-    projectsData.forEach(x => {
+    [...projectsData].sort((a, b) => a.order - b.order).forEach(x => {
         const projectLi = document.createElement("li");
         projectLi.classList.add("margin-vertical-20-px");
 
@@ -132,7 +133,7 @@ function renderCvJobs(jobsData) {
     const jobsUl = document.getElementById("jobsLst");
     jobsUl.innerHTML = "";
 
-    jobsData.forEach(x => {
+    [...jobsData].sort((a, b) => a.order - b.order).forEach(x => {
         const jobLi = document.createElement("li");
         jobLi.classList.add("margin-vertical-20-px");
 

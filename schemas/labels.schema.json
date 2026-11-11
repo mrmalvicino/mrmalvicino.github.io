@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mrmalvicino.com/schemas/labels.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "common_labels",
+    "index_page_labels",
+    "projects_page_labels",
+    "cv_page_labels"
+  ],
+  "properties": {
+    "common_labels": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/label"
+      }
+    },
+    "index_page_labels": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/label"
+      }
+    },
+    "projects_page_labels": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/label"
+      }
+    },
+    "cv_page_labels": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/label"
+      }
+    }
+  }
+}

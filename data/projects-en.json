@@ -1,6 +1,8 @@
 {
     "projects": [
         {
+            "id": "meeni-erp",
+            "order": 1,
             "title": "Meeni ERP",
             "description": "Business management software that manages stock, makes quotes, records transactions, and keeps the accounting.",
             "technologies_ids": [
@@ -20,6 +22,8 @@
             "shown_in_cv": true
         },
         {
+            "id": "membriana",
+            "order": 2,
             "title": "Membriana",
             "description": "Membership management system designed to track members and manage affiliate payments.",
             "technologies_ids": [
@@ -38,6 +42,8 @@
             "shown_in_cv": true
         },
         {
+            "id": "ecommerce-net",
+            "order": 3,
             "title": "Ecommerce Net",
             "description": "Ecommerce that includes product management, shopping cart, user roles and order tracking.",
             "technologies_ids": [
@@ -56,6 +62,8 @@
             "shown_in_cv": true
         },
         {
+            "id": "bancar",
+            "order": 4,
             "title": "BancAr",
             "description": "Home Banking to carry out banking operations and manage clients, accounts, loans and transfers.",
             "technologies_ids": [
@@ -73,6 +81,8 @@
             "shown_in_cv": false
         },
         {
+            "id": "link-tree",
+            "order": 5,
             "title": "Link Tree",
             "description": "Personal Link Tree for easy access to my social and professional profiles.",
             "technologies_ids": [
@@ -89,6 +99,8 @@
             "shown_in_cv": false
         },
         {
+            "id": "portfolio",
+            "order": 6,
             "title": "Portfolio",
             "description": "Responsive website to showcase projects and personal achievements.",
             "technologies_ids": [
@@ -105,6 +117,8 @@
             "shown_in_cv": false
         },
         {
+            "id": "biblio-api",
+            "order": 7,
             "title": "Biblio API",
             "description": "Provides endpoints to manage books, authors, categories, and genres including creation, listing and filtering.",
             "technologies_ids": [
@@ -120,6 +134,8 @@
             "shown_in_cv": false
         },
         {
+            "id": "dsp-package",
+            "order": 8,
             "title": "DSP Package",
             "description": "Provides a set of tools for generating, manipulating and visualizing signals.",
             "technologies_ids": [
@@ -134,6 +150,8 @@
             "shown_in_cv": false
         },
         {
+            "id": "stus-calculator",
+            "order": 9,
             "title": "STUS Calculator",
             "description": "Graphic calculator that approximates periodic functions by calculating their orthogonal projection onto a vector space of trigonometric polynomials.",
             "technologies_ids": [
@@ -148,6 +166,8 @@
             "shown_in_cv": false
         },
         {
+            "id": "anc-research-plan",
+            "order": 10,
             "title": "ANC Research Plan",
             "description": "Research plan for subjective evaluation of active noise cancellation in headphones through statistical analysis done with the SciPy module.",
             "technologies_ids": [
@@ -162,6 +182,8 @@
             "shown_in_cv": false
         },
         {
+            "id": "dugun-auto-clicker",
+            "order": 11,
             "title": "Dugun Auto Clicker",
             "description": "Mouse macro automation software that allows users to create sequences of mouse actions with position and duration.",
             "technologies_ids": [
@@ -176,6 +198,8 @@
             "shown_in_cv": false
         },
         {
+            "id": "binary-calculator",
+            "order": 12,
             "title": "Binary Calculator",
             "description": "Script that converts numbers between different number bases using pointers and dynamic memory allocation.",
             "technologies_ids": [
@@ -190,6 +214,8 @@
             "shown_in_cv": false
         },
         {
+            "id": "baluma-erp",
+            "order": 13,
             "title": "Baluma ERP",
             "description": "Management software to automate product stock by recording purchases and sales.",
             "technologies_ids": [
@@ -204,6 +230,8 @@
             "shown_in_cv": false
         },
         {
+            "id": "irwins-revenge",
+            "order": 14,
             "title": "Irwin's Revenge",
             "description": "Two-player dice game with a terminal interface, in which you collect figurines and form dice combinations to score points.",
             "technologies_ids": [
@@ -218,6 +246,8 @@
             "shown_in_cv": false
         },
         {
+            "id": "arduino-led-controller",
+            "order": 15,
             "title": "Arduino LED Controller",
             "description": "LED light effects algorithms controlled by a button board using Arduino.",
             "technologies_ids": [
@@ -232,6 +262,8 @@
             "shown_in_cv": false
         },
         {
+            "id": "dsp-notes",
+            "order": 16,
             "title": "DSP Notes",
             "description": "Digital signal processing notes for sound engineering.",
             "technologies_ids": [
@@ -246,6 +278,8 @@
             "shown_in_cv": false
         },
         {
+            "id": "acoustics-notes",
+            "order": 17,
             "title": "Acoustics Notes",
             "description": "Acoustics notes for sound engineering.",
             "technologies_ids": [
@@ -260,6 +294,8 @@
             "shown_in_cv": false
         },
         {
+            "id": "electronics-notes",
+            "order": 18,
             "title": "Electronics Notes",
             "description": "Electronics notes for sound engineering.",
             "technologies_ids": [
@@ -274,6 +310,8 @@
             "shown_in_cv": false
         },
         {
+            "id": "math-notes",
+            "order": 19,
             "title": "Math Notes",
             "description": "Math notes for sound engineering.",
             "technologies_ids": [
@@ -288,6 +326,8 @@
             "shown_in_cv": false
         },
         {
+            "id": "physics-book",
+            "order": 20,
             "title": "Physics Book",
             "description": "Mechanical physics book for sound engineering.",
             "technologies_ids": [
@@ -302,6 +342,8 @@
             "shown_in_cv": false
         },
         {
+            "id": "physics-1-exercises",
+            "order": 21,
             "title": "Physics 1 Exercises",
             "description": "Exercise guide for the subject Physics 1 of Sound Engineering at Untref.",
             "technologies_ids": [
@@ -316,6 +358,8 @@
             "shown_in_cv": false
         },
         {
+            "id": "physics-1-solved",
+            "order": 22,
             "title": "Physics 1 Solved",
             "description": "Solved exercises of the subject Physics 1 of Sound Engineering at Untref.",
             "technologies_ids": [
@@ -330,6 +374,8 @@
             "shown_in_cv": false
         },
         {
+            "id": "physics-2-demonstrations",
+            "order": 23,
             "title": "Physics 2 Demonstrations",
             "description": "Demonstrations from the Physics 2 subject of Sound Engineering at Untref.",
             "technologies_ids": [
