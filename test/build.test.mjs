@@ -39,9 +39,11 @@ test("build creates a complete publishable artifact", async () => {
 			"cv.html",
 			"footer.html",
 			"style/constants.css",
+			"script/data-loader.js",
 			"script/utils.js",
-			"data/projects-es.json",
-			"data/projects-en.json",
+			"data/site.json",
+			"data/es.json",
+			"data/en.json",
 			"assets/images/logo.png",
 			"assets/cv/malvicino-es.pdf"
 		];

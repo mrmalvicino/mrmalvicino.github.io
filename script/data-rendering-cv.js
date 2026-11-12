@@ -23,7 +23,7 @@ function renderCvStacks(stacksData) {
     });
 }
 
-function renderCvStudies(studiesData) {
+function renderCvStudies(studiesData, institutions) {
     const careersUl = document.getElementById("careersLst");
     careersUl.innerHTML = "";
     const orderedStudies = [...studiesData].sort((a, b) => a.order - b.order);
@@ -41,7 +41,7 @@ function renderCvStudies(studiesData) {
         careerLi.appendChild(h4);
 
         const p = document.createElement("p");
-        p.textContent = x.institution_name;
+        p.textContent = requireEntity(institutions, x.institutionId, "institutions").name;
         careerLi.appendChild(p);
 
         careersUl.appendChild(careerLi);
@@ -63,7 +63,7 @@ function renderCvStudies(studiesData) {
         courseLi.appendChild(h4);
 
         const p = document.createElement("p");
-        p.textContent = x.institution_name;
+        p.textContent = requireEntity(institutions, x.institutionId, "institutions").name;
         courseLi.appendChild(p);
 
         coursesUl.appendChild(courseLi);
@@ -85,7 +85,7 @@ function renderCvStudies(studiesData) {
         languageLi.appendChild(h4);
 
         const p = document.createElement("p");
-        p.textContent = x.institution_name;
+        p.textContent = requireEntity(institutions, x.institutionId, "institutions").name;
         languageLi.appendChild(p);
 
         languagesUl.appendChild(languageLi);

@@ -1,0 +1,820 @@
+{
+  "profile": {
+    "pageTitle": "Maximiliano R. Malvicino",
+    "headerName": "Maximiliano Malvicino",
+    "fullName": "Maximiliano Raúl Malvicino",
+    "website": {
+      "href": "https://mrmalvicino.com",
+      "label": "mrmalvicino.com"
+    },
+    "email": {
+      "href": "mailto:mrmalvicino@gmail.com",
+      "address": "mrmalvicino@gmail.com"
+    },
+    "phone": {
+      "href": "tel:+5491159058729",
+      "label": "+54 (911) 5905-8729"
+    },
+    "linkedin": {
+      "href": "https://www.linkedin.com/in/mrmalvicino/",
+      "label": "/in/mrmalvicino"
+    },
+    "location": {
+      "href": "https://maps.app.goo.gl/6Zy59hyx4na4zXvy8"
+    },
+    "socials": [
+      {
+        "id": "whatsapp",
+        "order": 1,
+        "href": "https://wa.me/5491159058729"
+      },
+      {
+        "id": "telegram",
+        "order": 2,
+        "href": "https://t.me/mrmalvicino"
+      },
+      {
+        "id": "linkedin",
+        "order": 3,
+        "href": "https://www.linkedin.com/in/mrmalvicino/"
+      },
+      {
+        "id": "github",
+        "order": 4,
+        "href": "https://www.github.com/mrmalvicino"
+      }
+    ]
+  },
+  "configuration": {
+    "formAction": "https://formspree.io/f/mvgpjkjn"
+  },
+  "resumes": {
+    "en": {
+      "href": "./../assets/cv/malvicino-en.pdf",
+      "download": "malvicino-en.pdf"
+    },
+    "es": {
+      "href": "./../assets/cv/malvicino-es.pdf",
+      "download": "malvicino-es.pdf"
+    }
+  },
+  "menu": [
+    {
+      "id": "about",
+      "order": 1,
+      "href": "#heroSec"
+    },
+    {
+      "id": "skills",
+      "order": 2,
+      "href": "#skillsSec"
+    },
+    {
+      "id": "projects",
+      "order": 3,
+      "href": "#projectsSec"
+    },
+    {
+      "id": "education",
+      "order": 4,
+      "href": "#educationSec"
+    },
+    {
+      "id": "contact",
+      "order": 5,
+      "href": "#contactSec"
+    }
+  ],
+  "images": {
+    "common_images": {
+      "profileImg": {
+        "src": "https://avatars.githubusercontent.com/u/46000191"
+      },
+      "logoImg": {
+        "src": "./assets/images/logo.png"
+      }
+    },
+    "technologies_images": {
+      "cppImg": {
+        "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg"
+      },
+      "csImg": {
+        "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg"
+      },
+      "pythonImg": {
+        "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"
+      },
+      "javaImg": {
+        "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg"
+      },
+      "jsImg": {
+        "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg"
+      },
+      "tsImg": {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1280px-Typescript_logo_2020.svg.png"
+      },
+      "htmlImg": {
+        "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg"
+      },
+      "cssImg": {
+        "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg"
+      },
+      "bootstrapImg": {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/1280px-Bootstrap_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail"
+      },
+      "tailwindImg": {
+        "src": "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg"
+      },
+      "dotnetImg": {
+        "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/dot-net/dot-net-original-wordmark.svg"
+      },
+      "angularImg": {
+        "src": "https://i.imgur.com/X0wgeXR.png"
+      },
+      "reactImg": {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/React.svg/800px-React.svg.png"
+      },
+      "fastapiImg": {
+        "src": "https://avatars.githubusercontent.com/u/156354296?s=280&v=4"
+      },
+      "mssqlImg": {
+        "src": "https://www.svgrepo.com/show/303229/microsoft-sql-server-logo.svg"
+      },
+      "mysqlImg": {
+        "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg"
+      },
+      "gitImg": {
+        "src": "https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg"
+      },
+      "latexImg": {
+        "src": "https://cdn.pixabay.com/photo/2013/03/30/00/10/latex-97866_640.png"
+      },
+      "overleafImg": {
+        "src": "https://images.ctfassets.net/nrgyaltdicpt/wwNSIPYEZa2OCOsuGweSY/0142fa5bce2f40f4168bad08acc8a52d/Sticker_square_colour_light_bg.png"
+      }
+    },
+    "institutions_images": {
+      "untrefImg": {
+        "src": "./assets/images/untref.png"
+      },
+      "utnImg": {
+        "src": "./assets/images/utn.png"
+      },
+      "educacionitImg": {
+        "src": "./assets/images/educacionit.svg"
+      },
+      "cambridgeImg": {
+        "src": "./assets/images/cambridge.png"
+      },
+      "argImg": {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/330px-Flag_of_Argentina.svg.png"
+      }
+    },
+    "projects_images": {
+      "wipImg": {
+        "src": "https://t3.ftcdn.net/jpg/02/33/17/50/360_F_233175040_hwqRyiZlQkXimeLz2AIZhajyfiU9El1m.jpg"
+      },
+      "stusImg": {
+        "src": "https://github.com/mrmalvicino/stus-calculator/blob/main/images/dim_11.png?raw=true"
+      },
+      "ancImg": {
+        "src": "https://github.com/mrmalvicino/anc-research-plan/blob/main/latex/images/cross_Y2.png?raw=true"
+      },
+      "dugunImg": {
+        "src": "https://i.imgur.com/EwCy5hL.png"
+      },
+      "binaryImg": {
+        "src": "https://i.imgur.com/PmQGGe1.png"
+      },
+      "balumaImg": {
+        "src": "https://github.com/mrmalvicino/baluma-erp/raw/main/images/screenshot-stock.png?raw=true"
+      },
+      "irwinImg": {
+        "src": "https://i.imgur.com/XiWHbjK.png"
+      },
+      "arduinoImg": {
+        "src": "https://content.instructables.com/FNO/ZIKG/K6HPDHBU/FNOZIKGK6HPDHBU.jpg?auto=webp&crop=1.2%3A1&frame=1&width=420"
+      },
+      "waveformImg": {
+        "src": "https://i.imgur.com/oWak3t1.png"
+      },
+      "transmissibilityImg": {
+        "src": "https://i.imgur.com/1qQWsXr.png"
+      },
+      "circuitImg": {
+        "src": "https://i.imgur.com/bXjmNw4.png"
+      },
+      "mathImg": {
+        "src": "https://i.imgur.com/2kqj9Xn.png"
+      },
+      "newtonImg": {
+        "src": "https://i.imgur.com/4WfJHib.png"
+      },
+      "planeImg": {
+        "src": "https://i.imgur.com/9WHXRsg.png"
+      },
+      "einsteinImg": {
+        "src": "https://i.imgur.com/Sq4x0DT.png"
+      },
+      "matrixImg": {
+        "src": "https://i.imgur.com/5dHwYZL.png"
+      },
+      "biblioImg": {
+        "src": "https://i.imgur.com/U4aYLo2.jpeg"
+      }
+    }
+  },
+  "technologies": {
+    "cpp": {
+      "imageId": "cppImg"
+    },
+    "csharp": {
+      "imageId": "csImg"
+    },
+    "python": {
+      "imageId": "pythonImg"
+    },
+    "java": {
+      "imageId": "javaImg"
+    },
+    "javascript": {
+      "imageId": "jsImg"
+    },
+    "typescript": {
+      "imageId": "tsImg"
+    },
+    "html": {
+      "imageId": "htmlImg"
+    },
+    "css": {
+      "imageId": "cssImg"
+    },
+    "bootstrap": {
+      "imageId": "bootstrapImg"
+    },
+    "tailwind": {
+      "imageId": "tailwindImg"
+    },
+    "dotnet": {
+      "imageId": "dotnetImg"
+    },
+    "angular": {
+      "imageId": "angularImg"
+    },
+    "react": {
+      "imageId": "reactImg"
+    },
+    "fastapi": {
+      "imageId": "fastapiImg"
+    },
+    "mssql": {
+      "imageId": "mssqlImg"
+    },
+    "mysql": {
+      "imageId": "mysqlImg"
+    },
+    "git": {
+      "imageId": "gitImg"
+    },
+    "latex": {
+      "imageId": "latexImg"
+    },
+    "overleaf": {
+      "imageId": "overleafImg"
+    }
+  },
+  "institutions": {
+    "untref": {
+      "imageId": "untrefImg"
+    },
+    "utn": {
+      "imageId": "utnImg"
+    },
+    "educacion-it": {
+      "imageId": "educacionitImg"
+    },
+    "cambridge": {
+      "imageId": "cambridgeImg"
+    },
+    "argentina": {
+      "imageId": "argImg"
+    }
+  },
+  "projects": [
+    {
+      "id": "meeni-erp",
+      "order": 1,
+      "source_code": "https://github.com/mrmalvicino/meeni-erp",
+      "live_demo": null,
+      "video_url": null,
+      "mockup_id": null,
+      "shown_in_portfolio": true,
+      "shown_in_cv": true,
+      "technologyIds": [
+        "dotnet",
+        "csharp",
+        "html",
+        "css",
+        "javascript",
+        "mssql",
+        "git"
+      ]
+    },
+    {
+      "id": "membriana",
+      "order": 2,
+      "source_code": "https://github.com/mrmalvicino/membriana",
+      "live_demo": null,
+      "video_url": null,
+      "mockup_id": null,
+      "shown_in_portfolio": true,
+      "shown_in_cv": true,
+      "technologyIds": [
+        "dotnet",
+        "csharp",
+        "bootstrap",
+        "javascript",
+        "mssql",
+        "git"
+      ]
+    },
+    {
+      "id": "ecommerce-net",
+      "order": 3,
+      "source_code": "https://github.com/mrmalvicino/ecommerce-net",
+      "live_demo": null,
+      "video_url": "https://www.youtube-nocookie.com/embed/H7AISursM2M",
+      "mockup_id": null,
+      "shown_in_portfolio": true,
+      "shown_in_cv": true,
+      "technologyIds": [
+        "dotnet",
+        "csharp",
+        "bootstrap",
+        "javascript",
+        "mssql",
+        "git"
+      ]
+    },
+    {
+      "id": "bancar",
+      "order": 4,
+      "source_code": "https://github.com/mrmalvicino/bancar",
+      "live_demo": null,
+      "video_url": "https://www.youtube-nocookie.com/embed/D8P1URMdCHU",
+      "mockup_id": null,
+      "shown_in_portfolio": false,
+      "shown_in_cv": false,
+      "technologyIds": [
+        "java",
+        "javascript",
+        "tailwind",
+        "mysql",
+        "git"
+      ]
+    },
+    {
+      "id": "link-tree",
+      "order": 5,
+      "source_code": "https://github.com/mrmalvicino/link-tree",
+      "live_demo": "https://mrmalvicino.com/link-tree",
+      "video_url": null,
+      "mockup_id": "matrixImg",
+      "shown_in_portfolio": false,
+      "shown_in_cv": false,
+      "technologyIds": [
+        "react",
+        "css",
+        "javascript",
+        "git"
+      ]
+    },
+    {
+      "id": "portfolio",
+      "order": 6,
+      "source_code": "https://github.com/mrmalvicino/mrmalvicino.github.io",
+      "live_demo": "https://mrmalvicino.com",
+      "video_url": null,
+      "mockup_id": null,
+      "shown_in_portfolio": false,
+      "shown_in_cv": false,
+      "technologyIds": [
+        "html",
+        "css",
+        "javascript",
+        "git"
+      ]
+    },
+    {
+      "id": "biblio-api",
+      "order": 7,
+      "source_code": "https://github.com/mrmalvicino/biblio-api",
+      "live_demo": null,
+      "video_url": null,
+      "mockup_id": "biblioImg",
+      "shown_in_portfolio": false,
+      "shown_in_cv": false,
+      "technologyIds": [
+        "fastapi",
+        "python",
+        "git"
+      ]
+    },
+    {
+      "id": "dsp-package",
+      "order": 8,
+      "source_code": "https://github.com/mrmalvicino/dsp-package",
+      "live_demo": null,
+      "video_url": null,
+      "mockup_id": null,
+      "shown_in_portfolio": false,
+      "shown_in_cv": false,
+      "technologyIds": [
+        "python",
+        "git"
+      ]
+    },
+    {
+      "id": "stus-calculator",
+      "order": 9,
+      "source_code": "https://github.com/mrmalvicino/stus-calculator",
+      "live_demo": null,
+      "video_url": null,
+      "mockup_id": "stusImg",
+      "shown_in_portfolio": false,
+      "shown_in_cv": false,
+      "technologyIds": [
+        "python",
+        "git"
+      ]
+    },
+    {
+      "id": "anc-research-plan",
+      "order": 10,
+      "source_code": "https://github.com/mrmalvicino/anc-research-plan",
+      "live_demo": null,
+      "video_url": null,
+      "mockup_id": "ancImg",
+      "shown_in_portfolio": false,
+      "shown_in_cv": false,
+      "technologyIds": [
+        "python",
+        "git"
+      ]
+    },
+    {
+      "id": "dugun-auto-clicker",
+      "order": 11,
+      "source_code": "https://github.com/mrmalvicino/dugun-auto-clicker",
+      "live_demo": null,
+      "video_url": null,
+      "mockup_id": "dugunImg",
+      "shown_in_portfolio": false,
+      "shown_in_cv": false,
+      "technologyIds": [
+        "cpp",
+        "git"
+      ]
+    },
+    {
+      "id": "binary-calculator",
+      "order": 12,
+      "source_code": "https://github.com/mrmalvicino/binary-calculator",
+      "live_demo": null,
+      "video_url": null,
+      "mockup_id": "binaryImg",
+      "shown_in_portfolio": false,
+      "shown_in_cv": false,
+      "technologyIds": [
+        "cpp",
+        "git"
+      ]
+    },
+    {
+      "id": "baluma-erp",
+      "order": 13,
+      "source_code": "https://github.com/mrmalvicino/baluma-erp",
+      "live_demo": null,
+      "video_url": null,
+      "mockup_id": "balumaImg",
+      "shown_in_portfolio": false,
+      "shown_in_cv": false,
+      "technologyIds": [
+        "cpp",
+        "git"
+      ]
+    },
+    {
+      "id": "irwins-revenge",
+      "order": 14,
+      "source_code": "https://github.com/mrmalvicino/irwins-revenge",
+      "live_demo": null,
+      "video_url": null,
+      "mockup_id": "irwinImg",
+      "shown_in_portfolio": false,
+      "shown_in_cv": false,
+      "technologyIds": [
+        "cpp",
+        "git"
+      ]
+    },
+    {
+      "id": "arduino-led-controller",
+      "order": 15,
+      "source_code": "https://github.com/mrmalvicino/arduino",
+      "live_demo": null,
+      "video_url": null,
+      "mockup_id": "arduinoImg",
+      "shown_in_portfolio": false,
+      "shown_in_cv": false,
+      "technologyIds": [
+        "cpp",
+        "git"
+      ]
+    },
+    {
+      "id": "dsp-notes",
+      "order": 16,
+      "source_code": "https://github.com/mrmalvicino/dsp-notes",
+      "live_demo": null,
+      "video_url": null,
+      "mockup_id": "waveformImg",
+      "shown_in_portfolio": false,
+      "shown_in_cv": false,
+      "technologyIds": [
+        "latex",
+        "git"
+      ]
+    },
+    {
+      "id": "acoustics-notes",
+      "order": 17,
+      "source_code": "https://github.com/mrmalvicino/acoustics-notes",
+      "live_demo": null,
+      "video_url": null,
+      "mockup_id": "transmissibilityImg",
+      "shown_in_portfolio": false,
+      "shown_in_cv": false,
+      "technologyIds": [
+        "latex",
+        "git"
+      ]
+    },
+    {
+      "id": "electronics-notes",
+      "order": 18,
+      "source_code": "https://github.com/mrmalvicino/electronics-notes",
+      "live_demo": null,
+      "video_url": null,
+      "mockup_id": "circuitImg",
+      "shown_in_portfolio": false,
+      "shown_in_cv": false,
+      "technologyIds": [
+        "latex",
+        "git"
+      ]
+    },
+    {
+      "id": "math-notes",
+      "order": 19,
+      "source_code": "https://github.com/mrmalvicino/math-notes",
+      "live_demo": null,
+      "video_url": null,
+      "mockup_id": "mathImg",
+      "shown_in_portfolio": false,
+      "shown_in_cv": false,
+      "technologyIds": [
+        "latex",
+        "git"
+      ]
+    },
+    {
+      "id": "physics-book",
+      "order": 20,
+      "source_code": "https://github.com/mrmalvicino/physics-book",
+      "live_demo": null,
+      "video_url": null,
+      "mockup_id": "newtonImg",
+      "shown_in_portfolio": false,
+      "shown_in_cv": false,
+      "technologyIds": [
+        "latex",
+        "git"
+      ]
+    },
+    {
+      "id": "physics-1-exercises",
+      "order": 21,
+      "source_code": "https://github.com/RosarioEs/guias_fisica_1",
+      "live_demo": null,
+      "video_url": "https://www.youtube-nocookie.com/embed/2pfTixTPAOM",
+      "mockup_id": null,
+      "shown_in_portfolio": false,
+      "shown_in_cv": false,
+      "technologyIds": [
+        "latex",
+        "git"
+      ]
+    },
+    {
+      "id": "physics-1-solved",
+      "order": 22,
+      "source_code": "https://www.overleaf.com/read/xpxqmxnstrjv#b007e9",
+      "live_demo": null,
+      "video_url": null,
+      "mockup_id": "planeImg",
+      "shown_in_portfolio": false,
+      "shown_in_cv": false,
+      "technologyIds": [
+        "latex",
+        "overleaf"
+      ]
+    },
+    {
+      "id": "physics-2-demonstrations",
+      "order": 23,
+      "source_code": "https://www.overleaf.com/read/xctdtdcmzzdw#407aad",
+      "live_demo": null,
+      "video_url": null,
+      "mockup_id": "einsteinImg",
+      "shown_in_portfolio": false,
+      "shown_in_cv": false,
+      "technologyIds": [
+        "latex",
+        "overleaf"
+      ]
+    }
+  ],
+  "skills": {
+    "bannerTechnologyIds": [
+      "dotnet",
+      "csharp",
+      "bootstrap",
+      "angular",
+      "typescript",
+      "mssql"
+    ],
+    "stacks": [
+      {
+        "id": "mainStack",
+        "order": 1
+      },
+      {
+        "id": "secondaryStack",
+        "order": 2
+      },
+      {
+        "id": "otherSkills",
+        "order": 3
+      }
+    ]
+  },
+  "studies": [
+    {
+      "id": "sound-engineering-untref",
+      "order": 1,
+      "study_plan": "https://untref.edu.ar/carrera/ingenieria-de-sonido",
+      "certificate": null,
+      "type": "career",
+      "shown_in_cv": true,
+      "institutionId": "untref"
+    },
+    {
+      "id": "programming-technical-degree-utn",
+      "order": 2,
+      "study_plan": "https://www.frgp.utn.edu.ar/carreras/tup_tuss",
+      "certificate": "./assets/pdf/tup.pdf",
+      "type": "career",
+      "shown_in_cv": true,
+      "institutionId": "utn"
+    },
+    {
+      "id": "angular-course-educacion-it",
+      "order": 3,
+      "study_plan": "./assets/pdf/angular-plan.pdf",
+      "certificate": "./assets/pdf/angular-certificate.pdf",
+      "type": "course",
+      "shown_in_cv": true,
+      "institutionId": "educacion-it"
+    },
+    {
+      "id": "web-api-dotnet-core-course-educacion-it",
+      "order": 4,
+      "study_plan": "./assets/pdf/web-api-plan.pdf",
+      "certificate": "./assets/pdf/web-api-certificate.pdf",
+      "type": "course",
+      "shown_in_cv": true,
+      "institutionId": "educacion-it"
+    },
+    {
+      "id": "entity-framework-linq-course-educacion-it",
+      "order": 5,
+      "study_plan": "./assets/pdf/linq-entity-plan.pdf",
+      "certificate": "./assets/pdf/linq-entity-certificate.pdf",
+      "type": "course",
+      "shown_in_cv": true,
+      "institutionId": "educacion-it"
+    },
+    {
+      "id": "web-dotnet-core-programming-course-educacion-it",
+      "order": 6,
+      "study_plan": "./assets/pdf/net-core-plan.pdf",
+      "certificate": "./assets/pdf/net-core-certificate.pdf",
+      "type": "course",
+      "shown_in_cv": false,
+      "institutionId": "educacion-it"
+    },
+    {
+      "id": "english-fce-b2-cambridge",
+      "order": 7,
+      "study_plan": null,
+      "certificate": "./assets/pdf/fce.pdf",
+      "type": "language",
+      "shown_in_cv": true,
+      "institutionId": "cambridge"
+    },
+    {
+      "id": "portuguese-level-4-utn",
+      "order": 8,
+      "study_plan": null,
+      "certificate": "./assets/pdf/portuguese.pdf",
+      "type": "language",
+      "shown_in_cv": true,
+      "institutionId": "utn"
+    },
+    {
+      "id": "native-spanish-argentina",
+      "order": 9,
+      "study_plan": null,
+      "certificate": null,
+      "type": "language",
+      "shown_in_cv": true,
+      "institutionId": "argentina"
+    }
+  ],
+  "jobs": [
+    {
+      "id": "programming-2-teaching-assistant-utn",
+      "order": 1,
+      "start_date": "2024-08",
+      "end_date": null
+    },
+    {
+      "id": "physics-1-teaching-assistant-untref",
+      "order": 2,
+      "start_date": "2019-08",
+      "end_date": "2023-07"
+    },
+    {
+      "id": "english-teacher-leonardo-favio-library",
+      "order": 3,
+      "start_date": "2014-03",
+      "end_date": "2017-12"
+    }
+  ],
+  "controls": {
+    "resumeButtonId": "resumeBtn",
+    "submitButtonId": "submitBtn",
+    "textboxIds": [
+      "nameTxt",
+      "emailTxt",
+      "phoneTxt",
+      "messageTxt"
+    ],
+    "labelIds": {
+      "common": [
+        "sourceCodeLbl",
+        "openOnlineLbl",
+        "degreesLbl",
+        "presentationLbl"
+      ],
+      "index": [
+        "resumeLbl",
+        "skillsLbl",
+        "projectsLbl",
+        "allProjectsLbl",
+        "educationLbl",
+        "contactTitleLbl",
+        "contactDescriptionLbl",
+        "nameLbl",
+        "emailLbl",
+        "phoneLbl",
+        "messageLbl"
+      ],
+      "projects": [
+        "projectsLbl",
+        "backLbl"
+      ],
+      "cv": [
+        "skillsLbl",
+        "educationLbl",
+        "careersLbl",
+        "coursesLbl",
+        "languagesLbl",
+        "experienceLbl",
+        "projectsLbl",
+        "jobsLbl"
+      ]
+    }
+  }
+}

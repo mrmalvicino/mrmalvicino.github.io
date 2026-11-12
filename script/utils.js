@@ -1,19 +1,13 @@
-function copyToClipboard(event, text) {
-    event.preventDefault();
-    const lang = getLang();
+function copyToClipboard(event, text, successMessage) {
+	event.preventDefault();
 
-    navigator.clipboard.writeText(text)
-        .then(() => {
-            if (lang === "es") {
-                alert("Email copiado al portapapeles: " + text);
-            }
-            else if (lang === "en") {
-                alert("Email copied to clipboard: " + text);
-            }
-        })
-        .catch(err => {
-            console.error("Error: ", err);
-        });
+	navigator.clipboard.writeText(text)
+		.then(() => {
+			alert(successMessage + text);
+		})
+		.catch(err => {
+			console.error("Error: ", err);
+		});
 }
 
 function setLangAuto() {
@@ -73,10 +67,15 @@ function keepQueryParameters() {
 }
 
 function insertFooter() {
-    fetch("footer.html")
-        .then(response => response.text())
-        .then(data => document.getElementById("footer").innerHTML = data)
-        .catch(error => console.error('Error al cargar el footer:', error));
+	return fetch("footer.html")
+		.then(response => {
+			if (!response.ok) {
+				throw new Error(`No se pudo cargar footer.html: ${response.status}`);
+			}
+
+			return response.text();
+		})
+		.then(data => document.getElementById("footer").innerHTML = data);
 }
 
 // Gobal variables
@@ -89,3 +88,4 @@ window.setLangAuto = setLangAuto;
 window.getLang = getLang;
 window.keepQueryParameters = keepQueryParameters;
 window.insertFooter = insertFooter;
+window.copyToClipboard = copyToClipboard;

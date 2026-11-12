@@ -28,46 +28,6 @@
     "yearMonth": {
       "type": "string",
       "pattern": "^[0-9]{4}-(?:0[1-9]|1[0-2])$"
-    },
-    "image": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "id",
-        "title",
-        "alt",
-        "src"
-      ],
-      "properties": {
-        "id": {
-          "$ref": "#/$defs/domId"
-        },
-        "title": {
-          "$ref": "#/$defs/nonEmptyString"
-        },
-        "alt": {
-          "$ref": "#/$defs/nonEmptyString"
-        },
-        "src": {
-          "$ref": "#/$defs/nonEmptyString"
-        }
-      }
-    },
-    "label": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "id",
-        "text_content"
-      ],
-      "properties": {
-        "id": {
-          "$ref": "#/$defs/domId"
-        },
-        "text_content": {
-          "$ref": "#/$defs/nonEmptyString"
-        }
-      }
     }
   }
 }

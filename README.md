@@ -21,32 +21,41 @@ Run the structural checks, JSON parsing, and local-reference validation:
 npm run validate
 ```
 
-The validation also applies the JSON Schemas in `schemas/`, checks stable ID and order uniqueness, verifies typed references between entities, and compares structural fields shared by the English and Spanish records.
+The validation also applies the JSON Schemas in `schemas/`, checks stable ID and order uniqueness, verifies typed references between entities, and requires complete English and Spanish translation catalogs.
 
 ## Data model
 
-The nine localized data categories remain as English/Spanish pairs under `data/`. This preserves the current browser consumers while giving every domain entity a stable identity and explicit ordering.
+The site uses three runtime data files:
+
+- `data/site.json` contains the language-independent domain model, shared profile and contact details, resource references, ordering, visibility, and a separate application configuration section.
+- `data/en.json` and `data/es.json` contain only localized content, keyed by the stable IDs from the domain model.
+- `script/data-loader.js` loads both sources and resolves the presentation model shared by the portfolio, project catalog, and resume.
 
 | Category | Identified entities | Main relationships |
 | --- | --- | --- |
-| `projects` | Projects | `technologies_ids` references technology images; `mockup_id` references project images |
-| `studies` | Studies | `institution_id` references institution images |
+| `projects` | Projects | `technologyIds` references technologies; `mockup_id` references project images |
+| `technologies` | Technologies | Each technology references its presentation image through `imageId` |
+| `studies` | Studies | `institutionId` references an institution |
+| `institutions` | Institutions | Each institution references its presentation image through `imageId` |
 | `jobs` | Work experiences | Structured `start_date` and nullable `end_date` use `YYYY-MM` |
 | `menu` | Navigation entries | `href` references a section in `index.html` |
-| `skills` | Skill stacks | `banner_items` references technology images |
-| `images` | Common, technology, institution, and project images | IDs are unique across every image group |
-| `labels`, `textboxes`, `buttons` | Presentation bindings | IDs reference existing DOM contracts where applicable |
+| `skills` | Skill stacks | `bannerTechnologyIds` references normalized technologies |
+| `images` | Common, technology, institution, and project images indexed by ID within each category | IDs are unique across every image group |
+| `profile`, `resumes`, `controls` | Shared site information and configuration | Reused by every page and checked against DOM contracts |
 
 Data conventions:
 
 - Domain IDs use stable, language-independent `kebab-case` values. Existing DOM binding IDs remain `camelCase` for compatibility.
 - Ordered domain collections use a positive, unique `order` value. Renderers sort by this property instead of relying on array position.
 - Relationships use IDs and are validated against the appropriate target category, not a shared untyped namespace.
-- Localized pairs contain the same entity IDs. Structural fields such as references, visibility, dates, URLs, and order must match between languages.
+- Projects and Skills reference normalized technologies; studies reference normalized institutions. Images remain presentation resources linked through `imageId`.
+- Image categories are objects indexed by stable ID; the loader converts each required category to the arrays consumed by the existing binders.
+- Every translatable entity has exactly one entry in each locale catalog; missing and unknown translation keys fail validation.
 - Visibility and classification are represented by booleans and enums rather than display text.
 - Schemas reject unknown properties, missing required fields, invalid types, malformed IDs, invalid dates, and unsupported study types.
+- The shared loader joins domain data and translations by stable ID while preserving each page's existing filtering and presentation rules.
 
-The migration is additive: existing property names and localized files remain available, so the current renderers and deployment routes stay compatible. The schemas are development inputs and are intentionally excluded from the publishable `dist/` artifact.
+The schemas are development inputs and are intentionally excluded from the publishable `dist/` artifact.
 
 Run the complete automated suite. The first execution downloads the pinned Chromium version required by Playwright:
 
@@ -79,7 +88,7 @@ Generate the publishable site:
 npm run build
 ```
 
-The build output is written to `dist/`. It contains the HTML pages, localized data, scripts, styles, assets, and `CNAME`; development tooling is not included. The directory is generated and must not be committed.
+The build output is written to `dist/`. It contains the HTML pages, shared domain data, translation catalogs, scripts, styles, assets, and `CNAME`; development tooling is not included. The directory is generated and must not be committed.
 
 The site loads JSON and `footer.html` with `fetch`, so it must be served over HTTP rather than opened directly with a `file://` URL. For example:
 

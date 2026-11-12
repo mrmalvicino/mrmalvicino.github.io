@@ -1,17 +1,3 @@
-// Images
-
-function bindUniqueImages(images) {
-    images.forEach(x => {
-        const image = document.getElementById(x.id);
-
-        if (image) {
-            image.title = x.title;
-            image.alt = x.alt;
-            image.src = x.src;
-        }
-    });
-}
-
 function bindCommonImages(images) {
     images.forEach(x => {
         const images = document.querySelectorAll(`[data-id="${x.id}"]`);
@@ -76,11 +62,53 @@ function bindButtons(buttons) {
     });
 }
 
+function getValueAtPath(value, propertyPath) {
+	return propertyPath.split(".").reduce((current, key) => current?.[key], value);
+}
+
+function bindSiteInfo(site, locale) {
+	const values = {
+		configuration: site.configuration,
+		profile: {
+			...site.profile,
+			...locale.profile
+		}
+	};
+
+	document.title = site.profile.pageTitle;
+
+	document.querySelectorAll("[data-site-text]").forEach(element => {
+		element.textContent = getValueAtPath(values, element.dataset.siteText);
+	});
+
+	document.querySelectorAll("[data-site-href]").forEach(element => {
+		element.href = getValueAtPath(values, element.dataset.siteHref);
+	});
+
+	document.querySelectorAll("[data-site-action]").forEach(element => {
+		element.action = getValueAtPath(values, element.dataset.siteAction);
+	});
+
+	document.querySelectorAll("[data-copy-email]").forEach(element => {
+		element.addEventListener("click", event => {
+			copyToClipboard(event, site.profile.email.address, locale.messages.emailCopied);
+		});
+	});
+
+	const socials = new Map(site.profile.socials.map(social => [social.id, social]));
+
+	document.querySelectorAll("[data-social-id]").forEach(element => {
+		const social = socials.get(element.dataset.socialId);
+		element.href = social.href;
+		element.setAttribute("aria-label", locale.socials[social.id]);
+	});
+}
+
 // Available in other JS files globally
 
-window.bindUniqueImages = bindUniqueImages;
 window.bindCommonImages = bindCommonImages;
 window.bindUniqueLabels = bindUniqueLabels;
 window.bindCommonLabels = bindCommonLabels;
 window.bindTextboxes = bindTextboxes;
 window.bindButtons = bindButtons;
+window.bindSiteInfo = bindSiteInfo;

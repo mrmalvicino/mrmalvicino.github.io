@@ -15,7 +15,7 @@ function renderMenu(menuItemsData) {
     });
 }
 
-function renderBanner(bannerItemsData) {
+function renderBanner(technologyIds, technologies) {
     const banner = document.getElementById("bannerDiv");
     banner.innerHTML = "";
 
@@ -23,9 +23,9 @@ function renderBanner(bannerItemsData) {
         const slideDiv = document.createElement("div");
         slideDiv.classList.add("banner-slide");
 
-        bannerItemsData.forEach(x => {
+        technologyIds.forEach(x => {
             const img = document.createElement("img");
-            img.setAttribute("data-id", x);
+            img.setAttribute("data-id", requireEntity(technologies, x, "technologies").imageId);
             img.classList.add("width-100-px", "margin-10-px");
             slideDiv.appendChild(img);
         });
@@ -62,7 +62,7 @@ function renderStacks(stacksData) {
     });
 }
 
-function renderProjects(projectsData) {
+function renderProjects(projectsData, technologies, accessibility) {
     const projects = document.getElementById("projectsDiv");
     projects.innerHTML = "";
 
@@ -77,7 +77,7 @@ function renderProjects(projectsData) {
         if (x.video_url) {
             const iframe = document.createElement("iframe");
             iframe.setAttribute("src", x.video_url);
-            iframe.setAttribute("title", "YouTube video player");
+            iframe.setAttribute("title", accessibility.videoPlayer);
             iframe.setAttribute("frameborder", "0");
             iframe.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
             iframe.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
@@ -122,10 +122,10 @@ function renderProjects(projectsData) {
         const ul = document.createElement("ul");
         ul.classList.add("row-flex", "space-around");
 
-        x.technologies_ids.forEach(y => {
+        x.technologyIds.forEach(y => {
             const li = document.createElement("li");
             const img = document.createElement("img");
-            img.setAttribute("data-id", y);
+            img.setAttribute("data-id", requireEntity(technologies, y, "technologies").imageId);
             img.classList.add("width-30-px");
             li.appendChild(img);
             ul.appendChild(li);
@@ -181,7 +181,7 @@ function renderProjects(projectsData) {
     });
 }
 
-function renderStudies(studiesData) {
+function renderStudies(studiesData, institutions) {
     const tbody = document.getElementById("studiesTab");
     tbody.innerHTML = "";
 
@@ -195,7 +195,7 @@ function renderStudies(studiesData) {
         institutionDiv.classList.add("height-100-pct", "row-flex", "justify-center", "margin-horizontal-10-px");
 
         const img = document.createElement("img");
-        img.setAttribute("data-id", x.institution_id);
+        img.setAttribute("data-id", requireEntity(institutions, x.institutionId, "institutions").imageId);
         img.classList.add("small-logo");
 
         institutionDiv.appendChild(img);

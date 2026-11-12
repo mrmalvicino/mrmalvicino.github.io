@@ -1,42 +1,22 @@
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
-        setLangAuto();
+document.addEventListener("DOMContentLoaded", async function () {
+	setLangAuto();
 
-        if (!redirecting) {
-            fetchJsonFiles();
-            insertFooter();
-            keepQueryParameters();
-        }
-    }
-);
+	if (redirecting) {
+		return;
+	}
 
-function fetchJsonFiles() {
-    const lang = getLang();
-    const projectsDataPath = `data/projects-${lang}.json`;
-    const imagesDataPath = `data/images-${lang}.json`;
-    const labelsDataPath = `data/labels-${lang}.json`;
+	try {
+		const [data] = await Promise.all([loadSiteData(), insertFooter()]);
 
-    Promise.all([
-        fetch(projectsDataPath).then(response => response.json()),
-        fetch(imagesDataPath).then(response => response.json()),
-        fetch(labelsDataPath).then(response => response.json()),
-    ])
-        .then(
-            (
-                [
-                    projectsData,
-                    imagesData,
-                    labelsData,
-                ]
-            ) => {
-                renderProjects(projectsData.projects);
-                bindCommonImages(imagesData.common_images);
-                bindCommonImages(imagesData.projects_images);
-                bindCommonImages(imagesData.technologies_images);
-                bindUniqueLabels(labelsData.projects_page_labels);
-                bindCommonLabels(labelsData.common_labels);
-            }
-        )
-        .catch(error => console.error(`Error al cargar los archivos JSON:`, error));
-}
+		renderProjects(data.projects, data.technologies, data.accessibility);
+		bindCommonImages(data.images.common_images);
+		bindCommonImages(data.images.projects_images);
+		bindCommonImages(data.images.technologies_images);
+		bindUniqueLabels(data.labels.projects);
+		bindCommonLabels(data.labels.common);
+		bindSiteInfo(data.site, data.locale);
+		keepQueryParameters();
+	} catch (error) {
+		console.error("Error al cargar los datos del sitio:", error);
+	}
+});

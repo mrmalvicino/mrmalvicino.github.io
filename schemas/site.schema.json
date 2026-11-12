@@ -1,0 +1,304 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mrmalvicino.com/schemas/site.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "profile",
+    "configuration",
+    "resumes",
+    "menu",
+    "images",
+    "technologies",
+    "institutions",
+    "projects",
+    "skills",
+    "studies",
+    "jobs",
+    "controls"
+  ],
+  "properties": {
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pageTitle",
+        "headerName",
+        "fullName",
+        "website",
+        "email",
+        "phone",
+        "linkedin",
+        "location",
+        "socials"
+      ],
+      "properties": {
+        "pageTitle": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "headerName": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "fullName": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "website": { "$ref": "#/$defs/link" },
+        "email": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["href", "address"],
+          "properties": {
+            "href": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+            "address": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
+          }
+        },
+        "phone": { "$ref": "#/$defs/link" },
+        "linkedin": { "$ref": "#/$defs/link" },
+        "location": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["href"],
+          "properties": {
+            "href": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
+          }
+        },
+        "socials": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "order", "href"],
+            "properties": {
+              "id": { "$ref": "common.schema.json#/$defs/domainId" },
+              "order": { "$ref": "common.schema.json#/$defs/order" },
+              "href": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
+            }
+          }
+        }
+      }
+    },
+    "configuration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["formAction"],
+      "properties": {
+        "formAction": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
+      }
+    },
+    "resumes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["en", "es"],
+      "properties": {
+        "en": { "$ref": "#/$defs/resume" },
+        "es": { "$ref": "#/$defs/resume" }
+      }
+    },
+    "menu": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/orderedReference" }
+    },
+    "images": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["common_images", "technologies_images", "institutions_images", "projects_images"],
+      "properties": {
+        "common_images": { "$ref": "#/$defs/imageMap" },
+        "technologies_images": { "$ref": "#/$defs/imageMap" },
+        "institutions_images": { "$ref": "#/$defs/imageMap" },
+        "projects_images": { "$ref": "#/$defs/imageMap" }
+      }
+    },
+    "technologies": { "$ref": "#/$defs/resourceCatalog" },
+    "institutions": { "$ref": "#/$defs/resourceCatalog" },
+    "projects": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "order",
+          "technologyIds",
+          "source_code",
+          "live_demo",
+          "video_url",
+          "mockup_id",
+          "shown_in_portfolio",
+          "shown_in_cv"
+        ],
+        "properties": {
+          "id": { "$ref": "common.schema.json#/$defs/domainId" },
+          "order": { "$ref": "common.schema.json#/$defs/order" },
+          "technologyIds": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "$ref": "common.schema.json#/$defs/domainId" }
+          },
+          "source_code": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+          "live_demo": { "$ref": "common.schema.json#/$defs/nullableString" },
+          "video_url": { "$ref": "common.schema.json#/$defs/nullableString" },
+          "mockup_id": {
+            "anyOf": [
+              { "$ref": "common.schema.json#/$defs/domId" },
+              { "type": "null" }
+            ]
+          },
+          "shown_in_portfolio": { "type": "boolean" },
+          "shown_in_cv": { "type": "boolean" }
+        }
+      }
+    },
+    "skills": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bannerTechnologyIds", "stacks"],
+      "properties": {
+        "bannerTechnologyIds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "common.schema.json#/$defs/domainId" }
+        },
+        "stacks": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/orderedDomEntity" }
+        }
+      }
+    },
+    "studies": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "order", "institutionId", "study_plan", "certificate", "type", "shown_in_cv"],
+        "properties": {
+          "id": { "$ref": "common.schema.json#/$defs/domainId" },
+          "order": { "$ref": "common.schema.json#/$defs/order" },
+          "institutionId": { "$ref": "common.schema.json#/$defs/domainId" },
+          "study_plan": { "$ref": "common.schema.json#/$defs/nullableString" },
+          "certificate": { "$ref": "common.schema.json#/$defs/nullableString" },
+          "type": { "enum": ["career", "course", "language"] },
+          "shown_in_cv": { "type": "boolean" }
+        }
+      }
+    },
+    "jobs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "order", "start_date", "end_date"],
+        "properties": {
+          "id": { "$ref": "common.schema.json#/$defs/domainId" },
+          "order": { "$ref": "common.schema.json#/$defs/order" },
+          "start_date": { "$ref": "common.schema.json#/$defs/yearMonth" },
+          "end_date": {
+            "anyOf": [
+              { "$ref": "common.schema.json#/$defs/yearMonth" },
+              { "type": "null" }
+            ]
+          }
+        }
+      }
+    },
+    "controls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["resumeButtonId", "submitButtonId", "textboxIds", "labelIds"],
+      "properties": {
+        "resumeButtonId": { "$ref": "common.schema.json#/$defs/domId" },
+        "submitButtonId": { "$ref": "common.schema.json#/$defs/domId" },
+        "textboxIds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "common.schema.json#/$defs/domId" }
+        },
+        "labelIds": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["common", "index", "projects", "cv"],
+          "properties": {
+            "common": { "$ref": "#/$defs/domIds" },
+            "index": { "$ref": "#/$defs/domIds" },
+            "projects": { "$ref": "#/$defs/domIds" },
+            "cv": { "$ref": "#/$defs/domIds" }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "link": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["href", "label"],
+      "properties": {
+        "href": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "label": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
+      }
+    },
+    "resume": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["href", "download"],
+      "properties": {
+        "href": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "download": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
+      }
+    },
+    "orderedReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "order", "href"],
+      "properties": {
+        "id": { "$ref": "common.schema.json#/$defs/domainId" },
+        "order": { "$ref": "common.schema.json#/$defs/order" },
+        "href": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
+      }
+    },
+    "orderedDomEntity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "order"],
+      "properties": {
+        "id": { "$ref": "common.schema.json#/$defs/domId" },
+        "order": { "$ref": "common.schema.json#/$defs/order" }
+      }
+    },
+    "imageMap": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": { "$ref": "common.schema.json#/$defs/domId" },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["src"],
+        "properties": {
+          "src": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
+        }
+      }
+    },
+    "resourceCatalog": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": { "$ref": "common.schema.json#/$defs/domainId" },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["imageId"],
+        "properties": {
+          "imageId": { "$ref": "common.schema.json#/$defs/domId" }
+        }
+      }
+    },
+    "domIds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "common.schema.json#/$defs/domId" }
+    }
+  }
+}

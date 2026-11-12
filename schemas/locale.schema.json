@@ -1,0 +1,146 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mrmalvicino.com/schemas/locale.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "profile",
+    "images",
+    "technologies",
+    "institutions",
+    "menu",
+    "projects",
+    "skills",
+    "studies",
+    "jobs",
+    "labels",
+    "buttons",
+    "placeholders",
+    "messages",
+    "accessibility",
+    "socials"
+  ],
+  "properties": {
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["footerLocation", "cvLocation"],
+      "properties": {
+        "footerLocation": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "cvLocation": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
+      }
+    },
+    "images": { "$ref": "#/$defs/imageTranslations" },
+    "technologies": { "$ref": "#/$defs/stringTranslations" },
+    "institutions": { "$ref": "#/$defs/stringTranslations" },
+    "menu": { "$ref": "#/$defs/stringTranslations" },
+    "projects": { "$ref": "#/$defs/entityTranslations" },
+    "skills": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["title", "items"],
+        "properties": {
+          "title": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
+          }
+        }
+      }
+    },
+    "studies": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["title"],
+        "properties": {
+          "title": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
+        }
+      }
+    },
+    "jobs": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["organization", "position", "time", "description"],
+        "properties": {
+          "organization": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+          "position": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+          "time": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+          "description": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
+        }
+      }
+    },
+    "labels": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["common", "index", "projects", "cv"],
+      "properties": {
+        "common": { "$ref": "#/$defs/stringTranslations" },
+        "index": { "$ref": "#/$defs/stringTranslations" },
+        "projects": { "$ref": "#/$defs/stringTranslations" },
+        "cv": { "$ref": "#/$defs/stringTranslations" }
+      }
+    },
+    "buttons": { "$ref": "#/$defs/stringTranslations" },
+    "placeholders": { "$ref": "#/$defs/stringTranslations" },
+    "messages": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["emailCopied"],
+      "properties": {
+        "emailCopied": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
+      }
+    },
+    "accessibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["videoPlayer"],
+      "properties": {
+        "videoPlayer": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
+      }
+    },
+    "socials": { "$ref": "#/$defs/stringTranslations" }
+  },
+  "$defs": {
+    "stringTranslations": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
+    },
+    "entityTranslations": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["title", "description"],
+        "properties": {
+          "title": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+          "description": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
+        }
+      }
+    },
+    "imageTranslations": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["alt"],
+        "properties": {
+          "title": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+          "alt": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
+        }
+      }
+    }
+  }
+}

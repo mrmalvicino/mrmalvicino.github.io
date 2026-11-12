@@ -1,0 +1,423 @@
+{
+  "profile": {
+    "footerLocation": "Argentina",
+    "cvLocation": "Caseros, Buenos Aires"
+  },
+  "images": {
+    "profileImg": {
+      "title": "Maximiliano Malvicino",
+      "alt": "Profile picture of Maximiliano Malvicino."
+    },
+    "logoImg": {
+      "title": "M. R. Malvicino",
+      "alt": "Maximiliano Malvicino's personal logo."
+    },
+    "cppImg": {
+      "alt": "C++ Logo."
+    },
+    "csImg": {
+      "alt": "C# Logo."
+    },
+    "pythonImg": {
+      "alt": "Python Logo."
+    },
+    "javaImg": {
+      "alt": "Java Logo."
+    },
+    "jsImg": {
+      "alt": "JavaScript Logo."
+    },
+    "tsImg": {
+      "alt": "TypeScript Logo."
+    },
+    "htmlImg": {
+      "alt": "HTML Logo."
+    },
+    "cssImg": {
+      "alt": "CSS Logo."
+    },
+    "bootstrapImg": {
+      "alt": "Bootstrap Logo."
+    },
+    "tailwindImg": {
+      "alt": "Tailwind Logo."
+    },
+    "dotnetImg": {
+      "alt": "Microsoft .Net Logo."
+    },
+    "angularImg": {
+      "alt": "Angular Logo."
+    },
+    "reactImg": {
+      "alt": "React Logo."
+    },
+    "fastapiImg": {
+      "alt": "Fast API Logo."
+    },
+    "mssqlImg": {
+      "alt": "Microsoft SQL Server Logo."
+    },
+    "mysqlImg": {
+      "alt": "MySQL Logo."
+    },
+    "gitImg": {
+      "alt": "Git Logo."
+    },
+    "latexImg": {
+      "alt": "LaTex Logo."
+    },
+    "overleafImg": {
+      "alt": "Overleaf Logo."
+    },
+    "untrefImg": {
+      "title": "Untref",
+      "alt": "Untref Logo."
+    },
+    "utnImg": {
+      "title": "UTN",
+      "alt": "UTN Logo."
+    },
+    "educacionitImg": {
+      "title": "Educacion IT",
+      "alt": "Educacion IT Logo."
+    },
+    "cambridgeImg": {
+      "title": "Cambridge",
+      "alt": "Cambridge Logo."
+    },
+    "argImg": {
+      "title": "Argentina",
+      "alt": "Flag of Argentina."
+    },
+    "wipImg": {
+      "title": "WIP",
+      "alt": "Work In Progress sign."
+    },
+    "stusImg": {
+      "title": "STUS Calculator",
+      "alt": "Graph of a Fourier approximation to a square wave."
+    },
+    "ancImg": {
+      "title": "ANC Research Plan",
+      "alt": "Bar graph of a Chi Square statistical analysis."
+    },
+    "dugunImg": {
+      "title": "Dugun Auto Clicker",
+      "alt": "C++ code snippet with a class representing a timer."
+    },
+    "binaryImg": {
+      "title": "Binary Calculator",
+      "alt": "C++ code snippet with dynamic pointers and arrays."
+    },
+    "balumaImg": {
+      "title": "Baluma ERP",
+      "alt": "Terminal interface capture."
+    },
+    "irwinImg": {
+      "title": "Irwin's Revenge",
+      "alt": "C++ code snippet with combined loops."
+    },
+    "arduinoImg": {
+      "title": "Arduino LED Controller",
+      "alt": "Photograph of a hand operating on an Arduino board."
+    },
+    "waveformImg": {
+      "title": "DSP Notes",
+      "alt": "Waveform of a signal."
+    },
+    "transmissibilityImg": {
+      "title": "Acoustics Notes",
+      "alt": "Vibration transmissibility curve."
+    },
+    "circuitImg": {
+      "title": "Electronics Notes",
+      "alt": "RLC circuit with alternating current source."
+    },
+    "mathImg": {
+      "title": "Math Notes",
+      "alt": "Two-surface graph."
+    },
+    "newtonImg": {
+      "title": "Physics Book",
+      "alt": "Cover with a caricature of Isaac Newton"
+    },
+    "planeImg": {
+      "title": "Physics 1 Solved",
+      "alt": "Graph of an inclined plane with pulleys."
+    },
+    "einsteinImg": {
+      "title": "Physics 2 Demonstrations",
+      "alt": "Cover with a caricature of Albert Einstein."
+    },
+    "matrixImg": {
+      "title": "Link Tree",
+      "alt": "Menu with a Matrix-style character rain background."
+    },
+    "biblioImg": {
+      "title": "Biblio API",
+      "alt": "Books of a library."
+    }
+  },
+  "technologies": {
+    "cpp": "C++",
+    "csharp": "C#",
+    "python": "Python",
+    "java": "Java",
+    "javascript": "JavaScript",
+    "typescript": "TypeScript",
+    "html": "HTML",
+    "css": "CSS",
+    "bootstrap": "Bootstrap",
+    "tailwind": "Tailwind",
+    "dotnet": "Microsoft .Net",
+    "angular": "Angular",
+    "react": "React",
+    "fastapi": "Fast API",
+    "mssql": "Microsoft SQL Server",
+    "mysql": "MySQL",
+    "git": "Git",
+    "latex": "LaTex",
+    "overleaf": "Overleaf"
+  },
+  "institutions": {
+    "untref": "Universidad Nacional de Tres de Febrero",
+    "utn": "Universidad Tecnológica Nacional",
+    "educacion-it": "Educación IT",
+    "cambridge": "Cambridge",
+    "argentina": "Born in Argentina"
+  },
+  "menu": {
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "education": "Education",
+    "contact": "Contact"
+  },
+  "projects": {
+    "meeni-erp": {
+      "title": "Meeni ERP",
+      "description": "Business management software that manages stock, makes quotes, records transactions, and keeps the accounting."
+    },
+    "membriana": {
+      "title": "Membriana",
+      "description": "Membership management system designed to track members and manage affiliate payments."
+    },
+    "ecommerce-net": {
+      "title": "Ecommerce Net",
+      "description": "Ecommerce that includes product management, shopping cart, user roles and order tracking."
+    },
+    "bancar": {
+      "title": "BancAr",
+      "description": "Home Banking to carry out banking operations and manage clients, accounts, loans and transfers."
+    },
+    "link-tree": {
+      "title": "Link Tree",
+      "description": "Personal Link Tree for easy access to my social and professional profiles."
+    },
+    "portfolio": {
+      "title": "Portfolio",
+      "description": "Responsive website to showcase projects and personal achievements."
+    },
+    "biblio-api": {
+      "title": "Biblio API",
+      "description": "Provides endpoints to manage books, authors, categories, and genres including creation, listing and filtering."
+    },
+    "dsp-package": {
+      "title": "DSP Package",
+      "description": "Provides a set of tools for generating, manipulating and visualizing signals."
+    },
+    "stus-calculator": {
+      "title": "STUS Calculator",
+      "description": "Graphic calculator that approximates periodic functions by calculating their orthogonal projection onto a vector space of trigonometric polynomials."
+    },
+    "anc-research-plan": {
+      "title": "ANC Research Plan",
+      "description": "Research plan for subjective evaluation of active noise cancellation in headphones through statistical analysis done with the SciPy module."
+    },
+    "dugun-auto-clicker": {
+      "title": "Dugun Auto Clicker",
+      "description": "Mouse macro automation software that allows users to create sequences of mouse actions with position and duration."
+    },
+    "binary-calculator": {
+      "title": "Binary Calculator",
+      "description": "Script that converts numbers between different number bases using pointers and dynamic memory allocation."
+    },
+    "baluma-erp": {
+      "title": "Baluma ERP",
+      "description": "Management software to automate product stock by recording purchases and sales."
+    },
+    "irwins-revenge": {
+      "title": "Irwin's Revenge",
+      "description": "Two-player dice game with a terminal interface, in which you collect figurines and form dice combinations to score points."
+    },
+    "arduino-led-controller": {
+      "title": "Arduino LED Controller",
+      "description": "LED light effects algorithms controlled by a button board using Arduino."
+    },
+    "dsp-notes": {
+      "title": "DSP Notes",
+      "description": "Digital signal processing notes for sound engineering."
+    },
+    "acoustics-notes": {
+      "title": "Acoustics Notes",
+      "description": "Acoustics notes for sound engineering."
+    },
+    "electronics-notes": {
+      "title": "Electronics Notes",
+      "description": "Electronics notes for sound engineering."
+    },
+    "math-notes": {
+      "title": "Math Notes",
+      "description": "Math notes for sound engineering."
+    },
+    "physics-book": {
+      "title": "Physics Book",
+      "description": "Mechanical physics book for sound engineering."
+    },
+    "physics-1-exercises": {
+      "title": "Physics 1 Exercises",
+      "description": "Exercise guide for the subject Physics 1 of Sound Engineering at Untref."
+    },
+    "physics-1-solved": {
+      "title": "Physics 1 Solved",
+      "description": "Solved exercises of the subject Physics 1 of Sound Engineering at Untref."
+    },
+    "physics-2-demonstrations": {
+      "title": "Physics 2 Demonstrations",
+      "description": "Demonstrations from the Physics 2 subject of Sound Engineering at Untref."
+    }
+  },
+  "skills": {
+    "mainStack": {
+      "title": "⭐️ Main Stack",
+      "items": [
+        "✔ Framework: .NET Core | .NET Framework",
+        "✔ Backend: C# | Entity Framework | ADO.NET",
+        "✔ Frontend: Razor | Bootstrap | Angular",
+        "✔ Database: Microsoft SQL Server"
+      ]
+    },
+    "secondaryStack": {
+      "title": "🧪 Worked with",
+      "items": [
+        "✔ Framework: JSTL library | FastAPI",
+        "✔ Backend: Java | JDBC | Python",
+        "✔ Frontend: Tailwind | React",
+        "✔ Database: MySQL | MongoDB"
+      ]
+    },
+    "otherSkills": {
+      "title": "🛠️ Other technologies",
+      "items": [
+        "✔ Version Control: Git | GitHub | GitFlow",
+        "✔ Documentation: LaTeX | Doxygen ",
+        "✔ DevOps: GitHub Actions | YML | Docker"
+      ]
+    }
+  },
+  "studies": {
+    "sound-engineering-untref": {
+      "title": "Sound Engineering (60%)"
+    },
+    "programming-technical-degree-utn": {
+      "title": "Technical Degree in Programming"
+    },
+    "angular-course-educacion-it": {
+      "title": "Angular"
+    },
+    "web-api-dotnet-core-course-educacion-it": {
+      "title": "Web API .NET Core"
+    },
+    "entity-framework-linq-course-educacion-it": {
+      "title": "Entity Framework & LINQ"
+    },
+    "web-dotnet-core-programming-course-educacion-it": {
+      "title": "Web .NET Core Programming"
+    },
+    "english-fce-b2-cambridge": {
+      "title": "First Certificate in English (CEFR B2)"
+    },
+    "portuguese-level-4-utn": {
+      "title": "Portuguese Level 4"
+    },
+    "native-spanish-argentina": {
+      "title": "Native Spanish"
+    }
+  },
+  "jobs": {
+    "programming-2-teaching-assistant-utn": {
+      "organization": "Universidad Tecnológica Nacional",
+      "position": "Teaching Assistant for Programming 2",
+      "time": "August 2024 - Present",
+      "description": "Assistance to students in classes and forums, development of exercises on Object Oriented Programming in C++."
+    },
+    "physics-1-teaching-assistant-untref": {
+      "organization": "Universidad Nacional de Tres de Febrero",
+      "position": "Teaching Assistant for Physics 1",
+      "time": "August 2019 - July 2023",
+      "description": "Design and resolution of exercises, preparation and correction of exams, experimental demonstrations with Python."
+    },
+    "english-teacher-leonardo-favio-library": {
+      "organization": "Biblioteca Popular Leonardo Favio",
+      "position": "English Teacher",
+      "time": "March 2014 - December 2017",
+      "description": "English courses planning, private tutoring for secondary school students."
+    }
+  },
+  "labels": {
+    "common": {
+      "sourceCodeLbl": "Code",
+      "openOnlineLbl": "Open",
+      "degreesLbl": "JR .NET Fullstack Developer",
+      "presentationLbl": "Hi! I'm Max, and I'm passionate about acoustics and programming. I graduated from the Technical Degree in Programming at UTN and I am currently studying Sound Engineering at Untref. I have experience developing .NET systems with layered client-server architecture, using Razor MVC Views with Bootstrap on the frontend, and Entity Framework with SQL Server on the backend."
+    },
+    "index": {
+      "resumeLbl": "Resume",
+      "skillsLbl": "Skills",
+      "projectsLbl": "Projects",
+      "allProjectsLbl": "All projects",
+      "educationLbl": "Education",
+      "contactTitleLbl": "Get in touch",
+      "contactDescriptionLbl": "If you have any questions, proposals, or are looking for a developer to join your team, feel free to contact me. I am always open to new opportunities, whether it is a freelance project or an employment position.",
+      "nameLbl": "Name",
+      "emailLbl": "Email",
+      "phoneLbl": "Phone",
+      "messageLbl": "Message"
+    },
+    "projects": {
+      "projectsLbl": "All My Projects",
+      "backLbl": "Portfolio"
+    },
+    "cv": {
+      "skillsLbl": "< Skills />",
+      "educationLbl": "< Education />",
+      "careersLbl": "University Careers",
+      "coursesLbl": "Specialization Courses",
+      "languagesLbl": "Languages",
+      "experienceLbl": "< Experience />",
+      "projectsLbl": "Freelance Projects",
+      "jobsLbl": "Permanent Employments"
+    }
+  },
+  "buttons": {
+    "submitBtn": "Send"
+  },
+  "placeholders": {
+    "nameTxt": "Your name",
+    "emailTxt": "your@email.com",
+    "phoneTxt": "+54 (911) 1234-5678",
+    "messageTxt": "¡Hi! I am contacting you to..."
+  },
+  "messages": {
+    "emailCopied": "Email copied to clipboard: "
+  },
+  "accessibility": {
+    "videoPlayer": "YouTube video player"
+  },
+  "socials": {
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegram",
+    "linkedin": "LinkedIn",
+    "github": "GitHub"
+  }
+}

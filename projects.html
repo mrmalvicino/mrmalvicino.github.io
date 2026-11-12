@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maximiliano R. Malvicino</title>
+    <title></title>
     <link rel="alternate" hreflang="es" href="?lang=es">
     <link rel="alternate" hreflang="en" href="?lang=en">
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
@@ -37,10 +37,11 @@
 
     <header class="menu-header">
         <nav id="menuNav" class="menu-nav">
-            <a id="logoBtn" href="https://mrmalvicino.com" class="plain-link pure-white-text margin-vertical-auto">
+            <a id="logoBtn" data-site-href="profile.website.href"
+                class="plain-link pure-white-text margin-vertical-auto">
                 <img data-id="logoImg" class="width-40-px" />
                 <span>&nbsp;</span>
-                <span>Maximiliano Malvicino</span>
+                <span data-site-text="profile.headerName"></span>
             </a>
             <a href="index.html" class="plain-link medium-gray-link">
                 <i class="bi bi-arrow-left-short"></i>
@@ -73,9 +74,9 @@
     <!-- Scripts -->
 
     <script src="script/utils.js"></script>
+    <script src="script/data-loader.js"></script>
     <script src="script/data-binding.js"></script>
     <script src="script/data-rendering.js"></script>
-    <script src="script/menu.js"></script>
     <script src="script/load-projects-page.js"></script>
 
 </body>

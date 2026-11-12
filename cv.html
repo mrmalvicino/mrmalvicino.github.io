@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maximiliano R. Malvicino</title>
+    <title></title>
     <link rel="alternate" hreflang="es" href="?lang=es">
     <link rel="alternate" hreflang="en" href="?lang=en">
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
@@ -39,17 +39,17 @@
             <img data-id="profileImg" class="width-250-px circle-image" />
         </div>
         <div class="height-100-pct col-flex space-between padding-20-px">
-            <h1 class="pure-white-text">Maximiliano Raúl Malvicino</h1>
+            <h1 data-site-text="profile.fullName" class="pure-white-text"></h1>
             <p data-id="degreesLbl" class="mid-font-size jost-font center-text pure-white-text"></p>
             <p data-id="presentationLbl" class="margin-vertical-5-px center-text"></p>
             <div class="width-100-pct row-flex space-evenly">
-                <a href="https://mrmalvicino.com" class="plain-link pure-white-text">
+                <a data-site-href="profile.website.href" class="plain-link pure-white-text">
                     <i class="bi bi-briefcase-fill mid-font-size"></i>
-                    <span>&nbsp;mrmalvicino.com</span>
+                    <span>&nbsp;<span data-site-text="profile.website.label"></span></span>
                 </a>
-                <a href="https://www.linkedin.com/in/mrmalvicino/" target="_blank" class="plain-link pure-white-text">
+                <a data-site-href="profile.linkedin.href" target="_blank" class="plain-link pure-white-text">
                     <i class="bi bi-linkedin mid-font-size"></i>
-                    <span>&nbsp;/in/mrmalvicino</span>
+                    <span>&nbsp;<span data-site-text="profile.linkedin.label"></span></span>
                 </a>
             </div>
         </div>
@@ -105,27 +105,27 @@
 
     <footer class="cv-footer almost-black-background">
         <div class="row-flex gap-20-px">
-            <a href="mailto:mrmalvicino@gmail.com" class="plain-link light-gray-text"
-                onclick="copyToClipboard(event, 'mrmalvicino@gmail.com')">
+            <a data-site-href="profile.email.href" data-copy-email class="plain-link light-gray-text">
                 <i class="bi bi-envelope mid-font-size"></i>
                 <span>&nbsp;</span>
-                <span>mrmalvicino@gmail.com</span>
+                <span data-site-text="profile.email.address"></span>
             </a>
-            <a href="tel:+5491159058729" class="plain-link light-gray-text">
+            <a data-site-href="profile.phone.href" class="plain-link light-gray-text">
                 <i class="bi bi-telephone mid-font-size"></i>
                 <span>&nbsp;</span>
-                <span>+54 (911) 5905-8729</span>
+                <span data-site-text="profile.phone.label"></span>
             </a>
         </div>
-        <a href="https://maps.app.goo.gl/6Zy59hyx4na4zXvy8" class="plain-link light-gray-text margin-left-auto">
+        <a data-site-href="profile.location.href" class="plain-link light-gray-text margin-left-auto">
             <i class="bi bi-geo-alt mid-font-size"></i>
-            <span>&nbsp;Caseros, Buenos Aires</span>
+            <span>&nbsp;<span data-site-text="profile.cvLocation"></span></span>
         </a>
     </footer>
 
     <!-- Scripts -->
 
     <script src="script/utils.js"></script>
+    <script src="script/data-loader.js"></script>
     <script src="script/data-binding.js"></script>
     <script src="script/data-rendering-cv.js"></script>
     <script src="script/load-cv-page.js"></script>
