@@ -3,7 +3,7 @@ import http from "node:http";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../dist");
 const port = Number.parseInt(process.env.PORT ?? "4174", 10);
 const contentTypes = new Map([
 	[".css", "text/css; charset=utf-8"],
@@ -20,8 +20,13 @@ const contentTypes = new Map([
 function resolveRequestPath(requestUrl) {
 	const url = new URL(requestUrl, `http://127.0.0.1:${port}`);
 	const pathname = decodeURIComponent(url.pathname);
-	const relativePath = pathname === "/" ? "index.html" : pathname.replace(/^\/+/, "");
-	const filePath = path.resolve(root, relativePath);
+	const relativePath = pathname.replace(/^\/+/, "");
+	const requestedPath = path.resolve(root, relativePath);
+	let filePath = requestedPath;
+
+	if (pathname.endsWith("/")) {
+		filePath = path.join(requestedPath, "index.html");
+	}
 	const pathFromRoot = path.relative(root, filePath);
 
 	if (pathFromRoot === ".." || pathFromRoot.startsWith(`..${path.sep}`) || path.isAbsolute(pathFromRoot)) {

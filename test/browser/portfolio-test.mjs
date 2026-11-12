@@ -1,6 +1,6 @@
 import { expect, test as base } from "@playwright/test";
 
-const siteOrigin = "http://127.0.0.1:4174";
+const siteOrigin = `http://127.0.0.1:${process.env.PORT ?? "4174"}`;
 const transparentPixel = Buffer.from(
 	"iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M/wHwAF/gL+Xw54WQAAAABJRU5ErkJggg==",
 	"base64"

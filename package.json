@@ -13,7 +13,7 @@
     "pretest:browser": "playwright install chromium",
     "test:browser": "playwright test",
     "test:browser:update": "playwright test --update-snapshots",
-    "build": "npm run validate && node tools/build.mjs"
+    "build": "node tools/build.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.56.1",

@@ -1,99 +1,90 @@
 # Portfolio
 
-Static HTML, CSS, and JavaScript site for the portfolio and resume. The build copies the current site without transforming its content or routes.
+Dependency-free custom Node static site generator for a vanilla HTML, CSS, and JavaScript portfolio and resume.
 
 ## Requirements
 
 - Node.js 20 or newer
 - npm 10 or newer
 
-## Development
+Install the locked development dependencies with `npm ci`.
 
-Install the locked dependencies:
+## Architecture
 
-```bash
-npm ci
-```
+The repository separates content, rendering, and published output:
 
-Run the structural checks, JSON parsing, and local-reference validation:
+- `src/data/site.json` is the language-independent domain model and shared configuration.
+- `src/data/es.json` and `src/data/en.json` are the only localized professional-content catalogs.
+- `src/assets/`, `src/style/`, and `src/script/` contain the static resources and progressive enhancement copied into the public artifact.
+- `schemas/` validates the three data files and their relationships.
+- `tools/site-data.mjs` resolves IDs, translations, ordering, visibility, images, technologies, and institutions at build time.
+- `tools/render-html.mjs` contains pure escaped HTML render functions for the portfolio, project catalog, resume, and shared fragments.
+- `tools/build.mjs` validates the source, renders every route, and copies only public assets.
+- `src/script/` contains progressive enhancement only: mobile menu behavior and email copying.
+- `dist/` is generated publication output, not an editable source.
+
+No page fetches JSON or constructs professional content in the browser. Generated HTML contains the main content, links, images, tables, and lists before JavaScript runs.
+
+## Data
+
+Stable domain IDs use language-independent `kebab-case`; existing control IDs remain `camelCase` where they are part of the DOM contract. Ordered collections use a unique positive `order`, and relationships use validated IDs:
+
+| Collection | Relationships |
+| --- | --- |
+| `projects` | `technologyIds` references technologies; `mockup_id` references project images |
+| `technologies` | `imageId` references a technology image |
+| `studies` | `institutionId` references an institution |
+| `institutions` | `imageId` references an institution image |
+| `skills` | `bannerTechnologyIds` references technologies |
+| `menu` | `href` references a portfolio section |
+
+To change professional content, edit only `src/data/site.json`, `src/data/es.json`, or `src/data/en.json`, then run the build. Do not edit generated HTML in `dist/`.
+
+## Build
+
+Run validation independently with:
 
 ```bash
 npm run validate
 ```
 
-The validation also applies the JSON Schemas in `schemas/`, checks stable ID and order uniqueness, verifies typed references between entities, and requires complete English and Spanish translation catalogs.
+Generate the publishable artifact with:
 
-## Data model
+```bash
+npm run build
+```
 
-The site uses three runtime data files:
+The build validates first, replaces `dist/`, renders the complete route set, and copies `CNAME` plus the public resources from `src/assets/`, `src/style/`, and `src/script/`. It intentionally excludes source JSON, schemas, build tools, and tests.
 
-- `data/site.json` contains the language-independent domain model, shared profile and contact details, resource references, ordering, visibility, and a separate application configuration section.
-- `data/en.json` and `data/es.json` contain only localized content, keyed by the stable IDs from the domain model.
-- `script/data-loader.js` loads both sources and resolves the presentation model shared by the portfolio, project catalog, and resume.
+Route contract:
 
-| Category | Identified entities | Main relationships |
+| Page | Spanish | English |
 | --- | --- | --- |
-| `projects` | Projects | `technologyIds` references technologies; `mockup_id` references project images |
-| `technologies` | Technologies | Each technology references its presentation image through `imageId` |
-| `studies` | Studies | `institutionId` references an institution |
-| `institutions` | Institutions | Each institution references its presentation image through `imageId` |
-| `jobs` | Work experiences | Structured `start_date` and nullable `end_date` use `YYYY-MM` |
-| `menu` | Navigation entries | `href` references a section in `index.html` |
-| `skills` | Skill stacks | `bannerTechnologyIds` references normalized technologies |
-| `images` | Common, technology, institution, and project images indexed by ID within each category | IDs are unique across every image group |
-| `profile`, `resumes`, `controls` | Shared site information and configuration | Reused by every page and checked against DOM contracts |
+| Portfolio | `/es/` | `/en/` |
+| Projects | `/es/projects/` | `/en/projects/` |
+| Resume | `/es/cv/` | `/en/cv/` |
 
-Data conventions:
+The root route redirects browsers whose primary language starts with `es` to `/es/`; every other language uses `/en/`. Localized routes use conventional links and do not inspect query parameters. Filename-based routes and the `lang` query parameter are not supported.
 
-- Domain IDs use stable, language-independent `kebab-case` values. Existing DOM binding IDs remain `camelCase` for compatibility.
-- Ordered domain collections use a positive, unique `order` value. Renderers sort by this property instead of relying on array position.
-- Relationships use IDs and are validated against the appropriate target category, not a shared untyped namespace.
-- Projects and Skills reference normalized technologies; studies reference normalized institutions. Images remain presentation resources linked through `imageId`.
-- Image categories are objects indexed by stable ID; the loader converts each required category to the arrays consumed by the existing binders.
-- Every translatable entity has exactly one entry in each locale catalog; missing and unknown translation keys fail validation.
-- Visibility and classification are represented by booleans and enums rather than display text.
-- Schemas reject unknown properties, missing required fields, invalid types, malformed IDs, invalid dates, and unsupported study types.
-- The shared loader joins domain data and translations by stable ID while preserving each page's existing filtering and presentation rules.
+## Testing
 
-The schemas are development inputs and are intentionally excluded from the publishable `dist/` artifact.
-
-Run the complete automated suite. The first execution downloads the pinned Chromium version required by Playwright:
+Run all tests with:
 
 ```bash
 npm test
 ```
 
-The suite runs fast build and validation tests first, followed by browser tests for `index.html`, `projects.html`, and `cv.html` in Spanish and English. Browser tests verify rendered entity counts and relationships, navigation, language selection, interactive controls, unhandled JavaScript errors, failed local requests, and desktop/mobile visual baselines.
-
-Run only one layer while diagnosing a failure:
+Run layers independently with:
 
 ```bash
 npm run test:unit
 npm run test:browser
 ```
 
-Playwright starts its own local HTTP server. External fonts, images, styles, and embeds are replaced during tests so network availability does not affect the result; all local site resources still load normally and any local failure fails the test.
+Unit tests verify validation, all localized outputs, publication exclusions, static localized content, safe routes, and data-driven rebuilds. Playwright builds and serves `dist/`, then verifies root language selection, localized navigation, language switching, entity counts, media precedence, the mobile menu, JavaScript-disabled behavior, and desktop/mobile visual baselines.
 
-Visual references are stored under `test/browser/snapshots/`. Review the generated differences before accepting an intentional content or design change, then update the references with:
+Intentional visual changes can be reviewed and accepted with `npm run test:browser:update`. Do not update snapshots to hide an unexplained regression.
 
-```bash
-npm run test:browser:update
-```
+## Publication
 
-Do not update references to make an unexplained failure pass. Functional assertions and the visual difference should first confirm that the new result is expected.
-
-Generate the publishable site:
-
-```bash
-npm run build
-```
-
-The build output is written to `dist/`. It contains the HTML pages, shared domain data, translation catalogs, scripts, styles, assets, and `CNAME`; development tooling is not included. The directory is generated and must not be committed.
-
-The site loads JSON and `footer.html` with `fetch`, so it must be served over HTTP rather than opened directly with a `file://` URL. For example:
-
-```bash
-npx serve dist
-```
-
-GitHub Pages currently publishes the repository root from `main`. This remains unchanged to avoid altering the existing deployment; `dist/` is the reproducible artifact for validation and a future GitHub Actions deployment.
+Publish the contents of `dist/` at the site root. The generated artifact includes `CNAME` and uses root-relative local assets, so every localized route works at its final GitHub Pages URL. The repository root is source and tooling; it is no longer a directly publishable site.

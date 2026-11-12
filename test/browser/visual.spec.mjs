@@ -1,9 +1,9 @@
 import { expect, openRenderedPage, stabilizeVisualPage, test } from "./portfolio-test.mjs";
 
 const pages = [
-	{ name: "index", path: "index.html", readySelector: "#projectsDiv > .project-card", expectedCount: 3 },
-	{ name: "projects", path: "projects.html", readySelector: "#projectsDiv > .project-card", expectedCount: 23 },
-	{ name: "cv", path: "cv.html", readySelector: "#projectsLst > li", expectedCount: 3 }
+	{ name: "index", path: "", readySelector: "#projectsDiv > .project-card", expectedCount: 3 },
+	{ name: "projects", path: "projects/", readySelector: "#projectsDiv > .project-card", expectedCount: 23 },
+	{ name: "cv", path: "cv/", readySelector: "#projectsLst > li", expectedCount: 3 }
 ];
 
 const viewports = [
@@ -19,7 +19,7 @@ for (const language of ["es", "en"]) {
 
 				await openRenderedPage(
 					page,
-					`/${pageData.path}?lang=${language}`,
+					`/${language}/${pageData.path}`,
 					pageData.readySelector,
 					pageData.expectedCount
 				);

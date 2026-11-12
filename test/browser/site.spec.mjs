@@ -19,8 +19,8 @@ const featuredProjects = ["Meeni ERP", "Membriana", "Ecommerce Net"];
 
 for (const [language, labels] of Object.entries(languages)) {
 	test.describe(`${language.toUpperCase()} content`, () => {
-		test("portfolio renders its localized content and entity relationships", async ({ page }) => {
-			await openRenderedPage(page, `/index.html?lang=${language}`, "#projectsDiv > .project-card", 3);
+		test("portfolio contains localized entities in its initial HTML", async ({ page }) => {
+			await openRenderedPage(page, `/${language}/`, "#projectsDiv > .project-card", 3);
 
 			await expect(page.locator("html")).toHaveAttribute("lang", language);
 			await expect(page.locator("#skillsLbl")).toHaveText(labels.indexTitle);
@@ -31,24 +31,24 @@ for (const [language, labels] of Object.entries(languages)) {
 			await expect(page.locator("#studiesTab > tr")).toHaveCount(9);
 			await expect(page.locator("#projectsDiv .project-bot-div h3")).toHaveText(featuredProjects);
 			await expect(page.locator("#resumeBtn")).toHaveAttribute("download", labels.resume);
-			await expect(page.locator("#footer a[href='?lang=es']")).toBeVisible();
-			await expect(page.locator("#footer a[href='?lang=en']")).toBeVisible();
+			await expect(page.locator(`a[lang='es'][href='/es/']`)).toBeVisible();
+			await expect(page.locator(`a[lang='en'][href='/en/']`)).toBeVisible();
 		});
 
-		test("project catalog renders every project and media variant", async ({ page }) => {
-			await openRenderedPage(page, `/projects.html?lang=${language}`, "#projectsDiv > .project-card", 23);
+		test("project catalog contains every project and media variant", async ({ page }) => {
+			await openRenderedPage(page, `/${language}/projects/`, "#projectsDiv > .project-card", 23);
 
 			await expect(page.locator("html")).toHaveAttribute("lang", language);
 			await expect(page.locator("#projectsLbl")).toHaveText(labels.projectsTitle);
 			await expect(page.locator(".project-card .project-top-div > iframe")).toHaveCount(3);
-			await expect(page.locator(".project-card .project-top-div > img:not([data-id='wipImg'])")).toHaveCount(16);
-			await expect(page.locator(".project-card .project-top-div > img[data-id='wipImg']")).toHaveCount(4);
-			await expect(page.locator(".project-card a:has([data-id='sourceCodeLbl'])")).toHaveCount(23);
-			await expect(page.locator(".project-card a:has([data-id='openOnlineLbl'])")).toHaveCount(2);
+			await expect(page.locator(".project-card .project-top-div > img:not([alt*='Progress']):not([alt*='proceso'])")).toHaveCount(16);
+			await expect(page.locator(".project-card .project-top-div > img[title='WIP']")).toHaveCount(4);
+			await expect(page.locator(".project-card a:has(.bi-code-slash)")).toHaveCount(23);
+			await expect(page.locator(".project-card a:has(.bi-eye)")).toHaveCount(2);
 		});
 
-		test("resume renders the selected professional content", async ({ page }) => {
-			await openRenderedPage(page, `/cv.html?lang=${language}`, "#projectsLst > li", 3);
+		test("resume contains the selected professional content", async ({ page }) => {
+			await openRenderedPage(page, `/${language}/cv/`, "#projectsLst > li", 3);
 
 			await expect(page.locator("html")).toHaveAttribute("lang", language);
 			await expect(page.locator("#skillsLbl")).toHaveText(labels.cvTitle);
@@ -60,31 +60,63 @@ for (const [language, labels] of Object.entries(languages)) {
 			await expect(page.locator("#jobsLst > li")).toHaveCount(3);
 		});
 
-		test("navigation preserves the selected language", async ({ page }) => {
-			await openRenderedPage(page, `/index.html?lang=${language}`, "#projectsDiv > .project-card", 3);
+		test("navigation stays in the selected language", async ({ page }) => {
+			await openRenderedPage(page, `/${language}/`, "#projectsDiv > .project-card", 3);
 			await page.locator("#allProjectsLbl").click();
-			await expect(page).toHaveURL(new RegExp(`/projects\\.html\\?lang=${language}$`));
+			await expect(page).toHaveURL(new RegExp(`/${language}/projects/$`));
 			await expect(page.locator("#projectsDiv > .project-card")).toHaveCount(23);
 
 			await page.locator("#backLbl").click();
-			await expect(page).toHaveURL(new RegExp(`/index\\.html\\?lang=${language}$`));
+			await expect(page).toHaveURL(new RegExp(`/${language}/$`));
 			await expect(page.locator("#projectsDiv > .project-card")).toHaveCount(3);
 		});
 	});
 }
 
-test("language control changes the localized content", async ({ page }) => {
-	await openRenderedPage(page, "/index.html?lang=es", "#projectsDiv > .project-card", 3);
-	await page.locator("#footer a[href='?lang=en']").click();
+for (const pageData of [
+	{ path: "", selector: "#skillsLbl", text: "Skills" },
+	{ path: "projects/", selector: "#projectsLbl", text: "All My Projects" },
+	{ path: "cv/", selector: "#skillsLbl", text: "< Skills />" }
+]) {
+	test(`language link switches the equivalent ${pageData.path || "portfolio"} page`, async ({ page }) => {
+		await page.goto(`/es/${pageData.path}`);
+		await page.locator(`a[href='/en/${pageData.path}']`).click();
 
-	await expect(page).toHaveURL(/\/index\.html\?lang=en$/);
+		await expect(page).toHaveURL(new RegExp(`/en/${pageData.path}$`));
+		await expect(page.locator(pageData.selector)).toHaveText(pageData.text);
+	});
+}
+
+test("root route detects the browser language", async ({ page }) => {
+	await page.addInitScript(() => {
+		Object.defineProperty(navigator, "languages", { get: () => ["en-US"] });
+	});
+	await page.goto("/");
+
+	await expect(page).toHaveURL(/\/en\/$/);
 	await expect(page.locator("html")).toHaveAttribute("lang", "en");
-	await expect(page.locator("#skillsLbl")).toHaveText("Skills");
+});
+
+test("root route uses Spanish for a Spanish browser", async ({ page }) => {
+	await page.goto("/");
+
+	await expect(page).toHaveURL(/\/es\/$/);
+	await expect(page.locator("html")).toHaveAttribute("lang", "es");
+});
+
+test("root route uses English for any other browser language", async ({ page }) => {
+	await page.addInitScript(() => {
+		Object.defineProperty(navigator, "languages", { get: () => ["pt-BR"] });
+	});
+	await page.goto("/");
+
+	await expect(page).toHaveURL(/\/en\/$/);
+	await expect(page.locator("html")).toHaveAttribute("lang", "en");
 });
 
 test("mobile menu opens and closes without leaving the page blocked", async ({ page }) => {
 	await page.setViewportSize({ width: 390, height: 844 });
-	await openRenderedPage(page, "/index.html?lang=es", "#menuLst > li", 5);
+	await openRenderedPage(page, "/es/", "#menuLst > li", 5);
 
 	await page.locator("#toggleBtn").click();
 	await expect(page.locator("#menuNav")).toHaveClass(/nav-toggle/);
@@ -93,4 +125,19 @@ test("mobile menu opens and closes without leaving the page blocked", async ({ p
 	await page.locator("#menuLst > li").first().click();
 	await expect(page.locator("#menuNav")).not.toHaveClass(/nav-toggle/);
 	await expect(page.locator("body")).not.toHaveClass(/no-scroll/);
+});
+
+test.describe("without JavaScript", () => {
+	test.use({ javaScriptEnabled: false });
+
+	test("content, navigation, and projects remain available", async ({ page }) => {
+		await page.goto("/en/");
+
+		await expect(page.locator("h1")).toContainText("Maximiliano");
+		await expect(page.locator("#menuLst > li")).toHaveCount(5);
+		await expect(page.locator("#projectsDiv > .project-card")).toHaveCount(3);
+		await page.locator("#allProjectsLbl").click();
+		await expect(page).toHaveURL(/\/en\/projects\/$/);
+		await expect(page.locator("#projectsDiv > .project-card")).toHaveCount(23);
+	});
 });

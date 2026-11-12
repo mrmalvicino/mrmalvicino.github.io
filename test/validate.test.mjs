@@ -13,15 +13,8 @@ async function createValidFixture() {
 
 	const requiredPaths = [
 		"CNAME",
-		"assets",
-		"data",
-		"footer.html",
-		"index.html",
-		"projects.html",
-		"cv.html",
 		"schemas",
-		"script",
-		"style"
+		"src"
 	];
 
 	for (const relativePath of requiredPaths) {
@@ -33,29 +26,21 @@ async function createValidFixture() {
 
 test("site data and local references are valid", async () => {
 	const result = await validateSite(root);
-	assert.deepEqual(result, { htmlFiles: 4, jsonFiles: 3 });
+	assert.deepEqual(result, { jsonFiles: 3 });
 });
 
-test("validation reports malformed JSON, missing files, and invalid local references", async () => {
+test("validation reports malformed JSON and missing data files", async () => {
 	const fixture = await mkdtemp(path.join(os.tmpdir(), "portfolio-validation-"));
 
 	try {
-		await mkdir(path.join(fixture, "data"));
-		await writeFile(path.join(fixture, "data", "site.json"), "{ invalid", "utf8");
-
-		await writeFile(
-			path.join(fixture, "index.html"),
-			'<script src="missing.js"></script><a href="%2e%2e%2fpackage.json">Invalid</a>',
-			"utf8"
-		);
+		await mkdir(path.join(fixture, "src/data"), { recursive: true });
+		await writeFile(path.join(fixture, "src/data", "site.json"), "{ invalid", "utf8");
 
 		await assert.rejects(
 			validateSite(fixture),
 			error => {
 				assert.match(error.message, /site\.json: invalid JSON/);
 				assert.match(error.message, /en\.json: required data file is missing/);
-				assert.match(error.message, /index\.html: local reference does not exist: missing\.js/);
-				assert.match(error.message, /index\.html: local reference escapes the site root: %2e%2e%2fpackage\.json/);
 				return true;
 			}
 		);
@@ -68,7 +53,7 @@ test("validation reports schema, identity, translation, and typed-reference erro
 	const fixture = await createValidFixture();
 
 	try {
-		const sitePath = path.join(fixture, "data", "site.json");
+		const sitePath = path.join(fixture, "src/data", "site.json");
 		const site = JSON.parse(await readFile(sitePath, "utf8"));
 		site.projects[1].id = site.projects[0].id;
 		site.projects[1].order = site.projects[0].order;
@@ -79,17 +64,13 @@ test("validation reports schema, identity, translation, and typed-reference erro
 		site.images.projects_images.cppImg = site.images.technologies_images.cppImg;
 		await writeFile(sitePath, JSON.stringify(site, null, 2), "utf8");
 
-		const spanishPath = path.join(fixture, "data", "es.json");
+		const spanishPath = path.join(fixture, "src/data", "es.json");
 		const spanish = JSON.parse(await readFile(spanishPath, "utf8"));
 		delete spanish.jobs["programming-2-teaching-assistant-utn"].description;
 		delete spanish.projects.membriana;
 		delete spanish.technologies.cpp;
 		delete spanish.institutions.utn;
 		await writeFile(spanishPath, JSON.stringify(spanish, null, 2), "utf8");
-
-		const footerPath = path.join(fixture, "footer.html");
-		const footer = await readFile(footerPath, "utf8");
-		await writeFile(footerPath, footer.replace("profile.location.href", "profile.invalid.href"), "utf8");
 
 		await assert.rejects(
 			validateSite(fixture),
@@ -105,7 +86,6 @@ test("validation reports schema, identity, translation, and typed-reference erro
 				assert.match(error.message, /site\.json: unknown project technology id: unknown-technology/);
 				assert.match(error.message, /site\.json: unknown study institution id: unknown-institution/);
 				assert.match(error.message, /site\.json: unknown technology image id for cpp: untrefImg/);
-				assert.match(error.message, /footer\.html: unknown shared data binding: profile\.invalid\.href/);
 				return true;
 			}
 		);
@@ -118,7 +98,7 @@ test("rendering order does not depend on array position", async () => {
 	const fixture = await createValidFixture();
 
 	try {
-		const sitePath = path.join(fixture, "data", "site.json");
+		const sitePath = path.join(fixture, "src/data", "site.json");
 		const site = JSON.parse(await readFile(sitePath, "utf8"));
 		site.jobs.reverse();
 		await writeFile(sitePath, JSON.stringify(site, null, 2), "utf8");

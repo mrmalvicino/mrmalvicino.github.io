@@ -6,7 +6,6 @@ import Ajv from "ajv";
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const languages = ["en", "es"];
 const dataFiles = ["site.json", ...languages.map(language => `${language}.json`)];
-const htmlFiles = ["index.html", "projects.html", "cv.html", "footer.html"];
 const localJsonKeys = new Set(["href", "src", "study_plan", "certificate"]);
 const schemaBaseUrl = "https://mrmalvicino.com/schemas/";
 
@@ -95,24 +94,24 @@ async function readData(root, errors) {
 	let actualFiles = [];
 
 	try {
-		actualFiles = (await readdir(path.join(root, "data"))).filter(fileName => fileName.endsWith(".json")).sort();
+		actualFiles = (await readdir(path.join(root, "src/data"))).filter(fileName => fileName.endsWith(".json")).sort();
 	} catch {
-		errors.push("data/: directory does not exist");
+		errors.push("src/data/: directory does not exist");
 		return data;
 	}
 
 	for (const fileName of dataFiles) {
 		if (!actualFiles.includes(fileName)) {
-			errors.push(`data/${fileName}: required data file is missing`);
+			errors.push(`src/data/${fileName}: required data file is missing`);
 			continue;
 		}
 
-		data.set(fileName, await readJson(root, `data/${fileName}`, errors));
+		data.set(fileName, await readJson(root, `src/data/${fileName}`, errors));
 	}
 
 	for (const fileName of actualFiles) {
 		if (!dataFiles.includes(fileName)) {
-			errors.push(`data/${fileName}: obsolete or unsupported data file`);
+			errors.push(`src/data/${fileName}: obsolete or unsupported data file`);
 		}
 	}
 
@@ -152,7 +151,7 @@ async function validateSchemas(root, data, errors) {
 
 		if (!validate(contents)) {
 			for (const error of validate.errors) {
-				errors.push(`data/${fileName}: schema violation: ${formatSchemaError(error)}`);
+				errors.push(`src/data/${fileName}: schema violation: ${formatSchemaError(error)}`);
 			}
 		}
 	}
@@ -164,7 +163,7 @@ function validateUniqueCollection(items, collection, errors, globalIds = null) {
 
 	for (const item of items ?? []) {
 		if (ids.has(item.id) || globalIds?.has(item.id)) {
-			errors.push(`data/site.json: duplicate id in ${collection}: ${item.id}`);
+			errors.push(`src/data/site.json: duplicate id in ${collection}: ${item.id}`);
 		}
 
 		ids.add(item.id);
@@ -172,7 +171,7 @@ function validateUniqueCollection(items, collection, errors, globalIds = null) {
 
 		if (item.order !== undefined) {
 			if (orders.has(item.order)) {
-				errors.push(`data/site.json: duplicate order in ${collection}: ${item.order}`);
+				errors.push(`src/data/site.json: duplicate order in ${collection}: ${item.order}`);
 			}
 
 			orders.add(item.order);
@@ -186,35 +185,6 @@ function compareKeys(actual, expected, source, errors) {
 
 	if (JSON.stringify(actualKeys) !== JSON.stringify(expectedKeys)) {
 		errors.push(`${source}: translation keys do not match domain ids`);
-	}
-}
-
-function getAtPath(value, propertyPath) {
-	return propertyPath.split(".").reduce((current, key) => current?.[key], value);
-}
-
-function validateBindings(site, locale, htmlContents, errors) {
-	const values = {
-		configuration: site.configuration,
-		profile: {
-			...site.profile,
-			...locale.profile
-		}
-	};
-	const socialIds = new Set(site.profile.socials.map(social => social.id));
-
-	for (const [fileName, contents] of htmlContents) {
-		for (const match of contents.matchAll(/data-site-(?:text|href|action)=["']([^"']+)["']/g)) {
-			if (getAtPath(values, match[1]) === undefined) {
-				errors.push(`${fileName}: unknown shared data binding: ${match[1]}`);
-			}
-		}
-
-		for (const match of contents.matchAll(/data-social-id=["']([^"']+)["']/g)) {
-			if (!socialIds.has(match[1])) {
-				errors.push(`${fileName}: unknown social id: ${match[1]}`);
-			}
-		}
 	}
 }
 
@@ -237,22 +207,22 @@ function validateTranslations(site, locales, errors) {
 
 	for (const [language, locale] of locales) {
 		for (const [collection, ids] of Object.entries(expected)) {
-			compareKeys(locale?.[collection], ids, `data/${language}.json ${collection}`, errors);
+			compareKeys(locale?.[collection], ids, `src/data/${language}.json ${collection}`, errors);
 		}
 
 		for (const [group, ids] of Object.entries(site.controls.labelIds)) {
-			compareKeys(locale?.labels?.[group], ids, `data/${language}.json labels.${group}`, errors);
+			compareKeys(locale?.labels?.[group], ids, `src/data/${language}.json labels.${group}`, errors);
 		}
 
 		for (const imageId of imageIds) {
 			if (!locale.images[imageId]?.title && !technologyImageIds.has(imageId)) {
-				errors.push(`data/${language}.json images: missing title for ${imageId}`);
+				errors.push(`src/data/${language}.json images: missing title for ${imageId}`);
 			}
 		}
 	}
 }
 
-function validateDomain(site, indexHtml, errors) {
+function validateDomain(site, errors) {
 	const collections = {
 		menu: site.menu,
 		projects: site.projects,
@@ -271,7 +241,7 @@ function validateDomain(site, indexHtml, errors) {
 	for (const [name, images] of Object.entries(site.images)) {
 		for (const id of Object.keys(images)) {
 			if (allImageIds.has(id)) {
-				errors.push(`data/site.json: duplicate id in ${name}: ${id}`);
+				errors.push(`src/data/site.json: duplicate id in ${name}: ${id}`);
 			}
 
 			allImageIds.add(id);
@@ -288,117 +258,96 @@ function validateDomain(site, indexHtml, errors) {
 
 	for (const [id, technology] of Object.entries(site.technologies)) {
 		if (referencedTechnologyImageIds.has(technology.imageId)) {
-			errors.push(`data/site.json: technology image id is reused: ${technology.imageId}`);
+			errors.push(`src/data/site.json: technology image id is reused: ${technology.imageId}`);
 		}
 
 		referencedTechnologyImageIds.add(technology.imageId);
 
 		if (!technologyIds.has(technology.imageId)) {
-			errors.push(`data/site.json: unknown technology image id for ${id}: ${technology.imageId}`);
+			errors.push(`src/data/site.json: unknown technology image id for ${id}: ${technology.imageId}`);
 		}
 	}
 
 	for (const [id, institution] of Object.entries(site.institutions)) {
 		if (referencedInstitutionImageIds.has(institution.imageId)) {
-			errors.push(`data/site.json: institution image id is reused: ${institution.imageId}`);
+			errors.push(`src/data/site.json: institution image id is reused: ${institution.imageId}`);
 		}
 
 		referencedInstitutionImageIds.add(institution.imageId);
 
 		if (!institutionIds.has(institution.imageId)) {
-			errors.push(`data/site.json: unknown institution image id for ${id}: ${institution.imageId}`);
+			errors.push(`src/data/site.json: unknown institution image id for ${id}: ${institution.imageId}`);
 		}
 	}
 
 	if (referencedTechnologyImageIds.size !== technologyIds.size) {
-		errors.push("data/site.json: every technology image must belong to one technology");
+		errors.push("src/data/site.json: every technology image must belong to one technology");
 	}
 
 	if (referencedInstitutionImageIds.size !== institutionIds.size) {
-		errors.push("data/site.json: every institution image must belong to one institution");
+		errors.push("src/data/site.json: every institution image must belong to one institution");
 	}
 
 	for (const id of site.skills.bannerTechnologyIds) {
 		if (!technologyEntityIds.has(id)) {
-			errors.push(`data/site.json: unknown banner technology id: ${id}`);
+			errors.push(`src/data/site.json: unknown banner technology id: ${id}`);
 		}
 	}
 
 	for (const project of site.projects) {
 		for (const id of project.technologyIds) {
 			if (!technologyEntityIds.has(id)) {
-				errors.push(`data/site.json: unknown project technology id: ${id}`);
+				errors.push(`src/data/site.json: unknown project technology id: ${id}`);
 			}
 		}
 
 		if (project.mockup_id && !projectImageIds.has(project.mockup_id)) {
-			errors.push(`data/site.json: unknown project image id: ${project.mockup_id}`);
+			errors.push(`src/data/site.json: unknown project image id: ${project.mockup_id}`);
 		}
 	}
 
 	for (const study of site.studies) {
 		if (!institutionEntityIds.has(study.institutionId)) {
-			errors.push(`data/site.json: unknown study institution id: ${study.institutionId}`);
+			errors.push(`src/data/site.json: unknown study institution id: ${study.institutionId}`);
 		}
 	}
 
 	if (!projectImageIds.has("wipImg")) {
-		errors.push("data/site.json: required project image id is missing: wipImg");
+		errors.push("src/data/site.json: required project image id is missing: wipImg");
 	}
 
-	const pageIds = new Set([...indexHtml.matchAll(/\bid=["']([^"']+)["']/g)].map(match => match[1]));
+	const pageIds = new Set(["heroSec", "skillsSec", "projectsSec", "educationSec", "contactSec"]);
 
 	for (const item of site.menu) {
 		if (item.href.startsWith("#") && !pageIds.has(item.href.slice(1))) {
-			errors.push(`data/site.json: unknown index.html fragment: ${item.href}`);
-		}
-	}
-
-	for (const id of [site.controls.resumeButtonId, site.controls.submitButtonId, ...site.controls.textboxIds]) {
-		if (!pageIds.has(id)) {
-			errors.push(`data/site.json: unknown index.html control id: ${id}`);
+			errors.push(`src/data/site.json: unknown index.html fragment: ${item.href}`);
 		}
 	}
 }
 
-async function validateHtmlAndCss(root, htmlContents, errors) {
-	for (const [fileName, contents] of htmlContents) {
-		for (const match of contents.matchAll(/(?:^|\s)(?:href|src|action)\s*=\s*["']([^"']+)["']/gi)) {
-			await validateReference(root, match[1], fileName, errors, fileName);
-		}
-	}
-
+async function validateCss(root, errors) {
 	let cssFiles = [];
 
 	try {
-		cssFiles = (await readdir(path.join(root, "style"))).filter(name => name.endsWith(".css"));
+		cssFiles = (await readdir(path.join(root, "src/style"))).filter(name => name.endsWith(".css"));
 	} catch {
-		errors.push("style/: directory does not exist");
+		errors.push("src/style/: directory does not exist");
 		return;
 	}
 
 	for (const fileName of cssFiles) {
-		const contents = await readFile(path.join(root, "style", fileName), "utf8");
+		const contents = await readFile(path.join(root, "src/style", fileName), "utf8");
 
 		for (const match of contents.matchAll(/url\(\s*["']?([^"')]+)["']?\s*\)/gi)) {
-			await validateReference(root, match[1], `style/${fileName}`, errors, `style/${fileName}`);
+			await validateReference(path.join(root, "src"), match[1], `src/style/${fileName}`, errors, `style/${fileName}`);
 		}
 	}
 }
 
 export async function validateSite(root = projectRoot) {
 	const errors = [];
-	const htmlContents = new Map();
 
-	for (const fileName of htmlFiles) {
-		try {
-			htmlContents.set(fileName, await readFile(path.join(root, fileName), "utf8"));
-		} catch {
-			errors.push(`${fileName}: required HTML file is missing`);
-		}
-	}
-
-	for (const requiredPath of ["CNAME", "assets", "data", "schemas", "script", "style"]) {
+	for (const requiredPath of ["CNAME", "schemas", "src/assets", "src/data", "src/script", "src/style"]) {
 		if (!(await pathExists(path.join(root, requiredPath)))) {
 			errors.push(`${requiredPath}: required build input is missing`);
 		}
@@ -406,37 +355,36 @@ export async function validateSite(root = projectRoot) {
 
 	const data = await readData(root, errors);
 	await validateSchemas(root, data, errors);
-	await validateHtmlAndCss(root, htmlContents, errors);
+	await validateCss(root, errors);
 
 	for (const [fileName, contents] of data) {
 		const references = [];
 		collectJsonReferences(contents, references);
 
 		for (const reference of references) {
-			await validateReference(root, reference, `data/${fileName}`, errors);
+			await validateReference(path.join(root, "src"), reference, `src/data/${fileName}`, errors);
 		}
 	}
 
 	const site = data.get("site.json");
 	const locales = languages.map(language => [language, data.get(`${language}.json`)]);
 
-	if (site && locales.every(([, locale]) => locale) && htmlContents.has("index.html")) {
+	if (site && locales.every(([, locale]) => locale)) {
 		validateTranslations(site, locales, errors);
-		validateDomain(site, htmlContents.get("index.html"), errors);
-		validateBindings(site, locales[0][1], htmlContents, errors);
+		validateDomain(site, errors);
 	}
 
 	if (errors.length > 0) {
 		throw new Error(`Validation failed:\n- ${errors.join("\n- ")}`);
 	}
 
-	return { jsonFiles: data.size, htmlFiles: htmlContents.size };
+	return { jsonFiles: data.size };
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
 	try {
 		const result = await validateSite(projectRoot);
-		console.log(`Validation passed (${result.htmlFiles} HTML files, ${result.jsonFiles} JSON files).`);
+		console.log(`Validation passed (${result.jsonFiles} JSON files).`);
 	} catch (error) {
 		console.error(error.message);
 		process.exitCode = 1;

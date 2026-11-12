@@ -129,10 +129,10 @@
         "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/dot-net/dot-net-original-wordmark.svg"
       },
       "angularImg": {
-        "src": "https://i.imgur.com/X0wgeXR.png"
+        "src": "./assets/images/technologies/angular.png"
       },
       "reactImg": {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/React.svg/800px-React.svg.png"
+        "src": "./assets/images/technologies/react.svg"
       },
       "fastapiImg": {
         "src": "https://avatars.githubusercontent.com/u/156354296?s=280&v=4"
@@ -181,46 +181,46 @@
         "src": "https://github.com/mrmalvicino/anc-research-plan/blob/main/latex/images/cross_Y2.png?raw=true"
       },
       "dugunImg": {
-        "src": "https://i.imgur.com/EwCy5hL.png"
+        "src": "./assets/images/projects/dugun-auto-clicker.png"
       },
       "binaryImg": {
-        "src": "https://i.imgur.com/PmQGGe1.png"
+        "src": "./assets/images/projects/binary-calculator.png"
       },
       "balumaImg": {
         "src": "https://github.com/mrmalvicino/baluma-erp/raw/main/images/screenshot-stock.png?raw=true"
       },
       "irwinImg": {
-        "src": "https://i.imgur.com/XiWHbjK.png"
+        "src": "./assets/images/projects/irwins-revenge.png"
       },
       "arduinoImg": {
         "src": "https://content.instructables.com/FNO/ZIKG/K6HPDHBU/FNOZIKGK6HPDHBU.jpg?auto=webp&crop=1.2%3A1&frame=1&width=420"
       },
       "waveformImg": {
-        "src": "https://i.imgur.com/oWak3t1.png"
+        "src": "./assets/images/projects/dsp-notes.png"
       },
       "transmissibilityImg": {
-        "src": "https://i.imgur.com/1qQWsXr.png"
+        "src": "./assets/images/projects/acoustics-notes.png"
       },
       "circuitImg": {
-        "src": "https://i.imgur.com/bXjmNw4.png"
+        "src": "./assets/images/projects/electronics-notes.png"
       },
       "mathImg": {
-        "src": "https://i.imgur.com/2kqj9Xn.png"
+        "src": "./assets/images/projects/math-notes.png"
       },
       "newtonImg": {
-        "src": "https://i.imgur.com/4WfJHib.png"
+        "src": "./assets/images/projects/physics-book.png"
       },
       "planeImg": {
-        "src": "https://i.imgur.com/9WHXRsg.png"
+        "src": "./assets/images/projects/physics-1-solved.png"
       },
       "einsteinImg": {
-        "src": "https://i.imgur.com/Sq4x0DT.png"
+        "src": "./assets/images/projects/physics-2-demonstrations.png"
       },
       "matrixImg": {
-        "src": "https://i.imgur.com/5dHwYZL.png"
+        "src": "./assets/images/projects/link-tree.png"
       },
       "biblioImg": {
-        "src": "https://i.imgur.com/U4aYLo2.jpeg"
+        "src": "./assets/images/projects/biblio-api.jpeg"
       }
     }
   },
