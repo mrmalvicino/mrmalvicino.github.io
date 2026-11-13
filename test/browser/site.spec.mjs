@@ -4,12 +4,16 @@ const languages = {
 	es: {
 		indexTitle: "Habilidades",
 		projectsTitle: "Todos mis proyectos",
+		filtersTitle: "Filtrar proyectos",
+		resultCount: "23 proyectos",
 		cvTitle: "< Habilidades />",
 		resume: "malvicino-es.pdf"
 	},
 	en: {
 		indexTitle: "Skills",
 		projectsTitle: "All My Projects",
+		filtersTitle: "Filter projects",
+		resultCount: "23 projects",
 		cvTitle: "< Skills />",
 		resume: "malvicino-en.pdf"
 	}
@@ -40,6 +44,10 @@ for (const [language, labels] of Object.entries(languages)) {
 
 			await expect(page.locator("html")).toHaveAttribute("lang", language);
 			await expect(page.locator("#projectsLbl")).toHaveText(labels.projectsTitle);
+			await expect(page.locator("#filtersLbl")).toHaveText(labels.filtersTitle);
+			await expect(page.locator("#projectResultCount")).toHaveText(labels.resultCount);
+			await expect(page.locator('input[name="tech"]')).toHaveCount(17);
+			await expect(page.locator('input[name="type"]')).toHaveCount(5);
 			await expect(page.locator(".project-card .project-top-div > iframe")).toHaveCount(3);
 			await expect(page.locator(".project-card .project-top-div > img:not([alt*='Progress']):not([alt*='proceso'])")).toHaveCount(16);
 			await expect(page.locator(".project-card .project-top-div > img[title='WIP']")).toHaveCount(4);
@@ -72,6 +80,76 @@ for (const [language, labels] of Object.entries(languages)) {
 		});
 	});
 }
+
+test.describe("project filters", () => {
+	test("combine OR selections within categories and AND between categories", async ({ page }) => {
+		await openRenderedPage(page, "/en/projects/", "#projectsDiv > .project-card", 23);
+
+		await page.locator('input[name="tech"][value="python"]').check();
+		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(4);
+		await expect(page).toHaveURL(/\?tech=python$/);
+
+		await page.locator('input[name="tech"][value="cpp"]').check();
+		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(9);
+		await expect(page).toHaveURL(/\?tech=cpp%2Cpython$|\?tech=python%2Ccpp$/);
+
+		await page.locator('input[name="type"][value="desktop-app"]').check();
+		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(7);
+
+		await page.locator('input[name="type"][value="research"]').check();
+		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(8);
+		await expect(page.locator("#projectResultCount")).toHaveText("8 projects");
+	});
+
+	test("restore filters from a shared URL and browser history", async ({ page }) => {
+		await openRenderedPage(
+			page,
+			"/es/projects/?tech=python,cpp&type=desktop-app,research",
+			"#projectsDiv > .project-card",
+			23
+		);
+
+		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(8);
+		await expect(page.locator('input[name="tech"][value="python"]')).toBeChecked();
+		await expect(page.locator('input[name="type"][value="research"]')).toBeChecked();
+
+		await page.locator('input[name="type"][value="research"]').uncheck();
+		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(7);
+		await page.goBack();
+		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(8);
+		await expect(page.locator('input[name="type"][value="research"]')).toBeChecked();
+
+		await page.goForward();
+		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(7);
+		await expect(page.locator('input[name="type"][value="research"]')).not.toBeChecked();
+	});
+
+	test("show an empty state and clear all filters", async ({ page }) => {
+		await openRenderedPage(page, "/en/projects/", "#projectsDiv > .project-card", 23);
+
+		await page.locator('input[name="tech"][value="dotnet"]').check();
+		await page.locator('input[name="type"][value="notes"]').check();
+		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(0);
+		await expect(page.locator("#projectEmptyState")).toBeVisible();
+		await expect(page.locator("#projectResultCount")).toHaveText("0 projects");
+
+		await page.locator("#projectEmptyState [data-clear-filters]").click();
+		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(23);
+		await expect(page.locator("#projectEmptyState")).toBeHidden();
+		await expect(page).toHaveURL(/\/en\/projects\/$/);
+	});
+
+	test("filters can be operated with the keyboard", async ({ page }) => {
+		await openRenderedPage(page, "/en/projects/", "#projectsDiv > .project-card", 23);
+		const pythonFilter = page.locator('input[name="tech"][value="python"]');
+
+		await pythonFilter.focus();
+		await page.keyboard.press("Space");
+
+		await expect(pythonFilter).toBeChecked();
+		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(4);
+	});
+});
 
 for (const pageData of [
 	{ path: "", selector: "#skillsLbl", text: "Skills" },
@@ -139,5 +217,6 @@ test.describe("without JavaScript", () => {
 		await page.locator("#allProjectsLbl").click();
 		await expect(page).toHaveURL(/\/en\/projects\/$/);
 		await expect(page.locator("#projectsDiv > .project-card")).toHaveCount(23);
+		await expect(page.locator("#projectFilters")).toBeHidden();
 	});
 });

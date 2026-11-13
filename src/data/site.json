@@ -879,7 +879,13 @@
       ],
       "projects": [
         "projectsLbl",
-        "backLbl"
+        "backLbl",
+        "filtersLbl",
+        "technologiesLbl",
+        "typesLbl",
+        "clearFiltersLbl",
+        "projectSingularLbl",
+        "projectPluralLbl"
       ],
       "cv": [
         "skillsLbl",

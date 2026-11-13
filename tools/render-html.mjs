@@ -69,12 +69,13 @@ function renderDocument(data, page, body) {
 	const classAttribute = page === "cv" ? ' class="pale-black-background"' : "";
 	const scripts = [
 		page === "index" ? '<script src="/script/menu.js"></script>' : "",
+		page === "projects" ? '<script src="/script/project-filters.js"></script>' : "",
 		'<script src="/script/email-copy.js"></script>'
 	].filter(Boolean).map(script => `  ${script}`).join("\n");
 	const pageStyles = page === "index"
 		? ["banner.css", ...commonStyles, "containers.css", "inputs.css", "menu.css", "table.css"]
 		: page === "projects"
-			? [...commonStyles, "containers.css", "menu.css"]
+			? [...commonStyles, "containers.css", "menu.css", "projects.css"]
 			: [...commonStyles, "cv.css"];
 
 	return `<!DOCTYPE html>
@@ -185,7 +186,8 @@ function renderProjectCard(data, project) {
             <span>${escapeHtml(data.locale.labels.common.openOnlineLbl)}</span>
           </a>` : "";
 
-	return `      <article class="project-card" data-project-id="${escapeHtml(project.id)}">
+	return `      <article class="project-card" data-project-id="${escapeHtml(project.id)}"
+        data-technologies="${escapeHtml(project.technologyIds.join(" "))}" data-types="${escapeHtml(project.typeIds.join(" "))}">
         <div class="project-top-div">
           ${renderProjectMedia(data, project)}
         </div>
@@ -209,6 +211,44 @@ ${demoButton}
 
 function renderProjects(data, projects) {
 	return projects.map(project => renderProjectCard(data, project)).join("\n");
+}
+
+function renderFilterOptions(items, group) {
+	return items.map(item => `              <label class="project-filter-option">
+                <input type="checkbox" name="${escapeHtml(group)}" value="${escapeHtml(item.id)}">
+                <span>${escapeHtml(item.name)}</span>
+              </label>`).join("\n");
+}
+
+function renderProjectFilters(data) {
+	const labels = data.locale.labels.projects;
+	const technologyIds = new Set(data.projects.flatMap(project => project.technologyIds));
+	const typeIds = new Set(data.projects.flatMap(project => project.typeIds));
+	const technologies = Object.values(data.technologies).filter(technology => technologyIds.has(technology.id));
+	const projectTypes = Object.values(data.projectTypes).filter(projectType => typeIds.has(projectType.id));
+
+	return `      <form id="projectFilters" class="project-filters" aria-labelledby="filtersLbl" hidden>
+        <div class="project-filters-header">
+          <h2 id="filtersLbl" class="pure-white-text">${escapeHtml(labels.filtersLbl)}</h2>
+          <button type="button" class="project-filters-clear" data-clear-filters disabled>
+            ${escapeHtml(labels.clearFiltersLbl)}
+          </button>
+        </div>
+        <div class="project-filter-groups">
+          <fieldset class="project-filter-group" data-filter-group="tech">
+            <legend>${escapeHtml(labels.technologiesLbl)}</legend>
+            <div class="project-filter-options">
+${renderFilterOptions(technologies, "tech")}
+            </div>
+          </fieldset>
+          <fieldset class="project-filter-group" data-filter-group="type">
+            <legend>${escapeHtml(labels.typesLbl)}</legend>
+            <div class="project-filter-options">
+${renderFilterOptions(projectTypes, "type")}
+            </div>
+          </fieldset>
+        </div>
+      </form>`;
 }
 
 function renderPortfolioHeader(data) {
@@ -390,6 +430,10 @@ ${renderStudyRows(data)}
 
 export function renderProjectsPage(data) {
 	const backRoute = route(data.language, "index");
+	const projectLabels = data.locale.labels.projects;
+	const initialResultCount = `${data.projects.length} ${data.projects.length === 1
+		? projectLabels.projectSingularLbl
+		: projectLabels.projectPluralLbl}`;
 	const body = `<body class="open-sans-font light-gray-background">
   <header class="menu-header">
     <nav class="menu-nav" aria-label="${escapeHtml(data.locale.labels.projects.backLbl)}">
@@ -410,8 +454,18 @@ export function renderProjectsPage(data) {
       <div class="content-width">
         <h1 id="projectsLbl" class="pure-white-text margin-top-20-px">${escapeHtml(data.locale.labels.projects.projectsLbl)}</h1>
       </div>
+${renderProjectFilters(data)}
+      <p id="projectResultCount" class="project-result-count" aria-live="polite" aria-atomic="true"
+        data-singular="${escapeHtml(projectLabels.projectSingularLbl)}" data-plural="${escapeHtml(projectLabels.projectPluralLbl)}">
+        ${escapeHtml(initialResultCount)}
+      </p>
       <div id="projectsDiv" class="projects-container">
 ${renderProjects(data, data.projects)}
+      </div>
+      <div id="projectEmptyState" class="project-empty-state" hidden>
+        <i class="bi bi-filter-circle" aria-hidden="true"></i>
+        <p>${escapeHtml(data.locale.messages.noProjects)}</p>
+        <button type="button" class="light-button" data-clear-filters>${escapeHtml(projectLabels.clearFiltersLbl)}</button>
       </div>
     </section>
   </main>

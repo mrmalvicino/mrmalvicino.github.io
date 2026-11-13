@@ -97,9 +97,10 @@
     "messages": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["emailCopied"],
+      "required": ["emailCopied", "noProjects"],
       "properties": {
-        "emailCopied": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
+        "emailCopied": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "noProjects": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
       }
     },
     "accessibility": {

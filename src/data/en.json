@@ -393,7 +393,13 @@
     },
     "projects": {
       "projectsLbl": "All My Projects",
-      "backLbl": "Portfolio"
+      "backLbl": "Portfolio",
+      "filtersLbl": "Filter projects",
+      "technologiesLbl": "Technologies",
+      "typesLbl": "Project types",
+      "clearFiltersLbl": "Clear filters",
+      "projectSingularLbl": "project",
+      "projectPluralLbl": "projects"
     },
     "cv": {
       "skillsLbl": "< Skills />",
@@ -416,7 +422,8 @@
     "messageTxt": "¡Hi! I am contacting you to..."
   },
   "messages": {
-    "emailCopied": "Email copied to clipboard: "
+    "emailCopied": "Email copied to clipboard: ",
+    "noProjects": "No projects match the selected filters."
   },
   "accessibility": {
     "videoPlayer": "YouTube video player"

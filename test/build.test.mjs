@@ -64,6 +64,8 @@ test("build creates localized HTML without runtime content data", async () => {
 			stat(path.join(output, "style/constants.css")),
 			stat(path.join(output, "script/menu.js")),
 			stat(path.join(output, "script/email-copy.js")),
+			stat(path.join(output, "script/project-filters.js")),
+			stat(path.join(output, "style/projects.css")),
 			stat(path.join(output, "assets/images/logo.png")),
 			stat(path.join(output, "assets/images/projects/biblio-api.jpeg")),
 			stat(path.join(output, "assets/images/technologies/angular.png")),
@@ -83,6 +85,10 @@ test("build creates localized HTML without runtime content data", async () => {
 		assert.match(html.get("en/index.html"), /JR \.NET Fullstack Developer/);
 		assert.equal((html.get("es/index.html").match(/class="project-card"/g) ?? []).length, 3);
 		assert.equal((html.get("en/projects/index.html").match(/class="project-card"/g) ?? []).length, 23);
+		assert.equal((html.get("en/projects/index.html").match(/name="tech"/g) ?? []).length, 17);
+		assert.equal((html.get("en/projects/index.html").match(/name="type"/g) ?? []).length, 5);
+		assert.match(html.get("en/projects/index.html"), /data-technologies="dotnet csharp html css javascript mssql git"/);
+		assert.match(html.get("en/projects/index.html"), /<script src="\/script\/project-filters\.js"><\/script>/);
 		assert.equal((html.get("es/cv/index.html").match(/id="projectsLst"[\s\S]*?<\/ul>/)?.[0].match(/<li /g) ?? []).length, 3);
 		assert.match(html.get("en/projects/index.html"), /href="\/en\/"/);
 		assert.match(html.get("en/cv/index.html"), /href="\/es\/cv\/"/);

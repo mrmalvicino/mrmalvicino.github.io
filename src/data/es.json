@@ -393,7 +393,13 @@
     },
     "projects": {
       "projectsLbl": "Todos mis proyectos",
-      "backLbl": "Portafolio"
+      "backLbl": "Portafolio",
+      "filtersLbl": "Filtrar proyectos",
+      "technologiesLbl": "Tecnologías",
+      "typesLbl": "Tipos de proyecto",
+      "clearFiltersLbl": "Limpiar filtros",
+      "projectSingularLbl": "proyecto",
+      "projectPluralLbl": "proyectos"
     },
     "cv": {
       "skillsLbl": "< Habilidades />",
@@ -416,7 +422,8 @@
     "messageTxt": "¡Hola! Te estoy contactando para..."
   },
   "messages": {
-    "emailCopied": "Email copiado al portapapeles: "
+    "emailCopied": "Email copiado al portapapeles: ",
+    "noProjects": "No hay proyectos que coincidan con los filtros seleccionados."
   },
   "accessibility": {
     "videoPlayer": "Reproductor de video de YouTube"
