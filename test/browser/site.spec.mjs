@@ -205,6 +205,37 @@ test("mobile menu opens and closes without leaving the page blocked", async ({ p
 	await expect(page.locator("body")).not.toHaveClass(/no-scroll/);
 });
 
+test("project cards preserve icon contrast and fit narrow screens", async ({ page }) => {
+	await page.setViewportSize({ width: 320, height: 800 });
+	await openRenderedPage(page, "/en/projects/", "#projectsDiv > .project-card", 23);
+
+	const firstCard = page.locator("#projectsDiv > .project-card").first();
+	const technologies = firstCard.locator(".project-technology");
+	const technologyIcons = technologies.locator(".project-technology-icon");
+
+	await expect(technologies).toHaveCount(7);
+	await expect(technologyIcons).toHaveCount(7);
+	await expect(technologies.first()).toHaveCSS("background-color", "rgb(250, 250, 250)");
+	await expect(technologyIcons.first()).toHaveCSS("width", "30px");
+	await expect(technologyIcons.first()).toHaveAttribute("alt", /.+/);
+
+	const layout = await firstCard.evaluate(card => {
+		const technologyRows = new Set(
+			[...card.querySelectorAll(".project-technology")].map(item => item.getBoundingClientRect().top)
+		);
+
+		return {
+			cardFits: card.scrollWidth <= card.clientWidth,
+			pageFits: document.documentElement.scrollWidth <= document.documentElement.clientWidth,
+			technologyRows: technologyRows.size
+		};
+	});
+
+	expect(layout.cardFits).toBe(true);
+	expect(layout.pageFits).toBe(true);
+	expect(layout.technologyRows).toBeGreaterThan(1);
+});
+
 test.describe("without JavaScript", () => {
 	test.use({ javaScriptEnabled: false });
 

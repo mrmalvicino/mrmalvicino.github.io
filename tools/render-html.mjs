@@ -174,14 +174,14 @@ function renderProjectMedia(data, project) {
 }
 
 function renderProjectCard(data, project) {
-	const technologyItems = project.technologies.map(technology => `              <li>
-                ${image(technology.image, "width-30-px")}
+	const technologyItems = project.technologies.map(technology => `              <li class="project-technology">
+                ${image(technology.image, "project-technology-icon")}
               </li>`).join("\n");
-	const sourceButton = project.source_code ? `          <a href="${escapeHtml(project.source_code)}" class="transparent-button margin-10-px">
+	const sourceButton = project.source_code ? `          <a href="${escapeHtml(project.source_code)}" class="transparent-button">
             <i class="bi bi-code-slash" style="margin-right: 5px" aria-hidden="true"></i>
             <span>${escapeHtml(data.locale.labels.common.sourceCodeLbl)}</span>
           </a>` : "";
-	const demoButton = project.live_demo ? `          <a href="${escapeHtml(project.live_demo)}" class="transparent-button margin-10-px">
+	const demoButton = project.live_demo ? `          <a href="${escapeHtml(project.live_demo)}" class="transparent-button">
             <i class="bi bi-eye" style="margin-right: 5px" aria-hidden="true"></i>
             <span>${escapeHtml(data.locale.labels.common.openOnlineLbl)}</span>
           </a>` : "";
@@ -192,16 +192,16 @@ function renderProjectCard(data, project) {
           ${renderProjectMedia(data, project)}
         </div>
         <div class="project-bot-div">
-          <div class="margin-10-px">
+          <div class="project-content">
             <h3 class="pure-white-text">${escapeHtml(project.title)}</h3>
             <p>${escapeHtml(project.description)}</p>
           </div>
-          <div class="width-100-pct">
-            <ul class="row-flex space-around">
+          <div class="project-technologies">
+            <ul>
 ${technologyItems}
             </ul>
           </div>
-          <div class="row-flex width-100-pct justify-center">
+          <div class="project-actions">
 ${sourceButton}
 ${demoButton}
           </div>
