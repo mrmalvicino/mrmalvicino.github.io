@@ -142,15 +142,15 @@ function renderFooter(data, page) {
             </a>
           </li>`).join("\n");
 
-	return `<footer id="footer" class="min-height-150-px padding-vertical-20-px align-content-center pale-black-background">
-    <div class="content-width margin-horizontal-auto row-col-800 space-between gap-20-px">
+  return `<footer id="footer" class="min-height-150-px padding-vertical-20-px align-content-center pale-black-background">
+    <div class="content-width margin-horizontal-auto row-col-800 gap-20-px footer-content">
       ${renderLanguageLinks(page)}
       <div>
         <ul class="row-flex gap-20-px">
 ${socialItems}
         </ul>
       </div>
-      <div class="width-100-px">
+      <div class="footer-location">
         <a href="${escapeHtml(data.site.profile.location.href)}" target="_blank" rel="noreferrer"
           class="plain-link medium-gray-link margin-left-auto">
           <i class="bi bi-geo-alt" aria-hidden="true"></i>

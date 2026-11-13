@@ -1,7 +1,7 @@
 {
   "profile": {
-    "footerLocation": "Argentina",
-    "cvLocation": "Caseros, Buenos Aires"
+    "footerLocation": "General Pacheco, Buenos Aires, Argentina",
+    "cvLocation": "General Pacheco, Buenos Aires, Argentina"
   },
   "images": {
     "profileImg": {
@@ -220,7 +220,7 @@
   },
   "institutions": {
     "untref": "Universidad Nacional de Tres de Febrero",
-    "utn": "Universidad Tecnológica Nacional",
+    "utn": "Universidad Tecnológica Nacional, Facultad Regional General Pacheco",
     "educacion-it": "Educación IT",
     "cambridge": "Cambridge",
     "argentina": "Nacido en Argentina"

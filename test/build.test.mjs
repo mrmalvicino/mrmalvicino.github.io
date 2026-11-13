@@ -91,6 +91,10 @@ test("build creates localized HTML without runtime content data", async () => {
 		assert.match(html.get("es/index.html"), /\.NET Framework/);
 		assert.match(html.get("es/index.html"), /Actualmente en formación/);
 		assert.match(html.get("en/cv/index.html"), /Frequent professional use/);
+		assert.match(html.get("en/cv/index.html"), /General Pacheco, Buenos Aires, Argentina/);
+		assert.match(html.get("es/index.html"), /maps\/search\/\?api=1&amp;query=General%20Pacheco%2C%20Buenos%20Aires%2C%20Argentina/);
+		assert.match(html.get("es/index.html"), /href="\/assets\/pdf\/tup\.pdf"[\s\S]*bi bi-award/);
+		assert.doesNotMatch([...html.values()].join("\n"), /Caseros|Título en trámite/);
 		assert.doesNotMatch(html.get("en/index.html"), /Crystal Reports|Docker|Doxygen|GitFlow|Worked with|JSTL library|MongoDB/);
 		assert.equal((html.get("es/index.html").match(/class="project-card"/g) ?? []).length, 3);
 		assert.equal((html.get("en/projects/index.html").match(/class="project-card"/g) ?? []).length, 23);

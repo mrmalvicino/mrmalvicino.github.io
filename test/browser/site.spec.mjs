@@ -34,6 +34,28 @@ for (const [language, labels] of Object.entries(languages)) {
 			await expect(page.locator("#skillGroupsDiv .skill-technology")).toHaveCount(19);
 			await expect(page.locator("#skillGroupsDiv .skill-technology-icon")).toHaveCount(19);
 			await expect(page.locator("#studiesTab > tr")).toHaveCount(9);
+			await expect(page.locator("#studiesTab > tr").nth(1).locator(".bi-mortarboard")).toHaveCount(1);
+			await expect(page.locator("#studiesTab > tr").nth(1).locator(".bi-award")).toHaveCount(1);
+			await expect(page.locator("#footer")).toContainText("General Pacheco, Buenos Aires, Argentina");
+			const locationLines = await page.locator("#footer .footer-location span:last-child").evaluate(element => {
+				const range = document.createRange();
+
+				range.selectNodeContents(element);
+
+				return range.getClientRects().length;
+			});
+
+			expect(locationLines).toBeLessThanOrEqual(2);
+			const socialAlignment = await page.locator("#footer ul").evaluate(element => {
+				const footerBounds = document.querySelector("#footer").getBoundingClientRect();
+				const socialBounds = element.getBoundingClientRect();
+
+				return Math.abs(
+					socialBounds.left + socialBounds.width / 2 - (footerBounds.left + footerBounds.width / 2)
+				);
+			});
+
+			expect(socialAlignment).toBeLessThanOrEqual(1);
 			await expect(page.locator("#projectsDiv .project-bot-div h3")).toHaveText(featuredProjects);
 			await expect(page.locator("#resumeBtn")).toHaveAttribute("download", labels.resume);
 			await expect(page.locator(`a[lang='es'][href='/es/']`)).toBeVisible();
@@ -194,12 +216,21 @@ test("root route uses English for any other browser language", async ({ page }) 
 });
 
 test("mobile menu opens and closes without leaving the page blocked", async ({ page }) => {
-	await page.setViewportSize({ width: 390, height: 844 });
+	await page.setViewportSize({ width: 320, height: 800 });
 	await openRenderedPage(page, "/es/", "#menuLst > li", 5);
+	const location = page.locator("#footer .footer-location span:last-child");
+	const locationLines = await location.evaluate(element => {
+		const range = document.createRange();
+
+		range.selectNodeContents(element);
+
+		return range.getClientRects().length;
+	});
 
 	await page.locator("#toggleBtn").click();
 	await expect(page.locator("#menuNav")).toHaveClass(/nav-toggle/);
 	await expect(page.locator("body")).toHaveClass(/no-scroll/);
+	expect(locationLines).toBeLessThanOrEqual(2);
 
 	await page.locator("#menuLst > li").first().click();
 	await expect(page.locator("#menuNav")).not.toHaveClass(/nav-toggle/);
