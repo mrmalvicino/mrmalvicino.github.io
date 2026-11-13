@@ -29,9 +29,10 @@ for (const [language, labels] of Object.entries(languages)) {
 			await expect(page.locator("html")).toHaveAttribute("lang", language);
 			await expect(page.locator("#skillsLbl")).toHaveText(labels.indexTitle);
 			await expect(page.locator("#menuLst > li")).toHaveCount(5);
-			await expect(page.locator("#bannerDiv > .banner-slide")).toHaveCount(2);
-			await expect(page.locator("#bannerDiv > .banner-slide img")).toHaveCount(12);
-			await expect(page.locator("#stacksDiv > .stack-card")).toHaveCount(3);
+			await expect(page.locator("#skillGroupsDiv > .skill-category")).toHaveCount(4);
+			await expect(page.locator("#skillGroupsDiv .skill-subcategory")).toHaveCount(11);
+			await expect(page.locator("#skillGroupsDiv .skill-technology")).toHaveCount(19);
+			await expect(page.locator("#skillGroupsDiv .skill-technology-icon")).toHaveCount(19);
 			await expect(page.locator("#studiesTab > tr")).toHaveCount(9);
 			await expect(page.locator("#projectsDiv .project-bot-div h3")).toHaveText(featuredProjects);
 			await expect(page.locator("#resumeBtn")).toHaveAttribute("download", labels.resume);
@@ -60,7 +61,7 @@ for (const [language, labels] of Object.entries(languages)) {
 
 			await expect(page.locator("html")).toHaveAttribute("lang", language);
 			await expect(page.locator("#skillsLbl")).toHaveText(labels.cvTitle);
-			await expect(page.locator("#skillsLst > li")).toHaveCount(3);
+			await expect(page.locator("#skillsLst > li")).toHaveCount(4);
 			await expect(page.locator("#careersLst > li")).toHaveCount(2);
 			await expect(page.locator("#coursesLst > li")).toHaveCount(3);
 			await expect(page.locator("#languagesLst > li")).toHaveCount(3);
@@ -234,6 +235,35 @@ test("project cards preserve icon contrast and fit narrow screens", async ({ pag
 	expect(layout.cardFits).toBe(true);
 	expect(layout.pageFits).toBe(true);
 	expect(layout.technologyRows).toBeGreaterThan(1);
+});
+
+test("skill groups use two responsive columns without horizontal overflow", async ({ page }) => {
+	await page.setViewportSize({ width: 1440, height: 900 });
+	await openRenderedPage(page, "/en/", "#skillGroupsDiv > .skill-category", 4);
+
+	const desktopLayout = await page.locator("#skillGroupsDiv").evaluate(container => ({
+		cards: [...container.children].map(card => ({
+			height: card.getBoundingClientRect().height,
+			top: card.getBoundingClientRect().top
+		})),
+		columns: getComputedStyle(container).gridTemplateColumns.split(" ").length,
+		pageFits: document.documentElement.scrollWidth <= document.documentElement.clientWidth
+	}));
+
+	expect(desktopLayout.columns).toBe(2);
+	expect(desktopLayout.cards[0].top).toBe(desktopLayout.cards[1].top);
+	expect(desktopLayout.cards[0].height).toBe(desktopLayout.cards[1].height);
+	expect(desktopLayout.pageFits).toBe(true);
+
+	await page.setViewportSize({ width: 390, height: 844 });
+
+	const mobileLayout = await page.locator("#skillGroupsDiv").evaluate(container => ({
+		columns: getComputedStyle(container).gridTemplateColumns.split(" ").length,
+		pageFits: document.documentElement.scrollWidth <= document.documentElement.clientWidth
+	}));
+
+	expect(mobileLayout.columns).toBe(1);
+	expect(mobileLayout.pageFits).toBe(true);
 });
 
 test.describe("without JavaScript", () => {

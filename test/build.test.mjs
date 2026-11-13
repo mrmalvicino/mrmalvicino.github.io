@@ -69,6 +69,7 @@ test("build creates localized HTML without runtime content data", async () => {
 			stat(path.join(output, "assets/images/logo.png")),
 			stat(path.join(output, "assets/images/projects/biblio-api.jpeg")),
 			stat(path.join(output, "assets/images/technologies/angular.png")),
+			stat(path.join(output, "assets/images/technologies/razor.svg")),
 			stat(path.join(output, "assets/images/technologies/react.svg")),
 			stat(path.join(output, "assets/cv/malvicino-es.pdf"))
 		]);
@@ -83,6 +84,14 @@ test("build creates localized HTML without runtime content data", async () => {
 		assert.match(html.get("en/index.html"), /<html lang="en">/);
 		assert.match(html.get("es/index.html"), /Desarrollador Fullstack \.NET JR/);
 		assert.match(html.get("en/index.html"), /JR \.NET Fullstack Developer/);
+		assert.equal((html.get("es/index.html").match(/class="skill-category"/g) ?? []).length, 4);
+		assert.equal((html.get("es/index.html").match(/class="skill-subcategory"/g) ?? []).length, 11);
+		assert.match(html.get("es/index.html"), /VB \.NET/);
+		assert.match(html.get("es/index.html"), /\.NET 10/);
+		assert.match(html.get("es/index.html"), /\.NET Framework/);
+		assert.match(html.get("es/index.html"), /Actualmente en formación/);
+		assert.match(html.get("en/cv/index.html"), /Frequent professional use/);
+		assert.doesNotMatch(html.get("en/index.html"), /Crystal Reports|Docker|Doxygen|GitFlow|Worked with|JSTL library|MongoDB/);
 		assert.equal((html.get("es/index.html").match(/class="project-card"/g) ?? []).length, 3);
 		assert.equal((html.get("en/projects/index.html").match(/class="project-card"/g) ?? []).length, 23);
 		assert.equal((html.get("en/projects/index.html").match(/name="tech"/g) ?? []).length, 17);

@@ -87,9 +87,20 @@ export async function loadSiteData(root, language) {
 			types: project.typeIds.map(id => requireValue(projectTypes, id, "projectTypes")),
 			technologies: project.technologyIds.map(id => requireValue(technologies, id, "technologies"))
 		})),
-		stacks: sortByOrder(site.skills.stacks).map(stack => ({
-			...stack,
-			...requireValue(locale.skills, stack.id, "skills")
+		skillDescription: locale.skills.description,
+		skillGroups: sortByOrder(site.skills.groups).map(group => ({
+			...group,
+			label: requireValue(locale.skills.groups, group.id, "skills.groups"),
+			categories: group.categories
+				? sortByOrder(group.categories).map(category => ({
+					...category,
+					label: requireValue(locale.skills.categories, category.id, "skills.categories"),
+					technologies: category.technologyIds.map(id => requireValue(technologies, id, "technologies"))
+				}))
+				: null,
+			technologies: group.technologyIds
+				? group.technologyIds.map(id => requireValue(technologies, id, "technologies"))
+				: []
 		})),
 		studies: sortByOrder(site.studies).map(study => ({
 			...study,

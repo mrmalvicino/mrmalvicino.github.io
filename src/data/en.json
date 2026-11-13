@@ -43,7 +43,13 @@
       "alt": "Tailwind Logo."
     },
     "dotnetImg": {
-      "alt": "Microsoft .Net Logo."
+      "alt": "Microsoft .NET Logo."
+    },
+    "dotnet10Img": {
+      "alt": ".NET 10 Logo."
+    },
+    "dotnetFrameworkImg": {
+      "alt": ".NET Framework Logo."
     },
     "angularImg": {
       "alt": "Angular Logo."
@@ -60,8 +66,26 @@
     "mysqlImg": {
       "alt": "MySQL Logo."
     },
+    "vbnetImg": {
+      "alt": "Visual Basic .NET Logo."
+    },
+    "entityFrameworkImg": {
+      "alt": "Entity Framework Logo."
+    },
+    "adoNetImg": {
+      "alt": "ADO.NET Logo."
+    },
+    "windowsFormsImg": {
+      "alt": "Windows Forms Logo."
+    },
+    "razorImg": {
+      "alt": "Razor Logo."
+    },
     "gitImg": {
       "alt": "Git Logo."
+    },
+    "githubActionsImg": {
+      "alt": "GitHub Actions Logo."
     },
     "latexImg": {
       "alt": "LaTex Logo."
@@ -169,14 +193,22 @@
     "css": "CSS",
     "bootstrap": "Bootstrap",
     "tailwind": "Tailwind",
-    "dotnet": "Microsoft .Net",
+    "dotnet": "Microsoft .NET",
+    "dotnet-10": ".NET 10",
+    "dotnet-framework": ".NET Framework",
     "angular": "Angular",
     "react": "React",
     "fastapi": "Fast API",
     "mssql": "Microsoft SQL Server",
     "mysql": "MySQL",
+    "vbnet": "VB .NET",
+    "entity-framework": "Entity Framework",
+    "ado-net": "ADO.NET",
+    "windows-forms": "WinForms",
+    "razor": "Razor",
     "git": "Git",
-    "latex": "LaTex",
+    "github-actions": "GitHub Actions",
+    "latex": "LaTeX",
     "overleaf": "Overleaf"
   },
   "projectTypes": {
@@ -295,31 +327,21 @@
     }
   },
   "skills": {
-    "mainStack": {
-      "title": "⭐️ Main Stack",
-      "items": [
-        "✔ Framework: .NET Core | .NET Framework",
-        "✔ Backend: C# | Entity Framework | ADO.NET",
-        "✔ Frontend: Razor | Bootstrap | Angular",
-        "✔ Database: Microsoft SQL Server"
-      ]
+    "description": "Technologies organized by how I use them and my applied experience.",
+    "groups": {
+      "professionalCore": "Frequent professional use",
+      "professionalComplementary": "Complementary professional use",
+      "academicResearch": "Research and academic work",
+      "learning": "Currently learning"
     },
-    "secondaryStack": {
-      "title": "🧪 Worked with",
-      "items": [
-        "✔ Framework: JSTL library | FastAPI",
-        "✔ Backend: Java | JDBC | Python",
-        "✔ Frontend: Tailwind | React",
-        "✔ Database: MySQL | MongoDB"
-      ]
-    },
-    "otherSkills": {
-      "title": "🛠️ Other technologies",
-      "items": [
-        "✔ Version Control: Git | GitHub | GitFlow",
-        "✔ Documentation: LaTeX | Doxygen ",
-        "✔ DevOps: GitHub Actions | YML | Docker"
-      ]
+    "categories": {
+      "languages": "Languages",
+      "frameworks": "Frameworks",
+      "dataAccess": "Data access",
+      "frontend": "Frontend",
+      "databases": "Databases",
+      "versionControl": "Version control",
+      "automation": "Automation"
     }
   },
   "studies": {

@@ -128,6 +128,12 @@
       "dotnetImg": {
         "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/dot-net/dot-net-original-wordmark.svg"
       },
+      "dotnet10Img": {
+        "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/dotnetcore/dotnetcore-original.svg"
+      },
+      "dotnetFrameworkImg": {
+        "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/dot-net/dot-net-original.svg"
+      },
       "angularImg": {
         "src": "./assets/images/technologies/angular.png"
       },
@@ -143,8 +149,26 @@
       "mysqlImg": {
         "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg"
       },
+      "vbnetImg": {
+        "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/visualbasic/visualbasic-original.svg"
+      },
+      "entityFrameworkImg": {
+        "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/entityframeworkcore/entityframeworkcore-original.svg"
+      },
+      "adoNetImg": {
+        "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/dot-net/dot-net-original.svg"
+      },
+      "windowsFormsImg": {
+        "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/windows8/windows8-original.svg"
+      },
+      "razorImg": {
+        "src": "./assets/images/technologies/razor.svg"
+      },
       "gitImg": {
         "src": "https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg"
+      },
+      "githubActionsImg": {
+        "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/githubactions/githubactions-original.svg"
       },
       "latexImg": {
         "src": "https://cdn.pixabay.com/photo/2013/03/30/00/10/latex-97866_640.png"
@@ -265,6 +289,12 @@
     "dotnet": {
       "imageId": "dotnetImg"
     },
+    "dotnet-10": {
+      "imageId": "dotnet10Img"
+    },
+    "dotnet-framework": {
+      "imageId": "dotnetFrameworkImg"
+    },
     "angular": {
       "imageId": "angularImg"
     },
@@ -280,8 +310,26 @@
     "mysql": {
       "imageId": "mysqlImg"
     },
+    "vbnet": {
+      "imageId": "vbnetImg"
+    },
+    "entity-framework": {
+      "imageId": "entityFrameworkImg"
+    },
+    "ado-net": {
+      "imageId": "adoNetImg"
+    },
+    "windows-forms": {
+      "imageId": "windowsFormsImg"
+    },
+    "razor": {
+      "imageId": "razorImg"
+    },
     "git": {
       "imageId": "gitImg"
+    },
+    "github-actions": {
+      "imageId": "githubActionsImg"
     },
     "latex": {
       "imageId": "latexImg"
@@ -722,26 +770,115 @@
     }
   ],
   "skills": {
-    "bannerTechnologyIds": [
-      "dotnet",
-      "csharp",
-      "bootstrap",
-      "angular",
-      "typescript",
-      "mssql"
-    ],
-    "stacks": [
+    "groups": [
       {
-        "id": "mainStack",
-        "order": 1
+        "id": "professionalCore",
+        "order": 1,
+        "categories": [
+          {
+            "id": "languages",
+            "order": 1,
+            "technologyIds": [
+              "csharp"
+            ]
+          },
+          {
+            "id": "frameworks",
+            "order": 2,
+            "technologyIds": [
+              "dotnet-10"
+            ]
+          },
+          {
+            "id": "dataAccess",
+            "order": 3,
+            "technologyIds": [
+              "entity-framework"
+            ]
+          },
+          {
+            "id": "frontend",
+            "order": 4,
+            "technologyIds": [
+              "razor",
+              "bootstrap"
+            ]
+          },
+          {
+            "id": "databases",
+            "order": 5,
+            "technologyIds": [
+              "mssql"
+            ]
+          },
+          {
+            "id": "versionControl",
+            "order": 6,
+            "technologyIds": [
+              "git"
+            ]
+          }
+        ]
       },
       {
-        "id": "secondaryStack",
-        "order": 2
+        "id": "professionalComplementary",
+        "order": 2,
+        "categories": [
+          {
+            "id": "languages",
+            "order": 1,
+            "technologyIds": [
+              "vbnet",
+              "javascript"
+            ]
+          },
+          {
+            "id": "frameworks",
+            "order": 2,
+            "technologyIds": [
+              "dotnet-framework",
+              "windows-forms"
+            ]
+          },
+          {
+            "id": "dataAccess",
+            "order": 3,
+            "technologyIds": [
+              "ado-net"
+            ]
+          },
+          {
+            "id": "databases",
+            "order": 4,
+            "technologyIds": [
+              "mysql"
+            ]
+          },
+          {
+            "id": "automation",
+            "order": 5,
+            "technologyIds": [
+              "github-actions"
+            ]
+          }
+        ]
       },
       {
-        "id": "otherSkills",
-        "order": 3
+        "id": "academicResearch",
+        "order": 3,
+        "technologyIds": [
+          "python",
+          "cpp",
+          "latex"
+        ]
+      },
+      {
+        "id": "learning",
+        "order": 4,
+        "technologyIds": [
+          "angular",
+          "typescript"
+        ]
       }
     ]
   },

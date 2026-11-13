@@ -39,19 +39,12 @@
     "projects": { "$ref": "#/$defs/entityTranslations" },
     "skills": {
       "type": "object",
-      "minProperties": 1,
-      "additionalProperties": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": ["title", "items"],
-        "properties": {
-          "title": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
-          "items": {
-            "type": "array",
-            "minItems": 1,
-            "items": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
-          }
-        }
+      "additionalProperties": false,
+      "required": ["description", "groups", "categories"],
+      "properties": {
+        "description": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "groups": { "$ref": "#/$defs/stringTranslations" },
+        "categories": { "$ref": "#/$defs/stringTranslations" }
       }
     },
     "studies": {

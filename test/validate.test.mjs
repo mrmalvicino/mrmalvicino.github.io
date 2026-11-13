@@ -59,6 +59,7 @@ test("validation reports schema, identity, translation, and typed-reference erro
 		site.projects[1].order = site.projects[0].order;
 		site.projects[0].typeIds = ["unknown-type", "unknown-type"];
 		site.projects[0].technologyIds[0] = "unknown-technology";
+		site.skills.groups[0].categories[0].technologyIds[0] = "unknown-skill-technology";
 		site.studies[0].type = "invalid";
 		site.studies[1].institutionId = "unknown-institution";
 		site.technologies.cpp.imageId = "untrefImg";
@@ -88,6 +89,7 @@ test("validation reports schema, identity, translation, and typed-reference erro
 				assert.match(error.message, /es\.json technologies: translation keys do not match domain ids/);
 				assert.match(error.message, /es\.json institutions: translation keys do not match domain ids/);
 				assert.match(error.message, /site\.json: unknown project technology id: unknown-technology/);
+				assert.match(error.message, /site\.json: unknown skill technology id: unknown-skill-technology/);
 				assert.match(error.message, /site\.json: unknown project type id: unknown-type/);
 				assert.match(error.message, /site\.json: unknown study institution id: unknown-institution/);
 				assert.match(error.message, /site\.json: unknown technology image id for cpp: untrefImg/);

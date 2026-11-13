@@ -73,7 +73,7 @@ function renderDocument(data, page, body) {
 		'<script src="/script/email-copy.js"></script>'
 	].filter(Boolean).map(script => `  ${script}`).join("\n");
 	const pageStyles = page === "index"
-		? ["banner.css", ...commonStyles, "containers.css", "inputs.css", "menu.css", "table.css"]
+		? [...commonStyles, "containers.css", "inputs.css", "menu.css", "table.css"]
 		: page === "projects"
 			? [...commonStyles, "containers.css", "menu.css", "projects.css"]
 			: [...commonStyles, "cv.css"];
@@ -275,25 +275,32 @@ ${menu}
   </header>`;
 }
 
-function renderBanner(data) {
-	const images = data.site.skills.bannerTechnologyIds.map(id => image(data.technologies[id].image, "width-100-px margin-10-px")).join("\n        ");
-	const slide = `      <div class="banner-slide">
-        ${images}
-      </div>`;
-
-	return `${slide}\n${slide}`;
+function renderSkillTechnologies(technologies, indentation) {
+	return technologies.map(technology => `${indentation}<li class="skill-technology">
+${indentation}  ${image(technology.image, "skill-technology-icon")}
+${indentation}  <span>${escapeHtml(technology.name)}</span>
+${indentation}</li>`).join("\n");
 }
 
-function renderStacks(data) {
-	return data.stacks.map(stack => {
-		const items = stack.items.map(item => `          <li class="margin-vertical-10-px">${escapeHtml(item)}</li>`).join("\n");
+function renderSkillGroups(data) {
+	return data.skillGroups.map(group => {
+		const content = group.categories
+			? `        <ul class="skill-subcategories">
+${group.categories.map(category => `          <li class="skill-subcategory">
+            <h4>${escapeHtml(category.label)}</h4>
+            <ul class="skill-technologies">
+${renderSkillTechnologies(category.technologies, "              ")}
+            </ul>
+          </li>`).join("\n")}
+        </ul>`
+			: `        <ul class="skill-technologies">
+${renderSkillTechnologies(group.technologies, "          ")}
+        </ul>`;
 
-		return `      <article class="stack-card">
-        <h3 class="center-text jost-font">${escapeHtml(stack.title)}</h3>
-        <ul>
-${items}
-        </ul>
-      </article>`;
+		return `      <section class="skill-category">
+        <h3>${escapeHtml(group.label)}</h3>
+${content}
+      </section>`;
 	}).join("\n");
 }
 
@@ -354,15 +361,13 @@ export function renderPortfolioPage(data) {
         </a>
       </div>
     </section>
-    <section id="skillsSec" class="min-height-100-vh menu-padding col-flex space-evenly">
+    <section id="skillsSec" class="min-height-100-vh menu-padding col-flex justify-center gap-40-px">
       <div class="content-width">
         <h2 id="skillsLbl">${escapeHtml(labels.index.skillsLbl)}</h2>
+        <p class="skills-description center-text">${escapeHtml(data.skillDescription)}</p>
       </div>
-      <div id="bannerDiv" class="banner-container">
-${renderBanner(data)}
-      </div>
-      <div id="stacksDiv" class="row-col-1300 stacks-container">
-${renderStacks(data)}
+      <div id="skillGroupsDiv" class="skill-groups-container">
+${renderSkillGroups(data)}
       </div>
     </section>
     <section id="projectsSec" class="min-height-100-vh menu-padding gap-40-px col-flex space-evenly almost-black-background">
@@ -504,11 +509,13 @@ function renderCvProjects(data) {
 export function renderCvPage(data) {
 	const labels = data.locale.labels;
 	const portfolioRoute = route(data.language, "index");
-	const stackItems = data.stacks.map(stack => `          <li class="margin-vertical-10-px">
-            <h3>${escapeHtml(stack.title)}</h3>
-            <ul>
-${stack.items.map(item => `              <li>${escapeHtml(item)}</li>`).join("\n")}
-            </ul>
+	const skillItems = data.skillGroups.map(group => `          <li class="margin-vertical-10-px">
+            <h3>${escapeHtml(group.label)}</h3>
+${group.categories
+		? `            <ul>
+${group.categories.map(category => `              <li><strong>${escapeHtml(category.label)}:</strong> ${category.technologies.map(technology => escapeHtml(technology.name)).join(" | ")}</li>`).join("\n")}
+            </ul>`
+		: `            <p>${group.technologies.map(technology => escapeHtml(technology.name)).join(" | ")}</p>`}
           </li>`).join("\n");
 	const jobs = data.jobs.map(job => `              <li class="margin-vertical-20-px">
                 <h4>${escapeHtml(job.position)}</h4>
@@ -542,7 +549,7 @@ ${stack.items.map(item => `              <li>${escapeHtml(item)}</li>`).join("\n
       <div class="width-100-pct">
         <h2 id="skillsLbl" class="title-box">${escapeHtml(labels.cv.skillsLbl)}</h2>
         <ul id="skillsLst">
-${stackItems}
+${skillItems}
         </ul>
       </div>
       <div class="width-100-pct margin-bottom-auto">

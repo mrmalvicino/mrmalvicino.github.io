@@ -198,7 +198,6 @@ function validateTranslations(site, locales, errors) {
 		institutions: Object.keys(site.institutions),
 		menu: site.menu.map(item => item.id),
 		projects: site.projects.map(item => item.id),
-		skills: site.skills.stacks.map(item => item.id),
 		studies: site.studies.map(item => item.id),
 		jobs: site.jobs.map(item => item.id),
 		socials: site.profile.socials.map(item => item.id),
@@ -220,6 +219,20 @@ function validateTranslations(site, locales, errors) {
 				errors.push(`src/data/${language}.json images: missing title for ${imageId}`);
 			}
 		}
+
+		compareKeys(
+			locale.skills.groups,
+			site.skills.groups.map(group => group.id),
+			`src/data/${language}.json skills.groups`,
+			errors
+		);
+
+		compareKeys(
+			locale.skills.categories,
+			new Set(site.skills.groups.flatMap(group => group.categories?.map(category => category.id) ?? [])),
+			`src/data/${language}.json skills.categories`,
+			errors
+		);
 	}
 }
 
@@ -227,7 +240,7 @@ function validateDomain(site, errors) {
 	const collections = {
 		menu: site.menu,
 		projects: site.projects,
-		stacks: site.skills.stacks,
+		skillGroups: site.skills.groups,
 		studies: site.studies,
 		jobs: site.jobs,
 		socials: site.profile.socials
@@ -290,9 +303,18 @@ function validateDomain(site, errors) {
 		errors.push("src/data/site.json: every institution image must belong to one institution");
 	}
 
-	for (const id of site.skills.bannerTechnologyIds) {
-		if (!technologyEntityIds.has(id)) {
-			errors.push(`src/data/site.json: unknown banner technology id: ${id}`);
+	for (const group of site.skills.groups) {
+		const categoryTechnologies = group.categories?.flatMap(category => category.technologyIds) ?? [];
+		const technologyIds = group.technologyIds ?? categoryTechnologies;
+
+		if (group.categories) {
+			validateUniqueCollection(group.categories, `skills.${group.id}.categories`, errors);
+		}
+
+		for (const id of technologyIds) {
+			if (!technologyEntityIds.has(id)) {
+				errors.push(`src/data/site.json: unknown skill technology id: ${id}`);
+			}
 		}
 	}
 
