@@ -31,12 +31,27 @@ Stable domain IDs use language-independent `kebab-case`; existing control IDs re
 
 | Collection | Relationships |
 | --- | --- |
-| `projects` | `technologyIds` references technologies; `mockup_id` references project images |
+| `projects` | `typeIds` references project types; `technologyIds` references technologies; `mockup_id` references project images |
+| `projectTypes` | Stable project classifications translated by the locale catalogs |
 | `technologies` | `imageId` references a technology image |
 | `studies` | `institutionId` references an institution |
 | `institutions` | `imageId` references an institution image |
 | `skills` | `bannerTechnologyIds` references technologies |
 | `menu` | `href` references a portfolio section |
+
+The shared technology catalog is the source of IDs, display names, and icons used by projects and Skills. Technologies remain in the catalog while referenced by historical projects, even when they are no longer shown as current professional skills.
+
+Every project must have at least one `typeIds` entry. Use the classifications consistently:
+
+| Type | Classification criterion |
+| --- | --- |
+| `notes` | Academic notes, books, exercise guides, solved exercises, or other study material |
+| `web-app` | Browser or HTTP applications with dynamic behavior, including APIs |
+| `static-site` | Websites whose primary purpose is presenting or linking static content |
+| `desktop-app` | Software executed outside the browser, including desktop, command-line, package, and embedded utilities |
+| `research` | Research plans or studies whose primary purpose is producing or evaluating knowledge |
+
+Assign multiple types when more than one criterion describes a project's primary purpose. Project order is controlled exclusively by the unique positive `order` property, not by array position.
 
 To change professional content, edit only `src/data/site.json`, `src/data/es.json`, or `src/data/en.json`, then run the build. Do not edit generated HTML in `dist/`.
 

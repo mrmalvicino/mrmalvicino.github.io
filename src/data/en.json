@@ -179,6 +179,13 @@
     "latex": "LaTex",
     "overleaf": "Overleaf"
   },
+  "projectTypes": {
+    "notes": "Notes",
+    "web-app": "Web application",
+    "static-site": "Static website",
+    "desktop-app": "Desktop application",
+    "research": "Research"
+  },
   "institutions": {
     "untref": "Universidad Nacional de Tres de Febrero",
     "utn": "Universidad Tecnológica Nacional",

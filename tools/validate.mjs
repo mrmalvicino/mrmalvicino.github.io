@@ -194,6 +194,7 @@ function validateTranslations(site, locales, errors) {
 	const expected = {
 		images: imageIds,
 		technologies: Object.keys(site.technologies),
+		projectTypes: Object.keys(site.projectTypes),
 		institutions: Object.keys(site.institutions),
 		menu: site.menu.map(item => item.id),
 		projects: site.projects.map(item => item.id),
@@ -252,6 +253,7 @@ function validateDomain(site, errors) {
 	const institutionIds = new Set(Object.keys(site.images.institutions_images));
 	const projectImageIds = new Set(Object.keys(site.images.projects_images));
 	const technologyEntityIds = new Set(Object.keys(site.technologies));
+	const projectTypeIds = new Set(Object.keys(site.projectTypes));
 	const institutionEntityIds = new Set(Object.keys(site.institutions));
 	const referencedTechnologyImageIds = new Set();
 	const referencedInstitutionImageIds = new Set();
@@ -295,6 +297,12 @@ function validateDomain(site, errors) {
 	}
 
 	for (const project of site.projects) {
+		for (const id of project.typeIds) {
+			if (!projectTypeIds.has(id)) {
+				errors.push(`src/data/site.json: unknown project type id: ${id}`);
+			}
+		}
+
 		for (const id of project.technologyIds) {
 			if (!technologyEntityIds.has(id)) {
 				errors.push(`src/data/site.json: unknown project technology id: ${id}`);

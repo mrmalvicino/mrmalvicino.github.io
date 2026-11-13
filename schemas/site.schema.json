@@ -9,6 +9,7 @@
     "resumes",
     "menu",
     "images",
+    "projectTypes",
     "technologies",
     "institutions",
     "projects",
@@ -105,6 +106,7 @@
         "projects_images": { "$ref": "#/$defs/imageMap" }
       }
     },
+    "projectTypes": { "$ref": "#/$defs/idCatalog" },
     "technologies": { "$ref": "#/$defs/resourceCatalog" },
     "institutions": { "$ref": "#/$defs/resourceCatalog" },
     "projects": {
@@ -116,6 +118,7 @@
         "required": [
           "id",
           "order",
+          "typeIds",
           "technologyIds",
           "source_code",
           "live_demo",
@@ -127,6 +130,12 @@
         "properties": {
           "id": { "$ref": "common.schema.json#/$defs/domainId" },
           "order": { "$ref": "common.schema.json#/$defs/order" },
+          "typeIds": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "$ref": "common.schema.json#/$defs/domainId" }
+          },
           "technologyIds": {
             "type": "array",
             "minItems": 1,
@@ -292,6 +301,15 @@
         "properties": {
           "imageId": { "$ref": "common.schema.json#/$defs/domId" }
         }
+      }
+    },
+    "idCatalog": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": { "$ref": "common.schema.json#/$defs/domainId" },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false
       }
     },
     "domIds": {

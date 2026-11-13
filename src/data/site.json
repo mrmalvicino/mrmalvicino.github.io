@@ -224,6 +224,13 @@
       }
     }
   },
+  "projectTypes": {
+    "notes": {},
+    "web-app": {},
+    "static-site": {},
+    "desktop-app": {},
+    "research": {}
+  },
   "technologies": {
     "cpp": {
       "imageId": "cppImg"
@@ -304,6 +311,9 @@
     {
       "id": "meeni-erp",
       "order": 1,
+      "typeIds": [
+        "web-app"
+      ],
       "source_code": "https://github.com/mrmalvicino/meeni-erp",
       "live_demo": null,
       "video_url": null,
@@ -323,6 +333,9 @@
     {
       "id": "membriana",
       "order": 2,
+      "typeIds": [
+        "web-app"
+      ],
       "source_code": "https://github.com/mrmalvicino/membriana",
       "live_demo": null,
       "video_url": null,
@@ -341,6 +354,9 @@
     {
       "id": "ecommerce-net",
       "order": 3,
+      "typeIds": [
+        "web-app"
+      ],
       "source_code": "https://github.com/mrmalvicino/ecommerce-net",
       "live_demo": null,
       "video_url": "https://www.youtube-nocookie.com/embed/H7AISursM2M",
@@ -359,6 +375,9 @@
     {
       "id": "bancar",
       "order": 4,
+      "typeIds": [
+        "web-app"
+      ],
       "source_code": "https://github.com/mrmalvicino/bancar",
       "live_demo": null,
       "video_url": "https://www.youtube-nocookie.com/embed/D8P1URMdCHU",
@@ -376,6 +395,9 @@
     {
       "id": "link-tree",
       "order": 5,
+      "typeIds": [
+        "static-site"
+      ],
       "source_code": "https://github.com/mrmalvicino/link-tree",
       "live_demo": "https://mrmalvicino.com/link-tree",
       "video_url": null,
@@ -392,6 +414,9 @@
     {
       "id": "portfolio",
       "order": 6,
+      "typeIds": [
+        "static-site"
+      ],
       "source_code": "https://github.com/mrmalvicino/mrmalvicino.github.io",
       "live_demo": "https://mrmalvicino.com",
       "video_url": null,
@@ -408,6 +433,9 @@
     {
       "id": "biblio-api",
       "order": 7,
+      "typeIds": [
+        "web-app"
+      ],
       "source_code": "https://github.com/mrmalvicino/biblio-api",
       "live_demo": null,
       "video_url": null,
@@ -423,6 +451,9 @@
     {
       "id": "dsp-package",
       "order": 8,
+      "typeIds": [
+        "desktop-app"
+      ],
       "source_code": "https://github.com/mrmalvicino/dsp-package",
       "live_demo": null,
       "video_url": null,
@@ -437,6 +468,9 @@
     {
       "id": "stus-calculator",
       "order": 9,
+      "typeIds": [
+        "desktop-app"
+      ],
       "source_code": "https://github.com/mrmalvicino/stus-calculator",
       "live_demo": null,
       "video_url": null,
@@ -451,6 +485,9 @@
     {
       "id": "anc-research-plan",
       "order": 10,
+      "typeIds": [
+        "research"
+      ],
       "source_code": "https://github.com/mrmalvicino/anc-research-plan",
       "live_demo": null,
       "video_url": null,
@@ -465,6 +502,9 @@
     {
       "id": "dugun-auto-clicker",
       "order": 11,
+      "typeIds": [
+        "desktop-app"
+      ],
       "source_code": "https://github.com/mrmalvicino/dugun-auto-clicker",
       "live_demo": null,
       "video_url": null,
@@ -479,6 +519,9 @@
     {
       "id": "binary-calculator",
       "order": 12,
+      "typeIds": [
+        "desktop-app"
+      ],
       "source_code": "https://github.com/mrmalvicino/binary-calculator",
       "live_demo": null,
       "video_url": null,
@@ -493,6 +536,9 @@
     {
       "id": "baluma-erp",
       "order": 13,
+      "typeIds": [
+        "desktop-app"
+      ],
       "source_code": "https://github.com/mrmalvicino/baluma-erp",
       "live_demo": null,
       "video_url": null,
@@ -507,6 +553,9 @@
     {
       "id": "irwins-revenge",
       "order": 14,
+      "typeIds": [
+        "desktop-app"
+      ],
       "source_code": "https://github.com/mrmalvicino/irwins-revenge",
       "live_demo": null,
       "video_url": null,
@@ -521,6 +570,9 @@
     {
       "id": "arduino-led-controller",
       "order": 15,
+      "typeIds": [
+        "desktop-app"
+      ],
       "source_code": "https://github.com/mrmalvicino/arduino",
       "live_demo": null,
       "video_url": null,
@@ -535,6 +587,9 @@
     {
       "id": "dsp-notes",
       "order": 16,
+      "typeIds": [
+        "notes"
+      ],
       "source_code": "https://github.com/mrmalvicino/dsp-notes",
       "live_demo": null,
       "video_url": null,
@@ -549,6 +604,9 @@
     {
       "id": "acoustics-notes",
       "order": 17,
+      "typeIds": [
+        "notes"
+      ],
       "source_code": "https://github.com/mrmalvicino/acoustics-notes",
       "live_demo": null,
       "video_url": null,
@@ -563,6 +621,9 @@
     {
       "id": "electronics-notes",
       "order": 18,
+      "typeIds": [
+        "notes"
+      ],
       "source_code": "https://github.com/mrmalvicino/electronics-notes",
       "live_demo": null,
       "video_url": null,
@@ -577,6 +638,9 @@
     {
       "id": "math-notes",
       "order": 19,
+      "typeIds": [
+        "notes"
+      ],
       "source_code": "https://github.com/mrmalvicino/math-notes",
       "live_demo": null,
       "video_url": null,
@@ -591,6 +655,9 @@
     {
       "id": "physics-book",
       "order": 20,
+      "typeIds": [
+        "notes"
+      ],
       "source_code": "https://github.com/mrmalvicino/physics-book",
       "live_demo": null,
       "video_url": null,
@@ -605,6 +672,9 @@
     {
       "id": "physics-1-exercises",
       "order": 21,
+      "typeIds": [
+        "notes"
+      ],
       "source_code": "https://github.com/RosarioEs/guias_fisica_1",
       "live_demo": null,
       "video_url": "https://www.youtube-nocookie.com/embed/2pfTixTPAOM",
@@ -619,6 +689,9 @@
     {
       "id": "physics-1-solved",
       "order": 22,
+      "typeIds": [
+        "notes"
+      ],
       "source_code": "https://www.overleaf.com/read/xpxqmxnstrjv#b007e9",
       "live_demo": null,
       "video_url": null,
@@ -633,6 +706,9 @@
     {
       "id": "physics-2-demonstrations",
       "order": 23,
+      "typeIds": [
+        "notes"
+      ],
       "source_code": "https://www.overleaf.com/read/xctdtdcmzzdw#407aad",
       "live_demo": null,
       "video_url": null,

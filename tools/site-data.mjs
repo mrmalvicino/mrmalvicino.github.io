@@ -50,6 +50,15 @@ export async function loadSiteData(root, language) {
 			image: requireValue(images, technology.imageId, "images")
 		}
 	]));
+
+	const projectTypes = Object.fromEntries(Object.keys(site.projectTypes).map(id => [
+		id,
+		{
+			id,
+			name: requireValue(locale.projectTypes, id, "projectTypes")
+		}
+	]));
+
 	const institutions = Object.fromEntries(Object.entries(site.institutions).map(([id, institution]) => [
 		id,
 		{
@@ -66,6 +75,7 @@ export async function loadSiteData(root, language) {
 		locale,
 		images,
 		technologies,
+		projectTypes,
 		institutions,
 		menuItems: sortByOrder(site.menu).map(item => ({
 			...item,
@@ -74,6 +84,7 @@ export async function loadSiteData(root, language) {
 		projects: sortByOrder(site.projects).map(project => ({
 			...project,
 			...requireValue(locale.projects, project.id, "projects"),
+			types: project.typeIds.map(id => requireValue(projectTypes, id, "projectTypes")),
 			technologies: project.technologyIds.map(id => requireValue(technologies, id, "technologies"))
 		})),
 		stacks: sortByOrder(site.skills.stacks).map(stack => ({
