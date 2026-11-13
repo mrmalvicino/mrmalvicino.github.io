@@ -218,6 +218,7 @@
           "institutionId": { "$ref": "common.schema.json#/$defs/domainId" },
           "study_plan": { "$ref": "common.schema.json#/$defs/nullableString" },
           "certificate": { "$ref": "common.schema.json#/$defs/nullableString" },
+          "graduation_date": { "$ref": "common.schema.json#/$defs/date" },
           "type": { "enum": ["career", "course", "language"] },
           "shown_in_cv": { "type": "boolean" }
         }

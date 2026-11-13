@@ -38,6 +38,21 @@ function publicUrl(value) {
 	return `${url.pathname}${url.search}${url.hash}`;
 }
 
+function studyTitle(study, language) {
+	if (!study.graduation_date) {
+		return study.title;
+	}
+
+	const graduationDate = new Intl.DateTimeFormat(language, {
+		day: "numeric",
+		month: "long",
+		timeZone: "UTC",
+		year: "numeric"
+	}).format(new Date(`${study.graduation_date}T00:00:00Z`));
+
+	return `${study.title} (${graduationDate})`;
+}
+
 function image(imageData, className = "") {
 	return `<img ${attributes({
 		src: publicUrl(imageData.src),
@@ -330,7 +345,7 @@ function renderStudyRows(data) {
                   ${image(study.institution.image, "small-logo")}
                 </div>
               </td>
-              <td><span class="pure-black-text bold-text">${escapeHtml(study.title)}</span></td>
+              <td><span class="pure-black-text bold-text">${escapeHtml(studyTitle(study, data.language))}</span></td>
               <td>
                 <div class="row-flex justify-center">
                   ${links.join("\n                  ")}
@@ -484,7 +499,7 @@ function renderCvStudies(data, type) {
 	return data.studies
 		.filter(study => study.type === type && study.shown_in_cv)
 		.map(study => `              <li class="margin-vertical-10-px">
-                <h4>${escapeHtml(study.title)}</h4>
+                <h4>${escapeHtml(studyTitle(study, data.language))}</h4>
                 <p>${escapeHtml(study.institution.name)}</p>
               </li>`)
 		.join("\n");

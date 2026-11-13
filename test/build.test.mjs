@@ -93,7 +93,9 @@ test("build creates localized HTML without runtime content data", async () => {
 		assert.match(html.get("en/cv/index.html"), /Frequent professional use/);
 		assert.match(html.get("en/cv/index.html"), /General Pacheco, Buenos Aires, Argentina/);
 		assert.match(html.get("es/index.html"), /maps\/search\/\?api=1&amp;query=General%20Pacheco%2C%20Buenos%20Aires%2C%20Argentina/);
-		assert.match(html.get("es/index.html"), /href="\/assets\/pdf\/tup\.pdf"[\s\S]*bi bi-award/);
+		assert.match(html.get("es/index.html"), /href="\/assets\/pdf\/tup-certificate\.pdf"[\s\S]*bi bi-award/);
+		assert.match(html.get("es/index.html"), /Tecnicatura Universitaria en Programación \(12 de diciembre de 2024\)/);
+		assert.match(html.get("en/cv/index.html"), /Technical Degree in Programming \(December 12, 2024\)/);
 		assert.doesNotMatch([...html.values()].join("\n"), /Caseros|Título en trámite/);
 		assert.doesNotMatch(html.get("en/index.html"), /Crystal Reports|Docker|Doxygen|GitFlow|Worked with|JSTL library|MongoDB/);
 		assert.equal((html.get("es/index.html").match(/class="project-card"/g) ?? []).length, 3);
