@@ -3,6 +3,7 @@
     "pageTitle": "Maximiliano R. Malvicino",
     "headerName": "Maximiliano Malvicino",
     "fullName": "Maximiliano Raúl Malvicino",
+    "jobSearchActive": true,
     "website": {
       "href": "https://mrmalvicino.com",
       "label": "mrmalvicino.com"
@@ -1100,7 +1101,8 @@
         "openOnlineLbl",
         "websiteLbl",
         "degreesLbl",
-        "presentationLbl"
+        "presentationLbl",
+        "jobSearchLbl"
       ],
       "index": [
         "resumeLbl",

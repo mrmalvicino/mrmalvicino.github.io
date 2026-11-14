@@ -84,8 +84,14 @@ test("build creates localized HTML without runtime content data", async () => {
 
 		assert.match(html.get("es/index.html"), /<html lang="es">/);
 		assert.match(html.get("en/index.html"), /<html lang="en">/);
-		assert.match(html.get("es/index.html"), /Desarrollador Fullstack \.NET JR/);
-		assert.match(html.get("en/index.html"), /JR \.NET Fullstack Developer/);
+		assert.match(html.get("es/index.html"), /Desarrollador de Software \.NET/);
+		assert.match(html.get("en/index.html"), />\.NET Software Developer</);
+		assert.match(html.get("es/index.html"), /experiencia profesional con C#, VB \.NET, WinForms, MySQL y SAP Crystal Reports/);
+		assert.match(html.get("en/index.html"), /professional experience with C#, VB \.NET, WinForms, MySQL, and SAP Crystal Reports/);
+		assert.match(html.get("es/index.html"), /búsqueda activa de oportunidades como desarrollador \.NET/);
+		assert.match(html.get("en/index.html"), /actively seeking opportunities as a \.NET developer/);
+		assert.match(html.get("es/cv/index.html"), /búsqueda activa de oportunidades como desarrollador \.NET/);
+		assert.match(html.get("en/cv/index.html"), /actively seeking opportunities as a \.NET developer/);
 		assert.equal((html.get("es/index.html").match(/class="skill-category"/g) ?? []).length, 4);
 		assert.equal((html.get("es/index.html").match(/class="skill-subcategory"/g) ?? []).length, 11);
 		assert.match(html.get("es/index.html"), /VB \.NET/);
@@ -180,12 +186,18 @@ test("build output reflects locale data changes", async () => {
 		const locale = JSON.parse(await readFile(localePath, "utf8"));
 		locale.labels.index.skillsLbl = "Contenido <script> de prueba";
 		await writeFile(localePath, `${JSON.stringify(locale, null, 2)}\n`, "utf8");
+
+		const sitePath = path.join(fixture, "src/data/site.json");
+		const site = JSON.parse(await readFile(sitePath, "utf8"));
+		site.profile.jobSearchActive = false;
+		await writeFile(sitePath, `${JSON.stringify(site, null, 2)}\n`, "utf8");
 		await buildSite(fixture, output);
 
 		const localizedHtml = await readFile(path.join(output, "es/index.html"), "utf8");
 
 		assert.match(localizedHtml, /Contenido &lt;script&gt; de prueba/);
 		assert.doesNotMatch(localizedHtml, /Contenido <script>/);
+		assert.doesNotMatch(localizedHtml, /jobSearchLbl|búsqueda activa/);
 	} finally {
 		await rm(temporaryRoot, { recursive: true, force: true });
 	}

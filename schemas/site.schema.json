@@ -27,6 +27,7 @@
         "pageTitle",
         "headerName",
         "fullName",
+        "jobSearchActive",
         "website",
         "email",
         "phone",
@@ -38,6 +39,7 @@
         "pageTitle": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
         "headerName": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
         "fullName": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "jobSearchActive": { "type": "boolean" },
         "website": { "$ref": "#/$defs/link" },
         "email": {
           "type": "object",

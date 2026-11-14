@@ -2,6 +2,7 @@ import { expect, openRenderedPage, test } from "./portfolio-test.mjs";
 
 const languages = {
 	es: {
+		jobSearch: "Estoy en búsqueda activa de oportunidades como desarrollador .NET.",
 		indexTitle: "Habilidades",
 		projectsTitle: "Todos mis proyectos",
 		filtersTitle: "Filtros",
@@ -12,6 +13,7 @@ const languages = {
 		website: "Sitio web"
 	},
 	en: {
+		jobSearch: "I am actively seeking opportunities as a .NET developer.",
 		indexTitle: "Skills",
 		projectsTitle: "All My Projects",
 		filtersTitle: "Filters",
@@ -33,6 +35,7 @@ for (const [language, labels] of Object.entries(languages)) {
 
 			await expect(page.locator("html")).toHaveAttribute("lang", language);
 			await expect(page.locator("#skillsLbl")).toHaveText(labels.indexTitle);
+			await expect(page.locator("#jobSearchLbl")).toHaveText(labels.jobSearch);
 			await expect(page.locator("#menuLst > li")).toHaveCount(5);
 			await expect(page.locator("#skillGroupsDiv > .skill-category")).toHaveCount(4);
 			await expect(page.locator("#skillGroupsDiv .skill-subcategory")).toHaveCount(11);
@@ -97,6 +100,7 @@ for (const [language, labels] of Object.entries(languages)) {
 
 			await expect(page.locator("html")).toHaveAttribute("lang", language);
 			await expect(page.locator("#skillsLbl")).toHaveText(labels.cvTitle);
+			await expect(page.locator("#jobSearchLbl")).toHaveText(labels.jobSearch);
 			await expect(page.locator("#skillsLst > li")).toHaveCount(4);
 			await expect(page.locator("#careersLst > li")).toHaveCount(2);
 			await expect(page.locator("#coursesLst > li")).toHaveCount(3);

@@ -435,8 +435,9 @@
       "sourceCodeLbl": "Código",
       "openOnlineLbl": "Abrir",
       "websiteLbl": "Sitio web",
-      "degreesLbl": "Desarrollador Fullstack .NET JR",
-      "presentationLbl": "¡Hola! Soy Maxi, y me apasiona la acústica y la programación. Soy graduado de la Tecnicatura Universitaria en Programación de la UTN y estudiante de Ingeniería de Sonido en la Untref. Tengo experiencia desarrollando sistemas .NET con arquitectura cliente-servidor en capas, utilizando Razor MVC Views con Bootstrap en el frontend, y Entity Framework con SQL Server en el backend."
+      "degreesLbl": "Desarrollador de Software .NET",
+      "presentationLbl": "¡Hola! Soy Maxi, desarrollador de software especializado en .NET y sistemas de gestión. Tengo experiencia profesional con C#, VB .NET, WinForms, MySQL y SAP Crystal Reports, además de soluciones web con ASP.NET, Razor, Entity Framework y SQL Server. También estudio Ingeniería de Sonido, uniendo programación, acústica y procesamiento de señales.",
+      "jobSearchLbl": "Estoy en búsqueda activa de oportunidades como desarrollador .NET."
     },
     "index": {
       "resumeLbl": "Currículum",

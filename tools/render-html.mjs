@@ -62,6 +62,14 @@ function image(imageData, className = "") {
 	})}>`;
 }
 
+function renderJobSearch(data, className) {
+	if (!data.site.profile.jobSearchActive) {
+		return "";
+	}
+
+	return `<p id="jobSearchLbl" class="${className}">${escapeHtml(data.locale.labels.common.jobSearchLbl)}</p>`;
+}
+
 function renderHead(data, styleFiles) {
 	const styleLinks = styleFiles.map(file => `  <link rel="stylesheet" type="text/css" href="/style/${file}">`).join("\n");
 
@@ -383,6 +391,7 @@ export function renderPortfolioPage(data) {
         <p class="mid-font-size jost-font center-text">${escapeHtml(labels.common.degreesLbl)}</p>
       </div>
       <p class="content-width margin-vertical-10-px center-text">${escapeHtml(labels.common.presentationLbl)}</p>
+      ${renderJobSearch(data, "content-width margin-vertical-10-px center-text bold-text")}
       <div class="content-width margin-vertical-20-px row-col-800 justify-center">
         <a id="resumeBtn" href="${escapeHtml(publicUrl(resume.href))}" download="${escapeHtml(resume.download)}" class="dark-button big-hover">
           <i class="bi bi-download" aria-hidden="true"></i>
@@ -575,6 +584,7 @@ ${job.highlights.map(highlight => `                  <li>${escapeHtml(highlight)
       <h1 class="pure-white-text">${escapeHtml(data.site.profile.fullName)}</h1>
       <p class="mid-font-size jost-font center-text pure-white-text">${escapeHtml(labels.common.degreesLbl)}</p>
       <p class="margin-vertical-5-px center-text">${escapeHtml(labels.common.presentationLbl)}</p>
+      ${renderJobSearch(data, "margin-vertical-5-px center-text pure-white-text bold-text")}
       <div class="width-100-pct row-flex space-evenly">
         <a href="${portfolioRoute}" class="plain-link pure-white-text">
           <i class="bi bi-briefcase-fill mid-font-size" aria-hidden="true"></i>
