@@ -47,7 +47,7 @@
 
 .project-filter-groups {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr));
     gap: 24px;
 }
 
@@ -138,6 +138,16 @@
     margin: 0px;
 }
 
+@media (max-width: 1100px) {
+    .project-filter-groups {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .project-filter-group[data-filter-group="tech"] {
+        grid-column: 1 / -1;
+    }
+}
+
 @media (max-width: 800px) {
     .project-filters {
         padding: 20px;
@@ -150,6 +160,10 @@
 
     .project-filter-groups {
         grid-template-columns: 1fr;
+    }
+
+    .project-filter-group[data-filter-group="tech"] {
+        grid-column: auto;
     }
 
     .project-filter-option span {

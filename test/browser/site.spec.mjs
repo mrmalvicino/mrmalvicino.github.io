@@ -4,7 +4,8 @@ const languages = {
 	es: {
 		indexTitle: "Habilidades",
 		projectsTitle: "Todos mis proyectos",
-		filtersTitle: "Filtrar proyectos",
+		filtersTitle: "Filtros",
+		contributionsTitle: "Contribución",
 		resultCount: "25 proyectos",
 		cvTitle: "< Habilidades />",
 		resume: "malvicino-es.pdf",
@@ -13,7 +14,8 @@ const languages = {
 	en: {
 		indexTitle: "Skills",
 		projectsTitle: "All My Projects",
-		filtersTitle: "Filter projects",
+		filtersTitle: "Filters",
+		contributionsTitle: "Contribution",
 		resultCount: "25 projects",
 		cvTitle: "< Skills />",
 		resume: "malvicino-en.pdf",
@@ -74,6 +76,8 @@ for (const [language, labels] of Object.entries(languages)) {
 			await expect(page.locator("#projectResultCount")).toHaveText(labels.resultCount);
 			await expect(page.locator('input[name="tech"]')).toHaveCount(20);
 			await expect(page.locator('input[name="type"]')).toHaveCount(5);
+			await expect(page.locator('[data-filter-group="contribution"] legend')).toHaveText(labels.contributionsTitle);
+			await expect(page.locator('input[name="contribution"]')).toHaveCount(5);
 			await expect(page.locator(".project-card .project-top-div > iframe")).toHaveCount(3);
 			await expect(page.locator(".project-card .project-top-div > img:not([alt*='Progress']):not([alt*='proceso'])")).toHaveCount(18);
 			await expect(page.locator(".project-card .project-top-div > img[title='WIP']")).toHaveCount(4);
@@ -142,27 +146,89 @@ test.describe("project filters", () => {
 		await expect(page.locator("#projectResultCount")).toHaveText("8 projects");
 	});
 
+	test("filter every contribution mode and combine contribution selections with OR", async ({ page }) => {
+		await openRenderedPage(page, "/en/projects/", "#projectsDiv > .project-card", 25);
+		const expectedResults = {
+			"freelance-saas": { count: 2, titles: ["Membriana", "Meeni ERP"] },
+			"freelance-one-off": { count: 1, title: "DeCauciones" },
+			employment: { count: 1, title: "Halley V2" },
+			"independent-collaboration": { count: 7 },
+			"independent-development": { count: 14 }
+		};
+
+		for (const [mode, expected] of Object.entries(expectedResults)) {
+			const checkbox = page.locator(`input[name="contribution"][value="${mode}"]`);
+
+			await checkbox.check();
+			await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(expected.count);
+
+			if (expected.title) {
+				await expect(page.locator("#projectsDiv > .project-card:visible h3")).toHaveText(expected.title);
+			}
+
+			if (expected.titles) {
+				await expect(page.locator("#projectsDiv > .project-card:visible h3")).toHaveText(expected.titles);
+			}
+
+			await checkbox.uncheck();
+		}
+
+		await page.locator('input[name="contribution"][value="freelance-saas"]').check();
+		await page.locator('input[name="contribution"][value="freelance-one-off"]').check();
+		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(3);
+		await expect(page.locator("#projectsDiv > .project-card:visible h3")).toHaveText([
+			"Membriana",
+			"DeCauciones",
+			"Meeni ERP"
+		]);
+	});
+
+	test("combine technology, project type, and contribution filters with AND", async ({ page }) => {
+		await openRenderedPage(page, "/en/projects/", "#projectsDiv > .project-card", 25);
+
+		await page.locator('input[name="tech"][value="javascript"]').check();
+		await page.locator('input[name="type"][value="static-site"]').check();
+		await page.locator('input[name="contribution"][value="freelance-one-off"]').check();
+
+		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(1);
+		await expect(page.locator("#projectsDiv > .project-card:visible h3")).toHaveText("DeCauciones");
+		await expect(page).toHaveURL(/tech=javascript&type=static-site&contribution=freelance-one-off$/);
+	});
+
 	test("restore filters from a shared URL and browser history", async ({ page }) => {
 		await openRenderedPage(
 			page,
-			"/es/projects/?tech=python,cpp&type=desktop-app,research",
+			"/es/projects/?tech=html,javascript&type=static-site&contribution=freelance-one-off,independent-development",
 			"#projectsDiv > .project-card",
 			25
 		);
 
-		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(8);
-		await expect(page.locator('input[name="tech"][value="python"]')).toBeChecked();
-		await expect(page.locator('input[name="type"][value="research"]')).toBeChecked();
+		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(3);
+		await expect(page.locator('input[name="tech"][value="html"]')).toBeChecked();
+		await expect(page.locator('input[name="type"][value="static-site"]')).toBeChecked();
+		await expect(page.locator('input[name="contribution"][value="freelance-one-off"]')).toBeChecked();
 
-		await page.locator('input[name="type"][value="research"]').uncheck();
-		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(7);
+		await page.locator('input[name="contribution"][value="independent-development"]').uncheck();
+		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(1);
 		await page.goBack();
-		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(8);
-		await expect(page.locator('input[name="type"][value="research"]')).toBeChecked();
+		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(3);
+		await expect(page.locator('input[name="contribution"][value="independent-development"]')).toBeChecked();
 
 		await page.goForward();
-		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(7);
-		await expect(page.locator('input[name="type"][value="research"]')).not.toBeChecked();
+		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(1);
+		await expect(page.locator('input[name="contribution"][value="independent-development"]')).not.toBeChecked();
+	});
+
+	test("ignore unknown contribution values without errors", async ({ page }) => {
+		await openRenderedPage(
+			page,
+			"/en/projects/?contribution=unknown,employment",
+			"#projectsDiv > .project-card",
+			25
+		);
+
+		await expect(page.locator('input[name="contribution"][value="employment"]')).toBeChecked();
+		await expect(page.locator("#projectsDiv > .project-card:visible h3")).toHaveText("Halley V2");
 	});
 
 	test("show an empty state and clear all filters", async ({ page }) => {
@@ -170,6 +236,7 @@ test.describe("project filters", () => {
 
 		await page.locator('input[name="tech"][value="dotnet"]').check();
 		await page.locator('input[name="type"][value="notes"]').check();
+		await page.locator('input[name="contribution"][value="employment"]').check();
 		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(0);
 		await expect(page.locator("#projectEmptyState")).toBeVisible();
 		await expect(page.locator("#projectResultCount")).toHaveText("0 projects");
@@ -182,13 +249,13 @@ test.describe("project filters", () => {
 
 	test("filters can be operated with the keyboard", async ({ page }) => {
 		await openRenderedPage(page, "/en/projects/", "#projectsDiv > .project-card", 25);
-		const pythonFilter = page.locator('input[name="tech"][value="python"]');
+		const employmentFilter = page.locator('input[name="contribution"][value="employment"]');
 
-		await pythonFilter.focus();
+		await employmentFilter.focus();
 		await page.keyboard.press("Space");
 
-		await expect(pythonFilter).toBeChecked();
-		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(4);
+		await expect(employmentFilter).toBeChecked();
+		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(1);
 	});
 });
 

@@ -446,7 +446,7 @@
       "typeIds": [
         "web-app"
       ],
-      "participationModeId": "independent-development",
+      "participationModeId": "freelance-saas",
       "source_code": "https://github.com/mrmalvicino/meeni-erp",
       "live_demo": null,
       "video_url": null,
@@ -469,7 +469,7 @@
       "typeIds": [
         "web-app"
       ],
-      "participationModeId": "independent-development",
+      "participationModeId": "independent-collaboration",
       "source_code": "https://github.com/mrmalvicino/ecommerce-net",
       "live_demo": null,
       "video_url": "https://www.youtube-nocookie.com/embed/H7AISursM2M",
@@ -491,7 +491,7 @@
       "typeIds": [
         "web-app"
       ],
-      "participationModeId": "independent-development",
+      "participationModeId": "independent-collaboration",
       "source_code": "https://github.com/mrmalvicino/bancar",
       "live_demo": null,
       "video_url": "https://www.youtube-nocookie.com/embed/D8P1URMdCHU",
@@ -661,7 +661,7 @@
       "typeIds": [
         "desktop-app"
       ],
-      "participationModeId": "independent-development",
+      "participationModeId": "independent-collaboration",
       "source_code": "https://github.com/mrmalvicino/baluma-erp",
       "live_demo": null,
       "video_url": null,
@@ -679,7 +679,7 @@
       "typeIds": [
         "desktop-app"
       ],
-      "participationModeId": "independent-development",
+      "participationModeId": "independent-collaboration",
       "source_code": "https://github.com/mrmalvicino/irwins-revenge",
       "live_demo": null,
       "video_url": null,
@@ -787,7 +787,7 @@
       "typeIds": [
         "notes"
       ],
-      "participationModeId": "independent-development",
+      "participationModeId": "independent-collaboration",
       "source_code": "https://github.com/mrmalvicino/physics-book",
       "live_demo": null,
       "video_url": null,
@@ -823,7 +823,7 @@
       "typeIds": [
         "notes"
       ],
-      "participationModeId": "independent-development",
+      "participationModeId": "independent-collaboration",
       "source_code": "https://www.overleaf.com/read/xpxqmxnstrjv#b007e9",
       "live_demo": null,
       "video_url": null,
@@ -1121,6 +1121,7 @@
         "filtersLbl",
         "technologiesLbl",
         "typesLbl",
+        "contributionsLbl",
         "clearFiltersLbl",
         "projectSingularLbl",
         "projectPluralLbl"

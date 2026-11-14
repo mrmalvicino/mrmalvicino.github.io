@@ -117,9 +117,14 @@ test("build creates localized HTML without runtime content data", async () => {
 		assert.match(html.get("es/index.html"), /data-project-id="decauciones"[\s\S]*data-participation-mode="freelance-one-off"/);
 		assert.match(html.get("es/index.html"), /data-project-id="halley-v2"[\s\S]*data-participation-mode="employment"/);
 		assert.equal((html.get("en/projects/index.html").match(/class="project-card"/g) ?? []).length, 25);
+		assert.match(html.get("en/projects/index.html"), /data-project-id="meeni-erp"[\s\S]*data-participation-mode="freelance-saas"/);
+		assert.match(html.get("en/projects/index.html"), /data-project-id="physics-book"[\s\S]*data-participation-mode="independent-collaboration"/);
 		assert.equal((html.get("en/projects/index.html").match(/name="tech"/g) ?? []).length, 20);
 		assert.equal((html.get("en/projects/index.html").match(/name="type"/g) ?? []).length, 5);
+		assert.equal((html.get("en/projects/index.html").match(/name="contribution"/g) ?? []).length, 5);
 		assert.match(html.get("en/projects/index.html"), /data-technologies="dotnet csharp html css javascript mssql git"/);
+		assert.match(html.get("en/projects/index.html"), /value="freelance-saas"[\s\S]*Freelance SaaS/);
+		assert.match(html.get("en/projects/index.html"), /value="employment"[\s\S]*Employment/);
 		assert.match(html.get("en/projects/index.html"), /<script src="\/script\/project-filters\.js"><\/script>/);
 		assert.equal((html.get("es/cv/index.html").match(/id="projectsLst"[\s\S]*?<\/ul>/)?.[0].match(/<li /g) ?? []).length, 2);
 		assert.match(html.get("es/cv/index.html"), /Membriana[\s\S]*DeCauciones/);

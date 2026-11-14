@@ -5,7 +5,7 @@ if (filters) {
 	const resultCount = document.querySelector("#projectResultCount");
 	const emptyState = document.querySelector("#projectEmptyState");
 	const clearButtons = [...document.querySelectorAll("[data-clear-filters]")];
-	const filterGroups = ["tech", "type"];
+	const filterGroups = ["tech", "type", "contribution"];
 
 	function getCheckboxes(group) {
 		return [...filters.querySelectorAll(`input[name="${group}"]`)];
@@ -48,6 +48,7 @@ if (filters) {
 	function applyFilters() {
 		const selectedTechnologies = getSelectedIds("tech");
 		const selectedTypes = getSelectedIds("type");
+		const selectedContributions = getSelectedIds("contribution");
 		let visibleCount = 0;
 
 		for (const card of cards) {
@@ -57,7 +58,9 @@ if (filters) {
 				[...selectedTechnologies].some(id => technologies.has(id));
 			const matchesType = selectedTypes.size === 0 ||
 				[...selectedTypes].some(id => types.has(id));
-			const isVisible = matchesTechnology && matchesType;
+			const matchesContribution = selectedContributions.size === 0 ||
+				selectedContributions.has(card.dataset.participationMode);
+			const isVisible = matchesTechnology && matchesType && matchesContribution;
 
 			card.hidden = !isVisible;
 
@@ -66,7 +69,9 @@ if (filters) {
 			}
 		}
 
-		const hasActiveFilters = selectedTechnologies.size > 0 || selectedTypes.size > 0;
+		const hasActiveFilters = selectedTechnologies.size > 0 ||
+			selectedTypes.size > 0 ||
+			selectedContributions.size > 0;
 		const resultLabel = visibleCount === 1 ? resultCount.dataset.singular : resultCount.dataset.plural;
 
 		resultCount.textContent = `${visibleCount} ${resultLabel}`;

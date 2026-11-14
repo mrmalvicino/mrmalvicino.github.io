@@ -454,9 +454,10 @@
     "projects": {
       "projectsLbl": "Todos mis proyectos",
       "backLbl": "Portafolio",
-      "filtersLbl": "Filtrar proyectos",
-      "technologiesLbl": "Tecnologías",
-      "typesLbl": "Tipos de proyecto",
+      "filtersLbl": "Filtros",
+      "technologiesLbl": "Tecnología",
+      "typesLbl": "Tipo de proyecto",
+      "contributionsLbl": "Contribución",
       "clearFiltersLbl": "Limpiar filtros",
       "projectSingularLbl": "proyecto",
       "projectPluralLbl": "proyectos"

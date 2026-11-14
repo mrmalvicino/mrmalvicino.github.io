@@ -245,8 +245,11 @@ function renderProjectFilters(data) {
 	const labels = data.locale.labels.projects;
 	const technologyIds = new Set(data.projects.flatMap(project => project.technologyIds));
 	const typeIds = new Set(data.projects.flatMap(project => project.typeIds));
+	const participationModeIds = new Set(data.projects.map(project => project.participationModeId));
 	const technologies = Object.values(data.technologies).filter(technology => technologyIds.has(technology.id));
 	const projectTypes = Object.values(data.projectTypes).filter(projectType => typeIds.has(projectType.id));
+	const participationModes = Object.values(data.participationModes)
+		.filter(participationMode => participationModeIds.has(participationMode.id));
 
 	return `      <form id="projectFilters" class="project-filters" aria-labelledby="filtersLbl" hidden>
         <div class="project-filters-header">
@@ -266,6 +269,12 @@ ${renderFilterOptions(technologies, "tech")}
             <legend>${escapeHtml(labels.typesLbl)}</legend>
             <div class="project-filter-options">
 ${renderFilterOptions(projectTypes, "type")}
+            </div>
+          </fieldset>
+          <fieldset class="project-filter-group" data-filter-group="contribution">
+            <legend>${escapeHtml(labels.contributionsLbl)}</legend>
+            <div class="project-filter-options">
+${renderFilterOptions(participationModes, "contribution")}
             </div>
           </fieldset>
         </div>
