@@ -532,12 +532,25 @@ ${group.categories.map(category => `              <li><strong>${escapeHtml(categ
             </ul>`
 		: `            <p>${group.technologies.map(technology => escapeHtml(technology.name)).join(" | ")}</p>`}
           </li>`).join("\n");
-	const jobs = data.jobs.map(job => `              <li class="margin-vertical-20-px">
+	const jobs = data.jobs.map(job => {
+		const highlights = job.highlights
+			? `
+                <ul class="cv-job-highlights">
+${job.highlights.map(highlight => `                  <li>${escapeHtml(highlight)}</li>`).join("\n")}
+                </ul>`
+			: "";
+		const technologies = job.technologies.length > 0
+			? `
+                <p><strong>${escapeHtml(labels.cv.technologiesLbl)}:</strong> ${job.technologies.map(technology => escapeHtml(technology.name)).join(" | ")}</p>`
+			: "";
+
+		return `              <li class="cv-job">
                 <h4>${escapeHtml(job.position)}</h4>
                 <p>${escapeHtml(job.organization)}</p>
                 <p>${escapeHtml(job.time)}</p>
-                <p class="dark-gray-text">${escapeHtml(job.description)}</p>
-              </li>`).join("\n");
+                <p class="dark-gray-text">${escapeHtml(job.description)}</p>${highlights}${technologies}
+              </li>`;
+	}).join("\n");
 	const body = `<body class="open-sans-font cv-body light-gray-background">
   <header class="row-flex space-between almost-black-background cv-header">
     <div class="padding-20-px">

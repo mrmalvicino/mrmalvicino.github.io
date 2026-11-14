@@ -78,6 +78,9 @@
     "windowsFormsImg": {
       "alt": "Logo de Windows Forms."
     },
+    "sapCrystalReportsImg": {
+      "alt": "Logo de SAP Crystal Reports."
+    },
     "razorImg": {
       "alt": "Logo de Razor."
     },
@@ -205,6 +208,7 @@
     "entity-framework": "Entity Framework",
     "ado-net": "ADO.NET",
     "windows-forms": "WinForms",
+    "sap-crystal-reports": "SAP Crystal Reports",
     "razor": "Razor",
     "git": "Git",
     "github-actions": "GitHub Actions",
@@ -374,22 +378,32 @@
     }
   },
   "jobs": {
+    "junior-software-developer-halley": {
+      "organization": "Halley Accurate Solutions",
+      "position": "Desarrollador de Software Junior",
+      "description": "Desarrollo y mantenimiento de aplicaciones empresariales .NET para estaciones de servicio y comercios.",
+      "highlights": [
+        "Ingresé como Junior 1 y fui promovido internamente a Junior 2, ampliando mi autonomía y responsabilidades.",
+        "Estuve a cargo del rediseño y refactorización del punto de venta, y modularicé un formulario WinForms de alta complejidad en componentes reutilizables.",
+        "Centralicé la invocación de reportes SAP Crystal Reports e implementé componentes reutilizables para su ejecución, parametrización y ordenamiento.",
+        "Optimicé procesos transaccionales de stock y trazabilidad sobre MySQL; en un flujo medido reduje las consultas de 66 a 37.",
+        "Desarrollé la gestión de insumos vinculada a compras, ventas y devoluciones, con procedimientos almacenados y control de concurrencia.",
+        "Refactoricé el tratamiento de errores, migrando 637 llamadas distribuidas en aproximadamente 250 archivos a una API centralizada."
+      ]
+    },
     "programming-2-teaching-assistant-utn": {
       "organization": "Universidad Tecnológica Nacional",
       "position": "Ayudante de cátedra de Programación 2",
-      "time": "Agosto 2024 - Actualidad",
       "description": "Asistencia a estudiantes en clases y foros, desarrollo de ejercitaciones sobre Programación Orientada a Objetos en C++."
     },
     "physics-1-teaching-assistant-untref": {
       "organization": "Universidad Nacional de Tres de Febrero",
       "position": "Ayudante de cátedra de Física 1",
-      "time": "Agosto 2019 - Julio 2023",
       "description": "Diseño y resolución de ejercicios, confección y corrección de exámenes, demostraciones experimentales con Python."
     },
     "english-teacher-leonardo-favio-library": {
       "organization": "Biblioteca Popular Leonardo Favio",
       "position": "Profesor de Inglés",
-      "time": "Marzo 2014 - Diciembre 2017",
       "description": "Planificación de cursos de inglés, dictado de clases particulares para alumnos de nivel secundario."
     }
   },
@@ -431,7 +445,9 @@
       "languagesLbl": "Idiomas",
       "experienceLbl": "< Experiencia />",
       "projectsLbl": "Proyectos freelance",
-      "jobsLbl": "Trabajos en relación de dependencia"
+      "jobsLbl": "Trabajos en relación de dependencia",
+      "presentLbl": "Actualidad",
+      "technologiesLbl": "Tecnologías"
     }
   },
   "buttons": {

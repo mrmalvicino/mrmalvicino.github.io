@@ -161,6 +161,9 @@
       "windowsFormsImg": {
         "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/windows8/windows8-original.svg"
       },
+      "sapCrystalReportsImg": {
+        "src": "https://upload.wikimedia.org/wikipedia/en/4/47/Crystal_Reports_Logo.png"
+      },
       "razorImg": {
         "src": "./assets/images/technologies/razor.svg"
       },
@@ -321,6 +324,9 @@
     },
     "windows-forms": {
       "imageId": "windowsFormsImg"
+    },
+    "sap-crystal-reports": {
+      "imageId": "sapCrystalReportsImg"
     },
     "razor": {
       "imageId": "razorImg"
@@ -968,20 +974,34 @@
   ],
   "jobs": [
     {
-      "id": "programming-2-teaching-assistant-utn",
+      "id": "junior-software-developer-halley",
       "order": 1,
+      "start_date": "2025-08-11",
+      "end_date": "2026-11-04",
+      "technologyIds": [
+        "vbnet",
+        "csharp",
+        "dotnet",
+        "windows-forms",
+        "mysql",
+        "sap-crystal-reports"
+      ]
+    },
+    {
+      "id": "programming-2-teaching-assistant-utn",
+      "order": 2,
       "start_date": "2024-08",
       "end_date": null
     },
     {
       "id": "physics-1-teaching-assistant-untref",
-      "order": 2,
+      "order": 3,
       "start_date": "2019-08",
       "end_date": "2023-07"
     },
     {
       "id": "english-teacher-leonardo-favio-library",
-      "order": 3,
+      "order": 4,
       "start_date": "2014-03",
       "end_date": "2017-12"
     }
@@ -1033,7 +1053,9 @@
         "languagesLbl",
         "experienceLbl",
         "projectsLbl",
-        "jobsLbl"
+        "jobsLbl",
+        "presentLbl",
+        "technologiesLbl"
       ]
     }
   }

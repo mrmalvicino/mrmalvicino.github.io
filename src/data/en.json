@@ -78,6 +78,9 @@
     "windowsFormsImg": {
       "alt": "Windows Forms Logo."
     },
+    "sapCrystalReportsImg": {
+      "alt": "SAP Crystal Reports Logo."
+    },
     "razorImg": {
       "alt": "Razor Logo."
     },
@@ -205,6 +208,7 @@
     "entity-framework": "Entity Framework",
     "ado-net": "ADO.NET",
     "windows-forms": "WinForms",
+    "sap-crystal-reports": "SAP Crystal Reports",
     "razor": "Razor",
     "git": "Git",
     "github-actions": "GitHub Actions",
@@ -374,22 +378,32 @@
     }
   },
   "jobs": {
+    "junior-software-developer-halley": {
+      "organization": "Halley Accurate Solutions",
+      "position": "Junior Software Developer",
+      "description": "Development and maintenance of .NET business applications for service stations and retailers.",
+      "highlights": [
+        "Joined as Junior 1 and earned an internal promotion to Junior 2, taking on greater autonomy and responsibility.",
+        "Led and independently implemented the redesign and refactoring of the point-of-sale system, modularizing a complex WinForms form into reusable components.",
+        "Centralized SAP Crystal Reports invocation and implemented reusable components for execution, parameterization, and sorting.",
+        "Optimized transactional stock and traceability processes on MySQL; reduced queries from 66 to 37 in one measured workflow.",
+        "Developed supply management for purchase, sale, and return operations using stored procedures and concurrency control.",
+        "Refactored error handling by migrating 637 calls across approximately 250 files to a centralized API."
+      ]
+    },
     "programming-2-teaching-assistant-utn": {
       "organization": "Universidad Tecnológica Nacional",
       "position": "Teaching Assistant for Programming 2",
-      "time": "August 2024 - Present",
       "description": "Assistance to students in classes and forums, development of exercises on Object Oriented Programming in C++."
     },
     "physics-1-teaching-assistant-untref": {
       "organization": "Universidad Nacional de Tres de Febrero",
       "position": "Teaching Assistant for Physics 1",
-      "time": "August 2019 - July 2023",
       "description": "Design and resolution of exercises, preparation and correction of exams, experimental demonstrations with Python."
     },
     "english-teacher-leonardo-favio-library": {
       "organization": "Biblioteca Popular Leonardo Favio",
       "position": "English Teacher",
-      "time": "March 2014 - December 2017",
       "description": "English courses planning, private tutoring for secondary school students."
     }
   },
@@ -431,7 +445,9 @@
       "languagesLbl": "Languages",
       "experienceLbl": "< Experience />",
       "projectsLbl": "Freelance Projects",
-      "jobsLbl": "Permanent Employments"
+      "jobsLbl": "Permanent Employments",
+      "presentLbl": "Present",
+      "technologiesLbl": "Technologies"
     }
   },
   "buttons": {

@@ -88,7 +88,15 @@ for (const [language, labels] of Object.entries(languages)) {
 			await expect(page.locator("#coursesLst > li")).toHaveCount(3);
 			await expect(page.locator("#languagesLst > li")).toHaveCount(3);
 			await expect(page.locator("#projectsLst > li > h4")).toHaveText(featuredProjects);
-			await expect(page.locator("#jobsLst > li")).toHaveCount(3);
+			await expect(page.locator("#jobsLst > li")).toHaveCount(4);
+			await expect(page.locator("#jobsLst > li").first()).toContainText("Halley Accurate Solutions");
+
+			const experienceLayout = await page.locator("#rightColumnSec").evaluate(column => ({
+				contentBottom: column.querySelector("#jobsLst > li:last-child").getBoundingClientRect().bottom,
+				columnBottom: column.getBoundingClientRect().bottom
+			}));
+
+			expect(experienceLayout.contentBottom).toBeLessThanOrEqual(experienceLayout.columnBottom);
 		});
 
 		test("navigation stays in the selected language", async ({ page }) => {

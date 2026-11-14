@@ -336,6 +336,14 @@ function validateDomain(site, errors) {
 		}
 	}
 
+	for (const job of site.jobs) {
+		for (const id of job.technologyIds ?? []) {
+			if (!technologyEntityIds.has(id)) {
+				errors.push(`src/data/site.json: unknown job technology id: ${id}`);
+			}
+		}
+	}
+
 	for (const study of site.studies) {
 		if (!institutionEntityIds.has(study.institutionId)) {
 			errors.push(`src/data/site.json: unknown study institution id: ${study.institutionId}`);

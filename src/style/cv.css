@@ -44,3 +44,17 @@
     background-color: var(--soft-black);
     border-radius: 5px;
 }
+
+.cv-job {
+    margin: 6px 0;
+}
+
+.cv-job-highlights {
+    padding-left: 20px;
+    font-size: 0.9rem;
+    list-style: disc;
+}
+
+.cv-job-highlights li {
+    margin: 2px 0;
+}

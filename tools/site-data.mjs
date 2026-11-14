@@ -15,6 +15,16 @@ function sortByOrder(items) {
 	return [...items].sort((first, second) => first.order - second.order);
 }
 
+function formatJobDate(value, language) {
+	const date = new Date(`${value.length === 7 ? `${value}-01` : value}T00:00:00Z`);
+
+	return new Intl.DateTimeFormat(language, {
+		month: "long",
+		timeZone: "UTC",
+		year: "numeric"
+	}).format(date);
+}
+
 export async function loadSiteData(root, language) {
 	const [siteContents, localeContents] = await Promise.all([
 		readFile(path.join(root, "src/data/site.json"), "utf8"),
@@ -109,7 +119,13 @@ export async function loadSiteData(root, language) {
 		})),
 		jobs: sortByOrder(site.jobs).map(job => ({
 			...job,
-			...requireValue(locale.jobs, job.id, "jobs")
+			...requireValue(locale.jobs, job.id, "jobs"),
+			time: `${formatJobDate(job.start_date, language)} - ${job.end_date
+				? formatJobDate(job.end_date, language)
+				: locale.labels.cv.presentLbl}`,
+			technologies: job.technologyIds
+				? job.technologyIds.map(id => requireValue(technologies, id, "technologies"))
+				: []
 		})),
 		socials: sortByOrder(site.profile.socials).map(social => ({
 			...social,

@@ -91,6 +91,11 @@ test("build creates localized HTML without runtime content data", async () => {
 		assert.match(html.get("es/index.html"), /\.NET Framework/);
 		assert.match(html.get("es/index.html"), /Actualmente en formación/);
 		assert.match(html.get("en/cv/index.html"), /Frequent professional use/);
+		assert.match(html.get("es/cv/index.html"), /Desarrollador de Software Junior/);
+		assert.match(html.get("es/cv/index.html"), /agosto de 2025 - noviembre de 2026/);
+		assert.match(html.get("en/cv/index.html"), /Junior Software Developer/);
+		assert.match(html.get("en/cv/index.html"), /VB \.NET \| C# \| Microsoft \.NET \| WinForms \| MySQL \| SAP Crystal Reports/);
+		assert.match(html.get("en/cv/index.html"), /migrating 637 calls across approximately 250 files/);
 		assert.match(html.get("en/cv/index.html"), /General Pacheco, Buenos Aires, Argentina/);
 		assert.match(html.get("es/index.html"), /maps\/search\/\?api=1&amp;query=General%20Pacheco%2C%20Buenos%20Aires%2C%20Argentina/);
 		assert.match(html.get("es/index.html"), /href="\/assets\/pdf\/tup-certificate\.pdf"[\s\S]*bi bi-award/);

@@ -65,12 +65,16 @@
       "additionalProperties": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["organization", "position", "time", "description"],
+        "required": ["organization", "position", "description"],
         "properties": {
           "organization": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
           "position": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
-          "time": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
-          "description": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
+          "description": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+          "highlights": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
+          }
         }
       }
     },

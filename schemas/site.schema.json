@@ -234,12 +234,24 @@
         "properties": {
           "id": { "$ref": "common.schema.json#/$defs/domainId" },
           "order": { "$ref": "common.schema.json#/$defs/order" },
-          "start_date": { "$ref": "common.schema.json#/$defs/yearMonth" },
+          "start_date": {
+            "anyOf": [
+              { "$ref": "common.schema.json#/$defs/yearMonth" },
+              { "$ref": "common.schema.json#/$defs/date" }
+            ]
+          },
           "end_date": {
             "anyOf": [
               { "$ref": "common.schema.json#/$defs/yearMonth" },
+              { "$ref": "common.schema.json#/$defs/date" },
               { "type": "null" }
             ]
+          },
+          "technologyIds": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "$ref": "common.schema.json#/$defs/domainId" }
           }
         }
       }
