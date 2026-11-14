@@ -42,6 +42,11 @@
     background-color: var(--pure-black);
 }
 
+.resume-download-button {
+    width: 180px;
+    white-space: nowrap;
+}
+
 .transparent-button {
     width: var(--button-width);
     margin: 0px;
@@ -69,6 +74,11 @@
     padding: 0px;
     display: inline-flex;
     align-items: center;
+}
+
+.underlined-link {
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
 }
 
 .big-hover {

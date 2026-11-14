@@ -1106,6 +1106,7 @@
       ],
       "index": [
         "resumeLbl",
+        "onlineResumeLbl",
         "skillsLbl",
         "projectsLbl",
         "allProjectsLbl",
@@ -1129,6 +1130,7 @@
         "projectPluralLbl"
       ],
       "cv": [
+        "positionLbl",
         "profileLbl",
         "skillsLbl",
         "educationLbl",

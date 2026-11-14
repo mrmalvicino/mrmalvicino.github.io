@@ -11,7 +11,12 @@ const languages = {
 		cvTitle: "Habilidades técnicas",
 		cvProfileTitle: "Perfil profesional",
 		cvExperienceTitle: "Experiencia laboral",
+		cvFreelanceTitle: "Experiencia freelance",
+		cvCoursesTitle: "Cursos de especialización",
+		cvPosition: "Desarrollador de Software .NET Junior",
 		resume: "malvicino-es.pdf",
+		resumeLabel: "Descargar CV",
+		onlineResume: "Ver CV online",
 		website: "Sitio web"
 	},
 	en: {
@@ -24,13 +29,18 @@ const languages = {
 		cvTitle: "Technical Skills",
 		cvProfileTitle: "Professional Profile",
 		cvExperienceTitle: "Work Experience",
+		cvFreelanceTitle: "Freelance Experience",
+		cvCoursesTitle: "Specialization Courses",
+		cvPosition: "Junior .NET Software Developer",
 		resume: "malvicino-en.pdf",
+		resumeLabel: "Download CV",
+		onlineResume: "View CV online",
 		website: "Website"
 	}
 };
 
-const featuredProjects = ["Membriana", "DeCauciones", "Halley V2"];
-const freelanceProjects = ["Membriana", "DeCauciones"];
+const featuredProjects = ["Membriana", "deCauciones", "Halley V2"];
+const freelanceProjects = ["Membriana", "deCauciones"];
 
 for (const [language, labels] of Object.entries(languages)) {
 	test.describe(`${language.toUpperCase()} content`, () => {
@@ -70,6 +80,10 @@ for (const [language, labels] of Object.entries(languages)) {
 			expect(socialAlignment).toBeLessThanOrEqual(1);
 			await expect(page.locator("#projectsDiv .project-bot-div h3")).toHaveText(featuredProjects);
 			await expect(page.locator("#resumeBtn")).toHaveAttribute("download", labels.resume);
+			await expect(page.locator("#resumeBtn")).toHaveText(labels.resumeLabel);
+			await expect(page.locator("#onlineResumeBtn")).toHaveText(labels.onlineResume);
+			await expect(page.locator("#onlineResumeBtn")).toHaveAttribute("href", `/${language}/cv/`);
+			await expect(page.locator("#onlineResumeBtn")).toHaveCSS("text-decoration-line", "underline");
 			await expect(page.locator(`a[lang='es'][href='/es/']`)).toBeVisible();
 			await expect(page.locator(`a[lang='en'][href='/en/']`)).toBeVisible();
 		});
@@ -81,6 +95,9 @@ for (const [language, labels] of Object.entries(languages)) {
 			await expect(page.locator("#projectsLbl")).toHaveText(labels.projectsTitle);
 			await expect(page.locator("#filtersLbl")).toHaveText(labels.filtersTitle);
 			await expect(page.locator("#projectResultCount")).toHaveText(labels.resultCount);
+			await expect(page.locator(".menu-header #backLbl")).toHaveCount(1);
+			await expect(page.locator(".menu-header #menuLst")).toHaveCount(0);
+			await expect(page.locator("#footer")).toBeVisible();
 			await expect(page.locator('input[name="tech"]')).toHaveCount(20);
 			await expect(page.locator('input[name="type"]')).toHaveCount(5);
 			await expect(page.locator('[data-filter-group="contribution"] legend')).toHaveText(labels.contributionsTitle);
@@ -105,13 +122,29 @@ for (const [language, labels] of Object.entries(languages)) {
 			await expect(page.locator("html")).toHaveAttribute("lang", language);
 			await expect(page.locator("#profileLbl")).toHaveText(labels.cvProfileTitle);
 			await expect(page.locator("#experienceLbl")).toHaveText(labels.cvExperienceTitle);
+			await expect(page.locator("#projectsLbl")).toHaveText(labels.cvFreelanceTitle);
+			await expect(page.locator("#coursesLbl")).toHaveText(labels.cvCoursesTitle);
+			await expect(page.locator(".cv-subsection > h3").first()).toHaveCSS("color", "rgb(128, 128, 128)");
 			await expect(page.locator("#skillsLbl")).toHaveText(labels.cvTitle);
+			await expect(page.locator(".cv-heading > p")).toHaveText(labels.cvPosition);
 			await expect(page.locator("#jobSearchLbl")).toHaveText(labels.jobSearch);
-			await expect(page.locator("#skillsLst > li")).toHaveCount(4);
+			await expect(page.locator(".menu-header #backLbl")).toHaveCount(1);
+			await expect(page.locator(".menu-header #menuLst")).toHaveCount(0);
+			await expect(page.locator("#footer")).toBeVisible();
+			await expect(page.locator("#footer a[lang='es']")).toHaveAttribute("href", "/es/cv/");
+			await expect(page.locator("#footer a[lang='en']")).toHaveAttribute("href", "/en/cv/");
+			await expect(page.locator("#skillsLst > li")).toHaveCount(6);
+			await expect(page.locator("#skillsLst")).not.toContainText("Uso profesional frecuente");
+			await expect(page.locator("#skillsLst")).not.toContainText("Frequent professional use");
+			await expect(page.locator("#skillsLst")).not.toContainText("Complementary professional use");
 			await expect(page.locator("#careersLst > article")).toHaveCount(2);
 			await expect(page.locator("#coursesLst > article")).toHaveCount(3);
 			await expect(page.locator("#languagesLst > article")).toHaveCount(3);
 			await expect(page.locator("#projectsLst > article > h3")).toHaveText(freelanceProjects);
+			await expect(page.locator("#projectsLst > article").first().locator("a"))
+				.toHaveAttribute("href", "https://github.com/mrmalvicino/membriana");
+			await expect(page.locator("#projectsLst > article").nth(1).locator("a"))
+				.toHaveAttribute("href", "https://decauciones.com");
 			await expect(page.locator("#jobsLst > article")).toHaveCount(4);
 			await expect(page.locator("#jobsLst > article").first()).toContainText("Halley Accurate Solutions");
 			await expect(page.locator("#jobsLst time")).toHaveCount(8);
@@ -120,7 +153,7 @@ for (const [language, labels] of Object.entries(languages)) {
 				headings.map(heading => heading.id)
 			));
 
-			expect(sectionIds).toEqual(["profileLbl", "experienceLbl", "skillsLbl", "projectsLbl", "educationLbl"]);
+			expect(sectionIds).toEqual(["profileLbl", "skillsLbl", "experienceLbl", "projectsLbl", "educationLbl"]);
 		});
 
 		test("navigation stays in the selected language", async ({ page }) => {
@@ -160,7 +193,7 @@ test.describe("project filters", () => {
 		await openRenderedPage(page, "/en/projects/", "#projectsDiv > .project-card", 25);
 		const expectedResults = {
 			"freelance-saas": { count: 2, titles: ["Membriana", "Meeni ERP"] },
-			"freelance-one-off": { count: 1, title: "DeCauciones" },
+			"freelance-one-off": { count: 1, title: "deCauciones" },
 			employment: { count: 1, title: "Halley V2" },
 			"independent-collaboration": { count: 7 },
 			"independent-development": { count: 14 }
@@ -188,7 +221,7 @@ test.describe("project filters", () => {
 		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(3);
 		await expect(page.locator("#projectsDiv > .project-card:visible h3")).toHaveText([
 			"Membriana",
-			"DeCauciones",
+			"deCauciones",
 			"Meeni ERP"
 		]);
 	});
@@ -201,7 +234,7 @@ test.describe("project filters", () => {
 		await page.locator('input[name="contribution"][value="freelance-one-off"]').check();
 
 		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(1);
-		await expect(page.locator("#projectsDiv > .project-card:visible h3")).toHaveText("DeCauciones");
+		await expect(page.locator("#projectsDiv > .project-card:visible h3")).toHaveText("deCauciones");
 		await expect(page).toHaveURL(/tech=javascript&type=static-site&contribution=freelance-one-off$/);
 	});
 
@@ -405,12 +438,40 @@ test("resume fits mobile screens and produces an A4 print document", async ({ pa
 	expect(screenLayout.mainColumns).toBe("none");
 
 	await page.emulateMedia({ media: "print" });
-	await expect(page.locator(".cv-language-selector")).toBeHidden();
+	await expect(page.locator(".site-chrome")).toHaveCount(2);
+	await expect(page.locator(".site-chrome").first()).toBeHidden();
+	await expect(page.locator(".site-chrome").last()).toBeHidden();
 
 	const pdf = await page.pdf({ format: "A4", printBackground: true });
 
 	expect(pdf.subarray(0, 5).toString()).toBe("%PDF-");
 	expect(pdf.byteLength).toBeGreaterThan(10000);
+});
+
+test("project and resume pages share identical navbar typography and colors", async ({ page }) => {
+	const navbarStyles = async path => {
+		await page.goto(path);
+
+		return page.locator(".menu-header").evaluate(header => {
+			const logo = getComputedStyle(header.querySelector("#logoBtn"));
+			const backLink = getComputedStyle(header.querySelector("#backLbl"));
+
+			return {
+				backColor: backLink.color,
+				backFontFamily: backLink.fontFamily,
+				backFontSize: backLink.fontSize,
+				logoColor: logo.color,
+				logoFontFamily: logo.fontFamily,
+				logoFontSize: logo.fontSize
+			};
+		});
+	};
+	const projectNavbar = await navbarStyles("/es/projects/");
+	const resumeNavbar = await navbarStyles("/es/cv/");
+
+	expect(resumeNavbar).toEqual(projectNavbar);
+	expect(resumeNavbar.logoColor).toBe("rgb(255, 255, 255)");
+	expect(resumeNavbar.backColor).toBe("rgb(204, 204, 204)");
 });
 
 test.describe("without JavaScript", () => {

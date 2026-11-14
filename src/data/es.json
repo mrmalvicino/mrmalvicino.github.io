@@ -185,8 +185,8 @@
       "alt": "Libros en una biblioteca."
     },
     "decaucionesImg": {
-      "title": "DeCauciones",
-      "alt": "Portada del sitio de DeCauciones con el cotizador de seguros de caución para alquiler."
+      "title": "deCauciones",
+      "alt": "Portada del sitio de deCauciones con el cotizador de seguros de caución para alquiler."
     },
     "halleyV2Img": {
       "title": "Halley V2",
@@ -261,7 +261,7 @@
       "description": "Producto SaaS freelance para gestionar membresías, realizar el seguimiento de miembros y administrar pagos de afiliados."
     },
     "decauciones": {
-      "title": "DeCauciones",
+      "title": "deCauciones",
       "description": "Sitio web estático desarrollado como trabajo freelance puntual para cotizar seguros de caución de alquiler y gestionar consultas de potenciales clientes. Incluye cálculo en línea, formularios validados, contenido comercial responsivo y mejoras de accesibilidad."
     },
     "halley-v2": {
@@ -440,7 +440,8 @@
       "jobSearchLbl": "Estoy en búsqueda activa de oportunidades como desarrollador .NET."
     },
     "index": {
-      "resumeLbl": "Currículum",
+      "resumeLbl": "Descargar CV",
+      "onlineResumeLbl": "Ver CV online",
       "skillsLbl": "Habilidades",
       "projectsLbl": "Proyectos",
       "allProjectsLbl": "Ver todos",
@@ -454,7 +455,7 @@
     },
     "projects": {
       "projectsLbl": "Todos mis proyectos",
-      "backLbl": "Portafolio",
+      "backLbl": "Volver al portafolio",
       "filtersLbl": "Filtros",
       "technologiesLbl": "Tecnología",
       "typesLbl": "Tipo de proyecto",
@@ -464,14 +465,15 @@
       "projectPluralLbl": "proyectos"
     },
     "cv": {
+      "positionLbl": "Desarrollador de Software .NET Junior",
       "profileLbl": "Perfil profesional",
       "skillsLbl": "Habilidades técnicas",
       "educationLbl": "Educación",
       "careersLbl": "Educación superior",
-      "coursesLbl": "Formación especializada",
+      "coursesLbl": "Cursos de especialización",
       "languagesLbl": "Idiomas",
       "experienceLbl": "Experiencia laboral",
-      "projectsLbl": "Proyectos",
+      "projectsLbl": "Experiencia freelance",
       "jobsLbl": "Trabajos en relación de dependencia",
       "presentLbl": "Actualidad",
       "technologiesLbl": "Tecnologías"

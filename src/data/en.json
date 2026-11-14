@@ -185,8 +185,8 @@
       "alt": "Books of a library."
     },
     "decaucionesImg": {
-      "title": "DeCauciones",
-      "alt": "DeCauciones website landing page with the rental surety insurance quote calculator."
+      "title": "deCauciones",
+      "alt": "deCauciones website landing page with the rental surety insurance quote calculator."
     },
     "halleyV2Img": {
       "title": "Halley V2",
@@ -261,7 +261,7 @@
       "description": "Freelance SaaS product for managing memberships, tracking members, and administering affiliate payments."
     },
     "decauciones": {
-      "title": "DeCauciones",
+      "title": "deCauciones",
       "description": "Static website delivered as a one-off freelance engagement to quote rental surety insurance and manage prospective customer inquiries. It includes online calculations, validated forms, responsive commercial content, and accessibility improvements."
     },
     "halley-v2": {
@@ -440,7 +440,8 @@
       "jobSearchLbl": "I am actively seeking opportunities as a .NET developer."
     },
     "index": {
-      "resumeLbl": "Resume",
+      "resumeLbl": "Download CV",
+      "onlineResumeLbl": "View CV online",
       "skillsLbl": "Skills",
       "projectsLbl": "Projects",
       "allProjectsLbl": "All projects",
@@ -454,7 +455,7 @@
     },
     "projects": {
       "projectsLbl": "All My Projects",
-      "backLbl": "Portfolio",
+      "backLbl": "Back to portfolio",
       "filtersLbl": "Filters",
       "technologiesLbl": "Technology",
       "typesLbl": "Project type",
@@ -464,14 +465,15 @@
       "projectPluralLbl": "projects"
     },
     "cv": {
+      "positionLbl": "Junior .NET Software Developer",
       "profileLbl": "Professional Profile",
       "skillsLbl": "Technical Skills",
       "educationLbl": "Education",
       "careersLbl": "Higher Education",
-      "coursesLbl": "Specialized Training",
+      "coursesLbl": "Specialization Courses",
       "languagesLbl": "Languages",
       "experienceLbl": "Work Experience",
-      "projectsLbl": "Projects",
+      "projectsLbl": "Freelance Experience",
       "jobsLbl": "Permanent Employments",
       "presentLbl": "Present",
       "technologiesLbl": "Technologies"

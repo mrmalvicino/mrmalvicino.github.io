@@ -98,7 +98,7 @@ function renderDocument(data, page, body) {
 		? [...commonStyles, "containers.css", "inputs.css", "menu.css", "table.css"]
 		: page === "projects"
 			? [...commonStyles, "containers.css", "menu.css", "projects.css"]
-			: [...commonStyles, "cv.css"];
+			: [...commonStyles, "containers.css", "menu.css", "cv.css"];
 
 	return `<!DOCTYPE html>
 <html lang="${escapeHtml(data.language)}">
@@ -164,7 +164,7 @@ function renderFooter(data, page) {
             </a>
           </li>`).join("\n");
 
-  return `<footer id="footer" class="min-height-150-px padding-vertical-20-px align-content-center pale-black-background">
+	return `<footer id="footer" class="site-chrome min-height-150-px padding-vertical-20-px align-content-center pale-black-background">
     <div class="content-width margin-horizontal-auto row-col-800 gap-20-px footer-content">
       ${renderLanguageLinks(page)}
       <div>
@@ -288,26 +288,33 @@ ${renderFilterOptions(participationModes, "contribution")}
       </form>`;
 }
 
-function renderPortfolioHeader(data) {
-	const menu = data.menuItems.map(item => `          <li>
-            <a href="${escapeHtml(item.href)}" class="plain-link medium-gray-link">${escapeHtml(item.label)}</a>
-          </li>`).join("\n");
+function renderNavbar(data, page) {
+	const isPortfolio = page === "index";
+	const navigation = isPortfolio
+		? `<div>
+        <ul id="menuLst">
+${data.menuItems.map(item => `          <li>
+             <a href="${escapeHtml(item.href)}" class="plain-link medium-gray-link">${escapeHtml(item.label)}</a>
+          </li>`).join("\n")}
+        </ul>
+        <button id="toggleBtn" type="button" class="toggle-button" aria-label="Menu">
+          <i class="bi bi-list" aria-hidden="true"></i>
+        </button>
+      </div>`
+		: `<a id="backLbl" href="${route(data.language, "index")}" class="plain-link medium-gray-link">
+        <i class="bi bi-arrow-left-short" aria-hidden="true"></i>
+        <span>&nbsp;</span>
+        <span>${escapeHtml(data.locale.labels.projects.backLbl)}</span>
+      </a>`;
 
-	return `<header class="menu-header">
-    <nav id="menuNav" class="menu-nav" aria-label="${escapeHtml(data.locale.labels.projects.backLbl)}">
+	return `<header class="site-chrome menu-header">
+    <nav${isPortfolio ? ' id="menuNav"' : ""} class="menu-nav">
       <a id="logoBtn" href="${route(data.language, "index")}" class="plain-link pure-white-text margin-vertical-auto">
         ${image(data.images.logoImg, "width-40-px")}
         <span>&nbsp;</span>
         <span>${escapeHtml(data.site.profile.headerName)}</span>
       </a>
-      <div>
-        <ul id="menuLst">
-${menu}
-        </ul>
-        <button id="toggleBtn" type="button" class="toggle-button" aria-label="Menu">
-          <i class="bi bi-list" aria-hidden="true"></i>
-        </button>
-      </div>
+      ${navigation}
     </nav>
   </header>`;
 }
@@ -381,7 +388,7 @@ export function renderPortfolioPage(data) {
 	const labels = data.locale.labels;
 	const resume = data.site.resumes[data.language];
 	const body = `<body class="open-sans-font light-gray-background">
-  ${renderPortfolioHeader(data)}
+	${renderNavbar(data, "index")}
   <main>
     <section id="heroSec" class="min-height-100-vh menu-padding col-flex justify-center">
       ${image(data.images.profileImg, "width-250-px margin-vertical-10-px circle-image")}
@@ -391,12 +398,13 @@ export function renderPortfolioPage(data) {
       </div>
       <p class="content-width margin-vertical-10-px center-text">${escapeHtml(labels.common.presentationLbl)}</p>
       ${renderJobSearch(data, "content-width margin-vertical-10-px center-text bold-text")}
-      <div class="content-width margin-vertical-20-px row-col-800 justify-center">
-        <a id="resumeBtn" href="${escapeHtml(publicUrl(resume.href))}" download="${escapeHtml(resume.download)}" class="dark-button big-hover">
+      <div class="content-width margin-vertical-20-px col-flex justify-center">
+        <a id="resumeBtn" href="${escapeHtml(publicUrl(resume.href))}" download="${escapeHtml(resume.download)}" class="resume-download-button dark-button big-hover">
           <i class="bi bi-download" aria-hidden="true"></i>
           <span>&nbsp;</span>
           <span>${escapeHtml(labels.index.resumeLbl)}</span>
         </a>
+        <a id="onlineResumeBtn" href="${route(data.language, "cv")}" class="underlined-link soft-black-link margin-top-10-px">${escapeHtml(labels.index.onlineResumeLbl)}</a>
       </div>
     </section>
     <section id="skillsSec" class="min-height-100-vh menu-padding col-flex justify-center gap-40-px">
@@ -472,26 +480,12 @@ ${renderStudyRows(data)}
 }
 
 export function renderProjectsPage(data) {
-	const backRoute = route(data.language, "index");
 	const projectLabels = data.locale.labels.projects;
 	const initialResultCount = `${data.projects.length} ${data.projects.length === 1
 		? projectLabels.projectSingularLbl
 		: projectLabels.projectPluralLbl}`;
 	const body = `<body class="open-sans-font light-gray-background">
-  <header class="menu-header">
-    <nav class="menu-nav" aria-label="${escapeHtml(data.locale.labels.projects.backLbl)}">
-      <a href="${backRoute}" class="plain-link pure-white-text margin-vertical-auto">
-        ${image(data.images.logoImg, "width-40-px")}
-        <span>&nbsp;</span>
-        <span>${escapeHtml(data.site.profile.headerName)}</span>
-      </a>
-      <a href="${backRoute}" class="plain-link medium-gray-link">
-        <i class="bi bi-arrow-left-short" aria-hidden="true"></i>
-        <span>&nbsp;</span>
-        <span id="backLbl">${escapeHtml(data.locale.labels.projects.backLbl)}</span>
-      </a>
-    </nav>
-  </header>
+  ${renderNavbar(data, "projects")}
   <main>
     <section id="projectsSec" class="min-height-100-vh menu-padding gap-40-px col-flex space-evenly almost-black-background">
       <div class="content-width">
@@ -530,16 +524,14 @@ function renderCvStudies(data, type) {
 
 function renderCvProjects(data) {
 	return data.projects.filter(project => project.shown_in_cv).map(project => {
-		const video = project.video_url
-			? `\n            <a href="${escapeHtml(project.video_url)}">${escapeHtml(project.video_url)}</a>`
-			: "";
-		const source = project.source_code
-			? `\n            <a href="${escapeHtml(project.source_code)}">${escapeHtml(project.source_code)}</a>`
+		const projectUrl = project.source_code ?? project.live_demo ?? project.website_url;
+		const link = projectUrl
+			? `\n            <a href="${escapeHtml(projectUrl)}">${escapeHtml(projectUrl)}</a>`
 			: "";
 
 		return `          <article class="cv-entry">
 			<h3>${escapeHtml(project.title)}</h3>
-			<p>${escapeHtml(project.description)}</p>${video}${source}
+			<p>${escapeHtml(project.description)}</p>${link}
 		  </article>`;
 	}).join("\n");
 }
@@ -554,15 +546,8 @@ function renderCvJobPeriod(job) {
 
 export function renderCvPage(data) {
 	const labels = data.locale.labels;
-	const portfolioRoute = route(data.language, "index");
-	const skillItems = data.skillGroups.map(group => `          <li class="cv-skill-group">
-			<h3>${escapeHtml(group.label)}</h3>
-${group.categories
-		? `            <ul class="cv-skill-categories">
-			${group.categories.map(category => `              <li><strong>${escapeHtml(category.label)}:</strong> ${category.technologies.map(technology => escapeHtml(technology.name)).join(", ")}</li>`).join("\n")}
-			</ul>`
-		: `            <p>${group.technologies.map(technology => escapeHtml(technology.name)).join(", ")}</p>`}
-		  </li>`).join("\n");
+	const professionalSkills = data.skillGroups.find(group => group.id === "professionalCore");
+	const skillItems = professionalSkills.categories.map(category => `          <li><strong>${escapeHtml(category.label)}:</strong> ${category.technologies.map(technology => escapeHtml(technology.name)).join(", ")}</li>`).join("\n");
 	const jobs = data.jobs.map(job => {
 		const highlights = job.highlights
 			? `
@@ -572,7 +557,7 @@ ${group.categories
 			: "";
 		const technologies = job.technologies.length > 0
 			? `
-			<p class="cv-technologies"><strong>${escapeHtml(labels.cv.technologiesLbl)}:</strong> ${job.technologies.map(technology => escapeHtml(technology.name)).join(", ")}</p>`
+			<p class="cv-technologies">${escapeHtml(labels.cv.technologiesLbl)}: ${job.technologies.map(technology => escapeHtml(technology.name)).join(", ")}</p>`
 			: "";
 
 		return `          <article class="cv-entry cv-job">
@@ -583,22 +568,27 @@ ${group.categories
 		  </article>`;
 	}).join("\n");
 	const body = `<body class="open-sans-font cv-body">
+  ${renderNavbar(data, "cv")}
+  <div class="cv-document">
 	<div class="cv-page">
 	  <header class="cv-header">
 		<div class="cv-heading">
 		  <h1>${escapeHtml(data.site.profile.fullName)}</h1>
-		  <p>${escapeHtml(labels.common.degreesLbl)}</p>
+		  <p>${escapeHtml(labels.cv.positionLbl)}</p>
 		</div>
 		<address class="cv-contact">
-		  <a href="${portfolioRoute}">${escapeHtml(data.site.profile.website.label)}</a>
-		  <a href="${escapeHtml(data.site.profile.email.href)}">${escapeHtml(data.site.profile.email.address)}</a>
-		  <a href="${escapeHtml(data.site.profile.phone.href)}">${escapeHtml(data.site.profile.phone.label)}</a>
-		  <a href="${escapeHtml(data.site.profile.linkedin.href)}" target="_blank" rel="noreferrer">LinkedIn: ${escapeHtml(data.site.profile.linkedin.label)}</a>
-		  <a href="${escapeHtml(data.site.profile.location.href)}" target="_blank" rel="noreferrer">${escapeHtml(data.locale.profile.cvLocation)}</a>
+		  <div class="cv-contact-row">
+			<a href="${escapeHtml(data.site.profile.website.href)}">${escapeHtml(data.site.profile.website.label)}</a>
+			<a href="${escapeHtml(data.site.profile.linkedin.href)}" target="_blank" rel="noreferrer">LinkedIn: ${escapeHtml(data.site.profile.linkedin.label)}</a>
+		  </div>
+		  <div class="cv-contact-row">
+			<a href="${escapeHtml(data.site.profile.email.href)}">${escapeHtml(data.site.profile.email.address)}</a>
+			<a href="${escapeHtml(data.site.profile.phone.href)}">${escapeHtml(data.site.profile.phone.label)}</a>
+		  </div>
+		  <div class="cv-contact-row">
+			<a href="${escapeHtml(data.site.profile.location.href)}" target="_blank" rel="noreferrer">${escapeHtml(data.locale.profile.cvLocation)}</a>
+		  </div>
 		</address>
-		<div class="cv-language-selector">
-		  ${renderLanguageLinks("cv")}
-		</div>
 	  </header>
 	  <main class="cv-main">
 		<section aria-labelledby="profileLbl" class="cv-section">
@@ -606,17 +596,17 @@ ${group.categories
 		  <p>${escapeHtml(labels.common.presentationLbl)}</p>
 		  ${renderJobSearch(data, "cv-job-search")}
 		</section>
+		<section aria-labelledby="skillsLbl" class="cv-section">
+		  <h2 id="skillsLbl">${escapeHtml(labels.cv.skillsLbl)}</h2>
+		  <ul id="skillsLst" class="cv-skill-details">
+${skillItems}
+		  </ul>
+		</section>
 		<section aria-labelledby="experienceLbl" class="cv-section">
 		  <h2 id="experienceLbl">${escapeHtml(labels.cv.experienceLbl)}</h2>
 		  <div id="jobsLst" class="cv-entries">
 ${jobs}
 		  </div>
-		</section>
-		<section aria-labelledby="skillsLbl" class="cv-section">
-		  <h2 id="skillsLbl">${escapeHtml(labels.cv.skillsLbl)}</h2>
-		  <ul id="skillsLst" class="cv-skills">
-${skillItems}
-		  </ul>
 		</section>
 		<section aria-labelledby="projectsLbl" class="cv-section">
 		  <h2 id="projectsLbl">${escapeHtml(labels.cv.projectsLbl)}</h2>
@@ -647,6 +637,8 @@ ${renderCvStudies(data, "language")}
 		</section>
 	  </main>
 	</div>
+  </div>
+  ${renderFooter(data, "cv")}
 </body>`;
 
 	return renderDocument(data, "cv", body);
