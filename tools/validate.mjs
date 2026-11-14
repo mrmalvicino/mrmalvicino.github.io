@@ -195,6 +195,7 @@ function validateTranslations(site, locales, errors) {
 		images: imageIds,
 		technologies: Object.keys(site.technologies),
 		projectTypes: Object.keys(site.projectTypes),
+		participationModes: Object.keys(site.participationModes),
 		institutions: Object.keys(site.institutions),
 		menu: site.menu.map(item => item.id),
 		projects: site.projects.map(item => item.id),
@@ -267,6 +268,7 @@ function validateDomain(site, errors) {
 	const projectImageIds = new Set(Object.keys(site.images.projects_images));
 	const technologyEntityIds = new Set(Object.keys(site.technologies));
 	const projectTypeIds = new Set(Object.keys(site.projectTypes));
+	const participationModeIds = new Set(Object.keys(site.participationModes));
 	const institutionEntityIds = new Set(Object.keys(site.institutions));
 	const referencedTechnologyImageIds = new Set();
 	const referencedInstitutionImageIds = new Set();
@@ -319,6 +321,10 @@ function validateDomain(site, errors) {
 	}
 
 	for (const project of site.projects) {
+		if (!participationModeIds.has(project.participationModeId)) {
+			errors.push(`src/data/site.json: unknown project participation mode id: ${project.participationModeId}`);
+		}
+
 		for (const id of project.typeIds) {
 			if (!projectTypeIds.has(id)) {
 				errors.push(`src/data/site.json: unknown project type id: ${id}`);

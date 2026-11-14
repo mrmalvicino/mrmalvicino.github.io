@@ -183,6 +183,14 @@
     "biblioImg": {
       "title": "Biblio API",
       "alt": "Books of a library."
+    },
+    "decaucionesImg": {
+      "title": "DeCauciones",
+      "alt": "DeCauciones website landing page with the rental surety insurance quote calculator."
+    },
+    "halleyV2Img": {
+      "title": "Halley V2",
+      "alt": "Halley V2 point-of-sale billing screen with an empty item list."
     }
   },
   "technologies": {
@@ -222,6 +230,13 @@
     "desktop-app": "Desktop application",
     "research": "Research"
   },
+  "participationModes": {
+    "freelance-saas": "Freelance SaaS",
+    "freelance-one-off": "One-off freelance",
+    "employment": "Employment",
+    "independent-collaboration": "Independent collaboration",
+    "independent-development": "Independent development"
+  },
   "institutions": {
     "untref": "Universidad Nacional de Tres de Febrero",
     "utn": "Universidad Tecnológica Nacional, Facultad Regional General Pacheco",
@@ -243,7 +258,15 @@
     },
     "membriana": {
       "title": "Membriana",
-      "description": "Membership management system designed to track members and manage affiliate payments."
+      "description": "Freelance SaaS product for managing memberships, tracking members, and administering affiliate payments."
+    },
+    "decauciones": {
+      "title": "DeCauciones",
+      "description": "Static website delivered as a one-off freelance engagement to quote rental surety insurance and manage prospective customer inquiries. It includes online calculations, validated forms, responsive commercial content, and accessibility improvements."
+    },
+    "halley-v2": {
+      "title": "Halley V2",
+      "description": "Halley Accurate Solutions' enterprise product for the comprehensive management of service stations and retailers, including billing, current accounts, stock, traceability, point of sale, reports, and industry integrations."
     },
     "ecommerce-net": {
       "title": "Ecommerce Net",
@@ -411,6 +434,7 @@
     "common": {
       "sourceCodeLbl": "Code",
       "openOnlineLbl": "Open",
+      "websiteLbl": "Website",
       "degreesLbl": "JR .NET Fullstack Developer",
       "presentationLbl": "Hi! I'm Max, and I'm passionate about acoustics and programming. I graduated from the Technical Degree in Programming at UTN and I am currently studying Sound Engineering at Untref. I have experience developing .NET systems with layered client-server architecture, using Razor MVC Views with Bootstrap on the frontend, and Entity Framework with SQL Server on the backend."
     },

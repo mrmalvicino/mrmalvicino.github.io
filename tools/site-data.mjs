@@ -68,6 +68,13 @@ export async function loadSiteData(root, language) {
 			name: requireValue(locale.projectTypes, id, "projectTypes")
 		}
 	]));
+	const participationModes = Object.fromEntries(Object.keys(site.participationModes).map(id => [
+		id,
+		{
+			id,
+			name: requireValue(locale.participationModes, id, "participationModes")
+		}
+	]));
 
 	const institutions = Object.fromEntries(Object.entries(site.institutions).map(([id, institution]) => [
 		id,
@@ -86,6 +93,7 @@ export async function loadSiteData(root, language) {
 		images,
 		technologies,
 		projectTypes,
+		participationModes,
 		institutions,
 		menuItems: sortByOrder(site.menu).map(item => ({
 			...item,
@@ -94,6 +102,7 @@ export async function loadSiteData(root, language) {
 		projects: sortByOrder(site.projects).map(project => ({
 			...project,
 			...requireValue(locale.projects, project.id, "projects"),
+			participationMode: requireValue(participationModes, project.participationModeId, "participationModes"),
 			types: project.typeIds.map(id => requireValue(projectTypes, id, "projectTypes")),
 			technologies: project.technologyIds.map(id => requireValue(technologies, id, "technologies"))
 		})),

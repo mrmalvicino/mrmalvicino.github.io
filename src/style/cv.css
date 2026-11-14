@@ -9,6 +9,12 @@
     width: var(--body-width);
     height: var(--body-height);
     margin: auto;
+    font-size: 0.9rem;
+}
+
+.cv-body p,
+.cv-body a {
+    font-size: 0.9rem;
 }
 
 .cv-header {

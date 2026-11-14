@@ -10,6 +10,7 @@
     "menu",
     "images",
     "projectTypes",
+    "participationModes",
     "technologies",
     "institutions",
     "projects",
@@ -107,6 +108,7 @@
       }
     },
     "projectTypes": { "$ref": "#/$defs/idCatalog" },
+    "participationModes": { "$ref": "#/$defs/idCatalog" },
     "technologies": { "$ref": "#/$defs/resourceCatalog" },
     "institutions": { "$ref": "#/$defs/resourceCatalog" },
     "projects": {
@@ -119,6 +121,7 @@
           "id",
           "order",
           "typeIds",
+          "participationModeId",
           "technologyIds",
           "source_code",
           "live_demo",
@@ -136,14 +139,16 @@
             "uniqueItems": true,
             "items": { "$ref": "common.schema.json#/$defs/domainId" }
           },
+          "participationModeId": { "$ref": "common.schema.json#/$defs/domainId" },
           "technologyIds": {
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
             "items": { "$ref": "common.schema.json#/$defs/domainId" }
           },
-          "source_code": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+          "source_code": { "$ref": "common.schema.json#/$defs/nullableString" },
           "live_demo": { "$ref": "common.schema.json#/$defs/nullableString" },
+          "website_url": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
           "video_url": { "$ref": "common.schema.json#/$defs/nullableString" },
           "mockup_id": {
             "anyOf": [

@@ -31,8 +31,9 @@ Stable domain IDs use language-independent `kebab-case`; existing control IDs re
 
 | Collection | Relationships |
 | --- | --- |
-| `projects` | `typeIds` references project types; `technologyIds` references technologies; `mockup_id` references project images |
+| `projects` | `typeIds` references project types; `participationModeId` references a participation mode; `technologyIds` references technologies; `mockup_id` references project images; `live_demo` links to an interactive demo and `website_url` to an official website |
 | `projectTypes` | Stable project classifications translated by the locale catalogs |
+| `participationModes` | Stable development or participation modes translated by the locale catalogs |
 | `technologies` | `imageId` references a technology image |
 | `studies` | `institutionId` references an institution |
 | `institutions` | `imageId` references an institution image |
@@ -52,6 +53,16 @@ Every project must have at least one `typeIds` entry. Use the classifications co
 | `research` | Research plans or studies whose primary purpose is producing or evaluating knowledge |
 
 Assign multiple types when more than one criterion describes a project's primary purpose. Project order is controlled exclusively by the unique positive `order` property, not by array position.
+
+Every project also has one participation mode, independent from its type and technologies:
+
+| Mode | Classification criterion |
+| --- | --- |
+| `freelance-saas` | Independent products developed and operated as software as a service |
+| `freelance-one-off` | One-time client engagements delivered as a defined project |
+| `employment` | Products developed as part of an employer's team |
+| `independent-collaboration` | Projects developed with third parties outside employment |
+| `independent-development` | Personal projects developed independently |
 
 To change professional content, edit only `src/data/site.json`, `src/data/es.json`, or `src/data/en.json`, then run the build. Do not edit generated HTML in `dist/`.
 

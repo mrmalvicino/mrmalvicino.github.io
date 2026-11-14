@@ -68,6 +68,8 @@ test("build creates localized HTML without runtime content data", async () => {
 			stat(path.join(output, "style/projects.css")),
 			stat(path.join(output, "assets/images/logo.png")),
 			stat(path.join(output, "assets/images/projects/biblio-api.jpeg")),
+			stat(path.join(output, "assets/images/projects/decauciones.webp")),
+			stat(path.join(output, "assets/images/projects/halley-v2.webp")),
 			stat(path.join(output, "assets/images/technologies/angular.png")),
 			stat(path.join(output, "assets/images/technologies/razor.svg")),
 			stat(path.join(output, "assets/images/technologies/react.svg")),
@@ -93,27 +95,42 @@ test("build creates localized HTML without runtime content data", async () => {
 		assert.match(html.get("en/cv/index.html"), /Frequent professional use/);
 		assert.match(html.get("es/cv/index.html"), /Desarrollador de Software Junior/);
 		assert.match(html.get("es/cv/index.html"), /agosto de 2025 - noviembre de 2026/);
+		assert.match(html.get("es/cv/index.html"), /agosto de 2024 - diciembre de 2025/);
+		assert.match(html.get("es/cv/index.html"), /agosto de 2019 - julio de 2023/);
+		assert.match(html.get("es/cv/index.html"), /marzo de 2014 - diciembre de 2017/);
+		assert.doesNotMatch(html.get("es/cv/index.html"), /Actualidad/);
 		assert.match(html.get("en/cv/index.html"), /Junior Software Developer/);
 		assert.match(html.get("en/cv/index.html"), /VB \.NET \| C# \| Microsoft \.NET \| WinForms \| MySQL \| SAP Crystal Reports/);
 		assert.match(html.get("en/cv/index.html"), /migrating 637 calls across approximately 250 files/);
+		assert.doesNotMatch(html.get("en/index.html"), /My contributions as an employee/);
+		assert.doesNotMatch(html.get("es/index.html"), /Mi participación como empleado/);
 		assert.match(html.get("en/cv/index.html"), /General Pacheco, Buenos Aires, Argentina/);
 		assert.match(html.get("es/index.html"), /maps\/search\/\?api=1&amp;query=General%20Pacheco%2C%20Buenos%20Aires%2C%20Argentina/);
 		assert.match(html.get("es/index.html"), /href="\/assets\/pdf\/tup-certificate\.pdf"[\s\S]*bi bi-award/);
 		assert.match(html.get("es/index.html"), /Tecnicatura Universitaria en Programación \(12 de diciembre de 2024\)/);
 		assert.match(html.get("en/cv/index.html"), /Technical Degree in Programming \(December 12, 2024\)/);
 		assert.doesNotMatch([...html.values()].join("\n"), /Caseros|Título en trámite/);
-		assert.doesNotMatch(html.get("en/index.html"), /Crystal Reports|Docker|Doxygen|GitFlow|Worked with|JSTL library|MongoDB/);
+		assert.doesNotMatch(html.get("en/index.html"), /Docker|Doxygen|GitFlow|Worked with|JSTL library|MongoDB/);
 		assert.equal((html.get("es/index.html").match(/class="project-card"/g) ?? []).length, 3);
-		assert.equal((html.get("en/projects/index.html").match(/class="project-card"/g) ?? []).length, 23);
-		assert.equal((html.get("en/projects/index.html").match(/name="tech"/g) ?? []).length, 17);
+		assert.match(html.get("es/index.html"), /Membriana[\s\S]*DeCauciones[\s\S]*Halley V2/);
+		assert.match(html.get("es/index.html"), /data-project-id="membriana"[\s\S]*data-participation-mode="freelance-saas"/);
+		assert.match(html.get("es/index.html"), /data-project-id="decauciones"[\s\S]*data-participation-mode="freelance-one-off"/);
+		assert.match(html.get("es/index.html"), /data-project-id="halley-v2"[\s\S]*data-participation-mode="employment"/);
+		assert.equal((html.get("en/projects/index.html").match(/class="project-card"/g) ?? []).length, 25);
+		assert.equal((html.get("en/projects/index.html").match(/name="tech"/g) ?? []).length, 20);
 		assert.equal((html.get("en/projects/index.html").match(/name="type"/g) ?? []).length, 5);
 		assert.match(html.get("en/projects/index.html"), /data-technologies="dotnet csharp html css javascript mssql git"/);
 		assert.match(html.get("en/projects/index.html"), /<script src="\/script\/project-filters\.js"><\/script>/);
-		assert.equal((html.get("es/cv/index.html").match(/id="projectsLst"[\s\S]*?<\/ul>/)?.[0].match(/<li /g) ?? []).length, 3);
+		assert.equal((html.get("es/cv/index.html").match(/id="projectsLst"[\s\S]*?<\/ul>/)?.[0].match(/<li /g) ?? []).length, 2);
+		assert.match(html.get("es/cv/index.html"), /Membriana[\s\S]*DeCauciones/);
+		assert.doesNotMatch(html.get("es/cv/index.html"), /Meeni ERP|Ecommerce Net|Halley V2/);
 		assert.match(html.get("en/projects/index.html"), /href="\/en\/"/);
 		assert.match(html.get("en/cv/index.html"), /href="\/es\/cv\/"/);
 		assert.match(html.get("es/index.html"), /src="\/assets\/images\/logo\.png"/);
 		assert.match(html.get("en/projects/index.html"), /src="\/assets\/images\/projects\/biblio-api\.jpeg"/);
+		assert.match(html.get("en/index.html"), /src="\/assets\/images\/projects\/decauciones\.webp"/);
+		assert.match(html.get("en/index.html"), /src="\/assets\/images\/projects\/halley-v2\.webp"/);
+		assert.match(html.get("en/index.html"), /href="https:\/\/v2\.sistemahalley\.com\.ar"[\s\S]*bi bi-globe2[\s\S]*Website/);
 		assert.match(html.get("en/projects/index.html"), /src="\/assets\/images\/technologies\/react\.svg"/);
 		assert.match(rootHtml, /window\.location\.replace\(browserLanguage\?\.toLowerCase\(\)\.startsWith\("es"\) \? "\/es\/" : "\/en\/"\)/);
 		assert.doesNotMatch(rootHtml, /\?lang=|project-card|legacy-language\.js/);

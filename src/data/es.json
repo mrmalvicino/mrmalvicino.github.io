@@ -183,6 +183,14 @@
     "biblioImg": {
       "title": "Biblio API",
       "alt": "Libros en una biblioteca."
+    },
+    "decaucionesImg": {
+      "title": "DeCauciones",
+      "alt": "Portada del sitio de DeCauciones con el cotizador de seguros de caución para alquiler."
+    },
+    "halleyV2Img": {
+      "title": "Halley V2",
+      "alt": "Facturador del punto de venta de Halley V2 con la lista de ítems vacía."
     }
   },
   "technologies": {
@@ -222,6 +230,13 @@
     "desktop-app": "Aplicación de escritorio",
     "research": "Investigación"
   },
+  "participationModes": {
+    "freelance-saas": "Freelance SaaS",
+    "freelance-one-off": "Freelance puntual",
+    "employment": "Relación de dependencia",
+    "independent-collaboration": "Colaboración independiente",
+    "independent-development": "Desarrollo independiente"
+  },
   "institutions": {
     "untref": "Universidad Nacional de Tres de Febrero",
     "utn": "Universidad Tecnológica Nacional, Facultad Regional General Pacheco",
@@ -243,7 +258,15 @@
     },
     "membriana": {
       "title": "Membriana",
-      "description": "Sistema de gestión de membresías diseñado para realizar el seguimiento de los miembros y administrar pagos de afiliados."
+      "description": "Producto SaaS freelance para gestionar membresías, realizar el seguimiento de miembros y administrar pagos de afiliados."
+    },
+    "decauciones": {
+      "title": "DeCauciones",
+      "description": "Sitio web estático desarrollado como trabajo freelance puntual para cotizar seguros de caución de alquiler y gestionar consultas de potenciales clientes. Incluye cálculo en línea, formularios validados, contenido comercial responsivo y mejoras de accesibilidad."
+    },
+    "halley-v2": {
+      "title": "Halley V2",
+      "description": "Producto empresarial de Halley Accurate Solutions para la gestión integral de estaciones de servicio y comercios, con facturación, cuentas corrientes, stock, trazabilidad, punto de venta, reportes e integraciones del rubro."
     },
     "ecommerce-net": {
       "title": "Ecommerce Net",
@@ -411,6 +434,7 @@
     "common": {
       "sourceCodeLbl": "Código",
       "openOnlineLbl": "Abrir",
+      "websiteLbl": "Sitio web",
       "degreesLbl": "Desarrollador Fullstack .NET JR",
       "presentationLbl": "¡Hola! Soy Maxi, y me apasiona la acústica y la programación. Soy graduado de la Tecnicatura Universitaria en Programación de la UTN y estudiante de Ingeniería de Sonido en la Untref. Tengo experiencia desarrollando sistemas .NET con arquitectura cliente-servidor en capas, utilizando Razor MVC Views con Bootstrap en el frontend, y Entity Framework con SQL Server en el backend."
     },

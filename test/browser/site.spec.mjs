@@ -5,21 +5,24 @@ const languages = {
 		indexTitle: "Habilidades",
 		projectsTitle: "Todos mis proyectos",
 		filtersTitle: "Filtrar proyectos",
-		resultCount: "23 proyectos",
+		resultCount: "25 proyectos",
 		cvTitle: "< Habilidades />",
-		resume: "malvicino-es.pdf"
+		resume: "malvicino-es.pdf",
+		website: "Sitio web"
 	},
 	en: {
 		indexTitle: "Skills",
 		projectsTitle: "All My Projects",
 		filtersTitle: "Filter projects",
-		resultCount: "23 projects",
+		resultCount: "25 projects",
 		cvTitle: "< Skills />",
-		resume: "malvicino-en.pdf"
+		resume: "malvicino-en.pdf",
+		website: "Website"
 	}
 };
 
-const featuredProjects = ["Meeni ERP", "Membriana", "Ecommerce Net"];
+const featuredProjects = ["Membriana", "DeCauciones", "Halley V2"];
+const freelanceProjects = ["Membriana", "DeCauciones"];
 
 for (const [language, labels] of Object.entries(languages)) {
 	test.describe(`${language.toUpperCase()} content`, () => {
@@ -63,23 +66,30 @@ for (const [language, labels] of Object.entries(languages)) {
 		});
 
 		test("project catalog contains every project and media variant", async ({ page }) => {
-			await openRenderedPage(page, `/${language}/projects/`, "#projectsDiv > .project-card", 23);
+			await openRenderedPage(page, `/${language}/projects/`, "#projectsDiv > .project-card", 25);
 
 			await expect(page.locator("html")).toHaveAttribute("lang", language);
 			await expect(page.locator("#projectsLbl")).toHaveText(labels.projectsTitle);
 			await expect(page.locator("#filtersLbl")).toHaveText(labels.filtersTitle);
 			await expect(page.locator("#projectResultCount")).toHaveText(labels.resultCount);
-			await expect(page.locator('input[name="tech"]')).toHaveCount(17);
+			await expect(page.locator('input[name="tech"]')).toHaveCount(20);
 			await expect(page.locator('input[name="type"]')).toHaveCount(5);
 			await expect(page.locator(".project-card .project-top-div > iframe")).toHaveCount(3);
-			await expect(page.locator(".project-card .project-top-div > img:not([alt*='Progress']):not([alt*='proceso'])")).toHaveCount(16);
+			await expect(page.locator(".project-card .project-top-div > img:not([alt*='Progress']):not([alt*='proceso'])")).toHaveCount(18);
 			await expect(page.locator(".project-card .project-top-div > img[title='WIP']")).toHaveCount(4);
 			await expect(page.locator(".project-card a:has(.bi-code-slash)")).toHaveCount(23);
-			await expect(page.locator(".project-card a:has(.bi-eye)")).toHaveCount(2);
+			await expect(page.locator(".project-card a:has(.bi-eye)")).toHaveCount(3);
+			await expect(page.locator(".project-card a:has(.bi-globe2)")).toHaveCount(1);
+			await expect(page.locator('[data-project-id="decauciones"]')).toHaveAttribute("data-participation-mode", "freelance-one-off");
+			await expect(page.locator('[data-project-id="decauciones"] .project-top-div > img')).toHaveAttribute("src", "/assets/images/projects/decauciones.webp");
+			await expect(page.locator('[data-project-id="halley-v2"] .project-top-div > img')).toHaveAttribute("src", "/assets/images/projects/halley-v2.webp");
+			await expect(page.locator('[data-project-id="halley-v2"] a:has(.bi-code-slash)')).toHaveCount(0);
+			await expect(page.locator('[data-project-id="halley-v2"] a:has(.bi-eye)')).toHaveCount(0);
+			await expect(page.locator('[data-project-id="halley-v2"] a:has(.bi-globe2)')).toHaveText(labels.website);
 		});
 
 		test("resume contains the selected professional content", async ({ page }) => {
-			await openRenderedPage(page, `/${language}/cv/`, "#projectsLst > li", 3);
+			await openRenderedPage(page, `/${language}/cv/`, "#projectsLst > li", 2);
 
 			await expect(page.locator("html")).toHaveAttribute("lang", language);
 			await expect(page.locator("#skillsLbl")).toHaveText(labels.cvTitle);
@@ -87,7 +97,7 @@ for (const [language, labels] of Object.entries(languages)) {
 			await expect(page.locator("#careersLst > li")).toHaveCount(2);
 			await expect(page.locator("#coursesLst > li")).toHaveCount(3);
 			await expect(page.locator("#languagesLst > li")).toHaveCount(3);
-			await expect(page.locator("#projectsLst > li > h4")).toHaveText(featuredProjects);
+			await expect(page.locator("#projectsLst > li > h4")).toHaveText(freelanceProjects);
 			await expect(page.locator("#jobsLst > li")).toHaveCount(4);
 			await expect(page.locator("#jobsLst > li").first()).toContainText("Halley Accurate Solutions");
 
@@ -103,7 +113,7 @@ for (const [language, labels] of Object.entries(languages)) {
 			await openRenderedPage(page, `/${language}/`, "#projectsDiv > .project-card", 3);
 			await page.locator("#allProjectsLbl").click();
 			await expect(page).toHaveURL(new RegExp(`/${language}/projects/$`));
-			await expect(page.locator("#projectsDiv > .project-card")).toHaveCount(23);
+			await expect(page.locator("#projectsDiv > .project-card")).toHaveCount(25);
 
 			await page.locator("#backLbl").click();
 			await expect(page).toHaveURL(new RegExp(`/${language}/$`));
@@ -114,7 +124,7 @@ for (const [language, labels] of Object.entries(languages)) {
 
 test.describe("project filters", () => {
 	test("combine OR selections within categories and AND between categories", async ({ page }) => {
-		await openRenderedPage(page, "/en/projects/", "#projectsDiv > .project-card", 23);
+		await openRenderedPage(page, "/en/projects/", "#projectsDiv > .project-card", 25);
 
 		await page.locator('input[name="tech"][value="python"]').check();
 		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(4);
@@ -137,7 +147,7 @@ test.describe("project filters", () => {
 			page,
 			"/es/projects/?tech=python,cpp&type=desktop-app,research",
 			"#projectsDiv > .project-card",
-			23
+			25
 		);
 
 		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(8);
@@ -156,7 +166,7 @@ test.describe("project filters", () => {
 	});
 
 	test("show an empty state and clear all filters", async ({ page }) => {
-		await openRenderedPage(page, "/en/projects/", "#projectsDiv > .project-card", 23);
+		await openRenderedPage(page, "/en/projects/", "#projectsDiv > .project-card", 25);
 
 		await page.locator('input[name="tech"][value="dotnet"]').check();
 		await page.locator('input[name="type"][value="notes"]').check();
@@ -165,13 +175,13 @@ test.describe("project filters", () => {
 		await expect(page.locator("#projectResultCount")).toHaveText("0 projects");
 
 		await page.locator("#projectEmptyState [data-clear-filters]").click();
-		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(23);
+		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(25);
 		await expect(page.locator("#projectEmptyState")).toBeHidden();
 		await expect(page).toHaveURL(/\/en\/projects\/$/);
 	});
 
 	test("filters can be operated with the keyboard", async ({ page }) => {
-		await openRenderedPage(page, "/en/projects/", "#projectsDiv > .project-card", 23);
+		await openRenderedPage(page, "/en/projects/", "#projectsDiv > .project-card", 25);
 		const pythonFilter = page.locator('input[name="tech"][value="python"]');
 
 		await pythonFilter.focus();
@@ -247,14 +257,14 @@ test("mobile menu opens and closes without leaving the page blocked", async ({ p
 
 test("project cards preserve icon contrast and fit narrow screens", async ({ page }) => {
 	await page.setViewportSize({ width: 320, height: 800 });
-	await openRenderedPage(page, "/en/projects/", "#projectsDiv > .project-card", 23);
+	await openRenderedPage(page, "/en/projects/", "#projectsDiv > .project-card", 25);
 
 	const firstCard = page.locator("#projectsDiv > .project-card").first();
 	const technologies = firstCard.locator(".project-technology");
 	const technologyIcons = technologies.locator(".project-technology-icon");
 
-	await expect(technologies).toHaveCount(7);
-	await expect(technologyIcons).toHaveCount(7);
+	await expect(technologies).toHaveCount(6);
+	await expect(technologyIcons).toHaveCount(6);
 	await expect(technologies.first()).toHaveCSS("background-color", "rgb(250, 250, 250)");
 	await expect(technologyIcons.first()).toHaveCSS("width", "30px");
 	await expect(technologyIcons.first()).toHaveAttribute("alt", /.+/);
@@ -316,7 +326,7 @@ test.describe("without JavaScript", () => {
 		await expect(page.locator("#projectsDiv > .project-card")).toHaveCount(3);
 		await page.locator("#allProjectsLbl").click();
 		await expect(page).toHaveURL(/\/en\/projects\/$/);
-		await expect(page.locator("#projectsDiv > .project-card")).toHaveCount(23);
+		await expect(page.locator("#projectsDiv > .project-card")).toHaveCount(25);
 		await expect(page.locator("#projectFilters")).toBeHidden();
 	});
 });

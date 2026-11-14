@@ -2,8 +2,8 @@ import { expect, openRenderedPage, stabilizeVisualPage, test } from "./portfolio
 
 const pages = [
 	{ name: "index", path: "", readySelector: "#projectsDiv > .project-card", expectedCount: 3 },
-	{ name: "projects", path: "projects/", readySelector: "#projectsDiv > .project-card", expectedCount: 23 },
-	{ name: "cv", path: "cv/", readySelector: "#projectsLst > li", expectedCount: 3 }
+	{ name: "projects", path: "projects/", readySelector: "#projectsDiv > .project-card", expectedCount: 25 },
+	{ name: "cv", path: "cv/", readySelector: "#projectsLst > li", expectedCount: 2 }
 ];
 
 const viewports = [

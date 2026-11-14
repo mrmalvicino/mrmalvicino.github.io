@@ -162,7 +162,7 @@
         "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/windows8/windows8-original.svg"
       },
       "sapCrystalReportsImg": {
-        "src": "https://upload.wikimedia.org/wikipedia/en/4/47/Crystal_Reports_Logo.png"
+        "src": "https://www.vectorlogo.zone/logos/sap/sap-icon.svg"
       },
       "razorImg": {
         "src": "./assets/images/technologies/razor.svg"
@@ -248,6 +248,12 @@
       },
       "biblioImg": {
         "src": "./assets/images/projects/biblio-api.jpeg"
+      },
+      "decaucionesImg": {
+        "src": "./assets/images/projects/decauciones.webp"
+      },
+      "halleyV2Img": {
+        "src": "./assets/images/projects/halley-v2.webp"
       }
     }
   },
@@ -257,6 +263,13 @@
     "static-site": {},
     "desktop-app": {},
     "research": {}
+  },
+  "participationModes": {
+    "freelance-saas": {},
+    "freelance-one-off": {},
+    "employment": {},
+    "independent-collaboration": {},
+    "independent-development": {}
   },
   "technologies": {
     "cpp": {
@@ -363,33 +376,12 @@
   },
   "projects": [
     {
-      "id": "meeni-erp",
+      "id": "membriana",
       "order": 1,
       "typeIds": [
         "web-app"
       ],
-      "source_code": "https://github.com/mrmalvicino/meeni-erp",
-      "live_demo": null,
-      "video_url": null,
-      "mockup_id": null,
-      "shown_in_portfolio": true,
-      "shown_in_cv": true,
-      "technologyIds": [
-        "dotnet",
-        "csharp",
-        "html",
-        "css",
-        "javascript",
-        "mssql",
-        "git"
-      ]
-    },
-    {
-      "id": "membriana",
-      "order": 2,
-      "typeIds": [
-        "web-app"
-      ],
+      "participationModeId": "freelance-saas",
       "source_code": "https://github.com/mrmalvicino/membriana",
       "live_demo": null,
       "video_url": null,
@@ -406,17 +398,84 @@
       ]
     },
     {
-      "id": "ecommerce-net",
+      "id": "decauciones",
+      "order": 2,
+      "typeIds": [
+        "static-site"
+      ],
+      "participationModeId": "freelance-one-off",
+      "source_code": null,
+      "live_demo": "https://decauciones.com",
+      "video_url": null,
+      "mockup_id": "decaucionesImg",
+      "shown_in_portfolio": true,
+      "shown_in_cv": true,
+      "technologyIds": [
+        "html",
+        "css",
+        "javascript",
+        "git"
+      ]
+    },
+    {
+      "id": "halley-v2",
       "order": 3,
+      "typeIds": [
+        "desktop-app"
+      ],
+      "participationModeId": "employment",
+      "source_code": null,
+      "live_demo": null,
+      "website_url": "https://v2.sistemahalley.com.ar",
+      "video_url": null,
+      "mockup_id": "halleyV2Img",
+      "shown_in_portfolio": true,
+      "shown_in_cv": false,
+      "technologyIds": [
+        "vbnet",
+        "dotnet",
+        "csharp",
+        "windows-forms",
+        "mysql",
+        "sap-crystal-reports"
+      ]
+    },
+    {
+      "id": "meeni-erp",
+      "order": 4,
       "typeIds": [
         "web-app"
       ],
+      "participationModeId": "independent-development",
+      "source_code": "https://github.com/mrmalvicino/meeni-erp",
+      "live_demo": null,
+      "video_url": null,
+      "mockup_id": null,
+      "shown_in_portfolio": false,
+      "shown_in_cv": false,
+      "technologyIds": [
+        "dotnet",
+        "csharp",
+        "html",
+        "css",
+        "javascript",
+        "mssql",
+        "git"
+      ]
+    },
+    {
+      "id": "ecommerce-net",
+      "order": 5,
+      "typeIds": [
+        "web-app"
+      ],
+      "participationModeId": "independent-development",
       "source_code": "https://github.com/mrmalvicino/ecommerce-net",
       "live_demo": null,
       "video_url": "https://www.youtube-nocookie.com/embed/H7AISursM2M",
       "mockup_id": null,
-      "shown_in_portfolio": true,
-      "shown_in_cv": true,
+      "shown_in_portfolio": false,
+      "shown_in_cv": false,
       "technologyIds": [
         "dotnet",
         "csharp",
@@ -428,10 +487,11 @@
     },
     {
       "id": "bancar",
-      "order": 4,
+      "order": 6,
       "typeIds": [
         "web-app"
       ],
+      "participationModeId": "independent-development",
       "source_code": "https://github.com/mrmalvicino/bancar",
       "live_demo": null,
       "video_url": "https://www.youtube-nocookie.com/embed/D8P1URMdCHU",
@@ -448,10 +508,11 @@
     },
     {
       "id": "link-tree",
-      "order": 5,
+      "order": 7,
       "typeIds": [
         "static-site"
       ],
+      "participationModeId": "independent-development",
       "source_code": "https://github.com/mrmalvicino/link-tree",
       "live_demo": "https://mrmalvicino.com/link-tree",
       "video_url": null,
@@ -467,10 +528,11 @@
     },
     {
       "id": "portfolio",
-      "order": 6,
+      "order": 8,
       "typeIds": [
         "static-site"
       ],
+      "participationModeId": "independent-development",
       "source_code": "https://github.com/mrmalvicino/mrmalvicino.github.io",
       "live_demo": "https://mrmalvicino.com",
       "video_url": null,
@@ -486,10 +548,11 @@
     },
     {
       "id": "biblio-api",
-      "order": 7,
+      "order": 9,
       "typeIds": [
         "web-app"
       ],
+      "participationModeId": "independent-development",
       "source_code": "https://github.com/mrmalvicino/biblio-api",
       "live_demo": null,
       "video_url": null,
@@ -504,10 +567,11 @@
     },
     {
       "id": "dsp-package",
-      "order": 8,
+      "order": 10,
       "typeIds": [
         "desktop-app"
       ],
+      "participationModeId": "independent-development",
       "source_code": "https://github.com/mrmalvicino/dsp-package",
       "live_demo": null,
       "video_url": null,
@@ -521,10 +585,11 @@
     },
     {
       "id": "stus-calculator",
-      "order": 9,
+      "order": 11,
       "typeIds": [
         "desktop-app"
       ],
+      "participationModeId": "independent-development",
       "source_code": "https://github.com/mrmalvicino/stus-calculator",
       "live_demo": null,
       "video_url": null,
@@ -538,10 +603,11 @@
     },
     {
       "id": "anc-research-plan",
-      "order": 10,
+      "order": 12,
       "typeIds": [
         "research"
       ],
+      "participationModeId": "independent-development",
       "source_code": "https://github.com/mrmalvicino/anc-research-plan",
       "live_demo": null,
       "video_url": null,
@@ -555,10 +621,11 @@
     },
     {
       "id": "dugun-auto-clicker",
-      "order": 11,
+      "order": 13,
       "typeIds": [
         "desktop-app"
       ],
+      "participationModeId": "independent-development",
       "source_code": "https://github.com/mrmalvicino/dugun-auto-clicker",
       "live_demo": null,
       "video_url": null,
@@ -572,10 +639,11 @@
     },
     {
       "id": "binary-calculator",
-      "order": 12,
+      "order": 14,
       "typeIds": [
         "desktop-app"
       ],
+      "participationModeId": "independent-development",
       "source_code": "https://github.com/mrmalvicino/binary-calculator",
       "live_demo": null,
       "video_url": null,
@@ -589,10 +657,11 @@
     },
     {
       "id": "baluma-erp",
-      "order": 13,
+      "order": 15,
       "typeIds": [
         "desktop-app"
       ],
+      "participationModeId": "independent-development",
       "source_code": "https://github.com/mrmalvicino/baluma-erp",
       "live_demo": null,
       "video_url": null,
@@ -606,10 +675,11 @@
     },
     {
       "id": "irwins-revenge",
-      "order": 14,
+      "order": 16,
       "typeIds": [
         "desktop-app"
       ],
+      "participationModeId": "independent-development",
       "source_code": "https://github.com/mrmalvicino/irwins-revenge",
       "live_demo": null,
       "video_url": null,
@@ -623,10 +693,11 @@
     },
     {
       "id": "arduino-led-controller",
-      "order": 15,
+      "order": 17,
       "typeIds": [
         "desktop-app"
       ],
+      "participationModeId": "independent-development",
       "source_code": "https://github.com/mrmalvicino/arduino",
       "live_demo": null,
       "video_url": null,
@@ -640,10 +711,11 @@
     },
     {
       "id": "dsp-notes",
-      "order": 16,
+      "order": 18,
       "typeIds": [
         "notes"
       ],
+      "participationModeId": "independent-development",
       "source_code": "https://github.com/mrmalvicino/dsp-notes",
       "live_demo": null,
       "video_url": null,
@@ -657,10 +729,11 @@
     },
     {
       "id": "acoustics-notes",
-      "order": 17,
+      "order": 19,
       "typeIds": [
         "notes"
       ],
+      "participationModeId": "independent-development",
       "source_code": "https://github.com/mrmalvicino/acoustics-notes",
       "live_demo": null,
       "video_url": null,
@@ -674,10 +747,11 @@
     },
     {
       "id": "electronics-notes",
-      "order": 18,
+      "order": 20,
       "typeIds": [
         "notes"
       ],
+      "participationModeId": "independent-development",
       "source_code": "https://github.com/mrmalvicino/electronics-notes",
       "live_demo": null,
       "video_url": null,
@@ -691,10 +765,11 @@
     },
     {
       "id": "math-notes",
-      "order": 19,
+      "order": 21,
       "typeIds": [
         "notes"
       ],
+      "participationModeId": "independent-development",
       "source_code": "https://github.com/mrmalvicino/math-notes",
       "live_demo": null,
       "video_url": null,
@@ -708,10 +783,11 @@
     },
     {
       "id": "physics-book",
-      "order": 20,
+      "order": 22,
       "typeIds": [
         "notes"
       ],
+      "participationModeId": "independent-development",
       "source_code": "https://github.com/mrmalvicino/physics-book",
       "live_demo": null,
       "video_url": null,
@@ -725,10 +801,11 @@
     },
     {
       "id": "physics-1-exercises",
-      "order": 21,
+      "order": 23,
       "typeIds": [
         "notes"
       ],
+      "participationModeId": "independent-collaboration",
       "source_code": "https://github.com/RosarioEs/guias_fisica_1",
       "live_demo": null,
       "video_url": "https://www.youtube-nocookie.com/embed/2pfTixTPAOM",
@@ -742,10 +819,11 @@
     },
     {
       "id": "physics-1-solved",
-      "order": 22,
+      "order": 24,
       "typeIds": [
         "notes"
       ],
+      "participationModeId": "independent-development",
       "source_code": "https://www.overleaf.com/read/xpxqmxnstrjv#b007e9",
       "live_demo": null,
       "video_url": null,
@@ -759,10 +837,11 @@
     },
     {
       "id": "physics-2-demonstrations",
-      "order": 23,
+      "order": 25,
       "typeIds": [
         "notes"
       ],
+      "participationModeId": "independent-development",
       "source_code": "https://www.overleaf.com/read/xctdtdcmzzdw#407aad",
       "live_demo": null,
       "video_url": null,
@@ -991,7 +1070,7 @@
       "id": "programming-2-teaching-assistant-utn",
       "order": 2,
       "start_date": "2024-08",
-      "end_date": null
+      "end_date": "2025-12"
     },
     {
       "id": "physics-1-teaching-assistant-untref",
@@ -1019,6 +1098,7 @@
       "common": [
         "sourceCodeLbl",
         "openOnlineLbl",
+        "websiteLbl",
         "degreesLbl",
         "presentationLbl"
       ],

@@ -200,9 +200,14 @@ function renderProjectCard(data, project) {
             <i class="bi bi-eye" style="margin-right: 5px" aria-hidden="true"></i>
             <span>${escapeHtml(data.locale.labels.common.openOnlineLbl)}</span>
           </a>` : "";
+	const websiteButton = project.website_url ? `          <a href="${escapeHtml(project.website_url)}" class="transparent-button">
+            <i class="bi bi-globe2" style="margin-right: 5px" aria-hidden="true"></i>
+            <span>${escapeHtml(data.locale.labels.common.websiteLbl)}</span>
+          </a>` : "";
 
 	return `      <article class="project-card" data-project-id="${escapeHtml(project.id)}"
-        data-technologies="${escapeHtml(project.technologyIds.join(" "))}" data-types="${escapeHtml(project.typeIds.join(" "))}">
+		data-technologies="${escapeHtml(project.technologyIds.join(" "))}" data-types="${escapeHtml(project.typeIds.join(" "))}"
+		data-participation-mode="${escapeHtml(project.participationMode.id)}">
         <div class="project-top-div">
           ${renderProjectMedia(data, project)}
         </div>
@@ -219,6 +224,7 @@ ${technologyItems}
           <div class="project-actions">
 ${sourceButton}
 ${demoButton}
+${websiteButton}
           </div>
         </div>
       </article>`;
