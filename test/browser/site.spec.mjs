@@ -8,7 +8,9 @@ const languages = {
 		filtersTitle: "Filtros",
 		contributionsTitle: "Contribución",
 		resultCount: "25 proyectos",
-		cvTitle: "< Habilidades />",
+		cvTitle: "Habilidades técnicas",
+		cvProfileTitle: "Perfil profesional",
+		cvExperienceTitle: "Experiencia laboral",
 		resume: "malvicino-es.pdf",
 		website: "Sitio web"
 	},
@@ -19,7 +21,9 @@ const languages = {
 		filtersTitle: "Filters",
 		contributionsTitle: "Contribution",
 		resultCount: "25 projects",
-		cvTitle: "< Skills />",
+		cvTitle: "Technical Skills",
+		cvProfileTitle: "Professional Profile",
+		cvExperienceTitle: "Work Experience",
 		resume: "malvicino-en.pdf",
 		website: "Website"
 	}
@@ -95,26 +99,28 @@ for (const [language, labels] of Object.entries(languages)) {
 			await expect(page.locator('[data-project-id="halley-v2"] a:has(.bi-globe2)')).toHaveText(labels.website);
 		});
 
-		test("resume contains the selected professional content", async ({ page }) => {
-			await openRenderedPage(page, `/${language}/cv/`, "#projectsLst > li", 2);
+		test("resume contains semantic ATS content in logical order", async ({ page }) => {
+			await openRenderedPage(page, `/${language}/cv/`, "#projectsLst > article", 2);
 
 			await expect(page.locator("html")).toHaveAttribute("lang", language);
+			await expect(page.locator("#profileLbl")).toHaveText(labels.cvProfileTitle);
+			await expect(page.locator("#experienceLbl")).toHaveText(labels.cvExperienceTitle);
 			await expect(page.locator("#skillsLbl")).toHaveText(labels.cvTitle);
 			await expect(page.locator("#jobSearchLbl")).toHaveText(labels.jobSearch);
 			await expect(page.locator("#skillsLst > li")).toHaveCount(4);
-			await expect(page.locator("#careersLst > li")).toHaveCount(2);
-			await expect(page.locator("#coursesLst > li")).toHaveCount(3);
-			await expect(page.locator("#languagesLst > li")).toHaveCount(3);
-			await expect(page.locator("#projectsLst > li > h4")).toHaveText(freelanceProjects);
-			await expect(page.locator("#jobsLst > li")).toHaveCount(4);
-			await expect(page.locator("#jobsLst > li").first()).toContainText("Halley Accurate Solutions");
+			await expect(page.locator("#careersLst > article")).toHaveCount(2);
+			await expect(page.locator("#coursesLst > article")).toHaveCount(3);
+			await expect(page.locator("#languagesLst > article")).toHaveCount(3);
+			await expect(page.locator("#projectsLst > article > h3")).toHaveText(freelanceProjects);
+			await expect(page.locator("#jobsLst > article")).toHaveCount(4);
+			await expect(page.locator("#jobsLst > article").first()).toContainText("Halley Accurate Solutions");
+			await expect(page.locator("#jobsLst time")).toHaveCount(8);
 
-			const experienceLayout = await page.locator("#rightColumnSec").evaluate(column => ({
-				contentBottom: column.querySelector("#jobsLst > li:last-child").getBoundingClientRect().bottom,
-				columnBottom: column.getBoundingClientRect().bottom
-			}));
+			const sectionIds = await page.locator(".cv-main > section > h2").evaluateAll(headings => (
+				headings.map(heading => heading.id)
+			));
 
-			expect(experienceLayout.contentBottom).toBeLessThanOrEqual(experienceLayout.columnBottom);
+			expect(sectionIds).toEqual(["profileLbl", "experienceLbl", "skillsLbl", "projectsLbl", "educationLbl"]);
 		});
 
 		test("navigation stays in the selected language", async ({ page }) => {
@@ -266,7 +272,7 @@ test.describe("project filters", () => {
 for (const pageData of [
 	{ path: "", selector: "#skillsLbl", text: "Skills" },
 	{ path: "projects/", selector: "#projectsLbl", text: "All My Projects" },
-	{ path: "cv/", selector: "#skillsLbl", text: "< Skills />" }
+	{ path: "cv/", selector: "#skillsLbl", text: "Technical Skills" }
 ]) {
 	test(`language link switches the equivalent ${pageData.path || "portfolio"} page`, async ({ page }) => {
 		await page.goto(`/es/${pageData.path}`);
@@ -386,6 +392,27 @@ test("skill groups use two responsive columns without horizontal overflow", asyn
 	expect(mobileLayout.pageFits).toBe(true);
 });
 
+test("resume fits mobile screens and produces an A4 print document", async ({ page }) => {
+	await page.setViewportSize({ width: 320, height: 800 });
+	await openRenderedPage(page, "/en/cv/", "#jobsLst > article", 4);
+
+	const screenLayout = await page.evaluate(() => ({
+		pageFits: document.documentElement.scrollWidth <= document.documentElement.clientWidth,
+		mainColumns: getComputedStyle(document.querySelector(".cv-main")).gridTemplateColumns
+	}));
+
+	expect(screenLayout.pageFits).toBe(true);
+	expect(screenLayout.mainColumns).toBe("none");
+
+	await page.emulateMedia({ media: "print" });
+	await expect(page.locator(".cv-language-selector")).toBeHidden();
+
+	const pdf = await page.pdf({ format: "A4", printBackground: true });
+
+	expect(pdf.subarray(0, 5).toString()).toBe("%PDF-");
+	expect(pdf.byteLength).toBeGreaterThan(10000);
+});
+
 test.describe("without JavaScript", () => {
 	test.use({ javaScriptEnabled: false });
 
@@ -399,5 +426,13 @@ test.describe("without JavaScript", () => {
 		await expect(page).toHaveURL(/\/en\/projects\/$/);
 		await expect(page.locator("#projectsDiv > .project-card")).toHaveCount(25);
 		await expect(page.locator("#projectFilters")).toBeHidden();
+	});
+
+	test("resume content remains available", async ({ page }) => {
+		await page.goto("/en/cv/");
+
+		await expect(page.locator("h1")).toHaveText("Maximiliano Raúl Malvicino");
+		await expect(page.locator("#jobsLst > article")).toHaveCount(4);
+		await expect(page.locator("#projectsLst > article")).toHaveCount(2);
 	});
 });

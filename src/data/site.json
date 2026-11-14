@@ -1129,6 +1129,7 @@
         "projectPluralLbl"
       ],
       "cv": [
+        "profileLbl",
         "skillsLbl",
         "educationLbl",
         "careersLbl",

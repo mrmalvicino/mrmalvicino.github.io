@@ -89,11 +89,10 @@ ${styleLinks}
 }
 
 function renderDocument(data, page, body) {
-	const classAttribute = page === "cv" ? ' class="pale-black-background"' : "";
 	const scripts = [
 		page === "index" ? '<script src="/script/menu.js"></script>' : "",
 		page === "projects" ? '<script src="/script/project-filters.js"></script>' : "",
-		'<script src="/script/email-copy.js"></script>'
+		page !== "cv" ? '<script src="/script/email-copy.js"></script>' : ""
 	].filter(Boolean).map(script => `  ${script}`).join("\n");
 	const pageStyles = page === "index"
 		? [...commonStyles, "containers.css", "inputs.css", "menu.css", "table.css"]
@@ -102,7 +101,7 @@ function renderDocument(data, page, body) {
 			: [...commonStyles, "cv.css"];
 
 	return `<!DOCTYPE html>
-<html lang="${escapeHtml(data.language)}"${classAttribute}>
+<html lang="${escapeHtml(data.language)}">
 ${renderHead(data, pageStyles)}
 ${body}
 ${scripts}
@@ -522,144 +521,132 @@ ${renderProjects(data, data.projects)}
 function renderCvStudies(data, type) {
 	return data.studies
 		.filter(study => study.type === type && study.shown_in_cv)
-		.map(study => `              <li class="margin-vertical-10-px">
-                <h4>${escapeHtml(studyTitle(study, data.language))}</h4>
-                <p>${escapeHtml(study.institution.name)}</p>
-              </li>`)
+		.map(study => `          <article class="cv-entry">
+			<h4>${escapeHtml(studyTitle(study, data.language))}</h4>
+			<p>${escapeHtml(study.institution.name)}</p>
+		  </article>`)
 		.join("\n");
 }
 
 function renderCvProjects(data) {
 	return data.projects.filter(project => project.shown_in_cv).map(project => {
 		const video = project.video_url
-			? `\n                <a href="${escapeHtml(project.video_url)}" class="plain-link soft-black-text">${escapeHtml(project.video_url)}</a>`
+			? `\n            <a href="${escapeHtml(project.video_url)}">${escapeHtml(project.video_url)}</a>`
 			: "";
 		const source = project.source_code
-			? `\n                <a href="${escapeHtml(project.source_code)}" class="plain-link soft-black-text">${escapeHtml(project.source_code)}</a>`
+			? `\n            <a href="${escapeHtml(project.source_code)}">${escapeHtml(project.source_code)}</a>`
 			: "";
 
-		return `              <li class="margin-vertical-20-px">
-                <h4>${escapeHtml(project.title)}</h4>
-                <p class="dark-gray-text">${escapeHtml(project.description)}</p>${video}${source}
-              </li>`;
+		return `          <article class="cv-entry">
+			<h3>${escapeHtml(project.title)}</h3>
+			<p>${escapeHtml(project.description)}</p>${video}${source}
+		  </article>`;
 	}).join("\n");
+}
+
+function renderCvJobPeriod(job) {
+	const endDate = job.end_date
+		? `<time datetime="${escapeHtml(job.end_date)}">${escapeHtml(job.time.split(" - ")[1])}</time>`
+		: escapeHtml(job.time.split(" - ")[1]);
+
+	return `<time datetime="${escapeHtml(job.start_date)}">${escapeHtml(job.time.split(" - ")[0])}</time> - ${endDate}`;
 }
 
 export function renderCvPage(data) {
 	const labels = data.locale.labels;
 	const portfolioRoute = route(data.language, "index");
-	const skillItems = data.skillGroups.map(group => `          <li class="margin-vertical-10-px">
-            <h3>${escapeHtml(group.label)}</h3>
+	const skillItems = data.skillGroups.map(group => `          <li class="cv-skill-group">
+			<h3>${escapeHtml(group.label)}</h3>
 ${group.categories
-		? `            <ul>
-${group.categories.map(category => `              <li><strong>${escapeHtml(category.label)}:</strong> ${category.technologies.map(technology => escapeHtml(technology.name)).join(" | ")}</li>`).join("\n")}
-            </ul>`
-		: `            <p>${group.technologies.map(technology => escapeHtml(technology.name)).join(" | ")}</p>`}
-          </li>`).join("\n");
+		? `            <ul class="cv-skill-categories">
+			${group.categories.map(category => `              <li><strong>${escapeHtml(category.label)}:</strong> ${category.technologies.map(technology => escapeHtml(technology.name)).join(", ")}</li>`).join("\n")}
+			</ul>`
+		: `            <p>${group.technologies.map(technology => escapeHtml(technology.name)).join(", ")}</p>`}
+		  </li>`).join("\n");
 	const jobs = data.jobs.map(job => {
 		const highlights = job.highlights
 			? `
-                <ul class="cv-job-highlights">
-${job.highlights.map(highlight => `                  <li>${escapeHtml(highlight)}</li>`).join("\n")}
-                </ul>`
+			<ul class="cv-job-highlights">
+				${job.highlights.map(highlight => `              <li>${escapeHtml(highlight)}</li>`).join("\n")}
+			</ul>`
 			: "";
 		const technologies = job.technologies.length > 0
 			? `
-                <p><strong>${escapeHtml(labels.cv.technologiesLbl)}:</strong> ${job.technologies.map(technology => escapeHtml(technology.name)).join(" | ")}</p>`
+			<p class="cv-technologies"><strong>${escapeHtml(labels.cv.technologiesLbl)}:</strong> ${job.technologies.map(technology => escapeHtml(technology.name)).join(", ")}</p>`
 			: "";
 
-		return `              <li class="cv-job">
-                <h4>${escapeHtml(job.position)}</h4>
-                <p>${escapeHtml(job.organization)}</p>
-                <p>${escapeHtml(job.time)}</p>
-                <p class="dark-gray-text">${escapeHtml(job.description)}</p>${highlights}${technologies}
-              </li>`;
+		return `          <article class="cv-entry cv-job">
+			<h3>${escapeHtml(job.position)}</h3>
+			<p class="cv-organization">${escapeHtml(job.organization)}</p>
+			<p class="cv-period">${renderCvJobPeriod(job)}</p>
+			<p>${escapeHtml(job.description)}</p>${highlights}${technologies}
+		  </article>`;
 	}).join("\n");
-	const body = `<body class="open-sans-font cv-body light-gray-background">
-  <header class="row-flex space-between almost-black-background cv-header">
-    <div class="padding-20-px">
-      ${image(data.images.profileImg, "width-250-px circle-image")}
-    </div>
-    <div class="height-100-pct col-flex space-between padding-20-px">
-      <h1 class="pure-white-text">${escapeHtml(data.site.profile.fullName)}</h1>
-      <p class="mid-font-size jost-font center-text pure-white-text">${escapeHtml(labels.common.degreesLbl)}</p>
-      <p class="margin-vertical-5-px center-text">${escapeHtml(labels.common.presentationLbl)}</p>
-      ${renderJobSearch(data, "margin-vertical-5-px center-text pure-white-text bold-text")}
-      <div class="width-100-pct row-flex space-evenly">
-        <a href="${portfolioRoute}" class="plain-link pure-white-text">
-          <i class="bi bi-briefcase-fill mid-font-size" aria-hidden="true"></i>
-          <span>&nbsp;${escapeHtml(data.site.profile.website.label)}</span>
-        </a>
-        <a href="${escapeHtml(data.site.profile.linkedin.href)}" target="_blank" rel="noreferrer" class="plain-link pure-white-text">
-          <i class="bi bi-linkedin mid-font-size" aria-hidden="true"></i>
-          <span>&nbsp;${escapeHtml(data.site.profile.linkedin.label)}</span>
-        </a>
-      </div>
-    </div>
-  </header>
-  <main class="row-flex">
-    <section id="leftColumnSec" class="light-gray-background cv-left-column">
-      <div class="width-100-pct">
-        <h2 id="skillsLbl" class="title-box">${escapeHtml(labels.cv.skillsLbl)}</h2>
-        <ul id="skillsLst">
-${skillItems}
-        </ul>
-      </div>
-      <div class="width-100-pct margin-bottom-auto">
-        <h2 id="educationLbl" class="title-box">${escapeHtml(labels.cv.educationLbl)}</h2>
-        <section>
-          <h3 id="careersLbl">${escapeHtml(labels.cv.careersLbl)}</h3>
-          <ul id="careersLst">
-${renderCvStudies(data, "career")}
-          </ul>
-        </section>
-        <section>
-          <h3 id="coursesLbl">${escapeHtml(labels.cv.coursesLbl)}</h3>
-          <ul id="coursesLst">
-${renderCvStudies(data, "course")}
-          </ul>
-        </section>
-        <section>
-          <h3 id="languagesLbl">${escapeHtml(labels.cv.languagesLbl)}</h3>
-          <ul id="languagesLst">
-${renderCvStudies(data, "language")}
-          </ul>
-        </section>
-      </div>
-    </section>
-    <section id="rightColumnSec" class="light-gray-background cv-right-column">
-      <div class="width-100-pct margin-bottom-auto">
-        <h2 id="experienceLbl" class="title-box">${escapeHtml(labels.cv.experienceLbl)}</h2>
-        <section>
-          <h3 id="projectsLbl">${escapeHtml(labels.cv.projectsLbl)}</h3>
-          <ul id="projectsLst">
-${renderCvProjects(data)}
-          </ul>
-        </section>
-        <section>
-          <h3 id="jobsLbl">${escapeHtml(labels.cv.jobsLbl)}</h3>
-          <ul id="jobsLst">
+	const body = `<body class="open-sans-font cv-body">
+	<div class="cv-page">
+	  <header class="cv-header">
+		<div class="cv-heading">
+		  <h1>${escapeHtml(data.site.profile.fullName)}</h1>
+		  <p>${escapeHtml(labels.common.degreesLbl)}</p>
+		</div>
+		<address class="cv-contact">
+		  <a href="${portfolioRoute}">${escapeHtml(data.site.profile.website.label)}</a>
+		  <a href="${escapeHtml(data.site.profile.email.href)}">${escapeHtml(data.site.profile.email.address)}</a>
+		  <a href="${escapeHtml(data.site.profile.phone.href)}">${escapeHtml(data.site.profile.phone.label)}</a>
+		  <a href="${escapeHtml(data.site.profile.linkedin.href)}" target="_blank" rel="noreferrer">LinkedIn: ${escapeHtml(data.site.profile.linkedin.label)}</a>
+		  <a href="${escapeHtml(data.site.profile.location.href)}" target="_blank" rel="noreferrer">${escapeHtml(data.locale.profile.cvLocation)}</a>
+		</address>
+		<div class="cv-language-selector">
+		  ${renderLanguageLinks("cv")}
+		</div>
+	  </header>
+	  <main class="cv-main">
+		<section aria-labelledby="profileLbl" class="cv-section">
+		  <h2 id="profileLbl">${escapeHtml(labels.cv.profileLbl)}</h2>
+		  <p>${escapeHtml(labels.common.presentationLbl)}</p>
+		  ${renderJobSearch(data, "cv-job-search")}
+		</section>
+		<section aria-labelledby="experienceLbl" class="cv-section">
+		  <h2 id="experienceLbl">${escapeHtml(labels.cv.experienceLbl)}</h2>
+		  <div id="jobsLst" class="cv-entries">
 ${jobs}
-          </ul>
-        </section>
-      </div>
-    </section>
-  </main>
-  <footer class="cv-footer almost-black-background">
-    <div class="row-flex gap-20-px">
-      ${renderEmailLink(data, "plain-link light-gray-text", " mid-font-size")}
-      <a href="${escapeHtml(data.site.profile.phone.href)}" class="plain-link light-gray-text">
-        <i class="bi bi-telephone mid-font-size" aria-hidden="true"></i>
-        <span>&nbsp;</span>
-        <span>${escapeHtml(data.site.profile.phone.label)}</span>
-      </a>
-    </div>
-    ${renderLanguageLinks("cv")}
-    <a href="${escapeHtml(data.site.profile.location.href)}" class="plain-link light-gray-text margin-left-auto">
-      <i class="bi bi-geo-alt mid-font-size" aria-hidden="true"></i>
-      <span>&nbsp;${escapeHtml(data.locale.profile.cvLocation)}</span>
-    </a>
-  </footer>
+		  </div>
+		</section>
+		<section aria-labelledby="skillsLbl" class="cv-section">
+		  <h2 id="skillsLbl">${escapeHtml(labels.cv.skillsLbl)}</h2>
+		  <ul id="skillsLst" class="cv-skills">
+${skillItems}
+		  </ul>
+		</section>
+		<section aria-labelledby="projectsLbl" class="cv-section">
+		  <h2 id="projectsLbl">${escapeHtml(labels.cv.projectsLbl)}</h2>
+		  <div id="projectsLst" class="cv-entries">
+${renderCvProjects(data)}
+		  </div>
+		</section>
+		<section aria-labelledby="educationLbl" class="cv-section">
+		  <h2 id="educationLbl">${escapeHtml(labels.cv.educationLbl)}</h2>
+		  <section aria-labelledby="careersLbl" class="cv-subsection">
+			<h3 id="careersLbl">${escapeHtml(labels.cv.careersLbl)}</h3>
+			<div id="careersLst" class="cv-entries">
+${renderCvStudies(data, "career")}
+			</div>
+		  </section>
+		  <section aria-labelledby="coursesLbl" class="cv-subsection">
+			<h3 id="coursesLbl">${escapeHtml(labels.cv.coursesLbl)}</h3>
+			<div id="coursesLst" class="cv-entries">
+${renderCvStudies(data, "course")}
+			</div>
+		  </section>
+		  <section aria-labelledby="languagesLbl" class="cv-subsection">
+			<h3 id="languagesLbl">${escapeHtml(labels.cv.languagesLbl)}</h3>
+			<div id="languagesLst" class="cv-entries">
+${renderCvStudies(data, "language")}
+			</div>
+		  </section>
+		</section>
+	  </main>
+	</div>
 </body>`;
 
 	return renderDocument(data, "cv", body);

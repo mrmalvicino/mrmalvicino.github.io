@@ -464,13 +464,14 @@
       "projectPluralLbl": "proyectos"
     },
     "cv": {
-      "skillsLbl": "< Habilidades />",
-      "educationLbl": "< Estudios />",
-      "careersLbl": "Carreras universitarias",
-      "coursesLbl": "Cursos de especialización",
+      "profileLbl": "Perfil profesional",
+      "skillsLbl": "Habilidades técnicas",
+      "educationLbl": "Educación",
+      "careersLbl": "Educación superior",
+      "coursesLbl": "Formación especializada",
       "languagesLbl": "Idiomas",
-      "experienceLbl": "< Experiencia />",
-      "projectsLbl": "Proyectos freelance",
+      "experienceLbl": "Experiencia laboral",
+      "projectsLbl": "Proyectos",
       "jobsLbl": "Trabajos en relación de dependencia",
       "presentLbl": "Actualidad",
       "technologiesLbl": "Tecnologías"
