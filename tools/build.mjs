@@ -6,7 +6,7 @@ import {
 	renderLanguageRedirectPage,
 	renderPortfolioPage,
 	renderProjectsPage
-} from "./render-html.mjs";
+} from "./render/index.mjs";
 import { loadSiteData } from "./site-data.mjs";
 import { validateSite } from "./validate.mjs";
 

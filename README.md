@@ -18,7 +18,7 @@ The repository separates content, rendering, and published output:
 - `src/assets/`, `src/style/`, and `src/script/` contain the static resources and progressive enhancement copied into the public artifact.
 - `schemas/` validates the three data files and their relationships.
 - `tools/site-data.mjs` resolves IDs, translations, ordering, visibility, images, technologies, and institutions at build time.
-- `tools/render-html.mjs` contains pure escaped HTML render functions for the portfolio, project catalog, resume, and shared fragments.
+- `tools/render/` separates pure escaped HTML rendering into page modules, shared visual components, and document primitives.
 - `tools/build.mjs` validates the source, renders every route, and copies only public assets.
 - `src/script/` contains progressive enhancement only: mobile menu behavior and email copying.
 - `dist/` is generated publication output, not an editable source.

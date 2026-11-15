@@ -1,0 +1,80 @@
+.skills-description {
+	margin-top: 10px;
+}
+
+.skill-groups-container {
+	width: var(--content-width);
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0px, 1fr));
+	gap: 30px 40px;
+}
+
+.skill-category {
+	padding-top: 15px;
+	border-top: 1px solid var(--soft-gray);
+}
+
+.skill-category h3 {
+	margin-bottom: 12px;
+}
+
+.skill-subcategories {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.skill-subcategory {
+	display: grid;
+	grid-template-columns: minmax(140px, 0.4fr) 1fr;
+	align-items: start;
+	gap: 10px;
+}
+
+.skill-subcategory h4 {
+	padding-top: 7px;
+}
+
+.skill-technologies {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.skill-technology {
+	min-height: 36px;
+	padding: 5px 10px;
+	border: 1px solid var(--soft-gray);
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	gap: 7px;
+	background-color: var(--pale-white);
+}
+
+.skill-technology-icon {
+	width: 24px;
+	height: 24px;
+	object-fit: contain;
+}
+
+.light-box {
+	padding: 20px;
+	border-radius: 5px;
+	background-color: var(--pure-white);
+}
+
+@media (max-width: 800px) {
+	.skill-groups-container {
+		grid-template-columns: 1fr;
+	}
+
+	.skill-subcategory {
+		grid-template-columns: 1fr;
+		gap: 5px;
+	}
+
+	.skill-subcategory h4 {
+		padding-top: 0px;
+	}
+}
