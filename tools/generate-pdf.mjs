@@ -71,8 +71,10 @@ async function startStaticServer(output) {
 			}
 
 			const contentType = contentTypes.get(path.extname(filePath).toLowerCase()) ?? "application/octet-stream";
+			const contents = await readFile(filePath);
+
 			response.writeHead(200, { "Content-Type": contentType });
-			response.end(await readFile(filePath));
+			response.end(contents);
 		} catch {
 			response.writeHead(404).end();
 		}
@@ -173,7 +175,7 @@ function assertPdfIntegrity(pdf, expected, fileName) {
 	}
 }
 
-async function generateDocument(browser, baseUrl, output, document) {
+async function generateDocument(browser, baseUrl, document) {
 	const page = await browser.newPage();
 	const localFailures = [];
 	const documentUrl = `${baseUrl}/${document.language}/cv/`;
@@ -235,9 +237,8 @@ async function generateDocument(browser, baseUrl, output, document) {
 		const pdf = await readPdf(pdfBuffer);
 
 		assertPdfIntegrity(pdf, expected, document.fileName);
-		await writeFile(path.join(output, "assets/cv", document.fileName), pdfBuffer);
 
-		return { fileName: document.fileName, pages: pdf.pages.length };
+		return { fileName: document.fileName, pages: pdf.pages.length, pdfBuffer };
 	} finally {
 		await page.close();
 	}
@@ -258,10 +259,14 @@ export async function generateResumePdfs(output = path.join(projectRoot, "dist")
 		const results = [];
 
 		for (const document of generatedDocuments) {
-			results.push(await generateDocument(browser, server.baseUrl, output, document));
+			results.push(await generateDocument(browser, server.baseUrl, document));
 		}
 
-		return results;
+		await Promise.all(results.map(result => (
+			writeFile(path.join(output, "assets/cv", result.fileName), result.pdfBuffer)
+		)));
+
+		return results.map(result => ({ fileName: result.fileName, pages: result.pages }));
 	} finally {
 		try {
 			await browser?.close();
