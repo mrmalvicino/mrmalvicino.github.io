@@ -38,7 +38,7 @@ export function renderFooter(data, page) {
 
 	return html`
 		<footer id="footer" class="site-chrome min-height-150-px padding-vertical-20-px align-content-center pale-black-background">
-		  <div class="content-width margin-horizontal-auto row-col-800 gap-20-px footer-content">
+		  <div class="content-width margin-horizontal-auto gap-20-px footer-content">
 		    ${renderLanguageLinks(page)}
 		    <div>
 		      <ul class="row-flex gap-20-px">

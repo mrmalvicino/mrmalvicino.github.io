@@ -3,7 +3,7 @@ import { escapeHtml, html } from "./html.mjs";
 import { renderProjects } from "./project-list.mjs";
 import { renderFooter, renderNavbar } from "./site-chrome.mjs";
 
-const styles = ["site-chrome.css", "project-cards.css", "projects.css"];
+const styles = ["project-cards.css", "projects.css"];
 const scripts = ["project-filters.js", "email-copy.js"];
 
 function renderFilterOptions(items, group) {
@@ -69,7 +69,7 @@ export function renderProjectsPage(data) {
 		<body class="open-sans-font light-gray-background">
 		  ${renderNavbar(data, "projects")}
 		  <main>
-		    <section id="projectsSec" class="min-height-100-vh menu-padding gap-40-px col-flex space-evenly almost-black-background">
+		    <section id="projectsSec" class="page-section min-height-100-vh menu-padding gap-40-px col-flex space-evenly almost-black-background">
 		      <div class="content-width">
 		        <h1 id="projectsLbl" class="pure-white-text margin-top-20-px">${escapeHtml(data.locale.labels.projects.projectsLbl)}</h1>
 		      </div>

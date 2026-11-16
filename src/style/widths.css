@@ -1,23 +1,19 @@
 .width-100-pct {
-    width: 100%;
-}
-
-.width-30-px {
-    width: 30px;
+	width: 100%;
 }
 
 .width-40-px {
-    width: 40px;
+	width: 40px;
 }
 
 .width-100-px {
-    width: 100px;
+	width: 100px;
 }
 
 .width-250-px {
-    width: 250px;
+	width: 250px;
 }
 
 .content-width {
-    width: var(--content-width);
+	width: var(--content-width);
 }

@@ -1,72 +1,59 @@
 html {
-    scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
-ul {
-    list-style: none;
-}
-
-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
+.page-section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
 }
 
 h1 {
-    font-size: 2.5rem;
-    text-align: center;
-    font-family: 'Jost', sans-serif;
-    font-weight: 300;
+	font-size: 2.5rem;
+	text-align: center;
+	font-family: var(--font-family-heading);
+	font-weight: 300;
 }
 
 h2 {
-    font-size: 2rem;
-    text-align: center;
-    font-family: 'Jost', sans-serif;
-    font-weight: 300;
+	font-size: 2rem;
+	text-align: center;
+	font-family: var(--font-family-heading);
+	font-weight: 300;
 }
 
 h3 {
-    font-size: 1.5rem;
+	font-size: 1.5rem;
 }
 
 p {
-    font-size: 1rem;
+	font-size: 1rem;
 }
 
 a {
-    font-size: 1rem;
-    text-decoration: none;
-    vertical-align: top;
+	font-size: 1rem;
+	vertical-align: top;
 }
 
 img {
-    display: block;
+	display: block;
 }
 
-iframe {
-    width: 100%;
-    aspect-ratio: 1/1;
-    display: block;
-}
-
-textarea {
-    resize: none;
-}
-
-i {
-    font-size: 1.5rem;
+.bi {
+	font-size: 1.5rem;
 }
 
 @media (max-width: 1000px) {
-    h1 {
-        font-size: 1.8rem;
-    }
+	h1 {
+		font-size: 1.8rem;
+	}
 }

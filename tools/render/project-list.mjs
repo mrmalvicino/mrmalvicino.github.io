@@ -23,21 +23,21 @@ function renderProjectCard(data, project) {
 
 	const sourceButton = project.source_code ? html`
 		<a href="${escapeHtml(project.source_code)}" class="transparent-button">
-		  <i class="bi bi-code-slash" style="margin-right: 5px" aria-hidden="true"></i>
+		  <i class="bi bi-code-slash" aria-hidden="true"></i>
 		  <span>${escapeHtml(data.locale.labels.common.sourceCodeLbl)}</span>
 		</a>
 	` : "";
 
 	const demoButton = project.live_demo ? html`
 		<a href="${escapeHtml(project.live_demo)}" class="transparent-button">
-		  <i class="bi bi-eye" style="margin-right: 5px" aria-hidden="true"></i>
+		  <i class="bi bi-eye" aria-hidden="true"></i>
 		  <span>${escapeHtml(data.locale.labels.common.openOnlineLbl)}</span>
 		</a>
 	` : "";
 
 	const websiteButton = project.website_url ? html`
 		<a href="${escapeHtml(project.website_url)}" class="transparent-button">
-		  <i class="bi bi-globe2" style="margin-right: 5px" aria-hidden="true"></i>
+		  <i class="bi bi-globe2" aria-hidden="true"></i>
 		  <span>${escapeHtml(data.locale.labels.common.websiteLbl)}</span>
 		</a>
 	` : "";
@@ -49,7 +49,7 @@ function renderProjectCard(data, project) {
 		  <div class="project-top-div">
 		    ${renderProjectMedia(data, project)}
 		  </div>
-		  <div class="project-bot-div">
+		  <div class="project-details">
 		    <div class="project-content">
 		      <h3 class="pure-white-text">${escapeHtml(project.title)}</h3>
 		      <p>${escapeHtml(project.description)}</p>

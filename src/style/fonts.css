@@ -1,32 +1,32 @@
 .jost-font {
-    font-family: 'Jost', sans-serif;
-    font-weight: 300;
+	font-family: var(--font-family-heading);
+	font-weight: 300;
 }
 
 .open-sans-font {
-    font-family: "Open Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 350;
-    font-style: normal;
-    font-variation-settings: "wdth" 100;
+	font-family: var(--font-family-body);
+	font-optical-sizing: auto;
+	font-weight: 350;
+	font-style: normal;
+	font-variation-settings: "wdth" 100;
 }
 
 .big-font-size {
-    font-size: 2rem;
+	font-size: 2rem;
 }
 
 .mid-font-size {
-    font-size: 1.5rem;
+	font-size: 1.5rem;
 }
 
 .bold-text {
-    font-weight: 400;
+	font-weight: 400;
 }
 
 .left-text {
-    text-align: left;
+	text-align: left;
 }
 
 .center-text {
-    text-align: center;
+	text-align: center;
 }

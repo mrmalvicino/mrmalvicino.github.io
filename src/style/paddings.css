@@ -1,12 +1,8 @@
-.padding-20-px {
-    padding: 20px;
-}
-
 .menu-padding {
-    padding: var(--menu-height) 0px;
+	padding: var(--menu-height) 0;
 }
 
-.padding-vertical-20-px{
-    padding-top: 20px;
-    padding-bottom: 20px;
+.padding-vertical-20-px {
+	padding-top: var(--space-3);
+	padding-bottom: var(--space-3);
 }

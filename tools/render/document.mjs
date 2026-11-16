@@ -1,14 +1,21 @@
 import { escapeHtml, html } from "./html.mjs";
 
-const commonStyles = [
-	"constants.css",
+const foundationStyles = [
+	"variables.css",
+	"controls.css"
+];
+
+const sharedComponentStyles = [
 	"buttons.css",
+	"images.css",
+	"site-chrome.css"
+];
+
+const utilityStyles = [
 	"colors.css",
-	"controls.css",
 	"flexbox.css",
 	"fonts.css",
 	"heights.css",
-	"images.css",
 	"margins.css",
 	"paddings.css",
 	"widths.css"
@@ -37,6 +44,7 @@ function renderHead(data, styleFiles) {
 }
 
 export function renderDocument(data, body, pageStyles, scripts = []) {
+	const styleFiles = [...foundationStyles, ...sharedComponentStyles, ...pageStyles, ...utilityStyles];
 	const scriptElements = scripts
 		.map(file => `<script src="/script/${file}"></script>`)
 		.join("\n");
@@ -44,7 +52,7 @@ export function renderDocument(data, body, pageStyles, scripts = []) {
 	return html`
 		<!DOCTYPE html>
 		<html lang="${escapeHtml(data.language)}">
-		${renderHead(data, [...commonStyles, ...pageStyles])}
+		${renderHead(data, styleFiles)}
 		${body}
 		${scriptElements}
 		</html>

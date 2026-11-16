@@ -15,6 +15,12 @@ const htmlRoutes = [
 	"es/cv/index.html",
 	"en/cv/index.html"
 ];
+const foundationStyles = ["variables.css", "controls.css", "buttons.css", "images.css", "site-chrome.css"];
+const utilityStyles = ["colors.css", "flexbox.css", "fonts.css", "heights.css", "margins.css", "paddings.css", "widths.css"];
+
+function getLocalStyles(contents) {
+	return [...contents.matchAll(/href="\/style\/([^"]+)"/g)].map(match => match[1]);
+}
 
 async function listFiles(directory, prefix = "") {
 	const entries = await readdir(directory, { withFileTypes: true });
@@ -61,7 +67,7 @@ test("build creates localized HTML without runtime content data", async () => {
 		await Promise.all([
 			...htmlRoutes.map(file => stat(path.join(output, file))),
 			stat(path.join(output, "CNAME")),
-			stat(path.join(output, "style/constants.css")),
+			stat(path.join(output, "style/variables.css")),
 			stat(path.join(output, "script/menu.js")),
 			stat(path.join(output, "script/email-copy.js")),
 			stat(path.join(output, "script/project-filters.js")),
@@ -81,6 +87,18 @@ test("build creates localized HTML without runtime content data", async () => {
 			await readFile(path.join(output, route), "utf8")
 		])));
 		const rootHtml = await readFile(path.join(output, "index.html"), "utf8");
+		const pageStyles = {
+			"es/index.html": ["portfolio.css", "project-cards.css", "inputs.css", "table.css"],
+			"en/index.html": ["portfolio.css", "project-cards.css", "inputs.css", "table.css"],
+			"es/projects/index.html": ["project-cards.css", "projects.css"],
+			"en/projects/index.html": ["project-cards.css", "projects.css"],
+			"es/cv/index.html": ["cv.css"],
+			"en/cv/index.html": ["cv.css"]
+		};
+
+		for (const [route, styles] of Object.entries(pageStyles)) {
+			assert.deepEqual(getLocalStyles(html.get(route)), [...foundationStyles, ...styles, ...utilityStyles]);
+		}
 
 		assert.match(html.get("es/index.html"), /<html lang="es">/);
 		assert.match(html.get("en/index.html"), /<html lang="en">/);
@@ -164,6 +182,7 @@ test("build creates localized HTML without runtime content data", async () => {
 		for (const [route, contents] of html) {
 			assert.doesNotMatch(contents, /fetch\s*\(|data-site-|\{\{|\}\}|undefined/);
 			assert.doesNotMatch(contents, /(?:src|href)="[^"]*data\/(?:site|es|en)\.json/);
+			assert.doesNotMatch(contents, /\sstyle="/);
 			await assertLocalReferencesExist(output, route, contents);
 		}
 

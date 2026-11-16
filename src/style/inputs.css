@@ -1,17 +1,20 @@
 .textbox-input {
-    width: 100%;
-    margin: 5px 0px 10px 0px;
-    padding: 10px;
-    border-radius: 10px;
-    box-sizing: border-box;
-    font-family: "Open Sans", sans-serif;
-    font-size: 1rem;
-    color: var(--light-gray);
-    background-color: var(--pale-black);
-    border: 2px solid var(--soft-black);
+	width: 100%;
+	margin: var(--space-1) 0 var(--space-2);
+	padding: var(--space-2);
+	border-radius: 10px;
+	font-family: var(--font-family-body);
+	font-size: 1rem;
+	color: var(--light-gray);
+	background-color: var(--pale-black);
+	border: 2px solid var(--soft-black);
+}
+
+textarea.textbox-input {
+	resize: none;
 }
 
 .textbox-input:focus {
-    outline: none;
-    border: 2px solid var(--dark-gray);
+	outline: none;
+	border: 2px solid var(--dark-gray);
 }

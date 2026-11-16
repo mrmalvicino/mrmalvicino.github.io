@@ -1,90 +1,76 @@
+:is(.light-button, .dark-button, .transparent-button) {
+	width: var(--button-width);
+	margin: 0;
+	padding: var(--space-2) var(--space-3);
+	border-radius: var(--radius-small);
+	outline: none;
+	font-size: 1rem;
+	text-decoration: none;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
 .light-button {
-    width: var(--button-width);
-    margin: 0px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    font-size: 1rem;
-    text-decoration: none;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: var(--soft-black);
-    background-color: var(--soft-gray);
+	border: none;
+	color: var(--soft-black);
+	background-color: var(--soft-gray);
+}
+
+.light-button.width-100-pct {
+	width: 100%;
 }
 
 .light-button:hover {
-    color: var(--pure-black);
-    background-color: var(--pure-white);
+	color: var(--pure-black);
+	background-color: var(--pure-white);
 }
 
 .dark-button {
-    width: var(--button-width);
-    margin: 0px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    font-size: 1rem;
-    text-decoration: none;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: var(--light-gray);
-    background-color: var(--soft-black);
+	border: none;
+	color: var(--light-gray);
+	background-color: var(--soft-black);
 }
 
 .dark-button:hover {
-    color: var(--pure-white);
-    background-color: var(--pure-black);
+	color: var(--pure-white);
+	background-color: var(--pure-black);
 }
 
 .resume-download-button {
-    width: 180px;
-    white-space: nowrap;
+	width: 180px;
+	white-space: nowrap;
 }
 
 .transparent-button {
-    width: var(--button-width);
-    margin: 0px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    outline: none;
-    font-size: 1rem;
-    text-decoration: none;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: var(--light-gray);
-    background-color: transparent;
-    border: 2px solid var(--dark-gray);
-    font-family: "Open Sans", sans-serif;
+	color: var(--light-gray);
+	background-color: transparent;
+	border: 2px solid var(--dark-gray);
+	font-family: var(--font-family-body);
 }
 
 .transparent-button:hover {
-    color: var(--pure-white);
-    border: 2px solid var(--medium-gray);
+	color: var(--pure-white);
+	border: 2px solid var(--medium-gray);
 }
 
 .plain-link {
-    padding: 0px;
-    display: inline-flex;
-    align-items: center;
+	padding: 0;
+	display: inline-flex;
+	align-items: center;
+	text-decoration: none;
 }
 
 .underlined-link {
-    text-decoration: underline;
-    text-underline-offset: 0.15em;
+	text-decoration: underline;
+	text-underline-offset: 0.15em;
 }
 
 .big-hover {
-    transition: transform 0.5s ease;
+	transition: transform 0.5s ease;
 }
 
 .big-hover:hover {
-    transform: scale(1.1);
+	transform: scale(1.1);
 }

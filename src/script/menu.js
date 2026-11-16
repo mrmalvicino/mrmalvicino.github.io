@@ -24,6 +24,7 @@ function toggleMenu() {
 
 const menuNav = document.getElementById("menuNav");
 const toggleButton = document.getElementById("toggleBtn");
+const mobileMenuMedia = window.matchMedia("(max-width: 1000px)");
 
 toggleButton.addEventListener("click", event => {
 	event.stopPropagation();
@@ -31,7 +32,7 @@ toggleButton.addEventListener("click", event => {
 });
 menuNav.addEventListener("click", closeMenu);
 window.addEventListener("resize", () => {
-	if (window.innerWidth >= 1000) {
+	if (!mobileMenuMedia.matches) {
 		closeMenu();
 	}
 });

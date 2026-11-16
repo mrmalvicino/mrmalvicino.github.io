@@ -78,7 +78,7 @@ for (const [language, labels] of Object.entries(languages)) {
 			});
 
 			expect(socialAlignment).toBeLessThanOrEqual(1);
-			await expect(page.locator("#projectsDiv .project-bot-div h3")).toHaveText(featuredProjects);
+			await expect(page.locator("#projectsDiv .project-details h3")).toHaveText(featuredProjects);
 			await expect(page.locator("#resumeBtn")).toHaveAttribute("download", labels.resume);
 			await expect(page.locator("#resumeBtn")).toHaveText(labels.resumeLabel);
 			await expect(page.locator("#onlineResumeBtn")).toHaveText(labels.onlineResume);
@@ -364,6 +364,38 @@ test("mobile menu opens and closes without leaving the page blocked", async ({ p
 	await expect(page.locator("#menuNav")).not.toHaveClass(/nav-toggle/);
 	await expect(page.locator("body")).not.toHaveClass(/no-scroll/);
 });
+
+test("mobile menu uses the same 1000px boundary as CSS", async ({ page }) => {
+	await page.setViewportSize({ width: 1000, height: 800 });
+	await openRenderedPage(page, "/es/", "#menuLst > li", 5);
+
+	await expect(page.locator("#toggleBtn")).toBeVisible();
+	await page.locator("#toggleBtn").click();
+	await expect(page.locator("#menuNav")).toHaveClass(/nav-toggle/);
+
+	await page.setViewportSize({ width: 1001, height: 800 });
+	await expect(page.locator("#menuNav")).not.toHaveClass(/nav-toggle/);
+	await expect(page.locator("body")).not.toHaveClass(/no-scroll/);
+});
+
+for (const width of [375, 800, 1300]) {
+	test(`localized pages fit the representative ${width}px viewport`, async ({ page }) => {
+		await page.setViewportSize({ width, height: 900 });
+
+		for (const language of Object.keys(languages)) {
+			for (const route of ["", "projects/", "cv/"]) {
+				await page.goto(`/${language}/${route}`);
+				await expect(page.locator("body")).toBeVisible();
+
+				const horizontalOverflow = await page.evaluate(() => (
+					document.documentElement.scrollWidth - document.documentElement.clientWidth
+				));
+
+				expect(horizontalOverflow).toBeLessThanOrEqual(1);
+			}
+		}
+	});
+}
 
 test("project cards preserve icon contrast and fit narrow screens", async ({ page }) => {
 	await page.setViewportSize({ width: 320, height: 800 });

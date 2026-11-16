@@ -4,7 +4,7 @@ import { escapeHtml, html, image, publicUrl } from "./html.mjs";
 import { renderProjects } from "./project-list.mjs";
 import { renderEmailLink, renderFooter, renderJobSearch, renderNavbar } from "./site-chrome.mjs";
 
-const styles = ["site-chrome.css", "portfolio.css", "project-cards.css", "inputs.css", "table.css"];
+const styles = ["portfolio.css", "project-cards.css", "inputs.css", "table.css"];
 const scripts = ["menu.js", "email-copy.js"];
 
 function renderSkillTechnologies(technologies) {
@@ -67,18 +67,18 @@ function renderStudyRows(data) {
 		}
 
 		if (links.length === 0) {
-			links.push('<span class="margin-10-px" aria-hidden="true">&nbsp;</span>');
+			links.push('<span class="education-action-placeholder margin-10-px" aria-hidden="true">&nbsp;</span>');
 		}
 
 		return html`
-			<tr>
-			  <td>
+			<tr class="education-row">
+			  <td class="education-logo-cell">
 			    <div class="height-100-pct row-flex justify-center margin-horizontal-10-px">
 			      ${image(study.institution.image, "small-logo")}
 			    </div>
 			  </td>
-			  <td><span class="pure-black-text bold-text">${escapeHtml(formatStudyTitle(study, data.language))}</span></td>
-			  <td>
+			  <td class="education-description-cell"><span class="pure-black-text bold-text">${escapeHtml(formatStudyTitle(study, data.language))}</span></td>
+			  <td class="education-actions-cell">
 			    <div class="row-flex justify-center">
 			      ${links.join("\n")}
 			    </div>
@@ -96,7 +96,7 @@ export function renderPortfolioPage(data) {
 		<body class="open-sans-font light-gray-background">
 		  ${renderNavbar(data, "index")}
 		  <main>
-		    <section id="heroSec" class="min-height-100-vh menu-padding col-flex justify-center">
+		    <section id="heroSec" class="page-section min-height-100-vh menu-padding col-flex justify-center">
 		      ${image(data.images.profileImg, "width-250-px margin-vertical-10-px circle-image")}
 		      <div class="content-width margin-vertical-10-px">
 		        <h1>${escapeHtml(data.site.profile.fullName)}</h1>
@@ -113,7 +113,7 @@ export function renderPortfolioPage(data) {
 		        <a id="onlineResumeBtn" href="${route(data.language, "cv")}" class="underlined-link soft-black-link margin-top-10-px">${escapeHtml(labels.index.onlineResumeLbl)}</a>
 		      </div>
 		    </section>
-		    <section id="skillsSec" class="min-height-100-vh menu-padding col-flex justify-center gap-40-px">
+		    <section id="skillsSec" class="page-section min-height-100-vh menu-padding col-flex justify-center gap-40-px">
 		      <div class="content-width">
 		        <h2 id="skillsLbl">${escapeHtml(labels.index.skillsLbl)}</h2>
 		        <p class="skills-description center-text">${escapeHtml(data.skillDescription)}</p>
@@ -122,7 +122,7 @@ export function renderPortfolioPage(data) {
 		        ${renderSkillGroups(data)}
 		      </div>
 		    </section>
-		    <section id="projectsSec" class="min-height-100-vh menu-padding gap-40-px col-flex space-evenly almost-black-background">
+		    <section id="projectsSec" class="page-section min-height-100-vh menu-padding gap-40-px col-flex space-evenly almost-black-background">
 		      <div class="content-width">
 		        <h2 id="projectsLbl" class="pure-white-text">${escapeHtml(labels.index.projectsLbl)}</h2>
 		      </div>
@@ -137,17 +137,17 @@ export function renderPortfolioPage(data) {
 		        </a>
 		      </div>
 		    </section>
-		    <section id="educationSec" class="min-height-100-vh menu-padding">
-		      <div class="content-width light-box">
+		    <section id="educationSec" class="page-section min-height-100-vh menu-padding">
+		      <div class="content-width education-panel">
 		        <h2 id="educationLbl" class="margin-bottom-20-px">${escapeHtml(labels.index.educationLbl)}</h2>
-		        <table>
+		        <table class="education-table">
 		          <tbody id="studiesTab">
 		            ${renderStudyRows(data)}
 		          </tbody>
 		        </table>
 		      </div>
 		    </section>
-		    <section id="contactSec" class="min-height-100-vh menu-padding almost-black-background">
+		    <section id="contactSec" class="page-section min-height-100-vh menu-padding almost-black-background">
 		      <div class="content-width row-col-800 space-between gap-40-px">
 		        <div class="width-100-pct margin-bottom-auto">
 		          <h2 id="contactTitleLbl" class="left-text bold-text pure-white-text open-sans-font">${escapeHtml(labels.index.contactTitleLbl)}</h2>

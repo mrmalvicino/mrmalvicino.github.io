@@ -2,13 +2,13 @@
 	width: var(--content-width);
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
-	gap: 20px;
+	gap: var(--space-3);
 	justify-content: center;
 }
 
 .project-card {
 	width: 100%;
-	border-radius: 15px;
+	border-radius: var(--radius-large);
 	overflow: hidden;
 	display: flex;
 	flex-direction: column;
@@ -25,16 +25,22 @@
 .project-top-div img {
 	width: 100%;
 	height: 100%;
+	display: block;
 	object-fit: cover;
 }
 
-.project-bot-div {
+.project-top-div iframe {
+	/* Conserva el encuadre aprobado de los videos en tarjetas angostas. */
+	aspect-ratio: 1/1;
+}
+
+.project-details {
 	min-width: 0px;
 	min-height: 280px;
-	padding: 20px;
+	padding: var(--space-3);
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
+	gap: var(--space-3);
 }
 
 .project-content {
@@ -55,7 +61,8 @@
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
-	gap: 10px;
+	gap: var(--space-2);
+	list-style: none;
 }
 
 .project-technology {
@@ -63,7 +70,7 @@
 	height: 44px;
 	padding: 7px;
 	border: 1px solid var(--soft-gray);
-	border-radius: 8px;
+	border-radius: var(--radius-medium);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -81,11 +88,12 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	gap: 10px;
+	gap: var(--space-2);
 }
 
 .project-actions .transparent-button {
 	width: auto;
 	min-width: min(100%, var(--button-width));
 	flex: 0 1 var(--button-width);
+	gap: var(--space-1);
 }

@@ -25,6 +25,26 @@ The repository separates content, rendering, and published output:
 
 No page fetches JSON or constructs professional content in the browser. Generated HTML contains the main content, links, images, tables, and lists before JavaScript runs.
 
+### CSS architecture
+
+CSS remains dependency-free and is loaded in a fixed responsibility order by `tools/render/document.mjs`:
+
+1. Tokens: `variables.css` owns shared colors, type families, spacing, radii, and stable site dimensions.
+2. Base: `controls.css` owns the reset, element defaults, and the shared `.page-section` layout primitive.
+3. Shared components: `buttons.css`, `images.css`, and `site-chrome.css` own reusable visual components.
+4. Page components: each renderer requests only its page styles, such as `portfolio.css`, `project-cards.css`, `projects.css`, `inputs.css`, `table.css`, or `cv.css`.
+5. Utilities: color, flex, type, size, margin, and padding utilities load last so their overrides are intentional.
+
+Selectors follow these conventions:
+
+- Component classes use descriptive nouns, such as `.project-card`, `.education-table`, and `.footer-content`.
+- Component descendants are scoped through their owning class; element selectors must not impose component layout globally.
+- JavaScript state uses the documented `.nav-toggle`, `.hidden`, and `.no-scroll` classes or the native `[hidden]` attribute. JavaScript must not assign visual inline styles.
+- Existing utilities remain available for composition, but new utilities should describe a stable purpose rather than embed a breakpoint or arbitrary value in their name.
+- Add a global token only when multiple components share the value. Keep one-off dimensions in the component that owns them.
+
+Responsive contracts use `600px` for the compact CV, `800px` for stacked content, `1000px` for the mobile menu, and `1100px` for the intermediate project-filter grid. CSS owns visual changes; JavaScript uses the same `max-width: 1000px` media query only to close the mobile menu after entering desktop layout.
+
 ## Data
 
 Stable domain IDs use language-independent `kebab-case`; existing control IDs remain `camelCase` where they are part of the DOM contract. Ordered collections use a unique positive `order`, and relationships use validated IDs:

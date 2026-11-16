@@ -1,11 +1,11 @@
 .circle-image {
-    height: auto;
-    object-fit: cover;
-    background-color: white;
-    border-radius: 50%;
+	height: auto;
+	object-fit: cover;
+	background-color: var(--pure-white);
+	border-radius: 50%;
 }
 
 .small-logo {
-    height: 20px;
-    max-width: 90px;
+	height: 20px;
+	max-width: 90px;
 }

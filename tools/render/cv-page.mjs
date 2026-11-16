@@ -3,7 +3,7 @@ import { formatStudyTitle } from "./formatters.mjs";
 import { escapeHtml, html } from "./html.mjs";
 import { renderFooter, renderJobSearch, renderNavbar } from "./site-chrome.mjs";
 
-const styles = ["site-chrome.css", "cv.css"];
+const styles = ["cv.css"];
 
 function renderCvStudies(data, type) {
 	return data.studies

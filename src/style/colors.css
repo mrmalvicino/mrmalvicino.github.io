@@ -1,50 +1,42 @@
 .light-gray-background {
-    color: var(--soft-black);
-    background-color: var(--light-gray);
+	color: var(--soft-black);
+	background-color: var(--light-gray);
 }
 
 .pale-black-background {
-    color: var(--soft-gray);
-    background-color: var(--pale-black);
+	color: var(--soft-gray);
+	background-color: var(--pale-black);
 }
 
 .almost-black-background {
-    color: var(--medium-gray);
-    background-color: var(--almost-black);
+	color: var(--medium-gray);
+	background-color: var(--almost-black);
 }
 
 .pure-white-text {
-    color: var(--pure-white);
+	color: var(--pure-white);
 }
 
 .light-gray-text {
-    color: var(--light-gray);
-}
-
-.dark-gray-text {
-    color: var(--dark-gray);
-}
-
-.soft-black-text {
-    color: var(--soft-black);
+	color: var(--light-gray);
 }
 
 .pure-black-text {
-    color: var(--pure-black);
+	color: var(--pure-black);
 }
 
 .medium-gray-link {
-    color: var(--medium-gray);
+	color: var(--medium-gray);
 }
 
 .medium-gray-link:hover {
-    color: var(--light-gray);
+	color: var(--light-gray);
 }
 
 .soft-black-link {
-    color: var(--soft-black);
+	color: var(--soft-black);
 }
 
 .soft-black-link:hover {
-    color: var(--pure-black);
+	color: var(--pure-black);
 }
