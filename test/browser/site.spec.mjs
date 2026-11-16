@@ -124,7 +124,7 @@ for (const [language, labels] of Object.entries(languages)) {
 			await expect(page.locator("#experienceLbl")).toHaveText(labels.cvExperienceTitle);
 			await expect(page.locator("#projectsLbl")).toHaveText(labels.cvFreelanceTitle);
 			await expect(page.locator("#coursesLbl")).toHaveText(labels.cvCoursesTitle);
-			await expect(page.locator(".cv-subsection > h3").first()).toHaveCSS("color", "rgb(128, 128, 128)");
+			await expect(page.locator(".cv-subsection > h3").first()).toHaveCSS("color", "rgb(51, 51, 51)");
 			await expect(page.locator("#skillsLbl")).toHaveText(labels.cvTitle);
 			await expect(page.locator(".cv-heading > p")).toHaveText(labels.cvPosition);
 			await expect(page.locator("#jobSearchLbl")).toHaveText(labels.jobSearch);
@@ -469,10 +469,44 @@ test("resume fits mobile screens and produces an A4 print document", async ({ pa
 	expect(screenLayout.pageFits).toBe(true);
 	expect(screenLayout.mainColumns).toBe("none");
 
+	const screenDocumentStyles = await page.evaluate(() => {
+		const header = getComputedStyle(document.querySelector(".cv-header"));
+		const heading = getComputedStyle(document.querySelector(".cv-section > h2"));
+		const link = getComputedStyle(document.querySelector(".cv-contact a"));
+
+		return {
+			headerBackground: header.backgroundColor,
+			headerColor: header.color,
+			headerFont: header.fontFamily,
+			headingColor: heading.color,
+			headingFont: heading.fontFamily,
+			headingTextAlign: heading.textAlign,
+			linkDecoration: link.textDecorationLine
+		};
+	});
+
 	await page.emulateMedia({ media: "print" });
 	await expect(page.locator(".site-chrome")).toHaveCount(2);
 	await expect(page.locator(".site-chrome").first()).toBeHidden();
 	await expect(page.locator(".site-chrome").last()).toBeHidden();
+
+	const printDocumentStyles = await page.evaluate(() => {
+		const header = getComputedStyle(document.querySelector(".cv-header"));
+		const heading = getComputedStyle(document.querySelector(".cv-section > h2"));
+		const link = getComputedStyle(document.querySelector(".cv-contact a"));
+
+		return {
+			headerBackground: header.backgroundColor,
+			headerColor: header.color,
+			headerFont: header.fontFamily,
+			headingColor: heading.color,
+			headingFont: heading.fontFamily,
+			headingTextAlign: heading.textAlign,
+			linkDecoration: link.textDecorationLine
+		};
+	});
+
+	expect(printDocumentStyles).toEqual(screenDocumentStyles);
 
 	const pdf = await page.pdf({ format: "A4", printBackground: true });
 
