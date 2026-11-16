@@ -17,6 +17,7 @@
     "build:pdf": "node tools/generate-pdf.mjs"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.11.0",
     "@playwright/test": "1.56.1",
     "ajv": "^8.20.0",
     "pdfjs-dist": "5.4.394"

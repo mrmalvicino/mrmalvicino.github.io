@@ -53,7 +53,8 @@ function renderStudyRows(data) {
 		if (study.study_plan) {
 			links.push(html`
 				<a href="${escapeHtml(publicUrl(study.study_plan))}" target="_blank" rel="noopener noreferrer"
-				  class="plain-link soft-black-link margin-10-px" aria-label="${escapeHtml(`${study.title} (${data.locale.accessibility.newTab})`)}">
+				  class="plain-link education-action-link soft-black-link margin-10-px"
+				  aria-label="${escapeHtml(`${data.locale.accessibility.studyPlan}: ${study.title} (${data.locale.accessibility.newTab})`)}">
 				  <i class="bi bi-mortarboard mid-font-size" aria-hidden="true"></i>
 				</a>
 			`);
@@ -62,7 +63,8 @@ function renderStudyRows(data) {
 		if (study.certificate) {
 			links.push(html`
 				<a href="${escapeHtml(publicUrl(study.certificate))}" target="_blank" rel="noopener noreferrer"
-				  class="plain-link soft-black-link margin-10-px" aria-label="${escapeHtml(`${study.title} (${data.locale.accessibility.newTab})`)}">
+				  class="plain-link education-action-link soft-black-link margin-10-px"
+				  aria-label="${escapeHtml(`${data.locale.accessibility.certificateLink}: ${study.title} (${data.locale.accessibility.newTab})`)}">
 				  <i class="bi bi-award mid-font-size" aria-hidden="true"></i>
 				</a>
 			`);
@@ -79,7 +81,7 @@ function renderStudyRows(data) {
 			      ${image(study.institution.image, "small-logo")}
 			    </div>
 			  </td>
-			  <td class="education-description-cell"><span class="pure-black-text bold-text">${escapeHtml(formatStudyTitle(study, data.language))}</span></td>
+			  <th scope="row" class="education-description-cell"><span class="pure-black-text bold-text">${escapeHtml(formatStudyTitle(study, data.language))}</span></th>
 			  <td class="education-actions-cell">
 			    <div class="row-flex justify-center">
 			      ${links.join("\n")}
@@ -97,7 +99,7 @@ export function renderPortfolioPage(data) {
 	const body = html`
 		<body class="open-sans-font light-gray-background">
 		  ${renderNavbar(data, "index")}
-		  <main>
+		  <main id="main-content" tabindex="-1">
 		    <section id="heroSec" class="page-section min-height-100-vh menu-padding col-flex justify-center">
 		      ${image(data.images.profileImg, "width-250-px margin-vertical-10-px circle-image")}
 		      <div class="content-width margin-vertical-10-px">
@@ -142,7 +144,14 @@ export function renderPortfolioPage(data) {
 		    <section id="educationSec" class="page-section min-height-100-vh menu-padding">
 		      <div class="content-width education-panel">
 		        <h2 id="educationLbl" class="margin-bottom-20-px">${escapeHtml(labels.index.educationLbl)}</h2>
-		        <table class="education-table">
+		        <table class="education-table" aria-labelledby="educationLbl">
+		          <thead class="visually-hidden">
+		            <tr>
+		              <th scope="col">${escapeHtml(data.locale.accessibility.institution)}</th>
+		              <th scope="col">${escapeHtml(data.locale.accessibility.study)}</th>
+		              <th scope="col">${escapeHtml(data.locale.accessibility.documents)}</th>
+		            </tr>
+		          </thead>
 		          <tbody id="studiesTab">
 		            ${renderStudyRows(data)}
 		          </tbody>
@@ -165,15 +174,20 @@ export function renderPortfolioPage(data) {
 		        </div>
 		        <div class="width-100-pct">
 		          <form action="${escapeHtml(data.site.configuration.formAction)}" method="POST">
+		            <p id="requiredFieldsNote" class="form-instructions">${escapeHtml(data.locale.accessibility.requiredFields)}</p>
 		            <div>
-		              <label for="nameTxt" class="light-gray-text">${escapeHtml(labels.index.nameLbl)}</label>
-		              <input type="text" id="nameTxt" name="nameTxt" required class="textbox-input" placeholder="${escapeHtml(data.locale.placeholders.nameTxt)}">
-		              <label for="emailTxt" class="light-gray-text">${escapeHtml(labels.index.emailLbl)}</label>
-		              <input type="email" id="emailTxt" name="emailTxt" required class="textbox-input" placeholder="${escapeHtml(data.locale.placeholders.emailTxt)}">
-		              <label for="phoneTxt" class="light-gray-text">${escapeHtml(labels.index.phoneLbl)}</label>
-		              <input type="tel" id="phoneTxt" name="phoneTxt" required class="textbox-input" placeholder="${escapeHtml(data.locale.placeholders.phoneTxt)}">
-		              <label for="messageTxt" class="light-gray-text">${escapeHtml(labels.index.messageLbl)}</label>
-		              <textarea id="messageTxt" name="messageTxt" rows="3" required class="textbox-input" placeholder="${escapeHtml(data.locale.placeholders.messageTxt)}"></textarea>
+		              <label for="nameTxt" class="light-gray-text">${escapeHtml(labels.index.nameLbl)} *</label>
+		              <input type="text" id="nameTxt" name="nameTxt" autocomplete="name" required aria-describedby="requiredFieldsNote"
+		                class="textbox-input" placeholder="${escapeHtml(data.locale.placeholders.nameTxt)}">
+		              <label for="emailTxt" class="light-gray-text">${escapeHtml(labels.index.emailLbl)} *</label>
+		              <input type="email" id="emailTxt" name="emailTxt" autocomplete="email" required aria-describedby="requiredFieldsNote"
+		                class="textbox-input" placeholder="${escapeHtml(data.locale.placeholders.emailTxt)}">
+		              <label for="phoneTxt" class="light-gray-text">${escapeHtml(labels.index.phoneLbl)} *</label>
+		              <input type="tel" id="phoneTxt" name="phoneTxt" autocomplete="tel" required aria-describedby="requiredFieldsNote"
+		                class="textbox-input" placeholder="${escapeHtml(data.locale.placeholders.phoneTxt)}">
+		              <label for="messageTxt" class="light-gray-text">${escapeHtml(labels.index.messageLbl)} *</label>
+		              <textarea id="messageTxt" name="messageTxt" rows="3" required aria-describedby="requiredFieldsNote"
+		                class="textbox-input" placeholder="${escapeHtml(data.locale.placeholders.messageTxt)}"></textarea>
 		              <button type="submit" id="submitBtn" class="light-button margin-top-10-px width-100-pct">${escapeHtml(data.locale.buttons.submitBtn)}</button>
 		            </div>
 		          </form>

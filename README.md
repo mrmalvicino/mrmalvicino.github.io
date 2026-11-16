@@ -143,6 +143,18 @@ Unit tests verify validation, all localized outputs, generated and validated PDF
 
 Intentional visual changes can be reviewed and accepted with `npm run test:browser:update`. Do not update snapshots to hide an unexplained regression.
 
+### Accessibility verification
+
+Playwright runs axe-core against every localized page and fails on serious or critical WCAG 2.2 AA violations in the first-party document. Cross-origin YouTube player internals are excluded because the site cannot inspect or correct them; the containing iframe, its title, and its placement remain audited. The browser suite also verifies the skip link, mobile-menu state and focus restoration, education-table semantics, contact-field identification, reduced motion, keyboard-operated filters, and horizontal reflow at representative viewport widths.
+
+Before publishing accessibility-sensitive changes, complete these manual checks because automated tools cannot prove full conformance:
+
+- Navigate each page using only `Tab`, `Shift+Tab`, `Enter`, `Space`, and `Escape`; confirm a logical order, visible focus, and no keyboard traps.
+- Open and close the mobile menu at narrow widths and 400% browser zoom; confirm that every item remains visible and operable.
+- Review the six localized pages with VoiceOver or NVDA; confirm landmark, heading, table, link, form-label, required-field, and status announcements.
+- Submit invalid and valid contact forms; confirm that browser and Formspree responses are announced and retain understandable field context.
+- Enable reduced motion at operating-system level and confirm that content remains available without nonessential movement.
+
 ## Publication
 
 Publish the contents of `dist/` at the site root. The generated artifact includes `CNAME` and uses root-relative local assets, so every localized route works at its final GitHub Pages URL. The repository root is source and tooling; it is no longer a directly publishable site.

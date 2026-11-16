@@ -509,11 +509,23 @@
   },
   "messages": {
     "emailCopied": "Email copiado al portapapeles: ",
+    "emailCopyFailed": "No se pudo copiar el email. Se abrirá la aplicación de correo.",
     "noProjects": "No hay proyectos que coincidan con los filtros seleccionados."
   },
   "accessibility": {
     "videoPlayer": "Reproductor de video de YouTube",
-    "newTab": "abre en una pestaña nueva"
+    "newTab": "abre en una pestaña nueva",
+    "skipToContent": "Ir al contenido principal",
+    "primaryNavigation": "Navegación principal",
+    "languageNavigation": "Selección de idioma",
+    "openMenu": "Abrir menú de navegación",
+    "closeMenu": "Cerrar menú de navegación",
+    "institution": "Institución",
+    "study": "Estudio",
+    "documents": "Documentos",
+    "studyPlan": "Ver plan de estudios",
+    "certificateLink": "Ver certificado",
+    "requiredFields": "Todos los campos marcados con un asterisco son obligatorios."
   },
   "socials": {
     "whatsapp": "WhatsApp",

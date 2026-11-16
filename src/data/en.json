@@ -509,11 +509,23 @@
   },
   "messages": {
     "emailCopied": "Email copied to clipboard: ",
+    "emailCopyFailed": "The email could not be copied. Your email application will open.",
     "noProjects": "No projects match the selected filters."
   },
   "accessibility": {
     "videoPlayer": "YouTube video player",
-    "newTab": "opens in a new tab"
+    "newTab": "opens in a new tab",
+    "skipToContent": "Skip to main content",
+    "primaryNavigation": "Primary navigation",
+    "languageNavigation": "Language selection",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu",
+    "institution": "Institution",
+    "study": "Study",
+    "documents": "Documents",
+    "studyPlan": "View study plan",
+    "certificateLink": "View certificate",
+    "requiredFields": "All fields marked with an asterisk are required."
   },
   "socials": {
     "whatsapp": "WhatsApp",

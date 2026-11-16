@@ -11,10 +11,15 @@
 }
 
 textarea.textbox-input {
-	resize: none;
+	min-height: 100px;
+	resize: vertical;
 }
 
-.textbox-input:focus {
-	outline: none;
-	border: 2px solid var(--dark-gray);
+.textbox-input:focus-visible {
+	border-color: var(--medium-gray);
+}
+
+.form-instructions {
+	margin-bottom: var(--space-2);
+	color: var(--light-gray);
 }

@@ -3,7 +3,6 @@
 	margin: 0;
 	padding: var(--space-2) var(--space-3);
 	border-radius: var(--radius-small);
-	outline: none;
 	font-size: 1rem;
 	text-decoration: none;
 	display: inline-flex;

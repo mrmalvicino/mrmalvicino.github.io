@@ -27,6 +27,12 @@
 	grid-row: 1;
 }
 
+.footer-socials a {
+	width: 44px;
+	height: 44px;
+	justify-content: center;
+}
+
 .menu-header {
 	position: fixed;
 	width: 100%;
@@ -39,6 +45,7 @@
 }
 
 .menu-nav {
+	position: relative;
 	width: var(--content-width);
 	height: var(--menu-height);
 	margin: auto;
@@ -64,12 +71,15 @@
 }
 
 .toggle-button {
+	width: 44px;
+	height: 44px;
 	font-size: 1.5rem;
 	color: var(--pure-white);
 	background: transparent;
 	border: none;
 	box-shadow: none;
 	display: none;
+	cursor: pointer;
 }
 
 .hidden {
@@ -107,15 +117,26 @@
 	.nav-toggle {
 		flex-direction: column;
 		min-height: 100vh;
+		min-height: 100dvh;
+		overflow-y: auto;
 	}
 
 	.nav-toggle ul {
-		height: 100vh;
+		min-height: 100vh;
+		min-height: 100dvh;
+		padding: var(--menu-height) 0;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
 		gap: var(--space-4);
+	}
+
+	.nav-toggle .toggle-button {
+		position: absolute;
+		top: 8px;
+		right: 0;
+		z-index: 1;
 	}
 
 	.nav-toggle ul li a {

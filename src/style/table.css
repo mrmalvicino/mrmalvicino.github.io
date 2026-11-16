@@ -20,6 +20,12 @@
 	text-align: center;
 }
 
+.education-action-link {
+	width: 44px;
+	height: 44px;
+	justify-content: center;
+}
+
 .education-action-placeholder {
 	visibility: hidden;
 }
@@ -31,10 +37,11 @@
 		flex-direction: column;
 	}
 
-	.education-table td {
+	.education-table :is(td, th) {
 		margin-bottom: var(--space-2);
 		border-top: none;
 		display: flex;
+		text-align: left;
 	}
 
 	.education-logo-cell,

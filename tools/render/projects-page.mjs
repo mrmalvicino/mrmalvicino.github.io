@@ -68,7 +68,7 @@ export function renderProjectsPage(data) {
 	const body = html`
 		<body class="open-sans-font light-gray-background">
 		  ${renderNavbar(data, "projects")}
-		  <main>
+		  <main id="main-content" tabindex="-1">
 		    <section id="projectsSec" class="page-section min-height-100-vh menu-padding gap-40-px col-flex space-evenly almost-black-background">
 		      <div class="content-width">
 		        <h1 id="projectsLbl" class="pure-white-text margin-top-20-px">${escapeHtml(data.locale.labels.projects.projectsLbl)}</h1>

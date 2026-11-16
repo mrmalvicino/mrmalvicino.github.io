@@ -1,9 +1,9 @@
 import { route } from "./document.mjs";
 import { escapeHtml, html, image } from "./html.mjs";
 
-function renderLanguageLinks(page) {
+function renderLanguageLinks(data, page) {
 	return html`
-		<nav aria-label="Language" class="row-flex width-100-px">
+		<nav aria-label="${escapeHtml(data.locale.accessibility.languageNavigation)}" class="row-flex width-100-px">
 		  <i class="bi bi-translate" aria-hidden="true"></i>
 		  <span>&nbsp;</span>
 		  <a href="${route("es", page)}" lang="es" class="plain-link medium-gray-link">ES</a>
@@ -18,11 +18,13 @@ export function renderEmailLink(data, className, iconClass = "") {
 
 	return html`
 		<a href="${escapeHtml(email.href)}" data-copy-email="${escapeHtml(email.address)}"
-		  data-copy-message="${escapeHtml(data.locale.messages.emailCopied)}" class="${className}">
+		  data-copy-message="${escapeHtml(data.locale.messages.emailCopied)}"
+		  data-copy-failure="${escapeHtml(data.locale.messages.emailCopyFailed)}" class="${className}">
 		  <i class="bi bi-envelope${iconClass}" aria-hidden="true"></i>
 		  <span>&nbsp;</span>
 		  <span>${escapeHtml(email.address)}</span>
 		</a>
+		<span class="visually-hidden" role="status" aria-live="polite" data-copy-status></span>
 	`;
 }
 
@@ -39,7 +41,7 @@ export function renderFooter(data, page) {
 	return html`
 		<footer id="footer" class="site-chrome min-height-150-px padding-vertical-20-px align-content-center pale-black-background">
 		  <div class="content-width margin-horizontal-auto gap-20-px footer-content">
-		    ${renderLanguageLinks(page)}
+		    ${renderLanguageLinks(data, page)}
 		    <nav aria-label="${escapeHtml(data.locale.navigation.main)}" class="footer-pages">
 		      <a href="${route(data.language, "index")}" class="plain-link medium-gray-link">${escapeHtml(data.locale.navigation.portfolio)}</a>
 		      <a href="${route(data.language, "projects")}" class="plain-link medium-gray-link">${escapeHtml(data.locale.navigation.projects)}</a>
@@ -84,7 +86,10 @@ export function renderNavbar(data, page) {
 					</li>
 				`).join("\n")}
 			  </ul>
-			  <button id="toggleBtn" type="button" class="toggle-button" aria-label="Menu">
+			  <button id="toggleBtn" type="button" class="toggle-button"
+			    aria-label="${escapeHtml(data.locale.accessibility.openMenu)}" aria-expanded="false" aria-controls="menuLst"
+			    data-open-label="${escapeHtml(data.locale.accessibility.openMenu)}"
+			    data-close-label="${escapeHtml(data.locale.accessibility.closeMenu)}">
 			    <i class="bi bi-list" aria-hidden="true"></i>
 			  </button>
 			</div>
@@ -98,8 +103,9 @@ export function renderNavbar(data, page) {
 		`;
 
 	return html`
+		<a href="#main-content" class="skip-link">${escapeHtml(data.locale.accessibility.skipToContent)}</a>
 		<header class="site-chrome menu-header">
-		  <nav${isPortfolio ? ' id="menuNav"' : ""} class="menu-nav">
+		  <nav${isPortfolio ? ' id="menuNav"' : ""} class="menu-nav" aria-label="${escapeHtml(data.locale.accessibility.primaryNavigation)}">
 		    <a id="logoBtn" href="${route(data.language, "index")}" class="plain-link pure-white-text margin-vertical-auto">
 		      ${image(data.images.logoImg, "width-40-px")}
 		      <span>&nbsp;</span>

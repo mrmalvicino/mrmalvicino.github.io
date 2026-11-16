@@ -102,7 +102,7 @@ export function renderCvPage(data) {
 		          </div>
 		        </address>
 		      </header>
-		      <main class="cv-main">
+		      <main class="cv-main" id="main-content" tabindex="-1">
 		        <section aria-labelledby="profileLbl" class="cv-section">
 		          <h2 id="profileLbl">${escapeHtml(labels.cv.profileLbl)}</h2>
 		          <p>${escapeHtml(labels.common.presentationLbl)}</p>

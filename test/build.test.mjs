@@ -213,7 +213,7 @@ test("build creates localized HTML without runtime content data", async () => {
 		assert.match(html.get("es/cv/index.html"), /deCauciones[\s\S]*href="https:\/\/decauciones\.com"/);
 		assert.doesNotMatch(html.get("es/cv/index.html"), /Meeni ERP|Ecommerce Net|Halley V2/);
 		assert.match(html.get("es/cv/index.html"), /<header class="cv-header">[\s\S]*<address class="cv-contact">/);
-		assert.match(html.get("es/cv/index.html"), /<main class="cv-main">[\s\S]*Perfil profesional[\s\S]*Habilidades técnicas[\s\S]*Experiencia laboral[\s\S]*Experiencia freelance[\s\S]*Educación/);
+		assert.match(html.get("es/cv/index.html"), /<main class="cv-main"[^>]*>[\s\S]*Perfil profesional[\s\S]*Habilidades técnicas[\s\S]*Experiencia laboral[\s\S]*Experiencia freelance[\s\S]*Educación/);
 		assert.match(html.get("en/cv/index.html"), /Professional Profile[\s\S]*Technical Skills[\s\S]*Work Experience[\s\S]*Freelance Experience[\s\S]*Education/);
 		assert.match(html.get("es/cv/index.html"), /<article class="cv-entry cv-job">[\s\S]*<h3>Desarrollador de Software Junior<\/h3>[\s\S]*Halley Accurate Solutions[\s\S]*<time datetime="2025-08-11">/);
 		assert.doesNotMatch(html.get("es/cv/index.html"), /< Habilidades \/>|cv-left-column|cv-right-column|profileImg/);
@@ -224,6 +224,11 @@ test("build creates localized HTML without runtime content data", async () => {
 		assert.doesNotMatch(html.get("en/projects/index.html"), /href="\/en\/" target="_blank"/);
 		assert.match(html.get("en/projects/index.html"), /href="https:\/\/github\.com\/mrmalvicino\/membriana" target="_blank" rel="noopener noreferrer"/);
 		assert.match(html.get("en/index.html"), /aria-label="GitHub \(opens in a new tab\)"/);
+		assert.match(html.get("en/index.html"), /href="#main-content" class="skip-link">Skip to main content/);
+		assert.match(html.get("es/index.html"), /aria-expanded="false" aria-controls="menuLst"/);
+		assert.match(html.get("en/index.html"), /<thead class="visually-hidden">[\s\S]*<th scope="col">Institution/);
+		assert.equal((html.get("en/index.html").match(/<th scope="row" class="education-description-cell">/g) ?? []).length, 9);
+		assert.match(html.get("en/index.html"), /id="emailTxt" name="emailTxt" autocomplete="email" required/);
 		assert.doesNotMatch(html.get("en/index.html"), /href="mailto:[^"]+"[^>]*target="_blank"/);
 		assert.doesNotMatch(html.get("en/index.html"), /href="tel:[^"]+"[^>]*target="_blank"/);
 		assert.match(html.get("en/cv/index.html"), /href="\/es\/cv\/"/);

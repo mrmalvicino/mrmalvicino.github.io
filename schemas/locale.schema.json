@@ -119,19 +119,45 @@
     "messages": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["emailCopied", "noProjects"],
+      "required": ["emailCopied", "emailCopyFailed", "noProjects"],
       "properties": {
         "emailCopied": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "emailCopyFailed": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
         "noProjects": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
       }
     },
     "accessibility": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["videoPlayer", "newTab"],
+      "required": [
+        "videoPlayer",
+        "newTab",
+        "skipToContent",
+        "primaryNavigation",
+        "languageNavigation",
+        "openMenu",
+        "closeMenu",
+        "institution",
+        "study",
+        "documents",
+        "studyPlan",
+        "certificateLink",
+        "requiredFields"
+      ],
       "properties": {
         "videoPlayer": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
-        "newTab": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
+        "newTab": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "skipToContent": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "primaryNavigation": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "languageNavigation": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "openMenu": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "closeMenu": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "institution": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "study": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "documents": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "studyPlan": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "certificateLink": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "requiredFields": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
       }
     },
     "socials": { "$ref": "#/$defs/stringTranslations" }
