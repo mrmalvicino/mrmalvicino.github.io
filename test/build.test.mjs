@@ -93,6 +93,7 @@ test("build creates localized HTML without runtime content data", async () => {
 			stat(path.join(output, "script/project-filters.js")),
 			stat(path.join(output, "style/projects.css")),
 			stat(path.join(output, "assets/images/logo.png")),
+			stat(path.join(output, "assets/images/profile.png")),
 			stat(path.join(output, "assets/images/projects/biblio-api.jpeg")),
 			stat(path.join(output, "assets/images/projects/decauciones.webp")),
 			stat(path.join(output, "assets/images/projects/halley-v2.webp")),
@@ -203,6 +204,7 @@ test("build creates localized HTML without runtime content data", async () => {
 		assert.match(html.get("en/projects/index.html"), /href="\/en\/"/);
 		assert.match(html.get("en/cv/index.html"), /href="\/es\/cv\/"/);
 		assert.match(html.get("es/index.html"), /src="\/assets\/images\/logo\.png"/);
+		assert.match(html.get("es/index.html"), /src="\/assets\/images\/profile\.png"/);
 		assert.match(html.get("en/projects/index.html"), /src="\/assets\/images\/projects\/biblio-api\.jpeg"/);
 		assert.match(html.get("en/index.html"), /src="\/assets\/images\/projects\/decauciones\.webp"/);
 		assert.match(html.get("en/index.html"), /src="\/assets\/images\/projects\/halley-v2\.webp"/);

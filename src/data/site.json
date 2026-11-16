@@ -89,7 +89,7 @@
   "images": {
     "common_images": {
       "profileImg": {
-        "src": "https://avatars.githubusercontent.com/u/46000191"
+        "src": "./assets/images/profile.png"
       },
       "logoImg": {
         "src": "./assets/images/logo.png"
