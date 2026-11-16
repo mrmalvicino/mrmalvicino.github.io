@@ -162,11 +162,14 @@ test("build creates localized HTML without runtime content data", async () => {
 		assert.match(html.get("en/cv/index.html"), /migrating 637 calls across approximately 250 files/);
 		assert.doesNotMatch(html.get("en/index.html"), /My contributions as an employee/);
 		assert.doesNotMatch(html.get("es/index.html"), /Mi participación como empleado/);
-		assert.match(html.get("en/cv/index.html"), /General Pacheco, Buenos Aires, Argentina/);
+		assert.match(html.get("en/cv/index.html"), /class="cv-contact-row">[\s\S]*mrmalvicino\.com[\s\S]*\/in\/mrmalvicino[\s\S]*mrmalvicino@gmail\.com[\s\S]*\+54 \(911\) 5905-8729[\s\S]*General Pacheco, Buenos Aires/);
 		assert.match(html.get("es/index.html"), /maps\/search\/\?api=1&amp;query=General%20Pacheco%2C%20Buenos%20Aires%2C%20Argentina/);
 		assert.match(html.get("es/index.html"), /href="\/assets\/pdf\/tup-certificate\.pdf"[\s\S]*bi bi-award/);
 		assert.match(html.get("es/index.html"), /Tecnicatura Universitaria en Programación \(12 de diciembre de 2024\)/);
 		assert.match(html.get("en/cv/index.html"), /Technical Degree in Programming \(December 12, 2024\)/);
+		assert.match(html.get("es/cv/index.html"), /Curso de Angular[\s\S]*Curso de Web API \.NET Core[\s\S]*Curso de Entity Framework &amp; LINQ[\s\S]*Curso de portugués Nivel 4/);
+		assert.match(html.get("en/cv/index.html"), /Course in Angular[\s\S]*Course in Web API \.NET Core[\s\S]*Course in Entity Framework &amp; LINQ[\s\S]*Course in Portuguese, Level 4/);
+		assert.doesNotMatch(html.get("es/cv/index.html"), /id="(?:careers|courses|languages)Lbl"/);
 		assert.doesNotMatch([...html.values()].join("\n"), /Caseros|Título en trámite/);
 		assert.doesNotMatch(html.get("en/index.html"), /Docker|Doxygen|GitFlow|Worked with|JSTL library|MongoDB/);
 		assert.equal((html.get("es/index.html").match(/class="project-card"/g) ?? []).length, 3);

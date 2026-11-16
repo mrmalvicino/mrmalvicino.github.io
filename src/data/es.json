@@ -1,7 +1,7 @@
 {
   "profile": {
     "footerLocation": "General Pacheco, Buenos Aires, Argentina",
-    "cvLocation": "General Pacheco, Buenos Aires, Argentina"
+    "cvLocation": "General Pacheco, Buenos Aires"
   },
   "images": {
     "profileImg": {
@@ -379,22 +379,22 @@
       "title": "Tecnicatura Universitaria en Programación"
     },
     "angular-course-educacion-it": {
-      "title": "Angular"
+      "title": "Curso de Angular"
     },
     "web-api-dotnet-core-course-educacion-it": {
-      "title": "Web API .NET Core"
+      "title": "Curso de Web API .NET Core"
     },
     "entity-framework-linq-course-educacion-it": {
-      "title": "Entity Framework & LINQ"
+      "title": "Curso de Entity Framework & LINQ"
     },
     "web-dotnet-core-programming-course-educacion-it": {
-      "title": "Programación Web .NET Core"
+      "title": "Curso de Programación Web .NET Core"
     },
     "english-fce-b2-cambridge": {
       "title": "First Certificate in English (CEFR B2)"
     },
     "portuguese-level-4-utn": {
-      "title": "Portugués Nivel 4"
+      "title": "Curso de portugués Nivel 4"
     },
     "native-spanish-argentina": {
       "title": "Español nativo"

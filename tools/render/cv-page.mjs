@@ -5,9 +5,9 @@ import { renderFooter, renderJobSearch, renderNavbar } from "./site-chrome.mjs";
 
 const styles = ["cv.css"];
 
-function renderCvStudies(data, type) {
+function renderCvStudies(data) {
 	return data.studies
-		.filter(study => study.type === type && study.shown_in_cv)
+		.filter(study => study.shown_in_cv)
 		.map(study => html`
 			<article class="cv-entry">
 			  <h4>${escapeHtml(formatStudyTitle(study, data.language))}</h4>
@@ -92,13 +92,9 @@ export function renderCvPage(data) {
 		        <address class="cv-contact">
 		          <div class="cv-contact-row">
 		            <a href="${escapeHtml(data.site.profile.website.href)}">${escapeHtml(data.site.profile.website.label)}</a>
-		            <a href="${escapeHtml(data.site.profile.linkedin.href)}" target="_blank" rel="noreferrer">LinkedIn: ${escapeHtml(data.site.profile.linkedin.label)}</a>
-		          </div>
-		          <div class="cv-contact-row">
+		            <a href="${escapeHtml(data.site.profile.linkedin.href)}" target="_blank" rel="noreferrer">${escapeHtml(data.site.profile.linkedin.label)}</a>
 		            <a href="${escapeHtml(data.site.profile.email.href)}">${escapeHtml(data.site.profile.email.address)}</a>
 		            <a href="${escapeHtml(data.site.profile.phone.href)}">${escapeHtml(data.site.profile.phone.label)}</a>
-		          </div>
-		          <div class="cv-contact-row">
 		            <a href="${escapeHtml(data.site.profile.location.href)}" target="_blank" rel="noreferrer">${escapeHtml(data.locale.profile.cvLocation)}</a>
 		          </div>
 		        </address>
@@ -129,24 +125,9 @@ export function renderCvPage(data) {
 		        </section>
 		        <section aria-labelledby="educationLbl" class="cv-section">
 		          <h2 id="educationLbl">${escapeHtml(labels.cv.educationLbl)}</h2>
-		          <section aria-labelledby="careersLbl" class="cv-subsection">
-		            <h3 id="careersLbl">${escapeHtml(labels.cv.careersLbl)}</h3>
-		            <div id="careersLst" class="cv-entries">
-		              ${renderCvStudies(data, "career")}
-		            </div>
-		          </section>
-		          <section aria-labelledby="coursesLbl" class="cv-subsection">
-		            <h3 id="coursesLbl">${escapeHtml(labels.cv.coursesLbl)}</h3>
-		            <div id="coursesLst" class="cv-entries">
-		              ${renderCvStudies(data, "course")}
-		            </div>
-		          </section>
-		          <section aria-labelledby="languagesLbl" class="cv-subsection">
-		            <h3 id="languagesLbl">${escapeHtml(labels.cv.languagesLbl)}</h3>
-		            <div id="languagesLst" class="cv-entries">
-		              ${renderCvStudies(data, "language")}
-		            </div>
-		          </section>
+		          <div id="studiesLst" class="cv-entries">
+		            ${renderCvStudies(data)}
+		          </div>
 		        </section>
 		      </main>
 		    </div>

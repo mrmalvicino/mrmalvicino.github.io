@@ -1,7 +1,7 @@
 {
   "profile": {
     "footerLocation": "General Pacheco, Buenos Aires, Argentina",
-    "cvLocation": "General Pacheco, Buenos Aires, Argentina"
+    "cvLocation": "General Pacheco, Buenos Aires"
   },
   "images": {
     "profileImg": {
@@ -379,22 +379,22 @@
       "title": "Technical Degree in Programming"
     },
     "angular-course-educacion-it": {
-      "title": "Angular"
+      "title": "Course in Angular"
     },
     "web-api-dotnet-core-course-educacion-it": {
-      "title": "Web API .NET Core"
+      "title": "Course in Web API .NET Core"
     },
     "entity-framework-linq-course-educacion-it": {
-      "title": "Entity Framework & LINQ"
+      "title": "Course in Entity Framework & LINQ"
     },
     "web-dotnet-core-programming-course-educacion-it": {
-      "title": "Web .NET Core Programming"
+      "title": "Course in Web .NET Core Programming"
     },
     "english-fce-b2-cambridge": {
       "title": "First Certificate in English (CEFR B2)"
     },
     "portuguese-level-4-utn": {
-      "title": "Portuguese Level 4"
+      "title": "Course in Portuguese, Level 4"
     },
     "native-spanish-argentina": {
       "title": "Native Spanish"

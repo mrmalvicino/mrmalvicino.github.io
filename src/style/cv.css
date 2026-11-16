@@ -42,7 +42,7 @@
 }
 
 .cv-header {
-	padding: 24px clamp(24px, 6vw, 56px);
+	padding: 24px;
 	color: var(--soft-black);
 	background-color: var(--pure-white);
 }
@@ -66,21 +66,22 @@
 }
 
 .cv-contact {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 6px;
 	font-style: normal;
 }
 
 .cv-contact-row {
 	display: flex;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 	justify-content: center;
 }
 
+.cv-contact-row a {
+	font-size: 0.72rem;
+	white-space: nowrap;
+}
+
 .cv-contact-row a+a::before {
-	margin: 0px 10px;
+	margin: 0px 5px;
 	content: "|";
 	text-decoration: none;
 }
@@ -156,14 +157,6 @@
 	font-size: 0.95rem;
 }
 
-.cv-subsection>h3 {
-	margin-bottom: 10px;
-	color: var(--soft-black);
-	font-size: 1.1rem;
-	font-weight: 700;
-	text-align: left;
-}
-
 .cv-skill-details {
 	margin-bottom: 0px;
 	padding-left: 22px;
@@ -172,17 +165,6 @@
 
 .cv-skill-details li+li {
 	margin-top: 3px;
-}
-
-.cv-subsection+.cv-subsection {
-	margin-top: 20px;
-}
-
-.cv-subsection {
-	display: flex;
-	flex-direction: column;
-	align-items: stretch;
-	justify-content: space-around;
 }
 
 @media (max-width: 600px) {
@@ -194,10 +176,6 @@
 	.cv-main {
 		padding-right: 20px;
 		padding-left: 20px;
-	}
-
-	.cv-contact {
-		gap: 7px;
 	}
 
 	.cv-contact-row {
@@ -237,8 +215,7 @@
 		box-shadow: none;
 	}
 
-	.cv-section>h2,
-	.cv-subsection>h3 {
+	.cv-section>h2 {
 		break-after: avoid-page;
 	}
 

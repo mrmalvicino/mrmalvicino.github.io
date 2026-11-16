@@ -12,7 +12,7 @@ const languages = {
 		cvProfileTitle: "Perfil profesional",
 		cvExperienceTitle: "Experiencia laboral",
 		cvFreelanceTitle: "Experiencia freelance",
-		cvCoursesTitle: "Cursos de especialización",
+		cvCoursePrefix: "Curso",
 		cvPosition: "Desarrollador de Software .NET",
 		resume: "malvicino-es.pdf",
 		resumeLabel: "Descargar CV",
@@ -30,7 +30,7 @@ const languages = {
 		cvProfileTitle: "Professional Profile",
 		cvExperienceTitle: "Work Experience",
 		cvFreelanceTitle: "Freelance Experience",
-		cvCoursesTitle: "Specialization Courses",
+		cvCoursePrefix: "Course",
 		cvPosition: ".NET Software Developer",
 		resume: "malvicino-en.pdf",
 		resumeLabel: "Download CV",
@@ -123,11 +123,13 @@ for (const [language, labels] of Object.entries(languages)) {
 			await expect(page.locator("#profileLbl")).toHaveText(labels.cvProfileTitle);
 			await expect(page.locator("#experienceLbl")).toHaveText(labels.cvExperienceTitle);
 			await expect(page.locator("#projectsLbl")).toHaveText(labels.cvFreelanceTitle);
-			await expect(page.locator("#coursesLbl")).toHaveText(labels.cvCoursesTitle);
-			await expect(page.locator(".cv-subsection > h3").first()).toHaveCSS("color", "rgb(51, 51, 51)");
+			await expect(page.locator("#educationLbl")).toBeVisible();
 			await expect(page.locator("#skillsLbl")).toHaveText(labels.cvTitle);
 			await expect(page.locator(".cv-heading > p")).toHaveText(labels.cvPosition);
 			await expect(page.locator("#jobSearchLbl")).toHaveText(labels.jobSearch);
+			await expect(page.locator(".cv-contact-row")).toHaveCount(1);
+			await expect(page.locator(".cv-contact-row > a")).toHaveCount(5);
+			await expect(page.locator(".cv-contact-row")).toContainText("General Pacheco, Buenos Aires");
 			await expect(page.locator(".menu-header #backLbl")).toHaveCount(1);
 			await expect(page.locator(".menu-header #menuLst")).toHaveCount(0);
 			await expect(page.locator("#footer")).toBeVisible();
@@ -137,9 +139,9 @@ for (const [language, labels] of Object.entries(languages)) {
 			await expect(page.locator("#skillsLst")).not.toContainText("Uso profesional frecuente");
 			await expect(page.locator("#skillsLst")).not.toContainText("Frequent professional use");
 			await expect(page.locator("#skillsLst")).not.toContainText("Complementary professional use");
-			await expect(page.locator("#careersLst > article")).toHaveCount(2);
-			await expect(page.locator("#coursesLst > article")).toHaveCount(3);
-			await expect(page.locator("#languagesLst > article")).toHaveCount(3);
+			await expect(page.locator("#studiesLst > article")).toHaveCount(8);
+			await expect(page.locator("#studiesLst")).toContainText(labels.cvCoursePrefix);
+			await expect(page.locator("#careersLbl, #coursesLbl, #languagesLbl")).toHaveCount(0);
 			await expect(page.locator("#projectsLst > article > h3")).toHaveText(freelanceProjects);
 			await expect(page.locator("#projectsLst > article").first().locator("a"))
 				.toHaveAttribute("href", "https://github.com/mrmalvicino/membriana");

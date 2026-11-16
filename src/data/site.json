@@ -433,8 +433,8 @@
       "shown_in_portfolio": true,
       "shown_in_cv": false,
       "technologyIds": [
-        "vbnet",
         "dotnet",
+        "vbnet",
         "csharp",
         "windows-forms",
         "mysql",
@@ -1059,9 +1059,9 @@
       "start_date": "2025-08-11",
       "end_date": "2026-11-04",
       "technologyIds": [
+        "dotnet",
         "vbnet",
         "csharp",
-        "dotnet",
         "windows-forms",
         "mysql",
         "sap-crystal-reports"
