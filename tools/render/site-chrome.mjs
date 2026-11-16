@@ -29,8 +29,8 @@ export function renderEmailLink(data, className, iconClass = "") {
 export function renderFooter(data, page) {
 	const socialItems = data.socials.map(social => html`
 		<li>
-		  <a href="${escapeHtml(social.href)}" target="_blank" rel="noreferrer"
-		    aria-label="${escapeHtml(social.label)}" class="plain-link medium-gray-link">
+		  <a href="${escapeHtml(social.href)}" target="_blank" rel="noopener noreferrer"
+		    aria-label="${escapeHtml(`${social.label} (${data.locale.accessibility.newTab})`)}" class="plain-link medium-gray-link">
 		    <i class="bi bi-${escapeHtml(social.id)} big-font-size" aria-hidden="true"></i>
 		  </a>
 		</li>
@@ -40,13 +40,19 @@ export function renderFooter(data, page) {
 		<footer id="footer" class="site-chrome min-height-150-px padding-vertical-20-px align-content-center pale-black-background">
 		  <div class="content-width margin-horizontal-auto gap-20-px footer-content">
 		    ${renderLanguageLinks(page)}
-		    <div>
+		    <nav aria-label="${escapeHtml(data.locale.navigation.main)}" class="footer-pages">
+		      <a href="${route(data.language, "index")}" class="plain-link medium-gray-link">${escapeHtml(data.locale.navigation.portfolio)}</a>
+		      <a href="${route(data.language, "projects")}" class="plain-link medium-gray-link">${escapeHtml(data.locale.navigation.projects)}</a>
+		      <a href="${route(data.language, "cv")}" class="plain-link medium-gray-link">${escapeHtml(data.locale.navigation.cv)}</a>
+		    </nav>
+		    <div class="footer-socials">
 		      <ul class="row-flex gap-20-px">
 		        ${socialItems}
 		      </ul>
 		    </div>
 		    <div class="footer-location">
-		      <a href="${escapeHtml(data.site.profile.location.href)}" target="_blank" rel="noreferrer"
+		      <a href="${escapeHtml(data.site.profile.location.href)}" target="_blank" rel="noopener noreferrer"
+		        aria-label="${escapeHtml(`${data.locale.profile.footerLocation} (${data.locale.accessibility.newTab})`)}"
 		        class="plain-link medium-gray-link margin-left-auto">
 		        <i class="bi bi-geo-alt" aria-hidden="true"></i>
 		        <span>&nbsp;${escapeHtml(data.locale.profile.footerLocation)}</span>

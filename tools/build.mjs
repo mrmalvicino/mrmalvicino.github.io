@@ -3,6 +3,7 @@ import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import {
 	renderCvPage,
+	renderCompatibilityRedirectPage,
 	renderLanguageRedirectPage,
 	renderPortfolioPage,
 	renderProjectsPage
@@ -25,6 +26,30 @@ const pages = [
 	{ name: "projects", render: renderProjectsPage },
 	{ name: "cv", render: renderCvPage }
 ];
+
+function renderSitemap(baseUrl) {
+	const routes = pages.flatMap(page => ["es", "en"].map(language => ({ language, page: page.name })));
+	const urls = routes.map(({ language, page }) => {
+		const pathname = `/${language}/${page === "index" ? "" : `${page}/`}`;
+		const spanishPath = `/es/${page === "index" ? "" : `${page}/`}`;
+		const englishPath = `/en/${page === "index" ? "" : `${page}/`}`;
+
+		return [
+			"  <url>",
+			`    <loc>${baseUrl}${pathname}</loc>`,
+			`    <xhtml:link rel="alternate" hreflang="es" href="${baseUrl}${spanishPath}" />`,
+			`    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}${englishPath}" />`,
+			`    <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}/" />`,
+			"  </url>"
+		].join("\n");
+	}).join("\n");
+
+	return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls}\n</urlset>\n`;
+}
+
+function renderRobots(baseUrl) {
+	return `User-agent: *\nAllow: /\n\nSitemap: ${baseUrl}/sitemap.xml\n`;
+}
 
 function isSameOrParent(parent, candidate) {
 	const relativePath = path.relative(parent, candidate);
@@ -93,6 +118,14 @@ export async function buildSite(root = projectRoot, output = path.join(root, "di
 	}
 
 	await writeFile(path.join(output, "index.html"), renderLanguageRedirectPage(), "utf8");
+	await writeFile(path.join(output, "projects.html"), renderCompatibilityRedirectPage("projects"), "utf8");
+	await writeFile(path.join(output, "cv.html"), renderCompatibilityRedirectPage("cv"), "utf8");
+
+	const siteData = await loadSiteData(root, "es");
+	const baseUrl = siteData.site.profile.website.href.replace(/\/$/, "");
+
+	await writeFile(path.join(output, "sitemap.xml"), renderSitemap(baseUrl), "utf8");
+	await writeFile(path.join(output, "robots.txt"), renderRobots(baseUrl), "utf8");
 	await generateResumePdfs(output);
 
 	return output;

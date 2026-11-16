@@ -22,7 +22,8 @@ function renderCvProjects(data) {
 		const projectUrl = project.source_code ?? project.live_demo ?? project.website_url;
 
 		const link = projectUrl
-			? `\n${html`<a href="${escapeHtml(projectUrl)}">${escapeHtml(projectUrl)}</a>`}`
+			? `\n${html`<a href="${escapeHtml(projectUrl)}" target="_blank" rel="noopener noreferrer"
+			  aria-label="${escapeHtml(`${project.title} (${data.locale.accessibility.newTab})`)}">${escapeHtml(projectUrl)}</a>`}`
 			: "";
 
 		return html`
@@ -92,10 +93,12 @@ export function renderCvPage(data) {
 		        <address class="cv-contact">
 		          <div class="cv-contact-row">
 		            <a href="${escapeHtml(data.site.profile.website.href)}">${escapeHtml(data.site.profile.website.label)}</a>
-		            <a href="${escapeHtml(data.site.profile.linkedin.href)}" target="_blank" rel="noreferrer">${escapeHtml(data.site.profile.linkedin.label)}</a>
+		            <a href="${escapeHtml(data.site.profile.linkedin.href)}" target="_blank" rel="noopener noreferrer"
+		              aria-label="${escapeHtml(`LinkedIn (${data.locale.accessibility.newTab})`)}">${escapeHtml(data.site.profile.linkedin.label)}</a>
 		            <a href="${escapeHtml(data.site.profile.email.href)}">${escapeHtml(data.site.profile.email.address)}</a>
 		            <a href="${escapeHtml(data.site.profile.phone.href)}">${escapeHtml(data.site.profile.phone.label)}</a>
-		            <a href="${escapeHtml(data.site.profile.location.href)}" target="_blank" rel="noreferrer">${escapeHtml(data.locale.profile.cvLocation)}</a>
+		            <a href="${escapeHtml(data.site.profile.location.href)}" target="_blank" rel="noopener noreferrer"
+		              aria-label="${escapeHtml(`${data.locale.profile.cvLocation} (${data.locale.accessibility.newTab})`)}">${escapeHtml(data.locale.profile.cvLocation)}</a>
 		          </div>
 		        </address>
 		      </header>
@@ -136,5 +139,5 @@ export function renderCvPage(data) {
 		</body>
 	`;
 
-	return renderDocument(data, body, styles);
+	return renderDocument(data, "cv", body, styles);
 }

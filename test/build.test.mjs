@@ -87,6 +87,10 @@ test("build creates localized HTML without runtime content data", async () => {
 		await Promise.all([
 			...htmlRoutes.map(file => stat(path.join(output, file))),
 			stat(path.join(output, "CNAME")),
+			stat(path.join(output, "robots.txt")),
+			stat(path.join(output, "sitemap.xml")),
+			stat(path.join(output, "projects.html")),
+			stat(path.join(output, "cv.html")),
 			stat(path.join(output, "style/variables.css")),
 			stat(path.join(output, "script/menu.js")),
 			stat(path.join(output, "script/email-copy.js")),
@@ -117,6 +121,9 @@ test("build creates localized HTML without runtime content data", async () => {
 			await readFile(path.join(output, route), "utf8")
 		])));
 		const rootHtml = await readFile(path.join(output, "index.html"), "utf8");
+		const sitemap = await readFile(path.join(output, "sitemap.xml"), "utf8");
+		const robots = await readFile(path.join(output, "robots.txt"), "utf8");
+		const legacyProjects = await readFile(path.join(output, "projects.html"), "utf8");
 		const pageStyles = {
 			"es/index.html": ["portfolio.css", "project-cards.css", "inputs.css", "table.css"],
 			"en/index.html": ["portfolio.css", "project-cards.css", "inputs.css", "table.css"],
@@ -132,6 +139,16 @@ test("build creates localized HTML without runtime content data", async () => {
 
 		assert.match(html.get("es/index.html"), /<html lang="es">/);
 		assert.match(html.get("en/index.html"), /<html lang="en">/);
+		assert.match(html.get("es/index.html"), /<title>Maximiliano Malvicino \| Desarrollador de Software \.NET<\/title>/);
+		assert.match(html.get("en/projects/index.html"), /<title>Software Projects \| Maximiliano Malvicino<\/title>/);
+		assert.match(html.get("es/cv/index.html"), /<meta name="description" content="Currículum de Maximiliano Malvicino/);
+		assert.match(html.get("es/index.html"), /<link rel="canonical" href="https:\/\/mrmalvicino\.com\/es\/">/);
+		assert.match(html.get("en/projects/index.html"), /hreflang="es" href="https:\/\/mrmalvicino\.com\/es\/projects\/"/);
+		assert.match(html.get("en/projects/index.html"), /hreflang="x-default" href="https:\/\/mrmalvicino\.com\/"/);
+		assert.match(html.get("en/index.html"), /<meta property="og:title" content="Maximiliano Malvicino \| \.NET Software Developer">/);
+		assert.match(html.get("es/index.html"), /<meta name="twitter:card" content="summary_large_image">/);
+		assert.match(html.get("es/index.html"), /<script type="application\/ld\+json">\{"@context":"https:\/\/schema\.org"/);
+		assert.match(html.get("es/index.html"), /"@type":"Person"/);
 		assert.match(html.get("es/index.html"), /Desarrollador de Software \.NET/);
 		assert.match(html.get("en/index.html"), />\.NET Software Developer</);
 		assert.match(html.get("es/index.html"), /id="onlineResumeBtn" href="\/es\/cv\/"[\s\S]*Ver CV online/);
@@ -159,13 +176,14 @@ test("build creates localized HTML without runtime content data", async () => {
 		assert.match(html.get("es/cv/index.html"), /datetime="2014-03">marzo de 2014<\/time> - <time datetime="2017-12">diciembre de 2017/);
 		assert.doesNotMatch(html.get("es/cv/index.html"), /Actualidad/);
 		assert.match(html.get("en/cv/index.html"), /Junior Software Developer/);
-		assert.match(html.get("en/cv/index.html"), /VB \.NET, C#, Microsoft \.NET, WinForms, MySQL, SAP Crystal Reports/);
+		assert.match(html.get("en/cv/index.html"), /Microsoft \.NET, VB \.NET, C#, WinForms, MySQL, SAP Crystal Reports/);
 		assert.match(html.get("en/cv/index.html"), /migrating 637 calls across approximately 250 files/);
 		assert.doesNotMatch(html.get("en/index.html"), /My contributions as an employee/);
 		assert.doesNotMatch(html.get("es/index.html"), /Mi participación como empleado/);
 		assert.match(html.get("en/cv/index.html"), /class="cv-contact-row">[\s\S]*mrmalvicino\.com[\s\S]*\/in\/mrmalvicino[\s\S]*mrmalvicino@gmail\.com[\s\S]*\+54 \(911\) 5905-8729[\s\S]*General Pacheco, Buenos Aires/);
 		assert.match(html.get("es/index.html"), /maps\/search\/\?api=1&amp;query=General%20Pacheco%2C%20Buenos%20Aires%2C%20Argentina/);
 		assert.match(html.get("es/index.html"), /href="\/assets\/pdf\/tup-certificate\.pdf"[\s\S]*bi bi-award/);
+		assert.match(html.get("es/index.html"), /href="\/assets\/pdf\/tup-certificate\.pdf" target="_blank" rel="noopener noreferrer"/);
 		assert.match(html.get("es/index.html"), /Tecnicatura Universitaria en Programación \(12 de diciembre de 2024\)/);
 		assert.match(html.get("en/cv/index.html"), /Technical Degree in Programming \(December 12, 2024\)/);
 		assert.match(html.get("es/cv/index.html"), /Curso de Angular[\s\S]*Curso de Web API \.NET Core[\s\S]*Curso de Entity Framework &amp; LINQ[\s\S]*Curso de portugués Nivel 4/);
@@ -191,6 +209,7 @@ test("build creates localized HTML without runtime content data", async () => {
 		assert.equal((html.get("es/cv/index.html").match(/id="projectsLst"[\s\S]*?<\/div>/)?.[0].match(/<article /g) ?? []).length, 2);
 		assert.match(html.get("es/cv/index.html"), /Membriana[\s\S]*deCauciones/);
 		assert.match(html.get("es/cv/index.html"), /Membriana[\s\S]*href="https:\/\/github\.com\/mrmalvicino\/membriana"/);
+		assert.match(html.get("es/cv/index.html"), /href="https:\/\/github\.com\/mrmalvicino\/membriana" target="_blank" rel="noopener noreferrer"/);
 		assert.match(html.get("es/cv/index.html"), /deCauciones[\s\S]*href="https:\/\/decauciones\.com"/);
 		assert.doesNotMatch(html.get("es/cv/index.html"), /Meeni ERP|Ecommerce Net|Halley V2/);
 		assert.match(html.get("es/cv/index.html"), /<header class="cv-header">[\s\S]*<address class="cv-contact">/);
@@ -198,10 +217,15 @@ test("build creates localized HTML without runtime content data", async () => {
 		assert.match(html.get("en/cv/index.html"), /Professional Profile[\s\S]*Technical Skills[\s\S]*Work Experience[\s\S]*Freelance Experience[\s\S]*Education/);
 		assert.match(html.get("es/cv/index.html"), /<article class="cv-entry cv-job">[\s\S]*<h3>Desarrollador de Software Junior<\/h3>[\s\S]*Halley Accurate Solutions[\s\S]*<time datetime="2025-08-11">/);
 		assert.doesNotMatch(html.get("es/cv/index.html"), /< Habilidades \/>|cv-left-column|cv-right-column|profileImg/);
-		assert.doesNotMatch(html.get("es/cv/index.html"), /<script/);
+		assert.doesNotMatch(html.get("es/cv/index.html"), /<script src=/);
 		assert.equal((html.get("es/cv/index.html").match(/class="site-chrome/g) ?? []).length, 2);
 		assert.equal((html.get("es/projects/index.html").match(/class="site-chrome/g) ?? []).length, 2);
 		assert.match(html.get("en/projects/index.html"), /href="\/en\/"/);
+		assert.doesNotMatch(html.get("en/projects/index.html"), /href="\/en\/" target="_blank"/);
+		assert.match(html.get("en/projects/index.html"), /href="https:\/\/github\.com\/mrmalvicino\/membriana" target="_blank" rel="noopener noreferrer"/);
+		assert.match(html.get("en/index.html"), /aria-label="GitHub \(opens in a new tab\)"/);
+		assert.doesNotMatch(html.get("en/index.html"), /href="mailto:[^"]+"[^>]*target="_blank"/);
+		assert.doesNotMatch(html.get("en/index.html"), /href="tel:[^"]+"[^>]*target="_blank"/);
 		assert.match(html.get("en/cv/index.html"), /href="\/es\/cv\/"/);
 		assert.match(html.get("es/index.html"), /src="\/assets\/images\/logo\.png"/);
 		assert.match(html.get("es/index.html"), /src="\/assets\/images\/profile\.png"/);
@@ -210,11 +234,22 @@ test("build creates localized HTML without runtime content data", async () => {
 		assert.match(html.get("en/index.html"), /src="\/assets\/images\/projects\/halley-v2\.webp"/);
 		assert.match(html.get("en/index.html"), /href="https:\/\/v2\.sistemahalley\.com\.ar"[\s\S]*bi bi-globe2[\s\S]*Website/);
 		assert.match(html.get("en/projects/index.html"), /src="\/assets\/images\/technologies\/react\.svg"/);
-		assert.match(rootHtml, /window\.location\.replace\(browserLanguage\?\.toLowerCase\(\)\.startsWith\("es"\) \? "\/es\/" : "\/en\/"\)/);
-		assert.doesNotMatch(rootHtml, /\?lang=|project-card|legacy-language\.js/);
+		assert.match(rootHtml, /new URLSearchParams\(window\.location\.search\)\.get\("lang"\)/);
+		assert.match(rootHtml, /<meta name="robots" content="noindex, follow">/);
+		assert.match(legacyProjects, /window\.location\.replace\("\/" \+ language \+ "\/projects\/"\)/);
+		assert.match(sitemap, /<loc>https:\/\/mrmalvicino\.com\/es\/<\/loc>/);
+		assert.match(sitemap, /<loc>https:\/\/mrmalvicino\.com\/en\/cv\/<\/loc>/);
+		assert.equal((sitemap.match(/<url>/g) ?? []).length, 6);
+		assert.doesNotMatch(sitemap, /projects\.html|cv\.html/);
+		assert.equal(robots, "User-agent: *\nAllow: /\n\nSitemap: https://mrmalvicino.com/sitemap.xml\n");
+		assert.doesNotMatch(rootHtml, /project-card|legacy-language\.js/);
 
 		for (const [route, contents] of html) {
-			assert.doesNotMatch(contents, /fetch\s*\(|data-site-|\{\{|\}\}|undefined/);
+			const structuredData = contents.match(/<script type="application\/ld\+json">(.+)<\/script>/)?.[1];
+
+			assert.ok(structuredData, `${route} must include JSON-LD`);
+			assert.doesNotThrow(() => JSON.parse(structuredData));
+			assert.doesNotMatch(contents, /fetch\s*\(|data-site-|\{\{|undefined/);
 			assert.doesNotMatch(contents, /(?:src|href)="[^"]*data\/(?:site|es|en)\.json/);
 			assert.doesNotMatch(contents, /\sstyle="/);
 			await assertLocalReferencesExist(output, route, contents);
@@ -231,8 +266,8 @@ test("build creates localized HTML without runtime content data", async () => {
 		assert.equal(files.some(file => file.startsWith("tools/")), false);
 		assert.equal(files.includes("script/data-loader.js"), false);
 		assert.equal(files.includes("script/legacy-language.js"), false);
-		assert.equal(files.includes("projects.html"), false);
-		assert.equal(files.includes("cv.html"), false);
+		assert.equal(files.includes("projects.html"), true);
+		assert.equal(files.includes("cv.html"), true);
 	} finally {
 		await rm(temporaryRoot, { recursive: true, force: true });
 	}

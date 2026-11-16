@@ -5,6 +5,8 @@
   "additionalProperties": false,
   "required": [
     "profile",
+    "seo",
+    "navigation",
     "images",
     "technologies",
     "projectTypes",
@@ -30,6 +32,27 @@
       "properties": {
         "footerLocation": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
         "cvLocation": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
+      }
+    },
+    "seo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["index", "projects", "cv"],
+      "properties": {
+        "index": { "$ref": "#/$defs/seoPage" },
+        "projects": { "$ref": "#/$defs/seoPage" },
+        "cv": { "$ref": "#/$defs/seoPage" }
+      }
+    },
+    "navigation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["main", "portfolio", "projects", "cv"],
+      "properties": {
+        "main": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "portfolio": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "projects": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "cv": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
       }
     },
     "images": { "$ref": "#/$defs/imageTranslations" },
@@ -105,14 +128,24 @@
     "accessibility": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["videoPlayer"],
+      "required": ["videoPlayer", "newTab"],
       "properties": {
-        "videoPlayer": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
+        "videoPlayer": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "newTab": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
       }
     },
     "socials": { "$ref": "#/$defs/stringTranslations" }
   },
   "$defs": {
+    "seoPage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "description"],
+      "properties": {
+        "title": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "description": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
+      }
+    },
     "stringTranslations": {
       "type": "object",
       "minProperties": 1,

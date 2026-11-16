@@ -6,7 +6,7 @@ import Ajv from "ajv";
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const languages = ["en", "es"];
 const dataFiles = ["site.json", ...languages.map(language => `${language}.json`)];
-const localJsonKeys = new Set(["href", "src", "study_plan", "certificate"]);
+const localJsonKeys = new Set(["href", "src", "study_plan", "certificate", "socialImage"]);
 
 const generatedSitePaths = new Set([
 	"assets/cv/malvicino-en.pdf",
@@ -243,6 +243,40 @@ function validateTranslations(site, locales, errors) {
 	}
 }
 
+function validateSeo(site, locales, errors) {
+	const titles = new Set();
+	const descriptions = new Set();
+
+	try {
+		const websiteUrl = new URL(site.profile.website.href);
+
+		if (websiteUrl.protocol !== "https:" || websiteUrl.pathname !== "/" || websiteUrl.search || websiteUrl.hash) {
+			errors.push("src/data/site.json: profile website must be an HTTPS origin URL");
+		}
+	} catch {
+		errors.push("src/data/site.json: profile website is not a valid URL");
+	}
+
+	for (const [language, locale] of locales) {
+		for (const [page, seo] of Object.entries(locale.seo ?? {})) {
+			if (typeof seo.title !== "string" || typeof seo.description !== "string") {
+				continue;
+			}
+
+			if (titles.has(seo.title)) {
+				errors.push(`src/data/${language}.json: duplicate SEO title for ${page}: ${seo.title}`);
+			}
+
+			if (descriptions.has(seo.description)) {
+				errors.push(`src/data/${language}.json: duplicate SEO description for ${page}`);
+			}
+
+			titles.add(seo.title);
+			descriptions.add(seo.description);
+		}
+	}
+}
+
 function validateDomain(site, errors) {
 	const collections = {
 		menu: site.menu,
@@ -422,6 +456,7 @@ export async function validateSite(root = projectRoot) {
 	if (site && locales.every(([, locale]) => locale)) {
 		validateTranslations(site, locales, errors);
 		validateDomain(site, errors);
+		validateSeo(site, locales, errors);
 	}
 
 	if (errors.length > 0) {

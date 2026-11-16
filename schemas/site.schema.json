@@ -79,9 +79,10 @@
     "configuration": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["formAction"],
+      "required": ["formAction", "socialImage"],
       "properties": {
-        "formAction": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
+        "formAction": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "socialImage": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
       }
     },
     "resumes": {

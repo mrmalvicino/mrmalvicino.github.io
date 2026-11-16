@@ -3,6 +3,26 @@
     "footerLocation": "General Pacheco, Buenos Aires, Argentina",
     "cvLocation": "General Pacheco, Buenos Aires"
   },
+  "seo": {
+    "index": {
+      "title": "Maximiliano Malvicino | .NET Software Developer",
+      "description": "Portfolio of Maximiliano Malvicino, a .NET software developer experienced in C#, VB .NET, WinForms, MySQL, and enterprise management systems."
+    },
+    "projects": {
+      "title": "Software Projects | Maximiliano Malvicino",
+      "description": "Software projects by Maximiliano Malvicino, including .NET applications, enterprise systems, websites, technical tools, and academic work."
+    },
+    "cv": {
+      "title": ".NET Developer Resume | Maximiliano Malvicino",
+      "description": "Resume of Maximiliano Malvicino, a software developer experienced in .NET, C#, VB .NET, WinForms, MySQL, and enterprise software solutions."
+    }
+  },
+  "navigation": {
+    "main": "Main pages",
+    "portfolio": "Portfolio",
+    "projects": "Projects",
+    "cv": "Resume"
+  },
   "images": {
     "profileImg": {
       "title": "Maximiliano Malvicino",
@@ -492,7 +512,8 @@
     "noProjects": "No projects match the selected filters."
   },
   "accessibility": {
-    "videoPlayer": "YouTube video player"
+    "videoPlayer": "YouTube video player",
+    "newTab": "opens in a new tab"
   },
   "socials": {
     "whatsapp": "WhatsApp",

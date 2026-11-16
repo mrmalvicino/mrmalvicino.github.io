@@ -119,3 +119,32 @@ test("rendering order does not depend on array position", async () => {
 		await rm(fixture, { recursive: true, force: true });
 	}
 });
+
+test("validation reports duplicate SEO metadata and an invalid site origin", async () => {
+	const fixture = await createValidFixture();
+
+	try {
+		const sitePath = path.join(fixture, "src/data", "site.json");
+		const site = JSON.parse(await readFile(sitePath, "utf8"));
+		site.profile.website.href = "http://mrmalvicino.com/portfolio";
+		await writeFile(sitePath, JSON.stringify(site, null, 2), "utf8");
+
+		const englishPath = path.join(fixture, "src/data", "en.json");
+		const english = JSON.parse(await readFile(englishPath, "utf8"));
+		english.seo.projects.title = english.seo.index.title;
+		english.seo.projects.description = english.seo.index.description;
+		await writeFile(englishPath, JSON.stringify(english, null, 2), "utf8");
+
+		await assert.rejects(
+			validateSite(fixture),
+			error => {
+				assert.match(error.message, /profile website must be an HTTPS origin URL/);
+				assert.match(error.message, /duplicate SEO title for projects/);
+				assert.match(error.message, /duplicate SEO description for projects/);
+				return true;
+			}
+		);
+	} finally {
+		await rm(fixture, { recursive: true, force: true });
+	}
+});

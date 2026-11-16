@@ -22,21 +22,24 @@ function renderProjectCard(data, project) {
 	`).join("\n");
 
 	const sourceButton = project.source_code ? html`
-		<a href="${escapeHtml(project.source_code)}" class="transparent-button">
+		<a href="${escapeHtml(project.source_code)}" target="_blank" rel="noopener noreferrer"
+		  aria-label="${escapeHtml(`${data.locale.labels.common.sourceCodeLbl} (${data.locale.accessibility.newTab})`)}" class="transparent-button">
 		  <i class="bi bi-code-slash" aria-hidden="true"></i>
 		  <span>${escapeHtml(data.locale.labels.common.sourceCodeLbl)}</span>
 		</a>
 	` : "";
 
 	const demoButton = project.live_demo ? html`
-		<a href="${escapeHtml(project.live_demo)}" class="transparent-button">
+		<a href="${escapeHtml(project.live_demo)}" target="_blank" rel="noopener noreferrer"
+		  aria-label="${escapeHtml(`${data.locale.labels.common.openOnlineLbl} (${data.locale.accessibility.newTab})`)}" class="transparent-button">
 		  <i class="bi bi-eye" aria-hidden="true"></i>
 		  <span>${escapeHtml(data.locale.labels.common.openOnlineLbl)}</span>
 		</a>
 	` : "";
 
 	const websiteButton = project.website_url ? html`
-		<a href="${escapeHtml(project.website_url)}" class="transparent-button">
+		<a href="${escapeHtml(project.website_url)}" target="_blank" rel="noopener noreferrer"
+		  aria-label="${escapeHtml(`${data.locale.labels.common.websiteLbl} (${data.locale.accessibility.newTab})`)}" class="transparent-button">
 		  <i class="bi bi-globe2" aria-hidden="true"></i>
 		  <span>${escapeHtml(data.locale.labels.common.websiteLbl)}</span>
 		</a>

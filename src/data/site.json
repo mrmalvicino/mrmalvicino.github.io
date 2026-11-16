@@ -47,7 +47,8 @@
     ]
   },
   "configuration": {
-    "formAction": "https://formspree.io/f/mvgpjkjn"
+    "formAction": "https://formspree.io/f/mvgpjkjn",
+    "socialImage": "./assets/design/linkedin/portfolio.png"
   },
   "resumes": {
     "en": {

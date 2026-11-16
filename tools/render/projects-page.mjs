@@ -92,5 +92,5 @@ export function renderProjectsPage(data) {
 		</body>
 	`;
 
-	return renderDocument(data, body, styles, scripts);
+	return renderDocument(data, "projects", body, styles, scripts);
 }

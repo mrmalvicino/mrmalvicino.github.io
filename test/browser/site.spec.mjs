@@ -59,6 +59,7 @@ for (const [language, labels] of Object.entries(languages)) {
 			await expect(page.locator("#studiesTab > tr").nth(1).locator(".bi-mortarboard")).toHaveCount(1);
 			await expect(page.locator("#studiesTab > tr").nth(1).locator(".bi-award")).toHaveCount(1);
 			await expect(page.locator("#footer")).toContainText("General Pacheco, Buenos Aires, Argentina");
+			await expect(page.locator("#footer .footer-pages > a")).toHaveCount(3);
 			const locationLines = await page.locator("#footer .footer-location span:last-child").evaluate(element => {
 				const range = document.createRange();
 
@@ -79,10 +80,13 @@ for (const [language, labels] of Object.entries(languages)) {
 
 			expect(socialAlignment).toBeLessThanOrEqual(1);
 			await expect(page.locator("#projectsDiv .project-details h3")).toHaveText(featuredProjects);
+			await expect(page.locator("#projectsDiv .project-actions a").first()).toHaveAttribute("target", "_blank");
+			await expect(page.locator("#projectsDiv .project-actions a").first()).toHaveAttribute("rel", "noopener noreferrer");
 			await expect(page.locator("#resumeBtn")).toHaveAttribute("download", labels.resume);
 			await expect(page.locator("#resumeBtn")).toHaveText(labels.resumeLabel);
 			await expect(page.locator("#onlineResumeBtn")).toHaveText(labels.onlineResume);
 			await expect(page.locator("#onlineResumeBtn")).toHaveAttribute("href", `/${language}/cv/`);
+			await expect(page.locator("#onlineResumeBtn")).not.toHaveAttribute("target", "_blank");
 			await expect(page.locator("#onlineResumeBtn")).toHaveCSS("text-decoration-line", "underline");
 			await expect(page.locator(`a[lang='es'][href='/es/']`)).toBeVisible();
 			await expect(page.locator(`a[lang='en'][href='/en/']`)).toBeVisible();
@@ -343,6 +347,20 @@ test("root route uses English for any other browser language", async ({ page }) 
 
 	await expect(page).toHaveURL(/\/en\/$/);
 	await expect(page.locator("html")).toHaveAttribute("lang", "en");
+});
+
+test("legacy language parameters preserve the selected language", async ({ page }) => {
+	await page.goto("/?lang=en");
+	await expect(page).toHaveURL(/\/en\/$/);
+
+	await page.goto("/index.html?lang=es");
+	await expect(page).toHaveURL(/\/es\/$/);
+
+	await page.goto("/projects.html?lang=en");
+	await expect(page).toHaveURL(/\/en\/projects\/$/);
+
+	await page.goto("/cv.html?lang=es");
+	await expect(page).toHaveURL(/\/es\/cv\/$/);
 });
 
 test("mobile menu opens and closes without leaving the page blocked", async ({ page }) => {

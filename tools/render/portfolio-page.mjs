@@ -52,7 +52,8 @@ function renderStudyRows(data) {
 
 		if (study.study_plan) {
 			links.push(html`
-				<a href="${escapeHtml(publicUrl(study.study_plan))}" class="plain-link soft-black-link margin-10-px" aria-label="${escapeHtml(study.title)}">
+				<a href="${escapeHtml(publicUrl(study.study_plan))}" target="_blank" rel="noopener noreferrer"
+				  class="plain-link soft-black-link margin-10-px" aria-label="${escapeHtml(`${study.title} (${data.locale.accessibility.newTab})`)}">
 				  <i class="bi bi-mortarboard mid-font-size" aria-hidden="true"></i>
 				</a>
 			`);
@@ -60,7 +61,8 @@ function renderStudyRows(data) {
 
 		if (study.certificate) {
 			links.push(html`
-				<a href="${escapeHtml(publicUrl(study.certificate))}" class="plain-link soft-black-link margin-10-px" aria-label="${escapeHtml(study.title)}">
+				<a href="${escapeHtml(publicUrl(study.certificate))}" target="_blank" rel="noopener noreferrer"
+				  class="plain-link soft-black-link margin-10-px" aria-label="${escapeHtml(`${study.title} (${data.locale.accessibility.newTab})`)}">
 				  <i class="bi bi-award mid-font-size" aria-hidden="true"></i>
 				</a>
 			`);
@@ -183,5 +185,5 @@ export function renderPortfolioPage(data) {
 		</body>
 	`;
 
-	return renderDocument(data, body, styles, scripts);
+	return renderDocument(data, "index", body, styles, scripts);
 }

@@ -21,6 +21,7 @@ The repository separates content, rendering, and published output:
 - `tools/site-data.mjs` resolves IDs, translations, ordering, visibility, images, technologies, and institutions at build time.
 - `tools/render/` separates pure escaped HTML rendering into page modules, shared visual components, and document primitives.
 - `tools/build.mjs` validates the source, renders every route, generates both resume PDFs, and copies only public assets.
+- Localized SEO titles, descriptions, social metadata, canonical URLs, language alternates, and structured data come from the same shared data model and render pipeline.
 - `src/script/` contains progressive enhancement only: mobile menu behavior and email copying.
 - `dist/` is generated publication output, not an editable source.
 
@@ -119,7 +120,9 @@ Route contract:
 | Projects | `/es/projects/` | `/en/projects/` |
 | Resume | `/es/cv/` | `/en/cv/` |
 
-The root route redirects browsers whose primary language starts with `es` to `/es/`; every other language uses `/en/`. Localized routes use conventional links and do not inspect query parameters. Filename-based routes and the `lang` query parameter are not supported.
+The root route redirects browsers whose primary language starts with `es` to `/es/`; every other language uses `/en/`. The legacy `?lang=es` and `?lang=en` parameters remain supported on `/`, `/index.html`, `/projects.html`, and `/cv.html`. Compatibility pages are marked `noindex`; only the localized routes are canonical and included in the generated sitemap.
+
+The build also generates `sitemap.xml` and `robots.txt`. Search Console submission, live crawl results, and search-engine indexing must be verified after publication because they depend on external services and cannot be guaranteed by the repository tests.
 
 ## Testing
 
