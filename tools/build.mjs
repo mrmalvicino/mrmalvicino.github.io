@@ -7,6 +7,7 @@ import {
 	renderPortfolioPage,
 	renderProjectsPage
 } from "./render/index.mjs";
+import { generateResumePdfs } from "./generate-pdf.mjs";
 import { loadSiteData } from "./site-data.mjs";
 import { validateSite } from "./validate.mjs";
 
@@ -92,6 +93,7 @@ export async function buildSite(root = projectRoot, output = path.join(root, "di
 	}
 
 	await writeFile(path.join(output, "index.html"), renderLanguageRedirectPage(), "utf8");
+	await generateResumePdfs(output);
 
 	return output;
 }

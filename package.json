@@ -4,7 +4,7 @@
   "private": true,
   "description": "Portfolio and resume static site",
   "engines": {
-    "node": ">=20"
+    "node": ">=20.16"
   },
   "scripts": {
     "validate": "node tools/validate.mjs",
@@ -13,10 +13,12 @@
     "pretest:browser": "playwright install chromium",
     "test:browser": "playwright test",
     "test:browser:update": "playwright test --update-snapshots",
-    "build": "node tools/build.mjs"
+    "build": "node tools/build.mjs",
+    "build:pdf": "node tools/generate-pdf.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.56.1",
-    "ajv": "^8.20.0"
+    "ajv": "^8.20.0",
+    "pdfjs-dist": "5.4.394"
   }
 }

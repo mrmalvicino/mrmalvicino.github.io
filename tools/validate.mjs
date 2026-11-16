@@ -7,6 +7,12 @@ const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "
 const languages = ["en", "es"];
 const dataFiles = ["site.json", ...languages.map(language => `${language}.json`)];
 const localJsonKeys = new Set(["href", "src", "study_plan", "certificate"]);
+
+const generatedSitePaths = new Set([
+	"assets/cv/malvicino-en.pdf",
+	"assets/cv/malvicino-es.pdf"
+]);
+
 const schemaBaseUrl = "https://mrmalvicino.com/schemas/";
 
 function isExternalReference(reference) {
@@ -51,7 +57,7 @@ async function validateReference(root, reference, source, errors, documentPath =
 		return;
 	}
 
-	if (!sitePath || !(await pathExists(target))) {
+	if (!sitePath || (!generatedSitePaths.has(sitePath) && !(await pathExists(target)))) {
 		errors.push(`${source}: local reference does not exist: ${reference}`);
 	}
 }

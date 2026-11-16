@@ -4,6 +4,7 @@ import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
+import { getDocument } from "pdfjs-dist/legacy/build/pdf.mjs";
 import { buildSite } from "../tools/build.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -58,12 +59,31 @@ async function assertLocalReferencesExist(output, route, contents) {
 	}
 }
 
+async function extractPdfText(filePath) {
+	const document = await getDocument({ data: new Uint8Array(await readFile(filePath)) }).promise;
+	const text = [];
+
+	try {
+		for (let pageNumber = 1; pageNumber <= document.numPages; pageNumber += 1) {
+			const page = await document.getPage(pageNumber);
+			const content = await page.getTextContent();
+
+			text.push(content.items.map(item => item.str).join(""));
+		}
+	} finally {
+		await document.destroy();
+	}
+
+	return text.join(" ").replace(/\s+/g, " ").trim();
+}
+
 test("build creates localized HTML without runtime content data", async () => {
 	const temporaryRoot = await mkdtemp(path.join(os.tmpdir(), "portfolio-build-"));
 	const output = path.join(temporaryRoot, "dist");
 
 	try {
 		await buildSite(root, output);
+
 		await Promise.all([
 			...htmlRoutes.map(file => stat(path.join(output, file))),
 			stat(path.join(output, "CNAME")),
@@ -79,8 +99,17 @@ test("build creates localized HTML without runtime content data", async () => {
 			stat(path.join(output, "assets/images/technologies/angular.png")),
 			stat(path.join(output, "assets/images/technologies/razor.svg")),
 			stat(path.join(output, "assets/images/technologies/react.svg")),
-			stat(path.join(output, "assets/cv/malvicino-es.pdf"))
+			stat(path.join(output, "assets/cv/malvicino-es.pdf")),
+			stat(path.join(output, "assets/cv/malvicino-en.pdf"))
 		]);
+
+		const spanishPdf = await readFile(path.join(output, "assets/cv/malvicino-es.pdf"));
+		const englishPdf = await readFile(path.join(output, "assets/cv/malvicino-en.pdf"));
+
+		assert.equal(spanishPdf.subarray(0, 5).toString(), "%PDF-");
+		assert.equal(englishPdf.subarray(0, 5).toString(), "%PDF-");
+		assert.ok(spanishPdf.byteLength > 10000);
+		assert.ok(englishPdf.byteLength > 10000);
 
 		const html = new Map(await Promise.all(htmlRoutes.map(async route => [
 			route,
@@ -219,6 +248,7 @@ test("build output reflects locale data changes", async () => {
 		const localePath = path.join(fixture, "src/data/es.json");
 		const locale = JSON.parse(await readFile(localePath, "utf8"));
 		locale.labels.index.skillsLbl = "Contenido <script> de prueba";
+		locale.labels.common.presentationLbl = "Contenido sincronizado con el PDF de prueba.";
 		await writeFile(localePath, `${JSON.stringify(locale, null, 2)}\n`, "utf8");
 
 		const sitePath = path.join(fixture, "src/data/site.json");
@@ -228,10 +258,12 @@ test("build output reflects locale data changes", async () => {
 		await buildSite(fixture, output);
 
 		const localizedHtml = await readFile(path.join(output, "es/index.html"), "utf8");
+		const localizedPdfText = await extractPdfText(path.join(output, "assets/cv/malvicino-es.pdf"));
 
 		assert.match(localizedHtml, /Contenido &lt;script&gt; de prueba/);
 		assert.doesNotMatch(localizedHtml, /Contenido <script>/);
 		assert.doesNotMatch(localizedHtml, /jobSearchLbl|búsqueda activa/);
+		assert.match(localizedPdfText, /Contenido sincronizado con el PDF de prueba\./);
 	} finally {
 		await rm(temporaryRoot, { recursive: true, force: true });
 	}

@@ -1,13 +1,14 @@
 # Portfolio
 
-Dependency-free custom Node static site generator for a vanilla HTML, CSS, and JavaScript portfolio and resume.
+Custom Node static site generator for a vanilla HTML, CSS, and JavaScript portfolio and resume with no published runtime dependencies.
 
 ## Requirements
 
-- Node.js 20 or newer
+- Node.js 20.16 or newer
 - npm 10 or newer
+- Chromium installed through Playwright
 
-Install the locked development dependencies with `npm ci`.
+Install the locked development dependencies and browser with `npm ci` and `npx playwright install chromium`.
 
 ## Architecture
 
@@ -19,7 +20,7 @@ The repository separates content, rendering, and published output:
 - `schemas/` validates the three data files and their relationships.
 - `tools/site-data.mjs` resolves IDs, translations, ordering, visibility, images, technologies, and institutions at build time.
 - `tools/render/` separates pure escaped HTML rendering into page modules, shared visual components, and document primitives.
-- `tools/build.mjs` validates the source, renders every route, and copies only public assets.
+- `tools/build.mjs` validates the source, renders every route, generates both resume PDFs, and copies only public assets.
 - `src/script/` contains progressive enhancement only: mobile menu behavior and email copying.
 - `dist/` is generated publication output, not an editable source.
 
@@ -100,7 +101,15 @@ Generate the publishable artifact with:
 npm run build
 ```
 
-The build validates first, replaces `dist/`, renders the complete route set, and copies `CNAME` plus the public resources from `src/assets/`, `src/style/`, and `src/script/`. It intentionally excludes source JSON, schemas, build tools, and tests.
+The build validates first, replaces `dist/`, renders the complete route set, and copies `CNAME` plus the public resources from `src/assets/`, `src/style/`, and `src/script/`. It then serves the generated HTML locally and uses the locked Playwright Chromium version to create `assets/cv/malvicino-es.pdf` and `assets/cv/malvicino-en.pdf`. It intentionally excludes source JSON, schemas, build tools, and tests.
+
+Generate and validate the PDFs again from an existing `dist/` without rebuilding the HTML with:
+
+```bash
+npm run build:pdf
+```
+
+PDF generation blocks external resources for reproducibility and fails on missing local resources. The mandatory validation checks A4 page dimensions, extractable text, nonempty pages, contact information, logical section order, relevant links, and unsupported decorative characters. The files under `dist/assets/cv/` are generated publication output; do not edit them or add independent PDF sources under `src/`.
 
 Route contract:
 
@@ -127,7 +136,7 @@ npm run test:unit
 npm run test:browser
 ```
 
-Unit tests verify validation, all localized outputs, publication exclusions, static localized content, safe routes, and data-driven rebuilds. Playwright builds and serves `dist/`, then verifies root language selection, localized navigation, language switching, entity counts, media precedence, the mobile menu, JavaScript-disabled behavior, and desktop/mobile visual baselines.
+Unit tests verify validation, all localized outputs, generated and validated PDFs, publication exclusions, static localized content, safe routes, and data-driven rebuilds. Playwright builds and serves `dist/`, then verifies root language selection, localized navigation, language switching, entity counts, media precedence, the mobile menu, JavaScript-disabled behavior, and desktop/mobile visual baselines.
 
 Intentional visual changes can be reviewed and accepted with `npm run test:browser:update`. Do not update snapshots to hide an unexplained regression.
 
