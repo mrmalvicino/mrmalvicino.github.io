@@ -87,7 +87,7 @@ export function renderCvPage(data) {
 		      <header class="cv-header">
 		        <div class="cv-heading">
 		          <h1>${escapeHtml(data.site.profile.fullName)}</h1>
-		          <p>${escapeHtml(labels.cv.positionLbl)}</p>
+		          <p>${escapeHtml(labels.common.degreesLbl)}</p>
 		        </div>
 		        <address class="cv-contact">
 		          <div class="cv-contact-row">

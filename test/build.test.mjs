@@ -120,8 +120,8 @@ test("build creates localized HTML without runtime content data", async () => {
 		assert.match(html.get("es/index.html"), /Actualmente en formación/);
 		assert.match(html.get("en/cv/index.html"), /id="skillsLst"[\s\S]*Languages:[\s\S]*C#[\s\S]*Version control:[\s\S]*Git/);
 		assert.doesNotMatch(html.get("en/cv/index.html"), /Frequent professional use|Complementary professional use|Research and academic work|Currently learning/);
-		assert.match(html.get("es/cv/index.html"), /<p>Desarrollador de Software \.NET Junior<\/p>/);
-		assert.match(html.get("en/cv/index.html"), /<p>Junior \.NET Software Developer<\/p>/);
+		assert.match(html.get("es/cv/index.html"), /<p>Desarrollador de Software \.NET<\/p>/);
+		assert.match(html.get("en/cv/index.html"), /<p>\.NET Software Developer<\/p>/);
 		assert.match(html.get("es/cv/index.html"), /Desarrollador de Software Junior/);
 		assert.match(html.get("es/cv/index.html"), /datetime="2025-08-11">agosto de 2025<\/time> - <time datetime="2026-11-04">noviembre de 2026/);
 		assert.match(html.get("es/cv/index.html"), /datetime="2024-08">agosto de 2024<\/time> - <time datetime="2025-12">diciembre de 2025/);
