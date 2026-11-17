@@ -49,6 +49,27 @@ test("validation reports malformed JSON and missing data files", async () => {
 	}
 });
 
+test("validation reports missing schemas and incomplete data without uncaught errors", async () => {
+	const fixture = await createValidFixture();
+
+	try {
+		await rm(path.join(fixture, "schemas", "common.schema.json"));
+		await writeFile(path.join(fixture, "src/data", "site.json"), JSON.stringify({ profile: {} }), "utf8");
+
+		await assert.rejects(
+			validateSite(fixture),
+			error => {
+				assert.match(error.message, /common\.schema\.json: required JSON file is missing/);
+				assert.match(error.message, /Data translation validation could not be completed/);
+				assert.doesNotMatch(error.message, /^TypeError:/);
+				return true;
+			}
+		);
+	} finally {
+		await rm(fixture, { recursive: true, force: true });
+	}
+});
+
 test("validation reports schema, identity, translation, and typed-reference errors", async () => {
 	const fixture = await createValidFixture();
 
@@ -144,6 +165,21 @@ test("validation reports duplicate SEO metadata and an invalid site origin", asy
 				return true;
 			}
 		);
+	} finally {
+		await rm(fixture, { recursive: true, force: true });
+	}
+});
+
+test("validation rejects an unsafe contact form endpoint", async () => {
+	const fixture = await createValidFixture();
+
+	try {
+		const sitePath = path.join(fixture, "src/data", "site.json");
+		const site = JSON.parse(await readFile(sitePath, "utf8"));
+		site.configuration.formAction = "http://formspree.io/f/example";
+		await writeFile(sitePath, JSON.stringify(site, null, 2), "utf8");
+
+		await assert.rejects(validateSite(fixture), /contact form action must use HTTPS/);
 	} finally {
 		await rm(fixture, { recursive: true, force: true });
 	}

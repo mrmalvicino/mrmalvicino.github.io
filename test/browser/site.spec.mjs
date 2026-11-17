@@ -42,6 +42,13 @@ const languages = {
 const featuredProjects = ["Membriana", "deCauciones", "Halley V2"];
 const freelanceProjects = ["Membriana", "deCauciones"];
 
+async function fillContactForm(page) {
+	await page.locator("#nameTxt").fill("Test User");
+	await page.locator("#emailTxt").fill("test@example.com");
+	await page.locator("#phoneTxt").fill("+54 11 5555 5555");
+	await page.locator("#messageTxt").fill("Automated test message");
+}
+
 for (const [language, labels] of Object.entries(languages)) {
 	test.describe(`${language.toUpperCase()} content`, () => {
 		test("portfolio contains localized entities in its initial HTML", async ({ page }) => {
@@ -172,6 +179,63 @@ for (const [language, labels] of Object.entries(languages)) {
 			await expect(page).toHaveURL(new RegExp(`/${language}/$`));
 			await expect(page.locator("#projectsDiv > .project-card")).toHaveCount(3);
 		});
+	});
+}
+
+for (const [language, messages] of Object.entries({
+	es: {
+		success: "Tu mensaje fue enviado correctamente.",
+		serverError: "No se pudo enviar el mensaje. Intentá nuevamente más tarde.",
+		networkError: "No se pudo conectar para enviar el mensaje. Revisá tu conexión e intentá nuevamente."
+	},
+	en: {
+		success: "Your message was sent successfully.",
+		serverError: "The message could not be sent. Please try again later.",
+		networkError: "A connection could not be established to send the message. Check your connection and try again."
+	}
+})) {
+	test(`${language.toUpperCase()} contact form handles successful responses`, async ({ page }) => {
+		let completeRequest;
+		const requestPending = new Promise(resolve => {
+			completeRequest = resolve;
+		});
+
+		await page.route("https://formspree.io/**", async route => {
+			await requestPending;
+			await route.fulfill({ body: "{}", contentType: "application/json", status: 200 });
+		});
+		await page.goto(`/${language}/`);
+		await fillContactForm(page);
+		await page.locator("#submitBtn").click();
+		await expect(page.locator("#submitBtn")).toBeDisabled();
+		await expect(page.locator("[data-contact-form]")).toHaveAttribute("aria-busy", "true");
+		completeRequest();
+		await expect(page.locator("[data-form-status]")).toHaveText(messages.success);
+		await expect(page.locator("[data-form-status]")).toHaveAttribute("role", "status");
+		await expect(page.locator("#submitBtn")).toBeEnabled();
+		await expect(page.locator("#messageTxt")).toHaveValue("");
+	});
+
+	test(`${language.toUpperCase()} contact form preserves input after an HTTP error`, async ({ page }) => {
+		await page.route("https://formspree.io/**", route => route.fulfill({ body: "{}", status: 500 }));
+		await page.goto(`/${language}/`);
+		await fillContactForm(page);
+		await page.locator("#submitBtn").click();
+		await expect(page.locator("[data-form-status]")).toHaveText(messages.serverError);
+		await expect(page.locator("[data-form-status]")).toHaveAttribute("role", "alert");
+		await expect(page.locator("#submitBtn")).toBeEnabled();
+		await expect(page.locator("#messageTxt")).toHaveValue("Automated test message");
+	});
+
+	test(`${language.toUpperCase()} contact form handles network errors`, async ({ page }) => {
+		await page.route("https://formspree.io/**", route => route.abort("failed"));
+		await page.goto(`/${language}/`);
+		await fillContactForm(page);
+		await page.locator("#submitBtn").click();
+		await expect(page.locator("[data-form-status]")).toHaveText(messages.networkError);
+		await expect(page.locator("[data-form-status]")).toHaveAttribute("role", "alert");
+		await expect(page.locator("#submitBtn")).toBeEnabled();
+		await expect(page.locator("#messageTxt")).toHaveValue("Automated test message");
 	});
 }
 
@@ -574,6 +638,9 @@ test.describe("without JavaScript", () => {
 		await expect(page.locator("h1")).toContainText("Maximiliano");
 		await expect(page.locator("#menuLst > li")).toHaveCount(5);
 		await expect(page.locator("#projectsDiv > .project-card")).toHaveCount(3);
+		await expect(page.locator("[data-contact-form]")).toHaveAttribute("method", "POST");
+		await expect(page.locator("[data-contact-form]")).toHaveAttribute("action", "https://formspree.io/f/mvgpjkjn");
+		await expect(page.locator("[data-copy-email]").first()).toHaveAttribute("href", /^mailto:/);
 		await page.locator("#allProjectsLbl").click();
 		await expect(page).toHaveURL(/\/en\/projects\/$/);
 		await expect(page.locator("#projectsDiv > .project-card")).toHaveCount(25);

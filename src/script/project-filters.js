@@ -1,12 +1,15 @@
 const filters = document.querySelector("#projectFilters");
+const cards = [...document.querySelectorAll("#projectsDiv > .project-card")];
+const resultCount = document.querySelector("#projectResultCount");
+const emptyState = document.querySelector("#projectEmptyState");
+const clearButtons = [...document.querySelectorAll("[data-clear-filters]")];
+const filterGroups = ["tech", "type", "contribution"];
+const canInitialize = filters && resultCount && emptyState && cards.every(card =>
+	typeof card.dataset.technologies === "string" &&
+	typeof card.dataset.types === "string" &&
+	typeof card.dataset.participationMode === "string");
 
-if (filters) {
-	const cards = [...document.querySelectorAll("#projectsDiv > .project-card")];
-	const resultCount = document.querySelector("#projectResultCount");
-	const emptyState = document.querySelector("#projectEmptyState");
-	const clearButtons = [...document.querySelectorAll("[data-clear-filters]")];
-	const filterGroups = ["tech", "type", "contribution"];
-
+if (canInitialize) {
 	function getCheckboxes(group) {
 		return [...filters.querySelectorAll(`input[name="${group}"]`)];
 	}
@@ -30,19 +33,23 @@ if (filters) {
 	}
 
 	function updateUrl() {
-		const url = new URL(window.location.href);
+		try {
+			const url = new URL(window.location.href);
 
-		for (const group of filterGroups) {
-			const selectedIds = [...getSelectedIds(group)];
+			for (const group of filterGroups) {
+				const selectedIds = [...getSelectedIds(group)];
 
-			if (selectedIds.length > 0) {
-				url.searchParams.set(group, selectedIds.join(","));
-			} else {
-				url.searchParams.delete(group);
+				if (selectedIds.length > 0) {
+					url.searchParams.set(group, selectedIds.join(","));
+				} else {
+					url.searchParams.delete(group);
+				}
 			}
-		}
 
-		window.history.pushState(null, "", url);
+			window.history.pushState(null, "", url);
+		} catch (error) {
+			console.error("[project-filters] URL synchronization failed.", error);
+		}
 	}
 
 	function applyFilters() {
@@ -108,4 +115,6 @@ if (filters) {
 	restoreFiltersFromUrl();
 	filters.hidden = false;
 	applyFilters();
+} else if (filters) {
+	console.error("[project-filters] Initialization failed: required data is missing.");
 }

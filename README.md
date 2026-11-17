@@ -22,7 +22,7 @@ The repository separates content, rendering, and published output:
 - `tools/render/` separates pure escaped HTML rendering into page modules, shared visual components, and document primitives.
 - `tools/build.mjs` validates the source, optimizes and bundles static assets, renders every route, generates both resume PDFs, and copies only public assets.
 - Localized SEO titles, descriptions, social metadata, canonical URLs, language alternates, and structured data come from the same shared data model and render pipeline.
-- `src/script/` contains progressive enhancement only: mobile menu behavior and email copying.
+- `src/script/` contains progressive enhancement only: mobile menu behavior, project filtering, email copying, and resilient contact-form submission.
 - `dist/` is generated publication output, not an editable source.
 
 No page fetches JSON or constructs professional content in the browser. Generated HTML contains the main content, links, images, tables, and lists before JavaScript runs.
@@ -144,6 +144,14 @@ npm run test:browser
 Unit tests verify validation, all localized outputs, generated and validated PDFs, publication exclusions, static localized content, safe routes, and data-driven rebuilds. Playwright builds and serves `dist/`, then verifies root language selection, localized navigation, language switching, entity counts, media precedence, the mobile menu, JavaScript-disabled behavior, and desktop/mobile visual baselines.
 
 Intentional visual changes can be reviewed and accepted with `npm run test:browser:update`. Do not update snapshots to hide an unexplained regression.
+
+### Error handling
+
+Content and translation failures are build-time errors. Validation reports the affected file and property before `dist/` is replaced, and missing or malformed required JSON, invalid relationships, missing translations, local references, or unsafe runtime configuration stop publication.
+
+The generated HTML contains all primary content and navigation before JavaScript runs. Browser scripts only enhance independent components: a menu or filter initialization failure does not remove content, clipboard failures retain the email link, and contact failures preserve entered values and re-enable submission. Contact responses are checked explicitly, have a 15-second timeout, and expose localized status or alert messages without displaying technical details. Diagnostic console messages identify the component and operation without logging form contents or other personal data.
+
+Automated tests cover build validation, contact success, HTTP and network failures in both languages, coherent form state, static content without JavaScript, and normal interactive behavior. External service availability is not treated as a build requirement; contact submission and external media remain optional runtime dependencies.
 
 ### Accessibility verification
 

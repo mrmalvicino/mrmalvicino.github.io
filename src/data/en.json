@@ -510,6 +510,10 @@
   "messages": {
     "emailCopied": "Email copied to clipboard: ",
     "emailCopyFailed": "The email could not be copied. Your email application will open.",
+    "formSubmitting": "Sending message...",
+    "formSuccess": "Your message was sent successfully.",
+    "formServerError": "The message could not be sent. Please try again later.",
+    "formNetworkError": "A connection could not be established to send the message. Check your connection and try again.",
     "noProjects": "No projects match the selected filters."
   },
   "accessibility": {

@@ -103,7 +103,14 @@ async function readJson(root, relativePath, errors) {
 		const contents = await readFile(path.join(root, relativePath), "utf8");
 		return JSON.parse(contents);
 	} catch (error) {
-		errors.push(`${relativePath}: invalid JSON (${error.message})`);
+		if (error.code === "ENOENT") {
+			errors.push(`${relativePath}: required JSON file is missing`);
+		} else if (error instanceof SyntaxError) {
+			errors.push(`${relativePath}: invalid JSON (${error.message})`);
+		} else {
+			errors.push(`${relativePath}: could not be read (${error.message})`);
+		}
+
 		return null;
 	}
 }
@@ -290,6 +297,18 @@ function validateSeo(site, locales, errors) {
 	}
 }
 
+function validateRuntimeConfiguration(site, errors) {
+	try {
+		const formAction = new URL(site.configuration.formAction);
+
+		if (formAction.protocol !== "https:") {
+			errors.push("src/data/site.json: contact form action must use HTTPS");
+		}
+	} catch {
+		errors.push("src/data/site.json: contact form action is not a valid URL");
+	}
+}
+
 function validateDomain(site, errors) {
 	const collections = {
 		menu: site.menu,
@@ -422,6 +441,14 @@ function validateDomain(site, errors) {
 	}
 }
 
+function runSemanticValidation(name, validation, errors) {
+	try {
+		validation();
+	} catch (error) {
+		errors.push(`Data ${name} validation could not be completed (${error.message})`);
+	}
+}
+
 async function validateCss(root, errors) {
 	let cssFiles = [];
 
@@ -467,9 +494,10 @@ export async function validateSite(root = projectRoot) {
 	const locales = languages.map(language => [language, data.get(`${language}.json`)]);
 
 	if (site && locales.every(([, locale]) => locale)) {
-		validateTranslations(site, locales, errors);
-		validateDomain(site, errors);
-		validateSeo(site, locales, errors);
+		runSemanticValidation("translation", () => validateTranslations(site, locales, errors), errors);
+		runSemanticValidation("domain", () => validateDomain(site, errors), errors);
+		runSemanticValidation("SEO", () => validateSeo(site, locales, errors), errors);
+		runSemanticValidation("runtime configuration", () => validateRuntimeConfiguration(site, errors), errors);
 	}
 
 	if (errors.length > 0) {

@@ -23,3 +23,24 @@ textarea.textbox-input {
 	margin-bottom: var(--space-2);
 	color: var(--light-gray);
 }
+
+.form-status {
+	min-height: 1.5em;
+	margin-top: var(--space-2);
+	color: var(--light-gray);
+}
+
+.form-status:empty {
+	display: none;
+}
+
+.form-status[data-state="error"] {
+	font-weight: 700;
+	color: var(--pure-white);
+}
+
+[data-contact-form][aria-busy="true"] .light-button,
+[data-contact-form] .light-button:disabled {
+	cursor: wait;
+	opacity: 0.7;
+}

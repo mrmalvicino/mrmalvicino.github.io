@@ -4,7 +4,7 @@ import { escapeHtml, html, image, publicUrl } from "./html.mjs";
 import { renderProjects } from "./project-list.mjs";
 import { renderEmailLink, renderFooter, renderJobSearch, renderNavbar } from "./site-chrome.mjs";
 
-const scripts = ["menu.js", "email-copy.js"];
+const scripts = ["menu.js", "email-copy.js", "contact-form.js"];
 
 function renderSkillTechnologies(technologies) {
 	return technologies.map(technology => html`
@@ -172,7 +172,11 @@ export function renderPortfolioPage(data) {
 		          </div>
 		        </div>
 		        <div class="width-100-pct">
-		          <form action="${escapeHtml(data.site.configuration.formAction)}" method="POST">
+		          <form action="${escapeHtml(data.site.configuration.formAction)}" method="POST" data-contact-form
+		            data-submitting-message="${escapeHtml(data.locale.messages.formSubmitting)}"
+		            data-success-message="${escapeHtml(data.locale.messages.formSuccess)}"
+		            data-server-error-message="${escapeHtml(data.locale.messages.formServerError)}"
+		            data-network-error-message="${escapeHtml(data.locale.messages.formNetworkError)}">
 		            <p id="requiredFieldsNote" class="form-instructions">${escapeHtml(data.locale.accessibility.requiredFields)}</p>
 		            <div>
 		              <label for="nameTxt" class="light-gray-text">${escapeHtml(labels.index.nameLbl)} *</label>
@@ -188,6 +192,7 @@ export function renderPortfolioPage(data) {
 		              <textarea id="messageTxt" name="messageTxt" rows="3" required aria-describedby="requiredFieldsNote"
 		                class="textbox-input" placeholder="${escapeHtml(data.locale.placeholders.messageTxt)}"></textarea>
 		              <button type="submit" id="submitBtn" class="light-button margin-top-10-px width-100-pct">${escapeHtml(data.locale.buttons.submitBtn)}</button>
+		              <p class="form-status" data-form-status aria-live="polite"></p>
 		            </div>
 		          </form>
 		        </div>

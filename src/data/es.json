@@ -510,6 +510,10 @@
   "messages": {
     "emailCopied": "Email copiado al portapapeles: ",
     "emailCopyFailed": "No se pudo copiar el email. Se abrirá la aplicación de correo.",
+    "formSubmitting": "Enviando mensaje...",
+    "formSuccess": "Tu mensaje fue enviado correctamente.",
+    "formServerError": "No se pudo enviar el mensaje. Intentá nuevamente más tarde.",
+    "formNetworkError": "No se pudo conectar para enviar el mensaje. Revisá tu conexión e intentá nuevamente.",
     "noProjects": "No hay proyectos que coincidan con los filtros seleccionados."
   },
   "accessibility": {

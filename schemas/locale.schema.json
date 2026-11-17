@@ -119,10 +119,22 @@
     "messages": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["emailCopied", "emailCopyFailed", "noProjects"],
+      "required": [
+        "emailCopied",
+        "emailCopyFailed",
+        "formSubmitting",
+        "formSuccess",
+        "formServerError",
+        "formNetworkError",
+        "noProjects"
+      ],
       "properties": {
         "emailCopied": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
         "emailCopyFailed": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "formSubmitting": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "formSuccess": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "formServerError": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "formNetworkError": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
         "noProjects": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
       }
     },
