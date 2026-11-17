@@ -1,32 +1,27 @@
-import { readFile, readdir, stat } from "node:fs/promises";
+import { readFile, stat } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
+import { listFiles } from "./filesystem.mjs";
+import { languages, outputFile, pages, publicScripts } from "./site-manifest.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const requiredFiles = [
 	"CNAME",
 	"index.html",
-	"projects.html",
-	"cv.html",
 	"robots.txt",
 	"sitemap.xml",
-	"es/index.html",
-	"en/index.html",
-	"es/projects/index.html",
-	"en/projects/index.html",
-	"es/cv/index.html",
-	"en/cv/index.html",
-	"assets/cv/malvicino-es.pdf",
-	"assets/cv/malvicino-en.pdf",
-	"style/bundles/index.css",
-	"style/bundles/projects.css",
-	"style/bundles/cv.css",
-	"script/menu.js",
-	"script/project-filters.js",
-	"script/email-copy.js",
-	"script/contact-form.js"
+	"assets/design/linkedin/portfolio.png",
+	"assets/fonts/bootstrap-icons.woff2",
+	"assets/fonts/jost-latin-300-normal.woff2",
+	"assets/fonts/open-sans-latin-wght-normal.woff2",
+	"assets/images/favicon.ico",
+	...pages.filter(page => page.legacyFile).map(page => page.legacyFile),
+	...languages.flatMap(language => pages.map(page => outputFile(language.id, page.id))),
+	...languages.map(language => `assets/cv/${language.resumeFile}`),
+	...pages.map(page => `style/bundles/${page.id}.css`),
+	...publicScripts.map(script => `script/${script}`)
 ];
-const localizedHtmlFiles = requiredFiles.filter(file => /^(?:es|en)\/.+\.html$/.test(file));
+const localizedHtmlFiles = languages.flatMap(language => pages.map(page => outputFile(language.id, page.id)));
 const forbiddenTopLevelEntries = new Set([
 	".git",
 	".github",
@@ -39,27 +34,6 @@ const forbiddenTopLevelEntries = new Set([
 	"package-lock.json",
 	"playwright.config.mjs"
 ]);
-
-async function listFiles(directory, prefix = "") {
-	const entries = await readdir(directory, { withFileTypes: true });
-	const files = [];
-
-	for (const entry of entries) {
-		const relativePath = path.join(prefix, entry.name);
-
-		if (entry.isSymbolicLink()) {
-			throw new Error(`Publishable artifact contains a symbolic link: ${relativePath}`);
-		}
-
-		if (entry.isDirectory()) {
-			files.push(...await listFiles(path.join(directory, entry.name), relativePath));
-		} else {
-			files.push(relativePath);
-		}
-	}
-
-	return files;
-}
 
 async function assertFileExists(output, relativePath) {
 	const fileStats = await stat(path.join(output, relativePath));
@@ -96,7 +70,7 @@ async function assertLocalReferencesExist(output, relativePath, contents) {
 }
 
 export async function verifyDist(output = path.join(projectRoot, "dist")) {
-	const files = await listFiles(output);
+	const files = await listFiles(output, { rejectSymbolicLinks: true });
 
 	for (const relativePath of requiredFiles) {
 		await assertFileExists(output, relativePath);
@@ -131,7 +105,7 @@ export async function verifyDist(output = path.join(projectRoot, "dist")) {
 		await assertLocalReferencesExist(output, relativePath, contents);
 	}
 
-	for (const relativePath of ["assets/cv/malvicino-es.pdf", "assets/cv/malvicino-en.pdf"]) {
+	for (const relativePath of languages.map(language => `assets/cv/${language.resumeFile}`)) {
 		const contents = await readFile(path.join(output, relativePath));
 
 		if (contents.byteLength < 10000 || contents.subarray(0, 5).toString() !== "%PDF-") {

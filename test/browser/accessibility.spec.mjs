@@ -41,12 +41,16 @@ test("mobile menu exposes its state and restores focus when dismissed", async ({
 	await page.setViewportSize({ width: 320, height: 800 });
 	await page.goto("/en/");
 
-	const toggle = page.locator("#toggleBtn");
+	const toggle = page.locator("#toggle-btn");
 
 	await expect(toggle).toHaveAccessibleName("Open navigation menu");
 	await toggle.click();
 	await expect(toggle).toHaveAttribute("aria-expanded", "true");
-	await expect(page.locator("#menuLst a").first()).toBeFocused();
+	await expect(toggle.locator("i")).toHaveClass(/bi-x-lg/);
+	const closeIconContent = await toggle.locator("i").evaluate(element => getComputedStyle(element, "::before").content);
+	expect(closeIconContent).not.toBe("none");
+	expect(closeIconContent).not.toBe('""');
+	await expect(page.locator("#menu-list a").first()).toBeFocused();
 
 	await page.keyboard.press("Escape");
 	await expect(toggle).toHaveAttribute("aria-expanded", "false");
@@ -63,7 +67,7 @@ test("education and contact controls expose semantic context", async ({ page }) 
 	await expect(page.getByLabel("Name *")).toHaveAttribute("autocomplete", "name");
 	await expect(page.getByLabel("Email *")).toHaveAttribute("autocomplete", "email");
 	await expect(page.getByLabel("Phone *")).toHaveAttribute("autocomplete", "tel");
-	await expect(page.getByLabel("Message *")).toHaveAttribute("aria-describedby", "requiredFieldsNote");
+	await expect(page.getByLabel("Message *")).toHaveAttribute("aria-describedby", "required-fields-note");
 });
 
 test("reduced motion preference disables nonessential transitions", async ({ page }) => {
@@ -72,7 +76,7 @@ test("reduced motion preference disables nonessential transitions", async ({ pag
 
 	await expect(page.locator("html")).toHaveCSS("scroll-behavior", "auto");
 
-	const transitionDuration = await page.locator("#resumeBtn").evaluate(element => (
+	const transitionDuration = await page.locator("#resume-btn").evaluate(element => (
 		Number.parseFloat(getComputedStyle(element).transitionDuration)
 	));
 

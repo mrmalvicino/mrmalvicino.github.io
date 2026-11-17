@@ -16,7 +16,7 @@ export default defineConfig({
 		trace: "retain-on-failure"
 	},
 	webServer: {
-		command: "npm run build && node test/support/server.mjs",
+		command: "node test/support/server.mjs",
 		url: baseURL,
 		reuseExistingServer: !process.env.CI
 	},

@@ -1,14 +1,16 @@
-import { route } from "./document.mjs";
+import { languages, route } from "../site-manifest.mjs";
 import { escapeHtml, html, image } from "./html.mjs";
 
 function renderLanguageLinks(data, page) {
+	const links = languages.map(language => html`
+		<a href="${route(language.id, page)}" lang="${language.id}" class="plain-link medium-gray-link">${language.label}</a>
+	`).join('<span>&nbsp;/&nbsp;</span>');
+
 	return html`
 		<nav aria-label="${escapeHtml(data.locale.accessibility.languageNavigation)}" class="row-flex width-100-px">
 		  <i class="bi bi-translate" aria-hidden="true"></i>
 		  <span>&nbsp;</span>
-		  <a href="${route("es", page)}" lang="es" class="plain-link medium-gray-link">ES</a>
-		  <span>&nbsp;/&nbsp;</span>
-		  <a href="${route("en", page)}" lang="en" class="plain-link medium-gray-link">EN</a>
+		  ${links}
 		</nav>
 	`;
 }
@@ -70,7 +72,7 @@ export function renderJobSearch(data, className) {
 		return "";
 	}
 
-	return `<p id="jobSearchLbl" class="${className}">${escapeHtml(data.locale.labels.common.jobSearchLbl)}</p>`;
+	return `<p id="job-search-label" class="${className}">${escapeHtml(data.locale.labels.common.jobSearchLbl)}</p>`;
 }
 
 export function renderNavbar(data, page) {
@@ -79,15 +81,15 @@ export function renderNavbar(data, page) {
 	const navigation = isPortfolio
 		? html`
 			<div>
-			  <ul id="menuLst">
+			  <ul id="menu-list">
 			    ${data.menuItems.map(item => html`
 					<li>
 					  <a href="${escapeHtml(item.href)}" class="plain-link medium-gray-link">${escapeHtml(item.label)}</a>
 					</li>
 				`).join("\n")}
 			  </ul>
-			  <button id="toggleBtn" type="button" class="toggle-button"
-			    aria-label="${escapeHtml(data.locale.accessibility.openMenu)}" aria-expanded="false" aria-controls="menuLst"
+			  <button id="toggle-btn" type="button" class="toggle-button"
+			    aria-label="${escapeHtml(data.locale.accessibility.openMenu)}" aria-expanded="false" aria-controls="menu-list"
 			    data-open-label="${escapeHtml(data.locale.accessibility.openMenu)}"
 			    data-close-label="${escapeHtml(data.locale.accessibility.closeMenu)}">
 			    <i class="bi bi-list" aria-hidden="true"></i>
@@ -95,7 +97,7 @@ export function renderNavbar(data, page) {
 			</div>
 		`
 		: html`
-			<a id="backLbl" href="${route(data.language, "index")}" class="plain-link medium-gray-link">
+			<a id="back-label" href="${route(data.language, "index")}" class="plain-link medium-gray-link">
 			  <i class="bi bi-arrow-left-short" aria-hidden="true"></i>
 			  <span>&nbsp;</span>
 			  <span>${escapeHtml(data.locale.labels.projects.backLbl)}</span>
@@ -105,9 +107,9 @@ export function renderNavbar(data, page) {
 	return html`
 		<a href="#main-content" class="skip-link">${escapeHtml(data.locale.accessibility.skipToContent)}</a>
 		<header class="site-chrome menu-header">
-		  <nav${isPortfolio ? ' id="menuNav"' : ""} class="menu-nav" aria-label="${escapeHtml(data.locale.accessibility.primaryNavigation)}">
-		    <a id="logoBtn" href="${route(data.language, "index")}" class="plain-link pure-white-text margin-vertical-auto">
-		      ${image(data.images.logoImg, "width-40-px", { width: 40, height: 40, decoding: "async" })}
+		  <nav${isPortfolio ? ' id="menu-nav"' : ""} class="menu-nav" aria-label="${escapeHtml(data.locale.accessibility.primaryNavigation)}">
+		    <a id="logo-btn" href="${route(data.language, "index")}" class="plain-link pure-white-text margin-vertical-auto">
+		      ${image(data.images["logo-img"], "width-40-px", { width: 40, height: 40, decoding: "async" })}
 		      <span>&nbsp;</span>
 		      <span>${escapeHtml(data.site.profile.headerName)}</span>
 		    </a>

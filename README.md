@@ -19,7 +19,9 @@ The repository separates content, rendering, and published output:
 - `src/assets/`, `src/style/`, and `src/script/` contain static-resource sources. The build optimizes images, bundles styles, and copies progressive-enhancement scripts into the public artifact.
 - `schemas/` validates the three data files and their relationships.
 - `tools/site-data.mjs` resolves IDs, translations, ordering, visibility, images, technologies, and institutions at build time.
+- `tools/site-manifest.mjs` is the single publication contract for languages, pages, routes, styles, scripts, and resume files.
 - `tools/render/` separates pure escaped HTML rendering into page modules, shared visual components, and document primitives.
+- `tools/filesystem.mjs` and `tools/static-server.mjs` provide the shared safe filesystem and HTTP primitives used by build verification, PDF generation, and browser tests.
 - `tools/build.mjs` validates the source, optimizes and bundles static assets, renders every route, generates both resume PDFs, and copies only public assets.
 - Localized SEO titles, descriptions, social metadata, canonical URLs, language alternates, and structured data come from the same shared data model and render pipeline.
 - `src/script/` contains progressive enhancement only: mobile menu behavior, project filtering, email copying, and resilient contact-form submission.
@@ -29,7 +31,7 @@ No page fetches JSON or constructs professional content in the browser. Generate
 
 ### CSS architecture
 
-CSS remains dependency-free and is loaded in a fixed responsibility order by `tools/render/document.mjs`:
+CSS remains dependency-free and is loaded in the fixed responsibility order declared by `tools/site-manifest.mjs`:
 
 1. Tokens: `variables.css` owns shared colors, type families, spacing, radii, and stable site dimensions.
 2. Base: `controls.css` owns the reset, element defaults, and the shared `.page-section` layout primitive.
@@ -49,17 +51,18 @@ Responsive contracts use `600px` for the compact CV, `800px` for stacked content
 
 ## Data
 
-Stable domain IDs use language-independent `kebab-case`; existing control IDs remain `camelCase` where they are part of the DOM contract. Ordered collections use a unique positive `order`, and relationships use validated IDs:
+JSON properties and JavaScript identifiers use `camelCase`. Stable domain IDs, translation keys that represent entities, URL fragments, and DOM IDs use language-independent `kebab-case`. Ordered collections use a unique positive `order`, and relationships use validated IDs:
 
 | Collection | Relationships |
 | --- | --- |
-| `projects` | `typeIds` references project types; `participationModeId` references a participation mode; `technologyIds` references technologies; `mockup_id` references project images; `live_demo` links to an interactive demo and `website_url` to an official website |
+| `projects` | `typeIds` references project types; `participationModeId` references a participation mode; `technologyIds` references technologies; `mockupId` references project images; `liveDemo` links to an interactive demo and `websiteUrl` to an official website |
 | `projectTypes` | Stable project classifications translated by the locale catalogs |
 | `participationModes` | Stable development or participation modes translated by the locale catalogs |
 | `technologies` | `imageId` references a technology image |
 | `studies` | `institutionId` references an institution |
 | `institutions` | `imageId` references an institution image |
-| `skills` | `bannerTechnologyIds` references technologies |
+| `images` | `defaultProjectImageId` references the project fallback image; every catalog entry uses a stable image ID |
+| `skills` | Groups and categories reference technologies; `cvGroupId` identifies the categorized group rendered in the resume |
 | `menu` | `href` references a portfolio section |
 
 The shared technology catalog is the source of IDs, display names, and icons used by projects and Skills. Technologies remain in the catalog while referenced by historical projects, even when they are no longer shown as current professional skills.
@@ -102,7 +105,7 @@ Generate the publishable artifact with:
 npm run build
 ```
 
-The build validates first, replaces `dist/`, converts publication raster images to WebP, self-hosts the required font and icon files, and creates one ordered CSS bundle per page. It then renders the complete route set, serves the generated HTML locally, and uses the locked Playwright Chromium version to create `assets/cv/malvicino-es.pdf` and `assets/cv/malvicino-en.pdf`. It intentionally excludes original publication rasters, source JSON, schemas, build tools, and tests.
+The build validates first, replaces `dist/`, converts publication raster images to WebP, copies only allowlisted public assets and page scripts, self-hosts the required font and icon files, and creates one ordered CSS bundle per page. It then renders the route set from the shared manifest, serves the generated HTML locally, and uses the locked Playwright Chromium version to create `assets/cv/malvicino-es.pdf` and `assets/cv/malvicino-en.pdf`. It intentionally excludes original publication rasters, unused design sources, source JSON, schemas, build tools, and tests.
 
 Image conversion, font selection, licenses, external-resource decisions, and comparable Lighthouse results are documented in [`docs/performance.md`](docs/performance.md).
 
@@ -141,7 +144,7 @@ npm run test:unit
 npm run test:browser
 ```
 
-Unit tests verify validation, all localized outputs, generated and validated PDFs, publication exclusions, static localized content, safe routes, and data-driven rebuilds. Playwright builds and serves `dist/`, then verifies root language selection, localized navigation, language switching, entity counts, media precedence, the mobile menu, JavaScript-disabled behavior, and desktop/mobile visual baselines.
+Unit tests verify validation, manifest and server contracts, all localized outputs, generated and validated PDFs, publication exclusions, static localized content, safe routes, and data-driven rebuilds. The browser-test prehook builds `dist/` once; Playwright serves that same artifact and verifies root language selection, localized navigation, language switching, content invariants, media precedence, the mobile menu, JavaScript-disabled behavior, and desktop/mobile visual baselines. CI verifies and publishes the already-tested artifact without rebuilding it.
 
 Intentional visual changes can be reviewed and accepted with `npm run test:browser:update`. Do not update snapshots to hide an unexplained regression.
 

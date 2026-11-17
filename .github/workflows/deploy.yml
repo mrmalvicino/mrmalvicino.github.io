@@ -30,12 +30,8 @@ jobs:
         run: npm ci
       - name: Install Chromium and system dependencies
         run: npx playwright install --with-deps chromium
-      - name: Validate source data
-        run: npm run validate
       - name: Run unit and browser tests
         run: npm test
-      - name: Build publishable site and resumes
-        run: npm run build
       - name: Verify publishable artifact
         run: npm run verify:dist
       - name: Configure GitHub Pages

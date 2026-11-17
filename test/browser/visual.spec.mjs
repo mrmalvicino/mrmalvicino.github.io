@@ -1,9 +1,9 @@
 import { expect, openRenderedPage, stabilizeVisualPage, test } from "./portfolio-test.mjs";
 
 const pages = [
-	{ name: "index", path: "", readySelector: "#projectsDiv > .project-card", expectedCount: 3 },
-	{ name: "projects", path: "projects/", readySelector: "#projectsDiv > .project-card", expectedCount: 25 },
-	{ name: "cv", path: "cv/", readySelector: "#projectsLst > article", expectedCount: 2 }
+	{ name: "index", path: "", readySelector: "#projects-list > .project-card", expectedCount: 3 },
+	{ name: "projects", path: "projects/", readySelector: "#projects-list > .project-card", expectedCount: 25 },
+	{ name: "cv", path: "cv/", readySelector: "#projects-list > article", expectedCount: 2 }
 ];
 
 const viewports = [

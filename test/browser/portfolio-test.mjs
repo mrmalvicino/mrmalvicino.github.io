@@ -34,14 +34,6 @@ export const test = base.extend({
 				return;
 			}
 
-			if (requestUrl.pathname.endsWith("bootstrap-icons.css")) {
-				await route.fulfill({
-					body: '.bi-list::before { content: "\\2630"; }',
-					contentType: "text/css"
-				});
-				return;
-			}
-
 			if (request.resourceType() === "image") {
 				await route.fulfill({ body: transparentPixel, contentType: "image/png" });
 				return;

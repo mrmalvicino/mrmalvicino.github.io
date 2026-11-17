@@ -1,5 +1,5 @@
 export function formatStudyTitle(study, language) {
-	if (!study.graduation_date) {
+	if (!study.graduationDate) {
 		return study.title;
 	}
 
@@ -8,7 +8,7 @@ export function formatStudyTitle(study, language) {
 		month: "long",
 		timeZone: "UTC",
 		year: "numeric"
-	}).format(new Date(`${study.graduation_date}T00:00:00Z`));
+	}).format(new Date(`${study.graduationDate}T00:00:00Z`));
 
 	return `${study.title} (${graduationDate})`;
 }

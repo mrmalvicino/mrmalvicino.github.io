@@ -43,28 +43,67 @@ const featuredProjects = ["Membriana", "deCauciones", "Halley V2"];
 const freelanceProjects = ["Membriana", "deCauciones"];
 
 async function fillContactForm(page) {
-	await page.locator("#nameTxt").fill("Test User");
-	await page.locator("#emailTxt").fill("test@example.com");
-	await page.locator("#phoneTxt").fill("+54 11 5555 5555");
-	await page.locator("#messageTxt").fill("Automated test message");
+	await page.locator("#name-input").fill("Test User");
+	await page.locator("#email-input").fill("test@example.com");
+	await page.locator("#phone-input").fill("+54 11 5555 5555");
+	await page.locator("#message-input").fill("Automated test message");
 }
+
+test("email links copy the address and announce success", async ({ page }) => {
+	await page.addInitScript(() => {
+		Object.defineProperty(navigator, "clipboard", {
+			configurable: true,
+			value: {
+				writeText(value) {
+					window.copiedEmail = value;
+					return Promise.resolve();
+				}
+			}
+		});
+	});
+	await page.goto("/en/");
+	const emailLink = page.locator("[data-copy-email]").first();
+
+	await emailLink.click();
+	await expect(emailLink.locator("xpath=following-sibling::*[@data-copy-status]")).toContainText(
+		"Email copied to clipboard: mrmalvicino@gmail.com"
+	);
+	await expect.poll(() => page.evaluate(() => window.copiedEmail)).toBe("mrmalvicino@gmail.com");
+});
+
+test("email links announce clipboard failures and retain their mailto fallback", async ({ page }) => {
+	await page.addInitScript(() => {
+		Object.defineProperty(navigator, "clipboard", {
+			configurable: true,
+			value: { writeText: () => Promise.reject(new Error("denied")) }
+		});
+	});
+	await page.goto("/en/");
+	const emailLink = page.locator("[data-copy-email]").first();
+
+	await expect(emailLink).toHaveAttribute("href", "mailto:mrmalvicino@gmail.com");
+	await emailLink.click({ noWaitAfter: true });
+	await expect(emailLink.locator("xpath=following-sibling::*[@data-copy-status]")).toContainText(
+		"The email could not be copied"
+	);
+});
 
 for (const [language, labels] of Object.entries(languages)) {
 	test.describe(`${language.toUpperCase()} content`, () => {
 		test("portfolio contains localized entities in its initial HTML", async ({ page }) => {
-			await openRenderedPage(page, `/${language}/`, "#projectsDiv > .project-card", 3);
+			await openRenderedPage(page, `/${language}/`, "#projects-list > .project-card", 3);
 
 			await expect(page.locator("html")).toHaveAttribute("lang", language);
-			await expect(page.locator("#skillsLbl")).toHaveText(labels.indexTitle);
-			await expect(page.locator("#jobSearchLbl")).toHaveText(labels.jobSearch);
-			await expect(page.locator("#menuLst > li")).toHaveCount(5);
-			await expect(page.locator("#skillGroupsDiv > .skill-category")).toHaveCount(4);
-			await expect(page.locator("#skillGroupsDiv .skill-subcategory")).toHaveCount(11);
-			await expect(page.locator("#skillGroupsDiv .skill-technology")).toHaveCount(19);
-			await expect(page.locator("#skillGroupsDiv .skill-technology-icon")).toHaveCount(19);
-			await expect(page.locator("#studiesTab > tr")).toHaveCount(9);
-			await expect(page.locator("#studiesTab > tr").nth(1).locator(".bi-mortarboard")).toHaveCount(1);
-			await expect(page.locator("#studiesTab > tr").nth(1).locator(".bi-award")).toHaveCount(1);
+			await expect(page.locator("#skills-label")).toHaveText(labels.indexTitle);
+			await expect(page.locator("#job-search-label")).toHaveText(labels.jobSearch);
+			await expect(page.locator("#menu-list > li")).toHaveCount(5);
+			await expect(page.locator("#skill-groups > .skill-category")).toHaveCount(4);
+			await expect(page.locator("#skill-groups .skill-subcategory")).toHaveCount(11);
+			await expect(page.locator("#skill-groups .skill-technology")).toHaveCount(19);
+			await expect(page.locator("#skill-groups .skill-technology-icon")).toHaveCount(19);
+			await expect(page.locator("#studies-table > tr")).toHaveCount(9);
+			await expect(page.locator("#studies-table > tr").nth(1).locator(".bi-mortarboard")).toHaveCount(1);
+			await expect(page.locator("#studies-table > tr").nth(1).locator(".bi-award")).toHaveCount(1);
 			await expect(page.locator("#footer")).toContainText("General Pacheco, Buenos Aires, Argentina");
 			await expect(page.locator("#footer .footer-pages > a")).toHaveCount(3);
 			const locationLines = await page.locator("#footer .footer-location span:last-child").evaluate(element => {
@@ -86,28 +125,28 @@ for (const [language, labels] of Object.entries(languages)) {
 			});
 
 			expect(socialAlignment).toBeLessThanOrEqual(1);
-			await expect(page.locator("#projectsDiv .project-details h3")).toHaveText(featuredProjects);
-			await expect(page.locator("#projectsDiv .project-actions a").first()).toHaveAttribute("target", "_blank");
-			await expect(page.locator("#projectsDiv .project-actions a").first()).toHaveAttribute("rel", "noopener noreferrer");
-			await expect(page.locator("#resumeBtn")).toHaveAttribute("download", labels.resume);
-			await expect(page.locator("#resumeBtn")).toHaveText(labels.resumeLabel);
-			await expect(page.locator("#onlineResumeBtn")).toHaveText(labels.onlineResume);
-			await expect(page.locator("#onlineResumeBtn")).toHaveAttribute("href", `/${language}/cv/`);
-			await expect(page.locator("#onlineResumeBtn")).not.toHaveAttribute("target", "_blank");
-			await expect(page.locator("#onlineResumeBtn")).toHaveCSS("text-decoration-line", "underline");
+			await expect(page.locator("#projects-list .project-details h3")).toHaveText(featuredProjects);
+			await expect(page.locator("#projects-list .project-actions a").first()).toHaveAttribute("target", "_blank");
+			await expect(page.locator("#projects-list .project-actions a").first()).toHaveAttribute("rel", "noopener noreferrer");
+			await expect(page.locator("#resume-btn")).toHaveAttribute("download", labels.resume);
+			await expect(page.locator("#resume-btn")).toHaveText(labels.resumeLabel);
+			await expect(page.locator("#online-resume-btn")).toHaveText(labels.onlineResume);
+			await expect(page.locator("#online-resume-btn")).toHaveAttribute("href", `/${language}/cv/`);
+			await expect(page.locator("#online-resume-btn")).not.toHaveAttribute("target", "_blank");
+			await expect(page.locator("#online-resume-btn")).toHaveCSS("text-decoration-line", "underline");
 			await expect(page.locator(`a[lang='es'][href='/es/']`)).toBeVisible();
 			await expect(page.locator(`a[lang='en'][href='/en/']`)).toBeVisible();
 		});
 
 		test("project catalog contains every project and media variant", async ({ page }) => {
-			await openRenderedPage(page, `/${language}/projects/`, "#projectsDiv > .project-card", 25);
+			await openRenderedPage(page, `/${language}/projects/`, "#projects-list > .project-card", 25);
 
 			await expect(page.locator("html")).toHaveAttribute("lang", language);
-			await expect(page.locator("#projectsLbl")).toHaveText(labels.projectsTitle);
-			await expect(page.locator("#filtersLbl")).toHaveText(labels.filtersTitle);
-			await expect(page.locator("#projectResultCount")).toHaveText(labels.resultCount);
-			await expect(page.locator(".menu-header #backLbl")).toHaveCount(1);
-			await expect(page.locator(".menu-header #menuLst")).toHaveCount(0);
+			await expect(page.locator("#projects-label")).toHaveText(labels.projectsTitle);
+			await expect(page.locator("#filters-label")).toHaveText(labels.filtersTitle);
+			await expect(page.locator("#project-result-count")).toHaveText(labels.resultCount);
+			await expect(page.locator(".menu-header #back-label")).toHaveCount(1);
+			await expect(page.locator(".menu-header #menu-list")).toHaveCount(0);
 			await expect(page.locator("#footer")).toBeVisible();
 			await expect(page.locator('input[name="tech"]')).toHaveCount(20);
 			await expect(page.locator('input[name="type"]')).toHaveCount(5);
@@ -128,67 +167,69 @@ for (const [language, labels] of Object.entries(languages)) {
 		});
 
 		test("resume contains semantic ATS content in logical order", async ({ page }) => {
-			await openRenderedPage(page, `/${language}/cv/`, "#projectsLst > article", 2);
+			await openRenderedPage(page, `/${language}/cv/`, "#projects-list > article", 2);
 
 			await expect(page.locator("html")).toHaveAttribute("lang", language);
-			await expect(page.locator("#profileLbl")).toHaveText(labels.cvProfileTitle);
-			await expect(page.locator("#experienceLbl")).toHaveText(labels.cvExperienceTitle);
-			await expect(page.locator("#projectsLbl")).toHaveText(labels.cvFreelanceTitle);
-			await expect(page.locator("#educationLbl")).toBeVisible();
-			await expect(page.locator("#skillsLbl")).toHaveText(labels.cvTitle);
+			await expect(page.locator("#profile-label")).toHaveText(labels.cvProfileTitle);
+			await expect(page.locator("#experience-label")).toHaveText(labels.cvExperienceTitle);
+			await expect(page.locator("#projects-label")).toHaveText(labels.cvFreelanceTitle);
+			await expect(page.locator("#education-label")).toBeVisible();
+			await expect(page.locator("#skills-label")).toHaveText(labels.cvTitle);
 			await expect(page.locator(".cv-heading > p")).toHaveText(labels.cvPosition);
-			await expect(page.locator("#jobSearchLbl")).toHaveText(labels.jobSearch);
+			await expect(page.locator("#job-search-label")).toHaveText(labels.jobSearch);
 			await expect(page.locator(".cv-contact-row")).toHaveCount(1);
 			await expect(page.locator(".cv-contact-row > a")).toHaveCount(5);
 			await expect(page.locator(".cv-contact-row")).toContainText("General Pacheco, Buenos Aires");
-			await expect(page.locator(".menu-header #backLbl")).toHaveCount(1);
-			await expect(page.locator(".menu-header #menuLst")).toHaveCount(0);
+			await expect(page.locator(".menu-header #back-label")).toHaveCount(1);
+			await expect(page.locator(".menu-header #menu-list")).toHaveCount(0);
 			await expect(page.locator("#footer")).toBeVisible();
 			await expect(page.locator("#footer a[lang='es']")).toHaveAttribute("href", "/es/cv/");
 			await expect(page.locator("#footer a[lang='en']")).toHaveAttribute("href", "/en/cv/");
-			await expect(page.locator("#skillsLst > li")).toHaveCount(6);
-			await expect(page.locator("#skillsLst")).not.toContainText("Uso profesional frecuente");
-			await expect(page.locator("#skillsLst")).not.toContainText("Frequent professional use");
-			await expect(page.locator("#skillsLst")).not.toContainText("Complementary professional use");
-			await expect(page.locator("#studiesLst > article")).toHaveCount(8);
-			await expect(page.locator("#studiesLst")).toContainText(labels.cvCoursePrefix);
-			await expect(page.locator("#careersLbl, #coursesLbl, #languagesLbl")).toHaveCount(0);
-			await expect(page.locator("#projectsLst > article > h3")).toHaveText(freelanceProjects);
-			await expect(page.locator("#projectsLst > article").first().locator("a"))
+			await expect(page.locator("#skills-list > li")).toHaveCount(6);
+			await expect(page.locator("#skills-list")).not.toContainText("Uso profesional frecuente");
+			await expect(page.locator("#skills-list")).not.toContainText("Frequent professional use");
+			await expect(page.locator("#skills-list")).not.toContainText("Complementary professional use");
+			await expect(page.locator("#studies-list > article")).toHaveCount(8);
+			await expect(page.locator("#studies-list")).toContainText(labels.cvCoursePrefix);
+			await expect(page.locator("#careers-label, #courses-label, #languages-label")).toHaveCount(0);
+			await expect(page.locator("#projects-list > article > h3")).toHaveText(freelanceProjects);
+			await expect(page.locator("#projects-list > article").first().locator("a"))
 				.toHaveAttribute("href", "https://github.com/mrmalvicino/membriana");
-			await expect(page.locator("#projectsLst > article").nth(1).locator("a"))
+			await expect(page.locator("#projects-list > article").nth(1).locator("a"))
 				.toHaveAttribute("href", "https://decauciones.com");
-			await expect(page.locator("#jobsLst > article")).toHaveCount(4);
-			await expect(page.locator("#jobsLst > article").first()).toContainText("Halley Accurate Solutions");
-			await expect(page.locator("#jobsLst time")).toHaveCount(8);
+			await expect(page.locator("#jobs-list > article")).toHaveCount(4);
+			await expect(page.locator("#jobs-list > article").first()).toContainText("Halley Accurate Solutions");
+			await expect(page.locator("#jobs-list time")).toHaveCount(8);
 
 			const sectionIds = await page.locator(".cv-main > section > h2").evaluateAll(headings => (
 				headings.map(heading => heading.id)
 			));
 
-			expect(sectionIds).toEqual(["profileLbl", "skillsLbl", "experienceLbl", "projectsLbl", "educationLbl"]);
+			expect(sectionIds).toEqual(["profile-label", "skills-label", "experience-label", "projects-label", "education-label"]);
 		});
 
 		test("navigation stays in the selected language", async ({ page }) => {
-			await openRenderedPage(page, `/${language}/`, "#projectsDiv > .project-card", 3);
-			await page.locator("#allProjectsLbl").click();
+			await openRenderedPage(page, `/${language}/`, "#projects-list > .project-card", 3);
+			await page.locator("#all-projects-label").click();
 			await expect(page).toHaveURL(new RegExp(`/${language}/projects/$`));
-			await expect(page.locator("#projectsDiv > .project-card")).toHaveCount(25);
+			await expect(page.locator("#projects-list > .project-card")).toHaveCount(25);
 
-			await page.locator("#backLbl").click();
+			await page.locator("#back-label").click();
 			await expect(page).toHaveURL(new RegExp(`/${language}/$`));
-			await expect(page.locator("#projectsDiv > .project-card")).toHaveCount(3);
+			await expect(page.locator("#projects-list > .project-card")).toHaveCount(3);
 		});
 	});
 }
 
 for (const [language, messages] of Object.entries({
 	es: {
+		submitting: "Enviando mensaje...",
 		success: "Tu mensaje fue enviado correctamente.",
 		serverError: "No se pudo enviar el mensaje. Intentá nuevamente más tarde.",
 		networkError: "No se pudo conectar para enviar el mensaje. Revisá tu conexión e intentá nuevamente."
 	},
 	en: {
+		submitting: "Sending message...",
 		success: "Your message was sent successfully.",
 		serverError: "The message could not be sent. Please try again later.",
 		networkError: "A connection could not be established to send the message. Check your connection and try again."
@@ -196,71 +237,102 @@ for (const [language, messages] of Object.entries({
 })) {
 	test(`${language.toUpperCase()} contact form handles successful responses`, async ({ page }) => {
 		let completeRequest;
+		let submittedRequest;
 		const requestPending = new Promise(resolve => {
 			completeRequest = resolve;
 		});
 
 		await page.route("https://formspree.io/**", async route => {
+			submittedRequest = route.request();
 			await requestPending;
 			await route.fulfill({ body: "{}", contentType: "application/json", status: 200 });
 		});
 		await page.goto(`/${language}/`);
 		await fillContactForm(page);
-		await page.locator("#submitBtn").click();
-		await expect(page.locator("#submitBtn")).toBeDisabled();
+		await page.locator("#submit-btn").click();
+		await expect(page.locator("#submit-btn")).toBeDisabled();
 		await expect(page.locator("[data-contact-form]")).toHaveAttribute("aria-busy", "true");
+		await expect(page.locator("[data-form-status]")).toHaveAttribute("data-state", "pending");
+		await expect(page.locator("[data-form-status]")).toHaveText(messages.submitting);
+		expect(submittedRequest.method()).toBe("POST");
+		expect(submittedRequest.headers().accept).toBe("application/json");
+		expect(submittedRequest.postData()).toContain('name="email-input"');
 		completeRequest();
 		await expect(page.locator("[data-form-status]")).toHaveText(messages.success);
 		await expect(page.locator("[data-form-status]")).toHaveAttribute("role", "status");
-		await expect(page.locator("#submitBtn")).toBeEnabled();
-		await expect(page.locator("#messageTxt")).toHaveValue("");
+		await expect(page.locator("[data-form-status]")).toHaveAttribute("data-state", "success");
+		await expect(page.locator("[data-contact-form]")).not.toHaveAttribute("aria-busy", "true");
+		await expect(page.locator("#submit-btn")).toBeEnabled();
+		await expect(page.locator("#name-input")).toHaveValue("");
+		await expect(page.locator("#email-input")).toHaveValue("");
+		await expect(page.locator("#phone-input")).toHaveValue("");
+		await expect(page.locator("#message-input")).toHaveValue("");
 	});
 
 	test(`${language.toUpperCase()} contact form preserves input after an HTTP error`, async ({ page }) => {
 		await page.route("https://formspree.io/**", route => route.fulfill({ body: "{}", status: 500 }));
 		await page.goto(`/${language}/`);
 		await fillContactForm(page);
-		await page.locator("#submitBtn").click();
+		await page.locator("#submit-btn").click();
 		await expect(page.locator("[data-form-status]")).toHaveText(messages.serverError);
 		await expect(page.locator("[data-form-status]")).toHaveAttribute("role", "alert");
-		await expect(page.locator("#submitBtn")).toBeEnabled();
-		await expect(page.locator("#messageTxt")).toHaveValue("Automated test message");
+		await expect(page.locator("#submit-btn")).toBeEnabled();
+		await expect(page.locator("#message-input")).toHaveValue("Automated test message");
 	});
 
 	test(`${language.toUpperCase()} contact form handles network errors`, async ({ page }) => {
 		await page.route("https://formspree.io/**", route => route.abort("failed"));
 		await page.goto(`/${language}/`);
 		await fillContactForm(page);
-		await page.locator("#submitBtn").click();
+		await page.locator("#submit-btn").click();
 		await expect(page.locator("[data-form-status]")).toHaveText(messages.networkError);
 		await expect(page.locator("[data-form-status]")).toHaveAttribute("role", "alert");
-		await expect(page.locator("#submitBtn")).toBeEnabled();
-		await expect(page.locator("#messageTxt")).toHaveValue("Automated test message");
+		await expect(page.locator("#submit-btn")).toBeEnabled();
+		await expect(page.locator("#message-input")).toHaveValue("Automated test message");
 	});
 }
 
+test("contact form aborts timed-out requests", async ({ page }) => {
+	await page.addInitScript(() => {
+		const nativeSetTimeout = window.setTimeout.bind(window);
+		window.setTimeout = (callback, delay, ...arguments_) => (
+			nativeSetTimeout(callback, delay === 15000 ? 0 : delay, ...arguments_)
+		);
+		window.fetch = (_url, options) => new Promise((_resolve, reject) => {
+			options.signal.addEventListener("abort", () => reject(new DOMException("Aborted", "AbortError")));
+		});
+	});
+	await page.goto("/en/");
+	await fillContactForm(page);
+	await page.locator("#submit-btn").click();
+	await expect(page.locator("[data-form-status]")).toHaveText(
+		"A connection could not be established to send the message. Check your connection and try again."
+	);
+	await expect(page.locator("[data-form-status]")).toHaveAttribute("data-state", "error");
+});
+
 test.describe("project filters", () => {
 	test("combine OR selections within categories and AND between categories", async ({ page }) => {
-		await openRenderedPage(page, "/en/projects/", "#projectsDiv > .project-card", 25);
+		await openRenderedPage(page, "/en/projects/", "#projects-list > .project-card", 25);
 
 		await page.locator('input[name="tech"][value="python"]').check();
-		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(4);
+		await expect(page.locator("#projects-list > .project-card:visible")).toHaveCount(4);
 		await expect(page).toHaveURL(/\?tech=python$/);
 
 		await page.locator('input[name="tech"][value="cpp"]').check();
-		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(9);
+		await expect(page.locator("#projects-list > .project-card:visible")).toHaveCount(9);
 		await expect(page).toHaveURL(/\?tech=cpp%2Cpython$|\?tech=python%2Ccpp$/);
 
 		await page.locator('input[name="type"][value="desktop-app"]').check();
-		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(7);
+		await expect(page.locator("#projects-list > .project-card:visible")).toHaveCount(7);
 
 		await page.locator('input[name="type"][value="research"]').check();
-		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(8);
-		await expect(page.locator("#projectResultCount")).toHaveText("8 projects");
+		await expect(page.locator("#projects-list > .project-card:visible")).toHaveCount(8);
+		await expect(page.locator("#project-result-count")).toHaveText("8 projects");
 	});
 
 	test("filter every contribution mode and combine contribution selections with OR", async ({ page }) => {
-		await openRenderedPage(page, "/en/projects/", "#projectsDiv > .project-card", 25);
+		await openRenderedPage(page, "/en/projects/", "#projects-list > .project-card", 25);
 		const expectedResults = {
 			"freelance-saas": { count: 2, titles: ["Membriana", "Meeni ERP"] },
 			"freelance-one-off": { count: 1, title: "deCauciones" },
@@ -273,14 +345,14 @@ test.describe("project filters", () => {
 			const checkbox = page.locator(`input[name="contribution"][value="${mode}"]`);
 
 			await checkbox.check();
-			await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(expected.count);
+			await expect(page.locator("#projects-list > .project-card:visible")).toHaveCount(expected.count);
 
 			if (expected.title) {
-				await expect(page.locator("#projectsDiv > .project-card:visible h3")).toHaveText(expected.title);
+				await expect(page.locator("#projects-list > .project-card:visible h3")).toHaveText(expected.title);
 			}
 
 			if (expected.titles) {
-				await expect(page.locator("#projectsDiv > .project-card:visible h3")).toHaveText(expected.titles);
+				await expect(page.locator("#projects-list > .project-card:visible h3")).toHaveText(expected.titles);
 			}
 
 			await checkbox.uncheck();
@@ -288,8 +360,8 @@ test.describe("project filters", () => {
 
 		await page.locator('input[name="contribution"][value="freelance-saas"]').check();
 		await page.locator('input[name="contribution"][value="freelance-one-off"]').check();
-		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(3);
-		await expect(page.locator("#projectsDiv > .project-card:visible h3")).toHaveText([
+		await expect(page.locator("#projects-list > .project-card:visible")).toHaveCount(3);
+		await expect(page.locator("#projects-list > .project-card:visible h3")).toHaveText([
 			"Membriana",
 			"deCauciones",
 			"Meeni ERP"
@@ -297,14 +369,14 @@ test.describe("project filters", () => {
 	});
 
 	test("combine technology, project type, and contribution filters with AND", async ({ page }) => {
-		await openRenderedPage(page, "/en/projects/", "#projectsDiv > .project-card", 25);
+		await openRenderedPage(page, "/en/projects/", "#projects-list > .project-card", 25);
 
 		await page.locator('input[name="tech"][value="javascript"]').check();
 		await page.locator('input[name="type"][value="static-site"]').check();
 		await page.locator('input[name="contribution"][value="freelance-one-off"]').check();
 
-		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(1);
-		await expect(page.locator("#projectsDiv > .project-card:visible h3")).toHaveText("deCauciones");
+		await expect(page.locator("#projects-list > .project-card:visible")).toHaveCount(1);
+		await expect(page.locator("#projects-list > .project-card:visible h3")).toHaveText("deCauciones");
 		await expect(page).toHaveURL(/tech=javascript&type=static-site&contribution=freelance-one-off$/);
 	});
 
@@ -312,70 +384,71 @@ test.describe("project filters", () => {
 		await openRenderedPage(
 			page,
 			"/es/projects/?tech=html,javascript&type=static-site&contribution=freelance-one-off,independent-development",
-			"#projectsDiv > .project-card",
+			"#projects-list > .project-card",
 			25
 		);
 
-		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(3);
+		await expect(page.locator("#projects-list > .project-card:visible")).toHaveCount(3);
 		await expect(page.locator('input[name="tech"][value="html"]')).toBeChecked();
 		await expect(page.locator('input[name="type"][value="static-site"]')).toBeChecked();
 		await expect(page.locator('input[name="contribution"][value="freelance-one-off"]')).toBeChecked();
 
 		await page.locator('input[name="contribution"][value="independent-development"]').uncheck();
-		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(1);
+		await expect(page.locator("#projects-list > .project-card:visible")).toHaveCount(1);
 		await page.goBack();
-		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(3);
+		await expect(page.locator("#projects-list > .project-card:visible")).toHaveCount(3);
 		await expect(page.locator('input[name="contribution"][value="independent-development"]')).toBeChecked();
 
 		await page.goForward();
-		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(1);
+		await expect(page.locator("#projects-list > .project-card:visible")).toHaveCount(1);
 		await expect(page.locator('input[name="contribution"][value="independent-development"]')).not.toBeChecked();
 	});
 
-	test("ignore unknown contribution values without errors", async ({ page }) => {
+	test("remove unknown filter values from shared URLs", async ({ page }) => {
 		await openRenderedPage(
 			page,
-			"/en/projects/?contribution=unknown,employment",
-			"#projectsDiv > .project-card",
+			"/en/projects/?tech=unknown&type=unknown&contribution=unknown,employment",
+			"#projects-list > .project-card",
 			25
 		);
 
 		await expect(page.locator('input[name="contribution"][value="employment"]')).toBeChecked();
-		await expect(page.locator("#projectsDiv > .project-card:visible h3")).toHaveText("Halley V2");
+		await expect(page.locator("#projects-list > .project-card:visible h3")).toHaveText("Halley V2");
+		await expect(page).toHaveURL(/\?contribution=employment$/);
 	});
 
 	test("show an empty state and clear all filters", async ({ page }) => {
-		await openRenderedPage(page, "/en/projects/", "#projectsDiv > .project-card", 25);
+		await openRenderedPage(page, "/en/projects/", "#projects-list > .project-card", 25);
 
 		await page.locator('input[name="tech"][value="dotnet"]').check();
 		await page.locator('input[name="type"][value="notes"]').check();
 		await page.locator('input[name="contribution"][value="employment"]').check();
-		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(0);
-		await expect(page.locator("#projectEmptyState")).toBeVisible();
-		await expect(page.locator("#projectResultCount")).toHaveText("0 projects");
+		await expect(page.locator("#projects-list > .project-card:visible")).toHaveCount(0);
+		await expect(page.locator("#project-empty-state")).toBeVisible();
+		await expect(page.locator("#project-result-count")).toHaveText("0 projects");
 
-		await page.locator("#projectEmptyState [data-clear-filters]").click();
-		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(25);
-		await expect(page.locator("#projectEmptyState")).toBeHidden();
+		await page.locator("#project-empty-state [data-clear-filters]").click();
+		await expect(page.locator("#projects-list > .project-card:visible")).toHaveCount(25);
+		await expect(page.locator("#project-empty-state")).toBeHidden();
 		await expect(page).toHaveURL(/\/en\/projects\/$/);
 	});
 
 	test("filters can be operated with the keyboard", async ({ page }) => {
-		await openRenderedPage(page, "/en/projects/", "#projectsDiv > .project-card", 25);
+		await openRenderedPage(page, "/en/projects/", "#projects-list > .project-card", 25);
 		const employmentFilter = page.locator('input[name="contribution"][value="employment"]');
 
 		await employmentFilter.focus();
 		await page.keyboard.press("Space");
 
 		await expect(employmentFilter).toBeChecked();
-		await expect(page.locator("#projectsDiv > .project-card:visible")).toHaveCount(1);
+		await expect(page.locator("#projects-list > .project-card:visible")).toHaveCount(1);
 	});
 });
 
 for (const pageData of [
-	{ path: "", selector: "#skillsLbl", text: "Skills" },
-	{ path: "projects/", selector: "#projectsLbl", text: "All My Projects" },
-	{ path: "cv/", selector: "#skillsLbl", text: "Technical Skills" }
+	{ path: "", selector: "#skills-label", text: "Skills" },
+	{ path: "projects/", selector: "#projects-label", text: "All My Projects" },
+	{ path: "cv/", selector: "#skills-label", text: "Technical Skills" }
 ]) {
 	test(`language link switches the equivalent ${pageData.path || "portfolio"} page`, async ({ page }) => {
 		await page.goto(`/es/${pageData.path}`);
@@ -429,7 +502,7 @@ test("legacy language parameters preserve the selected language", async ({ page 
 
 test("mobile menu opens and closes without leaving the page blocked", async ({ page }) => {
 	await page.setViewportSize({ width: 320, height: 800 });
-	await openRenderedPage(page, "/es/", "#menuLst > li", 5);
+	await openRenderedPage(page, "/es/", "#menu-list > li", 5);
 	const location = page.locator("#footer .footer-location span:last-child");
 	const locationLines = await location.evaluate(element => {
 		const range = document.createRange();
@@ -439,26 +512,26 @@ test("mobile menu opens and closes without leaving the page blocked", async ({ p
 		return range.getClientRects().length;
 	});
 
-	await page.locator("#toggleBtn").click();
-	await expect(page.locator("#menuNav")).toHaveClass(/nav-toggle/);
+	await page.locator("#toggle-btn").click();
+	await expect(page.locator("#menu-nav")).toHaveClass(/nav-toggle/);
 	await expect(page.locator("body")).toHaveClass(/no-scroll/);
 	expect(locationLines).toBeLessThanOrEqual(2);
 
-	await page.locator("#menuLst > li").first().click();
-	await expect(page.locator("#menuNav")).not.toHaveClass(/nav-toggle/);
+	await page.locator("#menu-list > li").first().click();
+	await expect(page.locator("#menu-nav")).not.toHaveClass(/nav-toggle/);
 	await expect(page.locator("body")).not.toHaveClass(/no-scroll/);
 });
 
 test("mobile menu uses the same 1000px boundary as CSS", async ({ page }) => {
 	await page.setViewportSize({ width: 1000, height: 800 });
-	await openRenderedPage(page, "/es/", "#menuLst > li", 5);
+	await openRenderedPage(page, "/es/", "#menu-list > li", 5);
 
-	await expect(page.locator("#toggleBtn")).toBeVisible();
-	await page.locator("#toggleBtn").click();
-	await expect(page.locator("#menuNav")).toHaveClass(/nav-toggle/);
+	await expect(page.locator("#toggle-btn")).toBeVisible();
+	await page.locator("#toggle-btn").click();
+	await expect(page.locator("#menu-nav")).toHaveClass(/nav-toggle/);
 
 	await page.setViewportSize({ width: 1001, height: 800 });
-	await expect(page.locator("#menuNav")).not.toHaveClass(/nav-toggle/);
+	await expect(page.locator("#menu-nav")).not.toHaveClass(/nav-toggle/);
 	await expect(page.locator("body")).not.toHaveClass(/no-scroll/);
 });
 
@@ -483,9 +556,9 @@ for (const width of [375, 800, 1300]) {
 
 test("project cards preserve icon contrast and fit narrow screens", async ({ page }) => {
 	await page.setViewportSize({ width: 320, height: 800 });
-	await openRenderedPage(page, "/en/projects/", "#projectsDiv > .project-card", 25);
+	await openRenderedPage(page, "/en/projects/", "#projects-list > .project-card", 25);
 
-	const firstCard = page.locator("#projectsDiv > .project-card").first();
+	const firstCard = page.locator("#projects-list > .project-card").first();
 	const technologies = firstCard.locator(".project-technology");
 	const technologyIcons = technologies.locator(".project-technology-icon");
 
@@ -514,9 +587,9 @@ test("project cards preserve icon contrast and fit narrow screens", async ({ pag
 
 test("skill groups use two responsive columns without horizontal overflow", async ({ page }) => {
 	await page.setViewportSize({ width: 1440, height: 900 });
-	await openRenderedPage(page, "/en/", "#skillGroupsDiv > .skill-category", 4);
+	await openRenderedPage(page, "/en/", "#skill-groups > .skill-category", 4);
 
-	const desktopLayout = await page.locator("#skillGroupsDiv").evaluate(container => ({
+	const desktopLayout = await page.locator("#skill-groups").evaluate(container => ({
 		cards: [...container.children].map(card => ({
 			height: card.getBoundingClientRect().height,
 			top: card.getBoundingClientRect().top
@@ -532,7 +605,7 @@ test("skill groups use two responsive columns without horizontal overflow", asyn
 
 	await page.setViewportSize({ width: 390, height: 844 });
 
-	const mobileLayout = await page.locator("#skillGroupsDiv").evaluate(container => ({
+	const mobileLayout = await page.locator("#skill-groups").evaluate(container => ({
 		columns: getComputedStyle(container).gridTemplateColumns.split(" ").length,
 		pageFits: document.documentElement.scrollWidth <= document.documentElement.clientWidth
 	}));
@@ -543,7 +616,7 @@ test("skill groups use two responsive columns without horizontal overflow", asyn
 
 test("resume fits mobile screens and produces an A4 print document", async ({ page }) => {
 	await page.setViewportSize({ width: 320, height: 800 });
-	await openRenderedPage(page, "/en/cv/", "#jobsLst > article", 4);
+	await openRenderedPage(page, "/en/cv/", "#jobs-list > article", 4);
 
 	const screenLayout = await page.evaluate(() => ({
 		pageFits: document.documentElement.scrollWidth <= document.documentElement.clientWidth,
@@ -603,9 +676,9 @@ test("project and resume pages share identical navbar typography and colors", as
 		await page.goto(path);
 
 		return page.locator(".menu-header").evaluate(header => {
-			const logo = getComputedStyle(header.querySelector("#logoBtn"));
-			const logoImage = header.querySelector("#logoBtn img").getBoundingClientRect();
-			const backLink = getComputedStyle(header.querySelector("#backLbl"));
+			const logo = getComputedStyle(header.querySelector("#logo-btn"));
+			const logoImage = header.querySelector("#logo-btn img").getBoundingClientRect();
+			const backLink = getComputedStyle(header.querySelector("#back-label"));
 
 			return {
 				backColor: backLink.color,
@@ -636,22 +709,22 @@ test.describe("without JavaScript", () => {
 		await page.goto("/en/");
 
 		await expect(page.locator("h1")).toContainText("Maximiliano");
-		await expect(page.locator("#menuLst > li")).toHaveCount(5);
-		await expect(page.locator("#projectsDiv > .project-card")).toHaveCount(3);
+		await expect(page.locator("#menu-list > li")).toHaveCount(5);
+		await expect(page.locator("#projects-list > .project-card")).toHaveCount(3);
 		await expect(page.locator("[data-contact-form]")).toHaveAttribute("method", "POST");
 		await expect(page.locator("[data-contact-form]")).toHaveAttribute("action", "https://formspree.io/f/mvgpjkjn");
 		await expect(page.locator("[data-copy-email]").first()).toHaveAttribute("href", /^mailto:/);
-		await page.locator("#allProjectsLbl").click();
+		await page.locator("#all-projects-label").click();
 		await expect(page).toHaveURL(/\/en\/projects\/$/);
-		await expect(page.locator("#projectsDiv > .project-card")).toHaveCount(25);
-		await expect(page.locator("#projectFilters")).toBeHidden();
+		await expect(page.locator("#projects-list > .project-card")).toHaveCount(25);
+		await expect(page.locator("#project-filters")).toBeHidden();
 	});
 
 	test("resume content remains available", async ({ page }) => {
 		await page.goto("/en/cv/");
 
 		await expect(page.locator("h1")).toHaveText("Maximiliano Raúl Malvicino");
-		await expect(page.locator("#jobsLst > article")).toHaveCount(4);
-		await expect(page.locator("#projectsLst > article")).toHaveCount(2);
+		await expect(page.locator("#jobs-list > article")).toHaveCount(4);
+		await expect(page.locator("#projects-list > article")).toHaveCount(2);
 	});
 });

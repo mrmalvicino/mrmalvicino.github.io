@@ -1,8 +1,8 @@
 function initializeMenu() {
-	const menuNav = document.getElementById("menuNav");
-	const toggleButton = document.getElementById("toggleBtn");
-	const logoButton = document.getElementById("logoBtn");
-	const menuList = document.getElementById("menuLst");
+	const menuNav = document.getElementById("menu-nav");
+	const toggleButton = document.getElementById("toggle-btn");
+	const logoButton = document.getElementById("logo-btn");
+	const menuList = document.getElementById("menu-list");
 	const icon = toggleButton?.querySelector("i");
 	const firstMenuLink = menuList?.querySelector("a");
 

@@ -1,103 +1,20 @@
-import { mkdir, readFile, stat, writeFile } from "node:fs/promises";
-import http from "node:http";
+import { mkdir, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { chromium } from "@playwright/test";
 import { getDocument } from "pdfjs-dist/legacy/build/pdf.mjs";
+import { languages, route } from "./site-manifest.mjs";
+import { startStaticServer } from "./static-server.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
-const generatedDocuments = [
-	{ language: "es", fileName: "malvicino-es.pdf" },
-	{ language: "en", fileName: "malvicino-en.pdf" }
-];
-
-const contentTypes = new Map([
-	[".css", "text/css; charset=utf-8"],
-	[".html", "text/html; charset=utf-8"],
-	[".ico", "image/x-icon"],
-	[".js", "text/javascript; charset=utf-8"],
-	[".jpeg", "image/jpeg"],
-	[".jpg", "image/jpeg"],
-	[".png", "image/png"],
-	[".svg", "image/svg+xml"],
-	[".webp", "image/webp"],
-	[".woff2", "font/woff2"]
-]);
+const generatedDocuments = languages.map(language => ({
+	language: language.id,
+	fileName: language.resumeFile
+}));
 
 function normalizeText(value) {
 	return value.replace(/\s+/g, " ").trim();
-}
-
-function resolveRequestPath(output, requestUrl) {
-	const pathname = decodeURIComponent(new URL(requestUrl, "http://127.0.0.1").pathname);
-	const requestedPath = path.resolve(output, pathname.replace(/^\/+/, ""));
-	const filePath = pathname.endsWith("/") ? path.join(requestedPath, "index.html") : requestedPath;
-	const relativePath = path.relative(output, filePath);
-
-	if (relativePath === ".." || relativePath.startsWith(`..${path.sep}`) || path.isAbsolute(relativePath)) {
-		return null;
-	}
-
-	return filePath;
-}
-
-async function startStaticServer(output) {
-	const server = http.createServer(async (request, response) => {
-		if (request.method !== "GET") {
-			response.writeHead(405).end();
-			return;
-		}
-
-		let filePath;
-
-		try {
-			filePath = resolveRequestPath(output, request.url ?? "/");
-		} catch {
-			response.writeHead(400).end();
-			return;
-		}
-
-		if (filePath === null) {
-			response.writeHead(403).end();
-			return;
-		}
-
-		try {
-			const fileStats = await stat(filePath);
-
-			if (!fileStats.isFile()) {
-				response.writeHead(404).end();
-				return;
-			}
-
-			const contentType = contentTypes.get(path.extname(filePath).toLowerCase()) ?? "application/octet-stream";
-			const contents = await readFile(filePath);
-
-			response.writeHead(200, { "Content-Type": contentType });
-			response.end(contents);
-		} catch {
-			response.writeHead(404).end();
-		}
-	});
-
-	await new Promise((resolve, reject) => {
-		server.once("error", reject);
-		server.listen(0, "127.0.0.1", resolve);
-	});
-
-	const address = server.address();
-
-	if (address === null || typeof address === "string") {
-		throw new Error("PDF server did not expose a TCP port.");
-	}
-
-	return {
-		baseUrl: `http://127.0.0.1:${address.port}`,
-		close: () => new Promise((resolve, reject) => {
-			server.close(error => error ? reject(error) : resolve());
-		})
-	};
 }
 
 async function readPdf(pdfBuffer) {
@@ -179,7 +96,7 @@ function assertPdfIntegrity(pdf, expected, fileName) {
 async function generateDocument(browser, baseUrl, document) {
 	const page = await browser.newPage();
 	const localFailures = [];
-	const documentUrl = `${baseUrl}/${document.language}/cv/`;
+	const documentUrl = `${baseUrl}${route(document.language, "cv")}`;
 
 	page.on("requestfailed", request => {
 		if (request.url().startsWith(baseUrl)) {
@@ -213,7 +130,7 @@ async function generateDocument(browser, baseUrl, document) {
 			const text = selector => [...document.querySelectorAll(selector)]
 				.map(element => element.textContent.replace(/\s+/g, " ").trim());
 
-			const links = [...document.querySelectorAll(".cv-contact a, #projectsLst a")]
+			const links = [...document.querySelectorAll(".cv-contact a, #projects-list a")]
 				.map(link => link.href);
 
 			return {
@@ -252,7 +169,7 @@ export async function generateResumePdfs(output = path.join(projectRoot, "dist")
 
 	await mkdir(path.join(output, "assets/cv"), { recursive: true });
 
-	const server = await startStaticServer(output);
+	const server = await startStaticServer({ root: output });
 	let browser;
 
 	try {

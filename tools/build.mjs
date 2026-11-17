@@ -11,34 +11,33 @@ import {
 import { generateResumePdfs } from "./generate-pdf.mjs";
 import { optimizeAssets } from "./optimize-assets.mjs";
 import { loadSiteData } from "./site-data.mjs";
+import { languages, outputFile, pages, publicScripts, route } from "./site-manifest.mjs";
 import { validateSite } from "./validate.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
 export const publishPaths = [
-	{ source: "CNAME", destination: "CNAME" },
-	{ source: "src/assets", destination: "assets" },
-	{ source: "src/script", destination: "script" }
+	{ source: "CNAME", destination: "CNAME" }
 ];
 
-const pages = [
-	{ name: "index", render: renderPortfolioPage },
-	{ name: "projects", render: renderProjectsPage },
-	{ name: "cv", render: renderCvPage }
-];
+const renderers = {
+	index: renderPortfolioPage,
+	projects: renderProjectsPage,
+	cv: renderCvPage
+};
 
 function renderSitemap(baseUrl) {
-	const routes = pages.flatMap(page => ["es", "en"].map(language => ({ language, page: page.name })));
+	const routes = pages.flatMap(page => languages.map(language => ({ language: language.id, page: page.id })));
 	const urls = routes.map(({ language, page }) => {
-		const pathname = `/${language}/${page === "index" ? "" : `${page}/`}`;
-		const spanishPath = `/es/${page === "index" ? "" : `${page}/`}`;
-		const englishPath = `/en/${page === "index" ? "" : `${page}/`}`;
+		const pathname = route(language, page);
+		const alternates = languages.map(item => (
+			`    <xhtml:link rel="alternate" hreflang="${item.id}" href="${baseUrl}${route(item.id, page)}" />`
+		)).join("\n");
 
 		return [
 			"  <url>",
 			`    <loc>${baseUrl}${pathname}</loc>`,
-			`    <xhtml:link rel="alternate" hreflang="es" href="${baseUrl}${spanishPath}" />`,
-			`    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}${englishPath}" />`,
+			alternates,
 			`    <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}/" />`,
 			"  </url>"
 		].join("\n");
@@ -114,25 +113,29 @@ export async function buildSite(root = projectRoot, output = path.join(root, "di
 	}
 
 	await optimizeAssets(root, output);
+	await mkdir(path.join(output, "script"), { recursive: true });
+	await Promise.all(publicScripts.map(script => (
+		cp(path.join(root, "src/script", script), path.join(output, "script", script))
+	)));
 
-	for (const language of ["es", "en"]) {
-		const data = await loadSiteData(root, language);
+	for (const language of languages) {
+		const data = await loadSiteData(root, language.id);
 
 		for (const page of pages) {
-			const directory = page.name === "index"
-				? path.join(output, language)
-				: path.join(output, language, page.name);
+			const destination = path.join(output, outputFile(language.id, page.id));
 
-			await mkdir(directory, { recursive: true });
-			await writeFile(path.join(directory, "index.html"), page.render(data), "utf8");
+			await mkdir(path.dirname(destination), { recursive: true });
+			await writeFile(destination, renderers[page.id](data), "utf8");
 		}
 	}
 
 	await writeFile(path.join(output, "index.html"), renderLanguageRedirectPage(), "utf8");
-	await writeFile(path.join(output, "projects.html"), renderCompatibilityRedirectPage("projects"), "utf8");
-	await writeFile(path.join(output, "cv.html"), renderCompatibilityRedirectPage("cv"), "utf8");
 
-	const siteData = await loadSiteData(root, "es");
+	for (const page of pages.filter(item => item.legacyFile)) {
+		await writeFile(path.join(output, page.legacyFile), renderCompatibilityRedirectPage(page.id), "utf8");
+	}
+
+	const siteData = await loadSiteData(root, languages[0].id);
 	const baseUrl = siteData.site.profile.website.href.replace(/\/$/, "");
 
 	await writeFile(path.join(output, "sitemap.xml"), renderSitemap(baseUrl), "utf8");

@@ -1,17 +1,15 @@
 import { escapeHtml, html, image } from "./html.mjs";
 
 function renderProjectMedia(data, project) {
-	if (project.video_url) {
+	if (project.videoUrl) {
 		return html`
-			<iframe src="${escapeHtml(project.video_url)}" title="${escapeHtml(data.locale.accessibility.videoPlayer)}"
+			<iframe src="${escapeHtml(project.videoUrl)}" title="${escapeHtml(data.locale.accessibility.videoPlayer)}"
 			  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 			  referrerpolicy="strict-origin-when-cross-origin" width="16" height="9" loading="lazy" allowfullscreen></iframe>
 		`;
 	}
 
-	const imageData = data.images[project.mockup_id ?? "wipImg"];
-
-	return image(imageData, "", { width: 16, height: 9, loading: "lazy", decoding: "async" });
+	return image(project.image, "", { width: 16, height: 9, loading: "lazy", decoding: "async" });
 }
 
 function renderProjectCard(data, project) {
@@ -21,24 +19,24 @@ function renderProjectCard(data, project) {
 		</li>
 	`).join("\n");
 
-	const sourceButton = project.source_code ? html`
-		<a href="${escapeHtml(project.source_code)}" target="_blank" rel="noopener noreferrer"
+	const sourceButton = project.sourceCode ? html`
+		<a href="${escapeHtml(project.sourceCode)}" target="_blank" rel="noopener noreferrer"
 		  aria-label="${escapeHtml(`${data.locale.labels.common.sourceCodeLbl} (${data.locale.accessibility.newTab})`)}" class="transparent-button">
 		  <i class="bi bi-code-slash" aria-hidden="true"></i>
 		  <span>${escapeHtml(data.locale.labels.common.sourceCodeLbl)}</span>
 		</a>
 	` : "";
 
-	const demoButton = project.live_demo ? html`
-		<a href="${escapeHtml(project.live_demo)}" target="_blank" rel="noopener noreferrer"
+	const demoButton = project.liveDemo ? html`
+		<a href="${escapeHtml(project.liveDemo)}" target="_blank" rel="noopener noreferrer"
 		  aria-label="${escapeHtml(`${data.locale.labels.common.openOnlineLbl} (${data.locale.accessibility.newTab})`)}" class="transparent-button">
 		  <i class="bi bi-eye" aria-hidden="true"></i>
 		  <span>${escapeHtml(data.locale.labels.common.openOnlineLbl)}</span>
 		</a>
 	` : "";
 
-	const websiteButton = project.website_url ? html`
-		<a href="${escapeHtml(project.website_url)}" target="_blank" rel="noopener noreferrer"
+	const websiteButton = project.websiteUrl ? html`
+		<a href="${escapeHtml(project.websiteUrl)}" target="_blank" rel="noopener noreferrer"
 		  aria-label="${escapeHtml(`${data.locale.labels.common.websiteLbl} (${data.locale.accessibility.newTab})`)}" class="transparent-button">
 		  <i class="bi bi-globe2" aria-hidden="true"></i>
 		  <span>${escapeHtml(data.locale.labels.common.websiteLbl)}</span>

@@ -1,8 +1,9 @@
-import { cp, mkdir, readFile, readdir, writeFile } from "node:fs/promises";
+import { cp, mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import sharp from "sharp";
-import { styleBundles } from "./style-bundles.mjs";
+import { listFiles } from "./filesystem.mjs";
+import { pages } from "./site-manifest.mjs";
 
 const toolRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const rasterExtensions = new Set([".jpeg", ".jpg", ".png"]);
@@ -24,7 +25,8 @@ const iconNames = [
 	"telegram",
 	"telephone",
 	"translate",
-	"whatsapp"
+	"whatsapp",
+	"x-lg"
 ];
 const fontFiles = [
 	{
@@ -45,23 +47,6 @@ const licenseFiles = [
 	{ source: "node_modules/@fontsource-variable/open-sans/LICENSE", destination: "open-sans.txt" },
 	{ source: "node_modules/bootstrap-icons/LICENSE", destination: "bootstrap-icons.txt" }
 ];
-
-async function listFiles(directory) {
-	const entries = await readdir(directory, { withFileTypes: true });
-	const files = [];
-
-	for (const entry of entries) {
-		const entryPath = path.join(directory, entry.name);
-
-		if (entry.isDirectory()) {
-			files.push(...await listFiles(entryPath));
-		} else {
-			files.push(entryPath);
-		}
-	}
-
-	return files;
-}
 
 function renderFontStyles() {
 	return `@font-face {
@@ -123,14 +108,14 @@ async function generateStyleBundles(root, output) {
 
 	await mkdir(bundleDirectory, { recursive: true });
 
-	for (const [page, files] of Object.entries(styleBundles)) {
-		const styles = await Promise.all(files.map(async file => {
+	for (const page of pages) {
+		const styles = await Promise.all(page.styles.map(async file => {
 			const contents = await readFile(path.join(root, "src/style", file), "utf8");
 
 			return `/* ${file} */\n${contents.trim()}`;
 		}));
 
-		await writeFile(path.join(bundleDirectory, `${page}.css`), `${vendorStyles}\n\n${styles.join("\n\n")}\n`, "utf8");
+		await writeFile(path.join(bundleDirectory, `${page.id}.css`), `${vendorStyles}\n\n${styles.join("\n\n")}\n`, "utf8");
 	}
 }
 
@@ -151,7 +136,7 @@ async function copyVendorFiles(root, output) {
 
 async function generateWebpImages(root, output) {
 	const sourceDirectory = path.join(root, "src/assets/images");
-	const files = await listFiles(sourceDirectory);
+	const files = (await listFiles(sourceDirectory)).map(file => path.join(sourceDirectory, file));
 
 	await Promise.all(files.filter(file => rasterExtensions.has(path.extname(file).toLowerCase())).map(async file => {
 		const relativePath = path.relative(sourceDirectory, file);
@@ -167,7 +152,32 @@ async function generateWebpImages(root, output) {
 	}));
 }
 
+async function copyPublicAssets(root, output) {
+	const sourceImages = path.join(root, "src/assets/images");
+	const outputImages = path.join(output, "assets/images");
+
+	await Promise.all([
+		cp(sourceImages, outputImages, {
+			recursive: true,
+			filter: sourcePath => path.basename(sourcePath) !== ".DS_Store" &&
+				!rasterExtensions.has(path.extname(sourcePath).toLowerCase())
+		}),
+		cp(path.join(root, "src/assets/pdf"), path.join(output, "assets/pdf"), {
+			recursive: true,
+			filter: sourcePath => path.basename(sourcePath) !== ".DS_Store"
+		}),
+		mkdir(path.join(output, "assets/design/linkedin"), { recursive: true })
+	]);
+
+	await cp(
+		path.join(root, "src/assets/design/linkedin/portfolio.png"),
+		path.join(output, "assets/design/linkedin/portfolio.png")
+	);
+}
+
 export async function optimizeAssets(root, output) {
+	await copyPublicAssets(root, output);
+
 	await Promise.all([
 		generateStyleBundles(root, output),
 		copyVendorFiles(root, output),

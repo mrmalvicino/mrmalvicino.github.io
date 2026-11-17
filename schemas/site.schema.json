@@ -16,15 +16,13 @@
     "projects",
     "skills",
     "studies",
-    "jobs",
-    "controls"
+    "jobs"
   ],
   "properties": {
     "profile": {
       "type": "object",
       "additionalProperties": false,
       "required": [
-        "pageTitle",
         "headerName",
         "fullName",
         "jobSearchActive",
@@ -36,7 +34,6 @@
         "socials"
       ],
       "properties": {
-        "pageTitle": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
         "headerName": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
         "fullName": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
         "jobSearchActive": { "type": "boolean" },
@@ -102,12 +99,13 @@
     "images": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["common_images", "technologies_images", "institutions_images", "projects_images"],
+      "required": ["defaultProjectImageId", "commonImages", "technologyImages", "institutionImages", "projectImages"],
       "properties": {
-        "common_images": { "$ref": "#/$defs/imageMap" },
-        "technologies_images": { "$ref": "#/$defs/imageMap" },
-        "institutions_images": { "$ref": "#/$defs/imageMap" },
-        "projects_images": { "$ref": "#/$defs/imageMap" }
+        "defaultProjectImageId": { "$ref": "common.schema.json#/$defs/domainId" },
+        "commonImages": { "$ref": "#/$defs/imageMap" },
+        "technologyImages": { "$ref": "#/$defs/imageMap" },
+        "institutionImages": { "$ref": "#/$defs/imageMap" },
+        "projectImages": { "$ref": "#/$defs/imageMap" }
       }
     },
     "projectTypes": { "$ref": "#/$defs/idCatalog" },
@@ -126,12 +124,12 @@
           "typeIds",
           "participationModeId",
           "technologyIds",
-          "source_code",
-          "live_demo",
-          "video_url",
-          "mockup_id",
-          "shown_in_portfolio",
-          "shown_in_cv"
+          "sourceCode",
+          "liveDemo",
+          "videoUrl",
+          "mockupId",
+          "shownInPortfolio",
+          "shownInCv"
         ],
         "properties": {
           "id": { "$ref": "common.schema.json#/$defs/domainId" },
@@ -149,26 +147,27 @@
             "uniqueItems": true,
             "items": { "$ref": "common.schema.json#/$defs/domainId" }
           },
-          "source_code": { "$ref": "common.schema.json#/$defs/nullableString" },
-          "live_demo": { "$ref": "common.schema.json#/$defs/nullableString" },
-          "website_url": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
-          "video_url": { "$ref": "common.schema.json#/$defs/nullableString" },
-          "mockup_id": {
+          "sourceCode": { "$ref": "common.schema.json#/$defs/nullableString" },
+          "liveDemo": { "$ref": "common.schema.json#/$defs/nullableString" },
+          "websiteUrl": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+          "videoUrl": { "$ref": "common.schema.json#/$defs/nullableString" },
+          "mockupId": {
             "anyOf": [
-              { "$ref": "common.schema.json#/$defs/domId" },
+              { "$ref": "common.schema.json#/$defs/domainId" },
               { "type": "null" }
             ]
           },
-          "shown_in_portfolio": { "type": "boolean" },
-          "shown_in_cv": { "type": "boolean" }
+          "shownInPortfolio": { "type": "boolean" },
+          "shownInCv": { "type": "boolean" }
         }
       }
     },
     "skills": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["groups"],
+      "required": ["cvGroupId", "groups"],
       "properties": {
+        "cvGroupId": { "$ref": "common.schema.json#/$defs/domainId" },
         "groups": {
           "type": "array",
           "minItems": 1,
@@ -181,7 +180,7 @@
               { "required": ["categories"] }
             ],
             "properties": {
-              "id": { "$ref": "common.schema.json#/$defs/domId" },
+              "id": { "$ref": "common.schema.json#/$defs/domainId" },
               "order": { "$ref": "common.schema.json#/$defs/order" },
               "technologyIds": {
                 "type": "array",
@@ -197,7 +196,7 @@
                   "additionalProperties": false,
                   "required": ["id", "order", "technologyIds"],
                   "properties": {
-                    "id": { "$ref": "common.schema.json#/$defs/domId" },
+                    "id": { "$ref": "common.schema.json#/$defs/domainId" },
                     "order": { "$ref": "common.schema.json#/$defs/order" },
                     "technologyIds": {
                       "type": "array",
@@ -219,16 +218,16 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["id", "order", "institutionId", "study_plan", "certificate", "type", "shown_in_cv"],
+        "required": ["id", "order", "institutionId", "studyPlan", "certificate", "type", "shownInCv"],
         "properties": {
           "id": { "$ref": "common.schema.json#/$defs/domainId" },
           "order": { "$ref": "common.schema.json#/$defs/order" },
           "institutionId": { "$ref": "common.schema.json#/$defs/domainId" },
-          "study_plan": { "$ref": "common.schema.json#/$defs/nullableString" },
+          "studyPlan": { "$ref": "common.schema.json#/$defs/nullableString" },
           "certificate": { "$ref": "common.schema.json#/$defs/nullableString" },
-          "graduation_date": { "$ref": "common.schema.json#/$defs/date" },
+          "graduationDate": { "$ref": "common.schema.json#/$defs/date" },
           "type": { "enum": ["career", "course", "language"] },
-          "shown_in_cv": { "type": "boolean" }
+          "shownInCv": { "type": "boolean" }
         }
       }
     },
@@ -238,17 +237,17 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["id", "order", "start_date", "end_date"],
+        "required": ["id", "order", "startDate", "endDate"],
         "properties": {
           "id": { "$ref": "common.schema.json#/$defs/domainId" },
           "order": { "$ref": "common.schema.json#/$defs/order" },
-          "start_date": {
+          "startDate": {
             "anyOf": [
               { "$ref": "common.schema.json#/$defs/yearMonth" },
               { "$ref": "common.schema.json#/$defs/date" }
             ]
           },
-          "end_date": {
+          "endDate": {
             "anyOf": [
               { "$ref": "common.schema.json#/$defs/yearMonth" },
               { "$ref": "common.schema.json#/$defs/date" },
@@ -260,32 +259,6 @@
             "minItems": 1,
             "uniqueItems": true,
             "items": { "$ref": "common.schema.json#/$defs/domainId" }
-          }
-        }
-      }
-    },
-    "controls": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["resumeButtonId", "submitButtonId", "textboxIds", "labelIds"],
-      "properties": {
-        "resumeButtonId": { "$ref": "common.schema.json#/$defs/domId" },
-        "submitButtonId": { "$ref": "common.schema.json#/$defs/domId" },
-        "textboxIds": {
-          "type": "array",
-          "minItems": 1,
-          "uniqueItems": true,
-          "items": { "$ref": "common.schema.json#/$defs/domId" }
-        },
-        "labelIds": {
-          "type": "object",
-          "additionalProperties": false,
-          "required": ["common", "index", "projects", "cv"],
-          "properties": {
-            "common": { "$ref": "#/$defs/domIds" },
-            "index": { "$ref": "#/$defs/domIds" },
-            "projects": { "$ref": "#/$defs/domIds" },
-            "cv": { "$ref": "#/$defs/domIds" }
           }
         }
       }
@@ -320,19 +293,10 @@
         "href": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
       }
     },
-    "orderedDomEntity": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["id", "order"],
-      "properties": {
-        "id": { "$ref": "common.schema.json#/$defs/domId" },
-        "order": { "$ref": "common.schema.json#/$defs/order" }
-      }
-    },
     "imageMap": {
       "type": "object",
       "minProperties": 1,
-      "propertyNames": { "$ref": "common.schema.json#/$defs/domId" },
+      "propertyNames": { "$ref": "common.schema.json#/$defs/domainId" },
       "additionalProperties": {
         "type": "object",
         "additionalProperties": false,
@@ -353,7 +317,7 @@
         "additionalProperties": false,
         "required": ["imageId"],
         "properties": {
-          "imageId": { "$ref": "common.schema.json#/$defs/domId" }
+          "imageId": { "$ref": "common.schema.json#/$defs/domainId" }
         }
       }
     },
@@ -365,12 +329,6 @@
         "type": "object",
         "additionalProperties": false
       }
-    },
-    "domIds": {
-      "type": "array",
-      "minItems": 1,
-      "uniqueItems": true,
-      "items": { "$ref": "common.schema.json#/$defs/domId" }
     }
   }
 }

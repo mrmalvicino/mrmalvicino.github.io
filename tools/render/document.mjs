@@ -1,4 +1,5 @@
 import { escapeHtml, html } from "./html.mjs";
+import { getLanguage, getPage, languages, route } from "../site-manifest.mjs";
 
 function absoluteUrl(data, value) {
 	return new URL(value, `${data.site.profile.website.href}/`).href;
@@ -14,7 +15,7 @@ function renderStructuredData(data, page, canonicalUrl) {
 			"@id": personId,
 			name: data.site.profile.fullName,
 			url: siteUrl,
-			image: absoluteUrl(data, data.images.profileImg.src),
+			image: absoluteUrl(data, data.images["profile-img"].src),
 			jobTitle: data.locale.labels.common.degreesLbl,
 			description: data.locale.seo.index.description,
 			sameAs: data.site.profile.socials
@@ -26,7 +27,7 @@ function renderStructuredData(data, page, canonicalUrl) {
 			"@id": websiteId,
 			url: `${siteUrl}/`,
 			name: data.site.profile.fullName,
-			inLanguage: ["es", "en"],
+			inLanguage: languages.map(language => language.id),
 			publisher: { "@id": personId }
 		},
 		{
@@ -47,14 +48,21 @@ function renderStructuredData(data, page, canonicalUrl) {
 	}).replaceAll("<", "\\u003c");
 }
 
-function renderHead(data, page, scripts) {
+function renderHead(data, page) {
 	const seo = data.locale.seo[page];
+	const pageDefinition = getPage(page);
+	const language = getLanguage(data.language);
 	const siteUrl = absoluteUrl(data, "/").replace(/\/$/, "");
 	const canonicalUrl = absoluteUrl(data, route(data.language, page));
-	const spanishUrl = absoluteUrl(data, route("es", page));
-	const englishUrl = absoluteUrl(data, route("en", page));
 	const socialImageUrl = absoluteUrl(data, data.site.configuration.socialImage);
-	const scriptElements = scripts
+	const alternateElements = languages
+		.map(item => `<link rel="alternate" hreflang="${item.id}" href="${escapeHtml(absoluteUrl(data, route(item.id, page)))}">`)
+		.join("\n");
+	const alternateLocales = languages
+		.filter(item => item.id !== data.language)
+		.map(item => `<meta property="og:locale:alternate" content="${item.ogLocale}">`)
+		.join("\n");
+	const scriptElements = pageDefinition.scripts
 		.map(file => `<script src="/script/${file}" defer></script>`)
 		.join("\n");
 
@@ -66,13 +74,12 @@ function renderHead(data, page, scripts) {
 		  <title>${escapeHtml(seo.title)}</title>
 		  <meta name="description" content="${escapeHtml(seo.description)}">
 		  <link rel="canonical" href="${escapeHtml(canonicalUrl)}">
-		  <link rel="alternate" hreflang="es" href="${escapeHtml(spanishUrl)}">
-		  <link rel="alternate" hreflang="en" href="${escapeHtml(englishUrl)}">
+		  ${alternateElements}
 		  <link rel="alternate" hreflang="x-default" href="${escapeHtml(siteUrl)}/">
 		  <meta property="og:type" content="${page === "projects" ? "website" : "profile"}">
 		  <meta property="og:site_name" content="${escapeHtml(data.site.profile.fullName)}">
-		  <meta property="og:locale" content="${data.language === "es" ? "es_AR" : "en_US"}">
-		  <meta property="og:locale:alternate" content="${data.language === "es" ? "en_US" : "es_AR"}">
+		  <meta property="og:locale" content="${language.ogLocale}">
+		  ${alternateLocales}
 		  <meta property="og:title" content="${escapeHtml(seo.title)}">
 		  <meta property="og:description" content="${escapeHtml(seo.description)}">
 		  <meta property="og:url" content="${escapeHtml(canonicalUrl)}">
@@ -93,16 +100,12 @@ function renderHead(data, page, scripts) {
 	`;
 }
 
-export function renderDocument(data, page, body, scripts = []) {
+export function renderDocument(data, page, body) {
 	return html`
 		<!DOCTYPE html>
 		<html lang="${escapeHtml(data.language)}">
-		${renderHead(data, page, scripts)}
+		${renderHead(data, page)}
 		${body}
 		</html>
 	` + "\n";
-}
-
-export function route(language, page) {
-	return `/${language}/${page === "index" ? "" : `${page}/`}`;
 }

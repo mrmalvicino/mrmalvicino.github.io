@@ -1,6 +1,5 @@
 {
   "profile": {
-    "pageTitle": "Maximiliano R. Malvicino",
     "headerName": "Maximiliano Malvicino",
     "fullName": "Maximiliano Raúl Malvicino",
     "jobSearchActive": true,
@@ -64,211 +63,212 @@
     {
       "id": "about",
       "order": 1,
-      "href": "#heroSec"
+      "href": "#hero-sec"
     },
     {
       "id": "skills",
       "order": 2,
-      "href": "#skillsSec"
+      "href": "#skills-sec"
     },
     {
       "id": "projects",
       "order": 3,
-      "href": "#projectsSec"
+      "href": "#projects-sec"
     },
     {
       "id": "education",
       "order": 4,
-      "href": "#educationSec"
+      "href": "#education-sec"
     },
     {
       "id": "contact",
       "order": 5,
-      "href": "#contactSec"
+      "href": "#contact-sec"
     }
   ],
   "images": {
-    "common_images": {
-      "profileImg": {
+    "defaultProjectImageId": "wip-img",
+    "commonImages": {
+      "profile-img": {
         "src": "./assets/images/profile.webp",
         "width": 500,
         "height": 500
       },
-      "logoImg": {
+      "logo-img": {
         "src": "./assets/images/logo.webp",
         "width": 100,
         "height": 100
       }
     },
-    "technologies_images": {
-      "cppImg": {
+    "technologyImages": {
+      "cpp-img": {
         "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg"
       },
-      "csImg": {
+      "cs-img": {
         "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg"
       },
-      "pythonImg": {
+      "python-img": {
         "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"
       },
-      "javaImg": {
+      "java-img": {
         "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg"
       },
-      "jsImg": {
+      "js-img": {
         "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg"
       },
-      "tsImg": {
+      "ts-img": {
         "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1280px-Typescript_logo_2020.svg.png"
       },
-      "htmlImg": {
+      "html-img": {
         "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg"
       },
-      "cssImg": {
+      "css-img": {
         "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg"
       },
-      "bootstrapImg": {
+      "bootstrap-img": {
         "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/1280px-Bootstrap_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail"
       },
-      "tailwindImg": {
+      "tailwind-img": {
         "src": "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg"
       },
-      "dotnetImg": {
+      "dotnet-img": {
         "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/dot-net/dot-net-original-wordmark.svg"
       },
-      "dotnet10Img": {
+      "dotnet10-img": {
         "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/dotnetcore/dotnetcore-original.svg"
       },
-      "dotnetFrameworkImg": {
+      "dotnet-framework-img": {
         "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/dot-net/dot-net-original.svg"
       },
-      "angularImg": {
+      "angular-img": {
         "src": "./assets/images/technologies/angular.webp"
       },
-      "reactImg": {
+      "react-img": {
         "src": "./assets/images/technologies/react.svg"
       },
-      "fastapiImg": {
+      "fastapi-img": {
         "src": "https://avatars.githubusercontent.com/u/156354296?s=280&v=4"
       },
-      "mssqlImg": {
+      "mssql-img": {
         "src": "https://www.svgrepo.com/show/303229/microsoft-sql-server-logo.svg"
       },
-      "mysqlImg": {
+      "mysql-img": {
         "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg"
       },
-      "vbnetImg": {
+      "vbnet-img": {
         "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/visualbasic/visualbasic-original.svg"
       },
-      "entityFrameworkImg": {
+      "entity-framework-img": {
         "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/entityframeworkcore/entityframeworkcore-original.svg"
       },
-      "adoNetImg": {
+      "ado-net-img": {
         "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/dot-net/dot-net-original.svg"
       },
-      "windowsFormsImg": {
+      "windows-forms-img": {
         "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/windows8/windows8-original.svg"
       },
-      "sapCrystalReportsImg": {
+      "sap-crystal-reports-img": {
         "src": "https://www.vectorlogo.zone/logos/sap/sap-icon.svg"
       },
-      "razorImg": {
+      "razor-img": {
         "src": "./assets/images/technologies/razor.svg"
       },
-      "gitImg": {
+      "git-img": {
         "src": "https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg"
       },
-      "githubActionsImg": {
+      "github-actions-img": {
         "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/githubactions/githubactions-original.svg"
       },
-      "latexImg": {
+      "latex-img": {
         "src": "https://cdn.pixabay.com/photo/2013/03/30/00/10/latex-97866_640.png"
       },
-      "overleafImg": {
+      "overleaf-img": {
         "src": "https://images.ctfassets.net/nrgyaltdicpt/wwNSIPYEZa2OCOsuGweSY/0142fa5bce2f40f4168bad08acc8a52d/Sticker_square_colour_light_bg.png"
       }
     },
-    "institutions_images": {
-      "untrefImg": {
+    "institutionImages": {
+      "untref-img": {
         "src": "./assets/images/untref.webp",
         "width": 385,
         "height": 115
       },
-      "utnImg": {
+      "utn-img": {
         "src": "./assets/images/utn.webp",
         "width": 294,
         "height": 74
       },
-      "educacionitImg": {
+      "educacionit-img": {
         "src": "./assets/images/educacionit.svg",
         "width": 169,
         "height": 28
       },
-      "cambridgeImg": {
+      "cambridge-img": {
         "src": "./assets/images/cambridge.webp",
         "width": 937,
         "height": 208
       },
-      "argImg": {
+      "arg-img": {
         "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/330px-Flag_of_Argentina.svg.png",
         "width": 330,
         "height": 207
       }
     },
-    "projects_images": {
-      "wipImg": {
+    "projectImages": {
+      "wip-img": {
         "src": "https://t3.ftcdn.net/jpg/02/33/17/50/360_F_233175040_hwqRyiZlQkXimeLz2AIZhajyfiU9El1m.jpg"
       },
-      "stusImg": {
+      "stus-img": {
         "src": "https://github.com/mrmalvicino/stus-calculator/blob/main/images/dim_11.png?raw=true"
       },
-      "ancImg": {
+      "anc-img": {
         "src": "https://github.com/mrmalvicino/anc-research-plan/blob/main/latex/images/cross_Y2.png?raw=true"
       },
-      "dugunImg": {
+      "dugun-img": {
         "src": "./assets/images/projects/dugun-auto-clicker.webp"
       },
-      "binaryImg": {
+      "binary-img": {
         "src": "./assets/images/projects/binary-calculator.webp"
       },
-      "balumaImg": {
+      "baluma-img": {
         "src": "https://github.com/mrmalvicino/baluma-erp/raw/main/images/screenshot-stock.png?raw=true"
       },
-      "irwinImg": {
+      "irwin-img": {
         "src": "./assets/images/projects/irwins-revenge.webp"
       },
-      "arduinoImg": {
+      "arduino-img": {
         "src": "https://content.instructables.com/FNO/ZIKG/K6HPDHBU/FNOZIKGK6HPDHBU.jpg?auto=webp&crop=1.2%3A1&frame=1&width=420"
       },
-      "waveformImg": {
+      "waveform-img": {
         "src": "./assets/images/projects/dsp-notes.webp"
       },
-      "transmissibilityImg": {
+      "transmissibility-img": {
         "src": "./assets/images/projects/acoustics-notes.webp"
       },
-      "circuitImg": {
+      "circuit-img": {
         "src": "./assets/images/projects/electronics-notes.webp"
       },
-      "mathImg": {
+      "math-img": {
         "src": "./assets/images/projects/math-notes.webp"
       },
-      "newtonImg": {
+      "newton-img": {
         "src": "./assets/images/projects/physics-book.webp"
       },
-      "planeImg": {
+      "plane-img": {
         "src": "./assets/images/projects/physics-1-solved.webp"
       },
-      "einsteinImg": {
+      "einstein-img": {
         "src": "./assets/images/projects/physics-2-demonstrations.webp"
       },
-      "matrixImg": {
+      "matrix-img": {
         "src": "./assets/images/projects/link-tree.webp"
       },
-      "biblioImg": {
+      "biblio-img": {
         "src": "./assets/images/projects/biblio-api.webp"
       },
-      "decaucionesImg": {
+      "decauciones-img": {
         "src": "./assets/images/projects/decauciones.webp"
       },
-      "halleyV2Img": {
+      "halley-v2-img": {
         "src": "./assets/images/projects/halley-v2.webp"
       }
     }
@@ -289,105 +289,105 @@
   },
   "technologies": {
     "cpp": {
-      "imageId": "cppImg"
+      "imageId": "cpp-img"
     },
     "csharp": {
-      "imageId": "csImg"
+      "imageId": "cs-img"
     },
     "python": {
-      "imageId": "pythonImg"
+      "imageId": "python-img"
     },
     "java": {
-      "imageId": "javaImg"
+      "imageId": "java-img"
     },
     "javascript": {
-      "imageId": "jsImg"
+      "imageId": "js-img"
     },
     "typescript": {
-      "imageId": "tsImg"
+      "imageId": "ts-img"
     },
     "html": {
-      "imageId": "htmlImg"
+      "imageId": "html-img"
     },
     "css": {
-      "imageId": "cssImg"
+      "imageId": "css-img"
     },
     "bootstrap": {
-      "imageId": "bootstrapImg"
+      "imageId": "bootstrap-img"
     },
     "tailwind": {
-      "imageId": "tailwindImg"
+      "imageId": "tailwind-img"
     },
     "dotnet": {
-      "imageId": "dotnetImg"
+      "imageId": "dotnet-img"
     },
     "dotnet-10": {
-      "imageId": "dotnet10Img"
+      "imageId": "dotnet10-img"
     },
     "dotnet-framework": {
-      "imageId": "dotnetFrameworkImg"
+      "imageId": "dotnet-framework-img"
     },
     "angular": {
-      "imageId": "angularImg"
+      "imageId": "angular-img"
     },
     "react": {
-      "imageId": "reactImg"
+      "imageId": "react-img"
     },
     "fastapi": {
-      "imageId": "fastapiImg"
+      "imageId": "fastapi-img"
     },
     "mssql": {
-      "imageId": "mssqlImg"
+      "imageId": "mssql-img"
     },
     "mysql": {
-      "imageId": "mysqlImg"
+      "imageId": "mysql-img"
     },
     "vbnet": {
-      "imageId": "vbnetImg"
+      "imageId": "vbnet-img"
     },
     "entity-framework": {
-      "imageId": "entityFrameworkImg"
+      "imageId": "entity-framework-img"
     },
     "ado-net": {
-      "imageId": "adoNetImg"
+      "imageId": "ado-net-img"
     },
     "windows-forms": {
-      "imageId": "windowsFormsImg"
+      "imageId": "windows-forms-img"
     },
     "sap-crystal-reports": {
-      "imageId": "sapCrystalReportsImg"
+      "imageId": "sap-crystal-reports-img"
     },
     "razor": {
-      "imageId": "razorImg"
+      "imageId": "razor-img"
     },
     "git": {
-      "imageId": "gitImg"
+      "imageId": "git-img"
     },
     "github-actions": {
-      "imageId": "githubActionsImg"
+      "imageId": "github-actions-img"
     },
     "latex": {
-      "imageId": "latexImg"
+      "imageId": "latex-img"
     },
     "overleaf": {
-      "imageId": "overleafImg"
+      "imageId": "overleaf-img"
     }
   },
   "institutions": {
     "untref": {
-      "imageId": "untrefImg"
+      "imageId": "untref-img"
     },
     "utn": {
-      "imageId": "utnImg"
+      "imageId": "utn-img"
     },
     "educacion-it": {
-      "imageId": "educacionitImg"
+      "imageId": "educacionit-img"
     },
     "cambridge": {
-      "imageId": "cambridgeImg"
+      "imageId": "cambridge-img"
     },
     "argentina": {
-      "imageId": "argImg"
+      "imageId": "arg-img"
     }
   },
   "projects": [
@@ -398,12 +398,12 @@
         "web-app"
       ],
       "participationModeId": "freelance-saas",
-      "source_code": "https://github.com/mrmalvicino/membriana",
-      "live_demo": null,
-      "video_url": null,
-      "mockup_id": null,
-      "shown_in_portfolio": true,
-      "shown_in_cv": true,
+      "sourceCode": "https://github.com/mrmalvicino/membriana",
+      "liveDemo": null,
+      "videoUrl": null,
+      "mockupId": null,
+      "shownInPortfolio": true,
+      "shownInCv": true,
       "technologyIds": [
         "dotnet",
         "csharp",
@@ -420,12 +420,12 @@
         "static-site"
       ],
       "participationModeId": "freelance-one-off",
-      "source_code": null,
-      "live_demo": "https://decauciones.com",
-      "video_url": null,
-      "mockup_id": "decaucionesImg",
-      "shown_in_portfolio": true,
-      "shown_in_cv": true,
+      "sourceCode": null,
+      "liveDemo": "https://decauciones.com",
+      "videoUrl": null,
+      "mockupId": "decauciones-img",
+      "shownInPortfolio": true,
+      "shownInCv": true,
       "technologyIds": [
         "html",
         "css",
@@ -440,13 +440,13 @@
         "desktop-app"
       ],
       "participationModeId": "employment",
-      "source_code": null,
-      "live_demo": null,
-      "website_url": "https://v2.sistemahalley.com.ar",
-      "video_url": null,
-      "mockup_id": "halleyV2Img",
-      "shown_in_portfolio": true,
-      "shown_in_cv": false,
+      "sourceCode": null,
+      "liveDemo": null,
+      "websiteUrl": "https://v2.sistemahalley.com.ar",
+      "videoUrl": null,
+      "mockupId": "halley-v2-img",
+      "shownInPortfolio": true,
+      "shownInCv": false,
       "technologyIds": [
         "dotnet",
         "vbnet",
@@ -463,12 +463,12 @@
         "web-app"
       ],
       "participationModeId": "freelance-saas",
-      "source_code": "https://github.com/mrmalvicino/meeni-erp",
-      "live_demo": null,
-      "video_url": null,
-      "mockup_id": null,
-      "shown_in_portfolio": false,
-      "shown_in_cv": false,
+      "sourceCode": "https://github.com/mrmalvicino/meeni-erp",
+      "liveDemo": null,
+      "videoUrl": null,
+      "mockupId": null,
+      "shownInPortfolio": false,
+      "shownInCv": false,
       "technologyIds": [
         "dotnet",
         "csharp",
@@ -486,12 +486,12 @@
         "web-app"
       ],
       "participationModeId": "independent-collaboration",
-      "source_code": "https://github.com/mrmalvicino/ecommerce-net",
-      "live_demo": null,
-      "video_url": "https://www.youtube-nocookie.com/embed/H7AISursM2M",
-      "mockup_id": null,
-      "shown_in_portfolio": false,
-      "shown_in_cv": false,
+      "sourceCode": "https://github.com/mrmalvicino/ecommerce-net",
+      "liveDemo": null,
+      "videoUrl": "https://www.youtube-nocookie.com/embed/H7AISursM2M",
+      "mockupId": null,
+      "shownInPortfolio": false,
+      "shownInCv": false,
       "technologyIds": [
         "dotnet",
         "csharp",
@@ -508,12 +508,12 @@
         "web-app"
       ],
       "participationModeId": "independent-collaboration",
-      "source_code": "https://github.com/mrmalvicino/bancar",
-      "live_demo": null,
-      "video_url": "https://www.youtube-nocookie.com/embed/D8P1URMdCHU",
-      "mockup_id": null,
-      "shown_in_portfolio": false,
-      "shown_in_cv": false,
+      "sourceCode": "https://github.com/mrmalvicino/bancar",
+      "liveDemo": null,
+      "videoUrl": "https://www.youtube-nocookie.com/embed/D8P1URMdCHU",
+      "mockupId": null,
+      "shownInPortfolio": false,
+      "shownInCv": false,
       "technologyIds": [
         "java",
         "javascript",
@@ -529,12 +529,12 @@
         "static-site"
       ],
       "participationModeId": "independent-development",
-      "source_code": "https://github.com/mrmalvicino/link-tree",
-      "live_demo": "https://mrmalvicino.com/link-tree",
-      "video_url": null,
-      "mockup_id": "matrixImg",
-      "shown_in_portfolio": false,
-      "shown_in_cv": false,
+      "sourceCode": "https://github.com/mrmalvicino/link-tree",
+      "liveDemo": "https://mrmalvicino.com/link-tree",
+      "videoUrl": null,
+      "mockupId": "matrix-img",
+      "shownInPortfolio": false,
+      "shownInCv": false,
       "technologyIds": [
         "react",
         "css",
@@ -549,12 +549,12 @@
         "static-site"
       ],
       "participationModeId": "independent-development",
-      "source_code": "https://github.com/mrmalvicino/mrmalvicino.github.io",
-      "live_demo": "https://mrmalvicino.com",
-      "video_url": null,
-      "mockup_id": null,
-      "shown_in_portfolio": false,
-      "shown_in_cv": false,
+      "sourceCode": "https://github.com/mrmalvicino/mrmalvicino.github.io",
+      "liveDemo": "https://mrmalvicino.com",
+      "videoUrl": null,
+      "mockupId": null,
+      "shownInPortfolio": false,
+      "shownInCv": false,
       "technologyIds": [
         "html",
         "css",
@@ -569,12 +569,12 @@
         "web-app"
       ],
       "participationModeId": "independent-development",
-      "source_code": "https://github.com/mrmalvicino/biblio-api",
-      "live_demo": null,
-      "video_url": null,
-      "mockup_id": "biblioImg",
-      "shown_in_portfolio": false,
-      "shown_in_cv": false,
+      "sourceCode": "https://github.com/mrmalvicino/biblio-api",
+      "liveDemo": null,
+      "videoUrl": null,
+      "mockupId": "biblio-img",
+      "shownInPortfolio": false,
+      "shownInCv": false,
       "technologyIds": [
         "fastapi",
         "python",
@@ -588,12 +588,12 @@
         "desktop-app"
       ],
       "participationModeId": "independent-development",
-      "source_code": "https://github.com/mrmalvicino/dsp-package",
-      "live_demo": null,
-      "video_url": null,
-      "mockup_id": null,
-      "shown_in_portfolio": false,
-      "shown_in_cv": false,
+      "sourceCode": "https://github.com/mrmalvicino/dsp-package",
+      "liveDemo": null,
+      "videoUrl": null,
+      "mockupId": null,
+      "shownInPortfolio": false,
+      "shownInCv": false,
       "technologyIds": [
         "python",
         "git"
@@ -606,12 +606,12 @@
         "desktop-app"
       ],
       "participationModeId": "independent-development",
-      "source_code": "https://github.com/mrmalvicino/stus-calculator",
-      "live_demo": null,
-      "video_url": null,
-      "mockup_id": "stusImg",
-      "shown_in_portfolio": false,
-      "shown_in_cv": false,
+      "sourceCode": "https://github.com/mrmalvicino/stus-calculator",
+      "liveDemo": null,
+      "videoUrl": null,
+      "mockupId": "stus-img",
+      "shownInPortfolio": false,
+      "shownInCv": false,
       "technologyIds": [
         "python",
         "git"
@@ -624,12 +624,12 @@
         "research"
       ],
       "participationModeId": "independent-development",
-      "source_code": "https://github.com/mrmalvicino/anc-research-plan",
-      "live_demo": null,
-      "video_url": null,
-      "mockup_id": "ancImg",
-      "shown_in_portfolio": false,
-      "shown_in_cv": false,
+      "sourceCode": "https://github.com/mrmalvicino/anc-research-plan",
+      "liveDemo": null,
+      "videoUrl": null,
+      "mockupId": "anc-img",
+      "shownInPortfolio": false,
+      "shownInCv": false,
       "technologyIds": [
         "python",
         "git"
@@ -642,12 +642,12 @@
         "desktop-app"
       ],
       "participationModeId": "independent-development",
-      "source_code": "https://github.com/mrmalvicino/dugun-auto-clicker",
-      "live_demo": null,
-      "video_url": null,
-      "mockup_id": "dugunImg",
-      "shown_in_portfolio": false,
-      "shown_in_cv": false,
+      "sourceCode": "https://github.com/mrmalvicino/dugun-auto-clicker",
+      "liveDemo": null,
+      "videoUrl": null,
+      "mockupId": "dugun-img",
+      "shownInPortfolio": false,
+      "shownInCv": false,
       "technologyIds": [
         "cpp",
         "git"
@@ -660,12 +660,12 @@
         "desktop-app"
       ],
       "participationModeId": "independent-development",
-      "source_code": "https://github.com/mrmalvicino/binary-calculator",
-      "live_demo": null,
-      "video_url": null,
-      "mockup_id": "binaryImg",
-      "shown_in_portfolio": false,
-      "shown_in_cv": false,
+      "sourceCode": "https://github.com/mrmalvicino/binary-calculator",
+      "liveDemo": null,
+      "videoUrl": null,
+      "mockupId": "binary-img",
+      "shownInPortfolio": false,
+      "shownInCv": false,
       "technologyIds": [
         "cpp",
         "git"
@@ -678,12 +678,12 @@
         "desktop-app"
       ],
       "participationModeId": "independent-collaboration",
-      "source_code": "https://github.com/mrmalvicino/baluma-erp",
-      "live_demo": null,
-      "video_url": null,
-      "mockup_id": "balumaImg",
-      "shown_in_portfolio": false,
-      "shown_in_cv": false,
+      "sourceCode": "https://github.com/mrmalvicino/baluma-erp",
+      "liveDemo": null,
+      "videoUrl": null,
+      "mockupId": "baluma-img",
+      "shownInPortfolio": false,
+      "shownInCv": false,
       "technologyIds": [
         "cpp",
         "git"
@@ -696,12 +696,12 @@
         "desktop-app"
       ],
       "participationModeId": "independent-collaboration",
-      "source_code": "https://github.com/mrmalvicino/irwins-revenge",
-      "live_demo": null,
-      "video_url": null,
-      "mockup_id": "irwinImg",
-      "shown_in_portfolio": false,
-      "shown_in_cv": false,
+      "sourceCode": "https://github.com/mrmalvicino/irwins-revenge",
+      "liveDemo": null,
+      "videoUrl": null,
+      "mockupId": "irwin-img",
+      "shownInPortfolio": false,
+      "shownInCv": false,
       "technologyIds": [
         "cpp",
         "git"
@@ -714,12 +714,12 @@
         "desktop-app"
       ],
       "participationModeId": "independent-development",
-      "source_code": "https://github.com/mrmalvicino/arduino",
-      "live_demo": null,
-      "video_url": null,
-      "mockup_id": "arduinoImg",
-      "shown_in_portfolio": false,
-      "shown_in_cv": false,
+      "sourceCode": "https://github.com/mrmalvicino/arduino",
+      "liveDemo": null,
+      "videoUrl": null,
+      "mockupId": "arduino-img",
+      "shownInPortfolio": false,
+      "shownInCv": false,
       "technologyIds": [
         "cpp",
         "git"
@@ -732,12 +732,12 @@
         "notes"
       ],
       "participationModeId": "independent-development",
-      "source_code": "https://github.com/mrmalvicino/dsp-notes",
-      "live_demo": null,
-      "video_url": null,
-      "mockup_id": "waveformImg",
-      "shown_in_portfolio": false,
-      "shown_in_cv": false,
+      "sourceCode": "https://github.com/mrmalvicino/dsp-notes",
+      "liveDemo": null,
+      "videoUrl": null,
+      "mockupId": "waveform-img",
+      "shownInPortfolio": false,
+      "shownInCv": false,
       "technologyIds": [
         "latex",
         "git"
@@ -750,12 +750,12 @@
         "notes"
       ],
       "participationModeId": "independent-development",
-      "source_code": "https://github.com/mrmalvicino/acoustics-notes",
-      "live_demo": null,
-      "video_url": null,
-      "mockup_id": "transmissibilityImg",
-      "shown_in_portfolio": false,
-      "shown_in_cv": false,
+      "sourceCode": "https://github.com/mrmalvicino/acoustics-notes",
+      "liveDemo": null,
+      "videoUrl": null,
+      "mockupId": "transmissibility-img",
+      "shownInPortfolio": false,
+      "shownInCv": false,
       "technologyIds": [
         "latex",
         "git"
@@ -768,12 +768,12 @@
         "notes"
       ],
       "participationModeId": "independent-development",
-      "source_code": "https://github.com/mrmalvicino/electronics-notes",
-      "live_demo": null,
-      "video_url": null,
-      "mockup_id": "circuitImg",
-      "shown_in_portfolio": false,
-      "shown_in_cv": false,
+      "sourceCode": "https://github.com/mrmalvicino/electronics-notes",
+      "liveDemo": null,
+      "videoUrl": null,
+      "mockupId": "circuit-img",
+      "shownInPortfolio": false,
+      "shownInCv": false,
       "technologyIds": [
         "latex",
         "git"
@@ -786,12 +786,12 @@
         "notes"
       ],
       "participationModeId": "independent-development",
-      "source_code": "https://github.com/mrmalvicino/math-notes",
-      "live_demo": null,
-      "video_url": null,
-      "mockup_id": "mathImg",
-      "shown_in_portfolio": false,
-      "shown_in_cv": false,
+      "sourceCode": "https://github.com/mrmalvicino/math-notes",
+      "liveDemo": null,
+      "videoUrl": null,
+      "mockupId": "math-img",
+      "shownInPortfolio": false,
+      "shownInCv": false,
       "technologyIds": [
         "latex",
         "git"
@@ -804,12 +804,12 @@
         "notes"
       ],
       "participationModeId": "independent-collaboration",
-      "source_code": "https://github.com/mrmalvicino/physics-book",
-      "live_demo": null,
-      "video_url": null,
-      "mockup_id": "newtonImg",
-      "shown_in_portfolio": false,
-      "shown_in_cv": false,
+      "sourceCode": "https://github.com/mrmalvicino/physics-book",
+      "liveDemo": null,
+      "videoUrl": null,
+      "mockupId": "newton-img",
+      "shownInPortfolio": false,
+      "shownInCv": false,
       "technologyIds": [
         "latex",
         "git"
@@ -822,12 +822,12 @@
         "notes"
       ],
       "participationModeId": "independent-collaboration",
-      "source_code": "https://github.com/RosarioEs/guias_fisica_1",
-      "live_demo": null,
-      "video_url": "https://www.youtube-nocookie.com/embed/2pfTixTPAOM",
-      "mockup_id": null,
-      "shown_in_portfolio": false,
-      "shown_in_cv": false,
+      "sourceCode": "https://github.com/RosarioEs/guias_fisica_1",
+      "liveDemo": null,
+      "videoUrl": "https://www.youtube-nocookie.com/embed/2pfTixTPAOM",
+      "mockupId": null,
+      "shownInPortfolio": false,
+      "shownInCv": false,
       "technologyIds": [
         "latex",
         "git"
@@ -840,12 +840,12 @@
         "notes"
       ],
       "participationModeId": "independent-collaboration",
-      "source_code": "https://www.overleaf.com/read/xpxqmxnstrjv#b007e9",
-      "live_demo": null,
-      "video_url": null,
-      "mockup_id": "planeImg",
-      "shown_in_portfolio": false,
-      "shown_in_cv": false,
+      "sourceCode": "https://www.overleaf.com/read/xpxqmxnstrjv#b007e9",
+      "liveDemo": null,
+      "videoUrl": null,
+      "mockupId": "plane-img",
+      "shownInPortfolio": false,
+      "shownInCv": false,
       "technologyIds": [
         "latex",
         "overleaf"
@@ -858,12 +858,12 @@
         "notes"
       ],
       "participationModeId": "independent-development",
-      "source_code": "https://www.overleaf.com/read/xctdtdcmzzdw#407aad",
-      "live_demo": null,
-      "video_url": null,
-      "mockup_id": "einsteinImg",
-      "shown_in_portfolio": false,
-      "shown_in_cv": false,
+      "sourceCode": "https://www.overleaf.com/read/xctdtdcmzzdw#407aad",
+      "liveDemo": null,
+      "videoUrl": null,
+      "mockupId": "einstein-img",
+      "shownInPortfolio": false,
+      "shownInCv": false,
       "technologyIds": [
         "latex",
         "overleaf"
@@ -871,9 +871,10 @@
     }
   ],
   "skills": {
+    "cvGroupId": "professional-core",
     "groups": [
       {
-        "id": "professionalCore",
+        "id": "professional-core",
         "order": 1,
         "categories": [
           {
@@ -891,7 +892,7 @@
             ]
           },
           {
-            "id": "dataAccess",
+            "id": "data-access",
             "order": 3,
             "technologyIds": [
               "entity-framework"
@@ -913,7 +914,7 @@
             ]
           },
           {
-            "id": "versionControl",
+            "id": "version-control",
             "order": 6,
             "technologyIds": [
               "git"
@@ -922,7 +923,7 @@
         ]
       },
       {
-        "id": "professionalComplementary",
+        "id": "professional-complementary",
         "order": 2,
         "categories": [
           {
@@ -942,7 +943,7 @@
             ]
           },
           {
-            "id": "dataAccess",
+            "id": "data-access",
             "order": 3,
             "technologyIds": [
               "ado-net"
@@ -965,7 +966,7 @@
         ]
       },
       {
-        "id": "academicResearch",
+        "id": "academic-research",
         "order": 3,
         "technologyIds": [
           "python",
@@ -987,83 +988,83 @@
     {
       "id": "sound-engineering-untref",
       "order": 1,
-      "study_plan": "https://untref.edu.ar/carrera/ingenieria-de-sonido",
+      "studyPlan": "https://untref.edu.ar/carrera/ingenieria-de-sonido",
       "certificate": null,
       "type": "career",
-      "shown_in_cv": true,
+      "shownInCv": true,
       "institutionId": "untref"
     },
     {
       "id": "programming-technical-degree-utn",
       "order": 2,
-      "study_plan": "https://www.frgp.utn.edu.ar/carreras/tup_tuss",
+      "studyPlan": "https://www.frgp.utn.edu.ar/carreras/tup_tuss",
       "certificate": "./assets/pdf/tup-certificate.pdf",
-      "graduation_date": "2024-12-12",
+      "graduationDate": "2024-12-12",
       "type": "career",
-      "shown_in_cv": true,
+      "shownInCv": true,
       "institutionId": "utn"
     },
     {
       "id": "angular-course-educacion-it",
       "order": 3,
-      "study_plan": "./assets/pdf/angular-plan.pdf",
+      "studyPlan": "./assets/pdf/angular-plan.pdf",
       "certificate": "./assets/pdf/angular-certificate.pdf",
       "type": "course",
-      "shown_in_cv": true,
+      "shownInCv": true,
       "institutionId": "educacion-it"
     },
     {
       "id": "web-api-dotnet-core-course-educacion-it",
       "order": 4,
-      "study_plan": "./assets/pdf/web-api-plan.pdf",
+      "studyPlan": "./assets/pdf/web-api-plan.pdf",
       "certificate": "./assets/pdf/web-api-certificate.pdf",
       "type": "course",
-      "shown_in_cv": true,
+      "shownInCv": true,
       "institutionId": "educacion-it"
     },
     {
       "id": "entity-framework-linq-course-educacion-it",
       "order": 5,
-      "study_plan": "./assets/pdf/linq-entity-plan.pdf",
+      "studyPlan": "./assets/pdf/linq-entity-plan.pdf",
       "certificate": "./assets/pdf/linq-entity-certificate.pdf",
       "type": "course",
-      "shown_in_cv": true,
+      "shownInCv": true,
       "institutionId": "educacion-it"
     },
     {
       "id": "web-dotnet-core-programming-course-educacion-it",
       "order": 6,
-      "study_plan": "./assets/pdf/net-core-plan.pdf",
+      "studyPlan": "./assets/pdf/net-core-plan.pdf",
       "certificate": "./assets/pdf/net-core-certificate.pdf",
       "type": "course",
-      "shown_in_cv": false,
+      "shownInCv": false,
       "institutionId": "educacion-it"
     },
     {
       "id": "english-fce-b2-cambridge",
       "order": 7,
-      "study_plan": null,
+      "studyPlan": null,
       "certificate": "./assets/pdf/fce-certificate.pdf",
       "type": "language",
-      "shown_in_cv": true,
+      "shownInCv": true,
       "institutionId": "cambridge"
     },
     {
       "id": "portuguese-level-4-utn",
       "order": 8,
-      "study_plan": null,
+      "studyPlan": null,
       "certificate": "./assets/pdf/portuguese-certificate.pdf",
       "type": "language",
-      "shown_in_cv": true,
+      "shownInCv": true,
       "institutionId": "utn"
     },
     {
       "id": "native-spanish-argentina",
       "order": 9,
-      "study_plan": null,
+      "studyPlan": null,
       "certificate": null,
       "type": "language",
-      "shown_in_cv": true,
+      "shownInCv": true,
       "institutionId": "argentina"
     }
   ],
@@ -1071,8 +1072,8 @@
     {
       "id": "junior-software-developer-halley",
       "order": 1,
-      "start_date": "2025-08-11",
-      "end_date": "2026-11-04",
+      "startDate": "2025-08-11",
+      "endDate": "2026-11-04",
       "technologyIds": [
         "dotnet",
         "vbnet",
@@ -1085,78 +1086,20 @@
     {
       "id": "programming-2-teaching-assistant-utn",
       "order": 2,
-      "start_date": "2024-08",
-      "end_date": "2025-12"
+      "startDate": "2024-08",
+      "endDate": "2025-12"
     },
     {
       "id": "physics-1-teaching-assistant-untref",
       "order": 3,
-      "start_date": "2019-08",
-      "end_date": "2023-07"
+      "startDate": "2019-08",
+      "endDate": "2023-07"
     },
     {
       "id": "english-teacher-leonardo-favio-library",
       "order": 4,
-      "start_date": "2014-03",
-      "end_date": "2017-12"
+      "startDate": "2014-03",
+      "endDate": "2017-12"
     }
-  ],
-  "controls": {
-    "resumeButtonId": "resumeBtn",
-    "submitButtonId": "submitBtn",
-    "textboxIds": [
-      "nameTxt",
-      "emailTxt",
-      "phoneTxt",
-      "messageTxt"
-    ],
-    "labelIds": {
-      "common": [
-        "sourceCodeLbl",
-        "openOnlineLbl",
-        "websiteLbl",
-        "degreesLbl",
-        "presentationLbl",
-        "jobSearchLbl"
-      ],
-      "index": [
-        "resumeLbl",
-        "onlineResumeLbl",
-        "skillsLbl",
-        "projectsLbl",
-        "allProjectsLbl",
-        "educationLbl",
-        "contactTitleLbl",
-        "contactDescriptionLbl",
-        "nameLbl",
-        "emailLbl",
-        "phoneLbl",
-        "messageLbl"
-      ],
-      "projects": [
-        "projectsLbl",
-        "backLbl",
-        "filtersLbl",
-        "technologiesLbl",
-        "typesLbl",
-        "contributionsLbl",
-        "clearFiltersLbl",
-        "projectSingularLbl",
-        "projectPluralLbl"
-      ],
-      "cv": [
-        "profileLbl",
-        "skillsLbl",
-        "educationLbl",
-        "careersLbl",
-        "coursesLbl",
-        "languagesLbl",
-        "experienceLbl",
-        "projectsLbl",
-        "jobsLbl",
-        "presentLbl",
-        "technologiesLbl"
-      ]
-    }
-  }
+  ]
 }

@@ -24,191 +24,191 @@
     "cv": "Resume"
   },
   "images": {
-    "profileImg": {
+    "profile-img": {
       "title": "Maximiliano Malvicino",
       "alt": "Profile picture of Maximiliano Malvicino."
     },
-    "logoImg": {
+    "logo-img": {
       "title": "M. R. Malvicino",
       "alt": "Maximiliano Malvicino's personal logo."
     },
-    "cppImg": {
+    "cpp-img": {
       "alt": "C++ Logo."
     },
-    "csImg": {
+    "cs-img": {
       "alt": "C# Logo."
     },
-    "pythonImg": {
+    "python-img": {
       "alt": "Python Logo."
     },
-    "javaImg": {
+    "java-img": {
       "alt": "Java Logo."
     },
-    "jsImg": {
+    "js-img": {
       "alt": "JavaScript Logo."
     },
-    "tsImg": {
+    "ts-img": {
       "alt": "TypeScript Logo."
     },
-    "htmlImg": {
+    "html-img": {
       "alt": "HTML Logo."
     },
-    "cssImg": {
+    "css-img": {
       "alt": "CSS Logo."
     },
-    "bootstrapImg": {
+    "bootstrap-img": {
       "alt": "Bootstrap Logo."
     },
-    "tailwindImg": {
+    "tailwind-img": {
       "alt": "Tailwind Logo."
     },
-    "dotnetImg": {
+    "dotnet-img": {
       "alt": "Microsoft .NET Logo."
     },
-    "dotnet10Img": {
+    "dotnet10-img": {
       "alt": ".NET 10 Logo."
     },
-    "dotnetFrameworkImg": {
+    "dotnet-framework-img": {
       "alt": ".NET Framework Logo."
     },
-    "angularImg": {
+    "angular-img": {
       "alt": "Angular Logo."
     },
-    "reactImg": {
+    "react-img": {
       "alt": "React Logo."
     },
-    "fastapiImg": {
+    "fastapi-img": {
       "alt": "Fast API Logo."
     },
-    "mssqlImg": {
+    "mssql-img": {
       "alt": "Microsoft SQL Server Logo."
     },
-    "mysqlImg": {
+    "mysql-img": {
       "alt": "MySQL Logo."
     },
-    "vbnetImg": {
+    "vbnet-img": {
       "alt": "Visual Basic .NET Logo."
     },
-    "entityFrameworkImg": {
+    "entity-framework-img": {
       "alt": "Entity Framework Logo."
     },
-    "adoNetImg": {
+    "ado-net-img": {
       "alt": "ADO.NET Logo."
     },
-    "windowsFormsImg": {
+    "windows-forms-img": {
       "alt": "Windows Forms Logo."
     },
-    "sapCrystalReportsImg": {
+    "sap-crystal-reports-img": {
       "alt": "SAP Crystal Reports Logo."
     },
-    "razorImg": {
+    "razor-img": {
       "alt": "Razor Logo."
     },
-    "gitImg": {
+    "git-img": {
       "alt": "Git Logo."
     },
-    "githubActionsImg": {
+    "github-actions-img": {
       "alt": "GitHub Actions Logo."
     },
-    "latexImg": {
+    "latex-img": {
       "alt": "LaTex Logo."
     },
-    "overleafImg": {
+    "overleaf-img": {
       "alt": "Overleaf Logo."
     },
-    "untrefImg": {
+    "untref-img": {
       "title": "Untref",
       "alt": "Untref Logo."
     },
-    "utnImg": {
+    "utn-img": {
       "title": "UTN",
       "alt": "UTN Logo."
     },
-    "educacionitImg": {
+    "educacionit-img": {
       "title": "Educacion IT",
       "alt": "Educacion IT Logo."
     },
-    "cambridgeImg": {
+    "cambridge-img": {
       "title": "Cambridge",
       "alt": "Cambridge Logo."
     },
-    "argImg": {
+    "arg-img": {
       "title": "Argentina",
       "alt": "Flag of Argentina."
     },
-    "wipImg": {
+    "wip-img": {
       "title": "WIP",
       "alt": "Work In Progress sign."
     },
-    "stusImg": {
+    "stus-img": {
       "title": "STUS Calculator",
       "alt": "Graph of a Fourier approximation to a square wave."
     },
-    "ancImg": {
+    "anc-img": {
       "title": "ANC Research Plan",
       "alt": "Bar graph of a Chi Square statistical analysis."
     },
-    "dugunImg": {
+    "dugun-img": {
       "title": "Dugun Auto Clicker",
       "alt": "C++ code snippet with a class representing a timer."
     },
-    "binaryImg": {
+    "binary-img": {
       "title": "Binary Calculator",
       "alt": "C++ code snippet with dynamic pointers and arrays."
     },
-    "balumaImg": {
+    "baluma-img": {
       "title": "Baluma ERP",
       "alt": "Terminal interface capture."
     },
-    "irwinImg": {
+    "irwin-img": {
       "title": "Irwin's Revenge",
       "alt": "C++ code snippet with combined loops."
     },
-    "arduinoImg": {
+    "arduino-img": {
       "title": "Arduino LED Controller",
       "alt": "Photograph of a hand operating on an Arduino board."
     },
-    "waveformImg": {
+    "waveform-img": {
       "title": "DSP Notes",
       "alt": "Waveform of a signal."
     },
-    "transmissibilityImg": {
+    "transmissibility-img": {
       "title": "Acoustics Notes",
       "alt": "Vibration transmissibility curve."
     },
-    "circuitImg": {
+    "circuit-img": {
       "title": "Electronics Notes",
       "alt": "RLC circuit with alternating current source."
     },
-    "mathImg": {
+    "math-img": {
       "title": "Math Notes",
       "alt": "Two-surface graph."
     },
-    "newtonImg": {
+    "newton-img": {
       "title": "Physics Book",
       "alt": "Cover with a caricature of Isaac Newton"
     },
-    "planeImg": {
+    "plane-img": {
       "title": "Physics 1 Solved",
       "alt": "Graph of an inclined plane with pulleys."
     },
-    "einsteinImg": {
+    "einstein-img": {
       "title": "Physics 2 Demonstrations",
       "alt": "Cover with a caricature of Albert Einstein."
     },
-    "matrixImg": {
+    "matrix-img": {
       "title": "Link Tree",
       "alt": "Menu with a Matrix-style character rain background."
     },
-    "biblioImg": {
+    "biblio-img": {
       "title": "Biblio API",
       "alt": "Books of a library."
     },
-    "decaucionesImg": {
+    "decauciones-img": {
       "title": "deCauciones",
       "alt": "deCauciones website landing page with the rental surety insurance quote calculator."
     },
-    "halleyV2Img": {
+    "halley-v2-img": {
       "title": "Halley V2",
       "alt": "Halley V2 point-of-sale billing screen with an empty item list."
     }
@@ -376,18 +376,18 @@
   "skills": {
     "description": "Technologies organized by how I use them and my applied experience.",
     "groups": {
-      "professionalCore": "Frequent professional use",
-      "professionalComplementary": "Complementary professional use",
-      "academicResearch": "Research and academic work",
+      "professional-core": "Frequent professional use",
+      "professional-complementary": "Complementary professional use",
+      "academic-research": "Research and academic work",
       "learning": "Currently learning"
     },
     "categories": {
       "languages": "Languages",
       "frameworks": "Frameworks",
-      "dataAccess": "Data access",
+      "data-access": "Data access",
       "frontend": "Frontend",
       "databases": "Databases",
-      "versionControl": "Version control",
+      "version-control": "Version control",
       "automation": "Automation"
     }
   },
@@ -488,12 +488,8 @@
       "profileLbl": "Professional Profile",
       "skillsLbl": "Technical Skills",
       "educationLbl": "Education",
-      "careersLbl": "Higher Education",
-      "coursesLbl": "Specialization Courses",
-      "languagesLbl": "Languages",
       "experienceLbl": "Work Experience",
       "projectsLbl": "Freelance Experience",
-      "jobsLbl": "Permanent Employments",
       "presentLbl": "Present",
       "technologiesLbl": "Technologies"
     }

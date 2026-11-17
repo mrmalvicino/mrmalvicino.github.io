@@ -3,8 +3,6 @@ import { escapeHtml, html } from "./html.mjs";
 import { renderProjects } from "./project-list.mjs";
 import { renderFooter, renderNavbar } from "./site-chrome.mjs";
 
-const scripts = ["project-filters.js", "email-copy.js"];
-
 function renderFilterOptions(items, group) {
 	return items.map(item => html`
 		<label class="project-filter-option">
@@ -26,9 +24,9 @@ function renderProjectFilters(data) {
 		.filter(participationMode => participationModeIds.has(participationMode.id));
 
 	return html`
-		<form id="projectFilters" class="project-filters" aria-labelledby="filtersLbl" hidden>
+		<form id="project-filters" class="project-filters" aria-labelledby="filters-label" hidden>
 		  <div class="project-filters-header">
-		    <h2 id="filtersLbl" class="pure-white-text">${escapeHtml(labels.filtersLbl)}</h2>
+		    <h2 id="filters-label" class="pure-white-text">${escapeHtml(labels.filtersLbl)}</h2>
 		    <button type="button" class="project-filters-clear" data-clear-filters disabled>
 		      ${escapeHtml(labels.clearFiltersLbl)}
 		    </button>
@@ -68,19 +66,19 @@ export function renderProjectsPage(data) {
 		<body class="open-sans-font light-gray-background">
 		  ${renderNavbar(data, "projects")}
 		  <main id="main-content" tabindex="-1">
-		    <section id="projectsSec" class="page-section min-height-100-vh menu-padding gap-40-px col-flex space-evenly almost-black-background">
+		    <section id="projects-sec" class="page-section min-height-100-vh menu-padding gap-40-px col-flex space-evenly almost-black-background">
 		      <div class="content-width">
-		        <h1 id="projectsLbl" class="pure-white-text margin-top-20-px">${escapeHtml(data.locale.labels.projects.projectsLbl)}</h1>
+		        <h1 id="projects-label" class="pure-white-text margin-top-20-px">${escapeHtml(data.locale.labels.projects.projectsLbl)}</h1>
 		      </div>
 		      ${renderProjectFilters(data)}
-		      <p id="projectResultCount" class="project-result-count" aria-live="polite" aria-atomic="true"
+		      <p id="project-result-count" class="project-result-count" aria-live="polite" aria-atomic="true"
 		        data-singular="${escapeHtml(projectLabels.projectSingularLbl)}" data-plural="${escapeHtml(projectLabels.projectPluralLbl)}">
 		        ${escapeHtml(initialResultCount)}
 		      </p>
-		      <div id="projectsDiv" class="projects-container">
+		      <div id="projects-list" class="projects-container">
 		        ${renderProjects(data, data.projects)}
 		      </div>
-		      <div id="projectEmptyState" class="project-empty-state" hidden>
+		      <div id="project-empty-state" class="project-empty-state" hidden>
 		        <i class="bi bi-filter-circle" aria-hidden="true"></i>
 		        <p>${escapeHtml(data.locale.messages.noProjects)}</p>
 		        <button type="button" class="light-button" data-clear-filters>${escapeHtml(projectLabels.clearFiltersLbl)}</button>
@@ -91,5 +89,5 @@ export function renderProjectsPage(data) {
 		</body>
 	`;
 
-	return renderDocument(data, "projects", body, scripts);
+	return renderDocument(data, "projects", body);
 }

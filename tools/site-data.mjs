@@ -33,8 +33,14 @@ export async function loadSiteData(root, language) {
 	const site = JSON.parse(siteContents);
 	const locale = JSON.parse(localeContents);
 	const images = {};
+	const imageMaps = [
+		site.images.commonImages,
+		site.images.technologyImages,
+		site.images.institutionImages,
+		site.images.projectImages
+	];
 
-	for (const group of Object.values(site.images)) {
+	for (const group of imageMaps) {
 		for (const [id, image] of Object.entries(group)) {
 			const translation = requireValue(locale.images, id, "images");
 			const technology = Object.entries(site.technologies)
@@ -47,7 +53,7 @@ export async function loadSiteData(root, language) {
 				throw new Error(`Missing images.${id}.title`);
 			}
 
-			images[id] = { id, ...image, ...translation, title };
+			images[id] = { ...image, ...translation, title };
 		}
 	}
 
@@ -85,6 +91,21 @@ export async function loadSiteData(root, language) {
 			image: requireValue(images, institution.imageId, "images")
 		}
 	]));
+	const skillGroups = sortByOrder(site.skills.groups).map(group => ({
+		...group,
+		label: requireValue(locale.skills.groups, group.id, "skills.groups"),
+		categories: group.categories
+			? sortByOrder(group.categories).map(category => ({
+				...category,
+				label: requireValue(locale.skills.categories, category.id, "skills.categories"),
+				technologies: category.technologyIds.map(id => requireValue(technologies, id, "technologies"))
+			}))
+			: null,
+		technologies: group.technologyIds
+			? group.technologyIds.map(id => requireValue(technologies, id, "technologies"))
+			: []
+	}));
+	const cvSkillGroup = skillGroups.find(group => group.id === site.skills.cvGroupId);
 
 	return {
 		language,
@@ -104,23 +125,12 @@ export async function loadSiteData(root, language) {
 			...requireValue(locale.projects, project.id, "projects"),
 			participationMode: requireValue(participationModes, project.participationModeId, "participationModes"),
 			types: project.typeIds.map(id => requireValue(projectTypes, id, "projectTypes")),
-			technologies: project.technologyIds.map(id => requireValue(technologies, id, "technologies"))
+			technologies: project.technologyIds.map(id => requireValue(technologies, id, "technologies")),
+			image: requireValue(images, project.mockupId ?? site.images.defaultProjectImageId, "images")
 		})),
 		skillDescription: locale.skills.description,
-		skillGroups: sortByOrder(site.skills.groups).map(group => ({
-			...group,
-			label: requireValue(locale.skills.groups, group.id, "skills.groups"),
-			categories: group.categories
-				? sortByOrder(group.categories).map(category => ({
-					...category,
-					label: requireValue(locale.skills.categories, category.id, "skills.categories"),
-					technologies: category.technologyIds.map(id => requireValue(technologies, id, "technologies"))
-				}))
-				: null,
-			technologies: group.technologyIds
-				? group.technologyIds.map(id => requireValue(technologies, id, "technologies"))
-				: []
-		})),
+		skillGroups,
+		cvSkillGroup,
 		studies: sortByOrder(site.studies).map(study => ({
 			...study,
 			...requireValue(locale.studies, study.id, "studies"),
@@ -129,8 +139,10 @@ export async function loadSiteData(root, language) {
 		jobs: sortByOrder(site.jobs).map(job => ({
 			...job,
 			...requireValue(locale.jobs, job.id, "jobs"),
-			time: `${formatJobDate(job.start_date, language)} - ${job.end_date
-				? formatJobDate(job.end_date, language)
+			formattedStartDate: formatJobDate(job.startDate, language),
+			formattedEndDate: job.endDate ? formatJobDate(job.endDate, language) : locale.labels.cv.presentLbl,
+			time: `${formatJobDate(job.startDate, language)} - ${job.endDate
+				? formatJobDate(job.endDate, language)
 				: locale.labels.cv.presentLbl}`,
 			technologies: job.technologyIds
 				? job.technologyIds.map(id => requireValue(technologies, id, "technologies"))

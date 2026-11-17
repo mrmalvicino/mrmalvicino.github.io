@@ -2,15 +2,24 @@ import { access, readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import Ajv from "ajv";
+import { languages } from "./site-manifest.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const languages = ["en", "es"];
-const dataFiles = ["site.json", ...languages.map(language => `${language}.json`)];
-const localJsonKeys = new Set(["href", "src", "study_plan", "certificate", "socialImage"]);
+const dataFiles = ["site.json", ...languages.map(language => `${language.id}.json`)];
+const localJsonKeys = new Set([
+	"certificate",
+	"formAction",
+	"href",
+	"liveDemo",
+	"socialImage",
+	"sourceCode",
+	"src",
+	"videoUrl",
+	"websiteUrl"
+]);
 
 const generatedSitePaths = new Set([
-	"assets/cv/malvicino-en.pdf",
-	"assets/cv/malvicino-es.pdf"
+	...languages.map(language => `assets/cv/${language.resumeFile}`)
 ]);
 
 const schemaBaseUrl = "https://mrmalvicino.com/schemas/";
@@ -215,7 +224,13 @@ function compareKeys(actual, expected, source, errors) {
 }
 
 function validateTranslations(site, locales, errors) {
-	const imageIds = Object.values(site.images).flatMap(images => Object.keys(images));
+	const imageMaps = [
+		site.images.commonImages,
+		site.images.technologyImages,
+		site.images.institutionImages,
+		site.images.projectImages
+	];
+	const imageIds = imageMaps.flatMap(images => Object.keys(images));
 	const technologyImageIds = new Set(Object.values(site.technologies).map(technology => technology.imageId));
 	const expected = {
 		images: imageIds,
@@ -228,8 +243,14 @@ function validateTranslations(site, locales, errors) {
 		studies: site.studies.map(item => item.id),
 		jobs: site.jobs.map(item => item.id),
 		socials: site.profile.socials.map(item => item.id),
-		buttons: [site.controls.submitButtonId],
-		placeholders: site.controls.textboxIds
+		buttons: ["submitBtn"],
+		placeholders: ["nameTxt", "emailTxt", "phoneTxt", "messageTxt"]
+	};
+	const labelIds = {
+		common: ["sourceCodeLbl", "openOnlineLbl", "websiteLbl", "degreesLbl", "presentationLbl", "jobSearchLbl"],
+		index: ["resumeLbl", "onlineResumeLbl", "skillsLbl", "projectsLbl", "allProjectsLbl", "educationLbl", "contactTitleLbl", "contactDescriptionLbl", "nameLbl", "emailLbl", "phoneLbl", "messageLbl"],
+		projects: ["projectsLbl", "backLbl", "filtersLbl", "technologiesLbl", "typesLbl", "contributionsLbl", "clearFiltersLbl", "projectSingularLbl", "projectPluralLbl"],
+		cv: ["profileLbl", "skillsLbl", "educationLbl", "experienceLbl", "projectsLbl", "presentLbl", "technologiesLbl"]
 	};
 
 	for (const [language, locale] of locales) {
@@ -237,7 +258,7 @@ function validateTranslations(site, locales, errors) {
 			compareKeys(locale?.[collection], ids, `src/data/${language}.json ${collection}`, errors);
 		}
 
-		for (const [group, ids] of Object.entries(site.controls.labelIds)) {
+		for (const [group, ids] of Object.entries(labelIds)) {
 			compareKeys(locale?.labels?.[group], ids, `src/data/${language}.json labels.${group}`, errors);
 		}
 
@@ -309,6 +330,108 @@ function validateRuntimeConfiguration(site, errors) {
 	}
 }
 
+function validateUrl(value, source, protocols, errors) {
+	try {
+		const url = new URL(value);
+
+		if (!protocols.includes(url.protocol)) {
+			errors.push(`${source}: unsupported URL protocol: ${url.protocol}`);
+		}
+	} catch {
+		errors.push(`${source}: invalid URL`);
+	}
+}
+
+function validateUrls(site, errors) {
+	validateUrl(site.profile.website.href, "src/data/site.json profile.website.href", ["https:"], errors);
+	validateUrl(site.profile.email.href, "src/data/site.json profile.email.href", ["mailto:"], errors);
+	validateUrl(site.profile.phone.href, "src/data/site.json profile.phone.href", ["tel:"], errors);
+	validateUrl(site.profile.linkedin.href, "src/data/site.json profile.linkedin.href", ["https:"], errors);
+	validateUrl(site.profile.location.href, "src/data/site.json profile.location.href", ["https:"], errors);
+	validateUrl(site.configuration.formAction, "src/data/site.json configuration.formAction", ["https:"], errors);
+
+	for (const social of site.profile.socials) {
+		validateUrl(social.href, `src/data/site.json profile.socials.${social.id}.href`, ["https:"], errors);
+	}
+
+	const localOrHttpsReferences = [
+		[site.configuration.socialImage, "configuration.socialImage"],
+		...Object.entries(site.resumes).map(([language, resume]) => [resume.href, `resumes.${language}.href`]),
+		...[
+			site.images.commonImages,
+			site.images.technologyImages,
+			site.images.institutionImages,
+			site.images.projectImages
+		].flatMap(images => Object.entries(images).map(([id, image]) => [image.src, `images.${id}.src`])),
+		...site.studies.flatMap(study => [
+			[study.studyPlan, `studies.${study.id}.studyPlan`],
+			[study.certificate, `studies.${study.id}.certificate`]
+		])
+	];
+
+	for (const [reference, source] of localOrHttpsReferences) {
+		if (reference && isExternalReference(reference)) {
+			validateUrl(reference, `src/data/site.json ${source}`, ["https:"], errors);
+		}
+	}
+
+	for (const project of site.projects) {
+		for (const field of ["sourceCode", "liveDemo", "websiteUrl", "videoUrl"]) {
+			if (project[field]) {
+				validateUrl(project[field], `src/data/site.json projects.${project.id}.${field}`, ["https:"], errors);
+			}
+		}
+	}
+
+	if (site.profile.email.href !== `mailto:${site.profile.email.address}`) {
+		errors.push("src/data/site.json: profile email href must match its address");
+	}
+}
+
+function parseDate(value) {
+	const match = /^(\d{4})-(\d{2})(?:-(\d{2}))?$/.exec(value);
+
+	if (!match) {
+		return null;
+	}
+
+	const year = Number(match[1]);
+	const month = Number(match[2]);
+	const day = Number(match[3] ?? "1");
+	const date = new Date(Date.UTC(year, month - 1, day));
+
+	if (date.getUTCFullYear() !== year || date.getUTCMonth() !== month - 1 || date.getUTCDate() !== day) {
+		return null;
+	}
+
+	return date.getTime();
+}
+
+function validateDates(site, errors) {
+	for (const study of site.studies) {
+		if (study.graduationDate && parseDate(study.graduationDate) === null) {
+			errors.push(`src/data/site.json: invalid graduation date for ${study.id}: ${study.graduationDate}`);
+		}
+	}
+
+	for (const job of site.jobs) {
+		const start = parseDate(job.startDate);
+		const end = job.endDate ? parseDate(job.endDate) : null;
+
+		if (start === null) {
+			errors.push(`src/data/site.json: invalid start date for ${job.id}: ${job.startDate}`);
+		}
+
+		if (job.endDate && end === null) {
+			errors.push(`src/data/site.json: invalid end date for ${job.id}: ${job.endDate}`);
+		}
+
+		if (start !== null && end !== null && end < start) {
+			errors.push(`src/data/site.json: end date precedes start date for ${job.id}`);
+		}
+	}
+}
+
 function validateDomain(site, errors) {
 	const collections = {
 		menu: site.menu,
@@ -324,8 +447,14 @@ function validateDomain(site, errors) {
 	}
 
 	const allImageIds = new Set();
+	const imageMaps = {
+		commonImages: site.images.commonImages,
+		technologyImages: site.images.technologyImages,
+		institutionImages: site.images.institutionImages,
+		projectImages: site.images.projectImages
+	};
 
-	for (const [name, images] of Object.entries(site.images)) {
+	for (const [name, images] of Object.entries(imageMaps)) {
 		for (const id of Object.keys(images)) {
 			if (allImageIds.has(id)) {
 				errors.push(`src/data/site.json: duplicate id in ${name}: ${id}`);
@@ -335,9 +464,9 @@ function validateDomain(site, errors) {
 		}
 	}
 
-	const technologyIds = new Set(Object.keys(site.images.technologies_images));
-	const institutionIds = new Set(Object.keys(site.images.institutions_images));
-	const projectImageIds = new Set(Object.keys(site.images.projects_images));
+	const technologyIds = new Set(Object.keys(site.images.technologyImages));
+	const institutionIds = new Set(Object.keys(site.images.institutionImages));
+	const projectImageIds = new Set(Object.keys(site.images.projectImages));
 	const technologyEntityIds = new Set(Object.keys(site.technologies));
 	const projectTypeIds = new Set(Object.keys(site.projectTypes));
 	const participationModeIds = new Set(Object.keys(site.participationModes));
@@ -409,8 +538,8 @@ function validateDomain(site, errors) {
 			}
 		}
 
-		if (project.mockup_id && !projectImageIds.has(project.mockup_id)) {
-			errors.push(`src/data/site.json: unknown project image id: ${project.mockup_id}`);
+		if (project.mockupId && !projectImageIds.has(project.mockupId)) {
+			errors.push(`src/data/site.json: unknown project image id: ${project.mockupId}`);
 		}
 	}
 
@@ -428,11 +557,19 @@ function validateDomain(site, errors) {
 		}
 	}
 
-	if (!projectImageIds.has("wipImg")) {
-		errors.push("src/data/site.json: required project image id is missing: wipImg");
+	if (!projectImageIds.has(site.images.defaultProjectImageId)) {
+		errors.push(`src/data/site.json: unknown default project image id: ${site.images.defaultProjectImageId}`);
 	}
 
-	const pageIds = new Set(["heroSec", "skillsSec", "projectsSec", "educationSec", "contactSec"]);
+	const cvSkillGroup = site.skills.groups.find(group => group.id === site.skills.cvGroupId);
+
+	if (!cvSkillGroup) {
+		errors.push(`src/data/site.json: unknown CV skill group id: ${site.skills.cvGroupId}`);
+	} else if (!cvSkillGroup.categories?.length) {
+		errors.push(`src/data/site.json: CV skill group must contain categories: ${site.skills.cvGroupId}`);
+	}
+
+	const pageIds = new Set(["hero-sec", "skills-sec", "projects-sec", "education-sec", "contact-sec"]);
 
 	for (const item of site.menu) {
 		if (item.href.startsWith("#") && !pageIds.has(item.href.slice(1))) {
@@ -485,19 +622,25 @@ export async function validateSite(root = projectRoot) {
 		const references = [];
 		collectJsonReferences(contents, references);
 
+		if (fileName === "site.json" && contents?.studies) {
+			references.push(...contents.studies.map(study => study.studyPlan).filter(Boolean));
+		}
+
 		for (const reference of references) {
 			await validateReference(path.join(root, "src"), reference, `src/data/${fileName}`, errors);
 		}
 	}
 
 	const site = data.get("site.json");
-	const locales = languages.map(language => [language, data.get(`${language}.json`)]);
+	const locales = languages.map(language => [language.id, data.get(`${language.id}.json`)]);
 
 	if (site && locales.every(([, locale]) => locale)) {
 		runSemanticValidation("translation", () => validateTranslations(site, locales, errors), errors);
 		runSemanticValidation("domain", () => validateDomain(site, errors), errors);
 		runSemanticValidation("SEO", () => validateSeo(site, locales, errors), errors);
 		runSemanticValidation("runtime configuration", () => validateRuntimeConfiguration(site, errors), errors);
+		runSemanticValidation("URLs", () => validateUrls(site, errors), errors);
+		runSemanticValidation("dates", () => validateDates(site, errors), errors);
 	}
 
 	if (errors.length > 0) {

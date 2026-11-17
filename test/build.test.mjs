@@ -6,16 +6,10 @@ import test from "node:test";
 import { fileURLToPath } from "node:url";
 import { getDocument } from "pdfjs-dist/legacy/build/pdf.mjs";
 import { buildSite } from "../tools/build.mjs";
+import { languages, outputFile, pages } from "../tools/site-manifest.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const htmlRoutes = [
-	"es/index.html",
-	"en/index.html",
-	"es/projects/index.html",
-	"en/projects/index.html",
-	"es/cv/index.html",
-	"en/cv/index.html"
-];
+const htmlRoutes = languages.flatMap(language => pages.map(page => outputFile(language.id, page.id)));
 function getLocalStyles(contents) {
 	return [...contents.matchAll(/href="\/style\/([^"]+)"/g)].map(match => match[1]);
 }
@@ -128,14 +122,10 @@ test("build creates localized HTML without runtime content data", async () => {
 		const sitemap = await readFile(path.join(output, "sitemap.xml"), "utf8");
 		const robots = await readFile(path.join(output, "robots.txt"), "utf8");
 		const legacyProjects = await readFile(path.join(output, "projects.html"), "utf8");
-		const styleBundles = {
-			"es/index.html": "bundles/index.css",
-			"en/index.html": "bundles/index.css",
-			"es/projects/index.html": "bundles/projects.css",
-			"en/projects/index.html": "bundles/projects.css",
-			"es/cv/index.html": "bundles/cv.css",
-			"en/cv/index.html": "bundles/cv.css"
-		};
+		const styleBundles = Object.fromEntries(languages.flatMap(language => pages.map(page => [
+			outputFile(language.id, page.id),
+			`bundles/${page.id}.css`
+		])));
 
 		for (const [route, bundle] of Object.entries(styleBundles)) {
 			assert.deepEqual(getLocalStyles(html.get(route)), [bundle]);
@@ -155,8 +145,8 @@ test("build creates localized HTML without runtime content data", async () => {
 		assert.match(html.get("es/index.html"), /"@type":"Person"/);
 		assert.match(html.get("es/index.html"), /Desarrollador de Software \.NET/);
 		assert.match(html.get("en/index.html"), />\.NET Software Developer</);
-		assert.match(html.get("es/index.html"), /id="onlineResumeBtn" href="\/es\/cv\/"[\s\S]*Ver CV online/);
-		assert.match(html.get("en/index.html"), /id="onlineResumeBtn" href="\/en\/cv\/"[\s\S]*View CV online/);
+		assert.match(html.get("es/index.html"), /id="online-resume-btn" href="\/es\/cv\/"[\s\S]*Ver CV online/);
+		assert.match(html.get("en/index.html"), /id="online-resume-btn" href="\/en\/cv\/"[\s\S]*View CV online/);
 		assert.match(html.get("es/index.html"), /experiencia profesional con C#, VB \.NET, WinForms, MySQL y SAP Crystal Reports/);
 		assert.match(html.get("en/index.html"), /professional experience with C#, VB \.NET, WinForms, MySQL, and SAP Crystal Reports/);
 		assert.match(html.get("es/index.html"), /búsqueda activa de oportunidades como desarrollador \.NET/);
@@ -169,7 +159,7 @@ test("build creates localized HTML without runtime content data", async () => {
 		assert.match(html.get("es/index.html"), /\.NET 10/);
 		assert.match(html.get("es/index.html"), /\.NET Framework/);
 		assert.match(html.get("es/index.html"), /Actualmente en formación/);
-		assert.match(html.get("en/cv/index.html"), /id="skillsLst"[\s\S]*Languages:[\s\S]*C#[\s\S]*Version control:[\s\S]*Git/);
+		assert.match(html.get("en/cv/index.html"), /id="skills-list"[\s\S]*Languages:[\s\S]*C#[\s\S]*Version control:[\s\S]*Git/);
 		assert.doesNotMatch(html.get("en/cv/index.html"), /Frequent professional use|Complementary professional use|Research and academic work|Currently learning/);
 		assert.match(html.get("es/cv/index.html"), /<p>Desarrollador de Software \.NET<\/p>/);
 		assert.match(html.get("en/cv/index.html"), /<p>\.NET Software Developer<\/p>/);
@@ -210,7 +200,8 @@ test("build creates localized HTML without runtime content data", async () => {
 		assert.match(html.get("en/projects/index.html"), /value="freelance-saas"[\s\S]*Freelance SaaS/);
 		assert.match(html.get("en/projects/index.html"), /value="employment"[\s\S]*Employment/);
 		assert.match(html.get("en/projects/index.html"), /<script src="\/script\/project-filters\.js" defer><\/script>/);
-		assert.equal((html.get("es/cv/index.html").match(/id="projectsLst"[\s\S]*?<\/div>/)?.[0].match(/<article /g) ?? []).length, 2);
+		assert.doesNotMatch(html.get("en/projects/index.html"), /email-copy\.js/);
+		assert.equal((html.get("es/cv/index.html").match(/id="projects-list"[\s\S]*?<\/div>/)?.[0].match(/<article /g) ?? []).length, 2);
 		assert.match(html.get("es/cv/index.html"), /Membriana[\s\S]*deCauciones/);
 		assert.match(html.get("es/cv/index.html"), /Membriana[\s\S]*href="https:\/\/github\.com\/mrmalvicino\/membriana"/);
 		assert.match(html.get("es/cv/index.html"), /href="https:\/\/github\.com\/mrmalvicino\/membriana" target="_blank" rel="noopener noreferrer"/);
@@ -220,7 +211,7 @@ test("build creates localized HTML without runtime content data", async () => {
 		assert.match(html.get("es/cv/index.html"), /<main class="cv-main"[^>]*>[\s\S]*Perfil profesional[\s\S]*Habilidades técnicas[\s\S]*Experiencia laboral[\s\S]*Experiencia freelance[\s\S]*Educación/);
 		assert.match(html.get("en/cv/index.html"), /Professional Profile[\s\S]*Technical Skills[\s\S]*Work Experience[\s\S]*Freelance Experience[\s\S]*Education/);
 		assert.match(html.get("es/cv/index.html"), /<article class="cv-entry cv-job">[\s\S]*<h3>Desarrollador de Software Junior<\/h3>[\s\S]*Halley Accurate Solutions[\s\S]*<time datetime="2025-08-11">/);
-		assert.doesNotMatch(html.get("es/cv/index.html"), /< Habilidades \/>|cv-left-column|cv-right-column|profileImg/);
+		assert.doesNotMatch(html.get("es/cv/index.html"), /< Habilidades \/>|cv-left-column|cv-right-column|profile-img/);
 		assert.doesNotMatch(html.get("es/cv/index.html"), /<script src=/);
 		assert.equal((html.get("es/cv/index.html").match(/class="site-chrome/g) ?? []).length, 2);
 		assert.equal((html.get("es/projects/index.html").match(/class="site-chrome/g) ?? []).length, 2);
@@ -229,10 +220,10 @@ test("build creates localized HTML without runtime content data", async () => {
 		assert.match(html.get("en/projects/index.html"), /href="https:\/\/github\.com\/mrmalvicino\/membriana" target="_blank" rel="noopener noreferrer"/);
 		assert.match(html.get("en/index.html"), /aria-label="GitHub \(opens in a new tab\)"/);
 		assert.match(html.get("en/index.html"), /href="#main-content" class="skip-link">Skip to main content/);
-		assert.match(html.get("es/index.html"), /aria-expanded="false" aria-controls="menuLst"/);
+		assert.match(html.get("es/index.html"), /aria-expanded="false" aria-controls="menu-list"/);
 		assert.match(html.get("en/index.html"), /<thead class="visually-hidden">[\s\S]*<th scope="col">Institution/);
 		assert.equal((html.get("en/index.html").match(/<th scope="row" class="education-description-cell">/g) ?? []).length, 9);
-		assert.match(html.get("en/index.html"), /id="emailTxt" name="emailTxt" autocomplete="email" required/);
+		assert.match(html.get("en/index.html"), /id="email-input" name="email-input" autocomplete="email" required/);
 		assert.doesNotMatch(html.get("en/index.html"), /href="mailto:[^"]+"[^>]*target="_blank"/);
 		assert.doesNotMatch(html.get("en/index.html"), /href="tel:[^"]+"[^>]*target="_blank"/);
 		assert.match(html.get("en/cv/index.html"), /href="\/es\/cv\/"/);
@@ -271,12 +262,25 @@ test("build creates localized HTML without runtime content data", async () => {
 		}
 
 		const files = await listFiles(output);
+		const iconCss = await readFile(path.join(output, "style/bundles/index.css"), "utf8");
+		const iconNames = new Set([...html.values()].flatMap(contents => (
+			[...contents.matchAll(/\bbi-([a-z0-9-]+)/g)].map(match => match[1])
+		)));
+		iconNames.add("x-lg");
+
+		for (const iconName of iconNames) {
+			assert.match(iconCss, new RegExp(`\\.bi-${iconName}::before`));
+		}
+
 		assert.equal(files.some(file => path.basename(file) === ".DS_Store"), false);
 		assert.equal(files.some(file => file.startsWith("data/")), false);
 		assert.equal(files.includes("footer.html"), false);
 		assert.equal(files.some(file => file.startsWith("tools/")), false);
 		assert.equal(files.includes("script/data-loader.js"), false);
 		assert.equal(files.includes("script/legacy-language.js"), false);
+		assert.equal(files.includes("assets/design/linkedin/cv.png"), false);
+		assert.equal(files.includes("assets/design/logo/logo.svg"), false);
+		assert.equal(files.includes("assets/design/youtube/youtube-cover.svg"), false);
 		assert.equal(files.includes("projects.html"), true);
 		assert.equal(files.includes("cv.html"), true);
 	} finally {
@@ -313,7 +317,7 @@ test("build output reflects locale data changes", async () => {
 
 		assert.match(localizedHtml, /Contenido &lt;script&gt; de prueba/);
 		assert.doesNotMatch(localizedHtml, /Contenido <script>/);
-		assert.doesNotMatch(localizedHtml, /jobSearchLbl|búsqueda activa/);
+		assert.doesNotMatch(localizedHtml, /job-search-label|búsqueda activa/);
 		assert.match(localizedPdfText, /Contenido sincronizado con el PDF de prueba\./);
 	} finally {
 		await rm(temporaryRoot, { recursive: true, force: true });

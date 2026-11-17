@@ -1,10 +1,9 @@
-import { renderDocument, route } from "./document.mjs";
+import { route } from "../site-manifest.mjs";
+import { renderDocument } from "./document.mjs";
 import { formatStudyTitle } from "./formatters.mjs";
 import { escapeHtml, html, image, publicUrl } from "./html.mjs";
 import { renderProjects } from "./project-list.mjs";
 import { renderEmailLink, renderFooter, renderJobSearch, renderNavbar } from "./site-chrome.mjs";
-
-const scripts = ["menu.js", "email-copy.js", "contact-form.js"];
 
 function renderSkillTechnologies(technologies) {
 	return technologies.map(technology => html`
@@ -49,9 +48,9 @@ function renderStudyRows(data) {
 	return data.studies.map(study => {
 		const links = [];
 
-		if (study.study_plan) {
+		if (study.studyPlan) {
 			links.push(html`
-				<a href="${escapeHtml(publicUrl(study.study_plan))}" target="_blank" rel="noopener noreferrer"
+				<a href="${escapeHtml(publicUrl(study.studyPlan))}" target="_blank" rel="noopener noreferrer"
 				  class="plain-link education-action-link soft-black-link margin-10-px"
 				  aria-label="${escapeHtml(`${data.locale.accessibility.studyPlan}: ${study.title} (${data.locale.accessibility.newTab})`)}">
 				  <i class="bi bi-mortarboard mid-font-size" aria-hidden="true"></i>
@@ -99,8 +98,8 @@ export function renderPortfolioPage(data) {
 		<body class="open-sans-font light-gray-background">
 		  ${renderNavbar(data, "index")}
 		  <main id="main-content" tabindex="-1">
-		    <section id="heroSec" class="page-section min-height-100-vh menu-padding col-flex justify-center">
-		      ${image(data.images.profileImg, "width-250-px margin-vertical-10-px circle-image", { fetchpriority: "high" })}
+		    <section id="hero-sec" class="page-section min-height-100-vh menu-padding col-flex justify-center">
+		      ${image(data.images["profile-img"], "width-250-px margin-vertical-10-px circle-image", { fetchpriority: "high" })}
 		      <div class="content-width margin-vertical-10-px">
 		        <h1>${escapeHtml(data.site.profile.fullName)}</h1>
 		        <p class="mid-font-size jost-font center-text">${escapeHtml(labels.common.degreesLbl)}</p>
@@ -108,42 +107,42 @@ export function renderPortfolioPage(data) {
 		      <p class="content-width margin-vertical-10-px center-text">${escapeHtml(labels.common.presentationLbl)}</p>
 		      ${renderJobSearch(data, "content-width margin-vertical-10-px center-text bold-text")}
 		      <div class="content-width margin-vertical-20-px col-flex justify-center">
-		        <a id="resumeBtn" href="${escapeHtml(publicUrl(resume.href))}" download="${escapeHtml(resume.download)}" class="resume-download-button dark-button big-hover">
+		        <a id="resume-btn" href="${escapeHtml(publicUrl(resume.href))}" download="${escapeHtml(resume.download)}" class="resume-download-button dark-button big-hover">
 		          <i class="bi bi-download" aria-hidden="true"></i>
 		          <span>&nbsp;</span>
 		          <span>${escapeHtml(labels.index.resumeLbl)}</span>
 		        </a>
-		        <a id="onlineResumeBtn" href="${route(data.language, "cv")}" class="underlined-link soft-black-link margin-top-10-px">${escapeHtml(labels.index.onlineResumeLbl)}</a>
+		        <a id="online-resume-btn" href="${route(data.language, "cv")}" class="underlined-link soft-black-link margin-top-10-px">${escapeHtml(labels.index.onlineResumeLbl)}</a>
 		      </div>
 		    </section>
-		    <section id="skillsSec" class="page-section min-height-100-vh menu-padding col-flex justify-center gap-40-px">
+		    <section id="skills-sec" class="page-section min-height-100-vh menu-padding col-flex justify-center gap-40-px">
 		      <div class="content-width">
-		        <h2 id="skillsLbl">${escapeHtml(labels.index.skillsLbl)}</h2>
+		        <h2 id="skills-label">${escapeHtml(labels.index.skillsLbl)}</h2>
 		        <p class="skills-description center-text">${escapeHtml(data.skillDescription)}</p>
 		      </div>
-		      <div id="skillGroupsDiv" class="skill-groups-container">
+		      <div id="skill-groups" class="skill-groups-container">
 		        ${renderSkillGroups(data)}
 		      </div>
 		    </section>
-		    <section id="projectsSec" class="page-section min-height-100-vh menu-padding gap-40-px col-flex space-evenly almost-black-background">
+		    <section id="projects-sec" class="page-section min-height-100-vh menu-padding gap-40-px col-flex space-evenly almost-black-background">
 		      <div class="content-width">
-		        <h2 id="projectsLbl" class="pure-white-text">${escapeHtml(labels.index.projectsLbl)}</h2>
+		        <h2 id="projects-label" class="pure-white-text">${escapeHtml(labels.index.projectsLbl)}</h2>
 		      </div>
-		      <div id="projectsDiv" class="projects-container">
-		        ${renderProjects(data, data.projects.filter(project => project.shown_in_portfolio))}
+		      <div id="projects-list" class="projects-container">
+		        ${renderProjects(data, data.projects.filter(project => project.shownInPortfolio))}
 		      </div>
 		      <div class="content-width row-col-800 justify-center">
 		        <a href="${route(data.language, "projects")}" class="big-hover light-button">
 		          <i class="bi bi-plus-circle" aria-hidden="true"></i>
 		          <span>&nbsp;</span>
-		          <span id="allProjectsLbl">${escapeHtml(labels.index.allProjectsLbl)}</span>
+		          <span id="all-projects-label">${escapeHtml(labels.index.allProjectsLbl)}</span>
 		        </a>
 		      </div>
 		    </section>
-		    <section id="educationSec" class="page-section min-height-100-vh menu-padding">
+		    <section id="education-sec" class="page-section min-height-100-vh menu-padding">
 		      <div class="content-width education-panel">
-		        <h2 id="educationLbl" class="margin-bottom-20-px">${escapeHtml(labels.index.educationLbl)}</h2>
-		        <table class="education-table" aria-labelledby="educationLbl">
+		        <h2 id="education-label" class="margin-bottom-20-px">${escapeHtml(labels.index.educationLbl)}</h2>
+		        <table class="education-table" aria-labelledby="education-label">
 		          <thead class="visually-hidden">
 		            <tr>
 		              <th scope="col">${escapeHtml(data.locale.accessibility.institution)}</th>
@@ -151,17 +150,17 @@ export function renderPortfolioPage(data) {
 		              <th scope="col">${escapeHtml(data.locale.accessibility.documents)}</th>
 		            </tr>
 		          </thead>
-		          <tbody id="studiesTab">
+		          <tbody id="studies-table">
 		            ${renderStudyRows(data)}
 		          </tbody>
 		        </table>
 		      </div>
 		    </section>
-		    <section id="contactSec" class="page-section min-height-100-vh menu-padding almost-black-background">
+		    <section id="contact-sec" class="page-section min-height-100-vh menu-padding almost-black-background">
 		      <div class="content-width row-col-800 space-between gap-40-px">
 		        <div class="width-100-pct margin-bottom-auto">
-		          <h2 id="contactTitleLbl" class="left-text bold-text pure-white-text open-sans-font">${escapeHtml(labels.index.contactTitleLbl)}</h2>
-		          <p id="contactDescriptionLbl" class="margin-top-10-px">${escapeHtml(labels.index.contactDescriptionLbl)}</p>
+		          <h2 id="contact-title" class="left-text bold-text pure-white-text open-sans-font">${escapeHtml(labels.index.contactTitleLbl)}</h2>
+		          <p id="contact-description" class="margin-top-10-px">${escapeHtml(labels.index.contactDescriptionLbl)}</p>
 		          <div class="wrapped-flex justify-center">
 		            ${renderEmailLink(data, "plain-link light-gray-text margin-10-px")}
 		            <a href="${escapeHtml(data.site.profile.phone.href)}" class="plain-link light-gray-text margin-10-px">
@@ -177,21 +176,21 @@ export function renderPortfolioPage(data) {
 		            data-success-message="${escapeHtml(data.locale.messages.formSuccess)}"
 		            data-server-error-message="${escapeHtml(data.locale.messages.formServerError)}"
 		            data-network-error-message="${escapeHtml(data.locale.messages.formNetworkError)}">
-		            <p id="requiredFieldsNote" class="form-instructions">${escapeHtml(data.locale.accessibility.requiredFields)}</p>
+		            <p id="required-fields-note" class="form-instructions">${escapeHtml(data.locale.accessibility.requiredFields)}</p>
 		            <div>
-		              <label for="nameTxt" class="light-gray-text">${escapeHtml(labels.index.nameLbl)} *</label>
-		              <input type="text" id="nameTxt" name="nameTxt" autocomplete="name" required aria-describedby="requiredFieldsNote"
+		              <label for="name-input" class="light-gray-text">${escapeHtml(labels.index.nameLbl)} *</label>
+		              <input type="text" id="name-input" name="name-input" autocomplete="name" required aria-describedby="required-fields-note"
 		                class="textbox-input" placeholder="${escapeHtml(data.locale.placeholders.nameTxt)}">
-		              <label for="emailTxt" class="light-gray-text">${escapeHtml(labels.index.emailLbl)} *</label>
-		              <input type="email" id="emailTxt" name="emailTxt" autocomplete="email" required aria-describedby="requiredFieldsNote"
+		              <label for="email-input" class="light-gray-text">${escapeHtml(labels.index.emailLbl)} *</label>
+		              <input type="email" id="email-input" name="email-input" autocomplete="email" required aria-describedby="required-fields-note"
 		                class="textbox-input" placeholder="${escapeHtml(data.locale.placeholders.emailTxt)}">
-		              <label for="phoneTxt" class="light-gray-text">${escapeHtml(labels.index.phoneLbl)} *</label>
-		              <input type="tel" id="phoneTxt" name="phoneTxt" autocomplete="tel" required aria-describedby="requiredFieldsNote"
+		              <label for="phone-input" class="light-gray-text">${escapeHtml(labels.index.phoneLbl)} *</label>
+		              <input type="tel" id="phone-input" name="phone-input" autocomplete="tel" required aria-describedby="required-fields-note"
 		                class="textbox-input" placeholder="${escapeHtml(data.locale.placeholders.phoneTxt)}">
-		              <label for="messageTxt" class="light-gray-text">${escapeHtml(labels.index.messageLbl)} *</label>
-		              <textarea id="messageTxt" name="messageTxt" rows="3" required aria-describedby="requiredFieldsNote"
+		              <label for="message-input" class="light-gray-text">${escapeHtml(labels.index.messageLbl)} *</label>
+		              <textarea id="message-input" name="message-input" rows="3" required aria-describedby="required-fields-note"
 		                class="textbox-input" placeholder="${escapeHtml(data.locale.placeholders.messageTxt)}"></textarea>
-		              <button type="submit" id="submitBtn" class="light-button margin-top-10-px width-100-pct">${escapeHtml(data.locale.buttons.submitBtn)}</button>
+		              <button type="submit" id="submit-btn" class="light-button margin-top-10-px width-100-pct">${escapeHtml(data.locale.buttons.submitBtn)}</button>
 		              <p class="form-status" data-form-status aria-live="polite"></p>
 		            </div>
 		          </form>
@@ -203,5 +202,5 @@ export function renderPortfolioPage(data) {
 		</body>
 	`;
 
-	return renderDocument(data, "index", body, scripts);
+	return renderDocument(data, "index", body);
 }

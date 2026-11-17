@@ -4,6 +4,7 @@ import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
+import { loadSiteData } from "../tools/site-data.mjs";
 import { validateSite } from "../tools/validate.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -84,8 +85,8 @@ test("validation reports schema, identity, translation, and typed-reference erro
 		site.skills.groups[0].categories[0].technologyIds[0] = "unknown-skill-technology";
 		site.studies[0].type = "invalid";
 		site.studies[1].institutionId = "unknown-institution";
-		site.technologies.cpp.imageId = "untrefImg";
-		site.images.projects_images.cppImg = site.images.technologies_images.cppImg;
+		site.technologies.cpp.imageId = "untref-img";
+		site.images.projectImages["cpp-img"] = site.images.technologyImages["cpp-img"];
 		await writeFile(sitePath, JSON.stringify(site, null, 2), "utf8");
 
 		const spanishPath = path.join(fixture, "src/data", "es.json");
@@ -106,7 +107,7 @@ test("validation reports schema, identity, translation, and typed-reference erro
 				assert.match(error.message, /site\.json: schema violation: .*must NOT have duplicate items/);
 				assert.match(error.message, /site\.json: duplicate id in projects: membriana/);
 				assert.match(error.message, /site\.json: duplicate order in projects: 1/);
-				assert.match(error.message, /site\.json: duplicate id in projects_images: cppImg/);
+				assert.match(error.message, /site\.json: duplicate id in projectImages: cpp-img/);
 				assert.match(error.message, /es\.json projects: translation keys do not match domain ids/);
 				assert.match(error.message, /es\.json projectTypes: translation keys do not match domain ids/);
 				assert.match(error.message, /es\.json participationModes: translation keys do not match domain ids/);
@@ -117,7 +118,7 @@ test("validation reports schema, identity, translation, and typed-reference erro
 				assert.match(error.message, /site\.json: unknown project type id: unknown-type/);
 				assert.match(error.message, /site\.json: unknown project participation mode id: unknown-participation-mode/);
 				assert.match(error.message, /site\.json: unknown study institution id: unknown-institution/);
-				assert.match(error.message, /site\.json: unknown technology image id for cpp: untrefImg/);
+				assert.match(error.message, /site\.json: unknown technology image id for cpp: untref-img/);
 				return true;
 			}
 		);
@@ -132,10 +133,28 @@ test("rendering order does not depend on array position", async () => {
 	try {
 		const sitePath = path.join(fixture, "src/data", "site.json");
 		const site = JSON.parse(await readFile(sitePath, "utf8"));
+		site.menu.reverse();
+		site.projects.reverse();
+		site.skills.groups.reverse();
+		site.skills.groups.forEach(group => group.categories?.reverse());
+		site.studies.reverse();
 		site.jobs.reverse();
+		site.profile.socials.reverse();
 		await writeFile(sitePath, JSON.stringify(site, null, 2), "utf8");
 
 		await validateSite(fixture);
+		const data = await loadSiteData(fixture, "en");
+
+		for (const collection of [data.menuItems, data.projects, data.skillGroups, data.studies, data.jobs, data.socials]) {
+			assert.deepEqual(collection.map(item => item.order), [...collection].map(item => item.order).sort((a, b) => a - b));
+		}
+
+		for (const group of data.skillGroups.filter(group => group.categories)) {
+			assert.deepEqual(
+				group.categories.map(category => category.order),
+				[...group.categories].map(category => category.order).sort((a, b) => a - b)
+			);
+		}
 	} finally {
 		await rm(fixture, { recursive: true, force: true });
 	}
@@ -180,6 +199,57 @@ test("validation rejects an unsafe contact form endpoint", async () => {
 		await writeFile(sitePath, JSON.stringify(site, null, 2), "utf8");
 
 		await assert.rejects(validateSite(fixture), /contact form action must use HTTPS/);
+	} finally {
+		await rm(fixture, { recursive: true, force: true });
+	}
+});
+
+test("validation rejects unsafe URLs, impossible dates, and inverted periods", async () => {
+	const fixture = await createValidFixture();
+
+	try {
+		const sitePath = path.join(fixture, "src/data", "site.json");
+		const site = JSON.parse(await readFile(sitePath, "utf8"));
+		site.projects[0].sourceCode = "javascript:alert(1)";
+		site.studies[1].graduationDate = "2025-02-29";
+		site.jobs[0].startDate = "2026-02-31";
+		site.jobs[1].startDate = "2026-01";
+		site.jobs[1].endDate = "2025-12";
+		await writeFile(sitePath, JSON.stringify(site, null, 2), "utf8");
+
+		await assert.rejects(
+			validateSite(fixture),
+			error => {
+				assert.match(error.message, /unsupported URL protocol: javascript:/);
+				assert.match(error.message, /invalid graduation date/);
+				assert.match(error.message, /invalid start date/);
+				assert.match(error.message, /end date precedes start date/);
+				return true;
+			}
+		);
+	} finally {
+		await rm(fixture, { recursive: true, force: true });
+	}
+});
+
+test("validation enforces configured CV skills and the default project image", async () => {
+	const fixture = await createValidFixture();
+
+	try {
+		const sitePath = path.join(fixture, "src/data", "site.json");
+		const site = JSON.parse(await readFile(sitePath, "utf8"));
+		site.skills.cvGroupId = "learning";
+		site.images.defaultProjectImageId = "missing-image";
+		await writeFile(sitePath, JSON.stringify(site, null, 2), "utf8");
+
+		await assert.rejects(
+			validateSite(fixture),
+			error => {
+				assert.match(error.message, /CV skill group must contain categories: learning/);
+				assert.match(error.message, /unknown default project image id: missing-image/);
+				return true;
+			}
+		);
 	} finally {
 		await rm(fixture, { recursive: true, force: true });
 	}

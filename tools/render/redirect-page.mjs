@@ -1,57 +1,44 @@
 import { html } from "./html.mjs";
+import { defaultLanguage, getPage, languages, route } from "../site-manifest.mjs";
 
-export function renderLanguageRedirectPage() {
+function renderRedirectPage(pageId = "index") {
+	const page = getPage(pageId);
+	const supportedLanguages = JSON.stringify(languages.map(language => language.id));
+	const links = languages.map(language => (
+		`<a href="${route(language.id, page.id)}" lang="${language.id}">${language.label}</a>`
+	)).join("\n");
+
 	return html`
 		<!DOCTYPE html>
-		<html lang="es">
+		<html lang="${defaultLanguage}">
 		<head>
 		  <meta charset="UTF-8">
 		  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		  <meta name="robots" content="noindex, follow">
 		  <title>Maximiliano R. Malvicino</title>
 		  <script>
+		    const supportedLanguages = ${supportedLanguages};
 		    const requestedLanguage = new URLSearchParams(window.location.search).get("lang");
 		    const browserLanguage = navigator.languages?.[0] ?? navigator.language;
-		    const language = requestedLanguage === "es" || requestedLanguage === "en"
+		    const language = supportedLanguages.includes(requestedLanguage)
 		      ? requestedLanguage
-		      : browserLanguage?.toLowerCase().startsWith("es") ? "es" : "en";
-		    window.location.replace("/" + language + "/");
+		      : supportedLanguages.find(item => browserLanguage?.toLowerCase().startsWith(item)) ?? "${defaultLanguage}";
+		    window.location.replace("/" + language + "/${page.path ? `${page.path}/` : ""}");
 		  </script>
 		</head>
 		<body>
 		  <nav aria-label="Language">
-		    <a href="/es/" lang="es">Español</a>
-		    <a href="/en/" lang="en">English</a>
+		    ${links}
 		  </nav>
 		</body>
 		</html>
 	` + "\n";
 }
 
+export function renderLanguageRedirectPage() {
+	return renderRedirectPage();
+}
+
 export function renderCompatibilityRedirectPage(page) {
-	return html`
-		<!DOCTYPE html>
-		<html lang="es">
-		<head>
-		  <meta charset="UTF-8">
-		  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		  <meta name="robots" content="noindex, follow">
-		  <title>Maximiliano R. Malvicino</title>
-		  <script>
-		    const requestedLanguage = new URLSearchParams(window.location.search).get("lang");
-		    const browserLanguage = navigator.languages?.[0] ?? navigator.language;
-		    const language = requestedLanguage === "es" || requestedLanguage === "en"
-		      ? requestedLanguage
-		      : browserLanguage?.toLowerCase().startsWith("es") ? "es" : "en";
-		    window.location.replace("/" + language + "/${page}/");
-		  </script>
-		</head>
-		<body>
-		  <nav aria-label="Language">
-		    <a href="/es/${page}/" lang="es">Español</a>
-		    <a href="/en/${page}/" lang="en">English</a>
-		  </nav>
-		</body>
-		</html>
-	` + "\n";
+	return renderRedirectPage(page);
 }

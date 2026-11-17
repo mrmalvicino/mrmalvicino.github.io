@@ -1,7 +1,7 @@
-const filters = document.querySelector("#projectFilters");
-const cards = [...document.querySelectorAll("#projectsDiv > .project-card")];
-const resultCount = document.querySelector("#projectResultCount");
-const emptyState = document.querySelector("#projectEmptyState");
+const filters = document.querySelector("#project-filters");
+const cards = [...document.querySelectorAll("#projects-list > .project-card")];
+const resultCount = document.querySelector("#project-result-count");
+const emptyState = document.querySelector("#project-empty-state");
 const clearButtons = [...document.querySelectorAll("[data-clear-filters]")];
 const filterGroups = ["tech", "type", "contribution"];
 const canInitialize = filters && resultCount && emptyState && cards.every(card =>
@@ -32,12 +32,12 @@ if (canInitialize) {
 		}
 	}
 
-	function updateUrl() {
+	function updateUrl(method = "pushState") {
 		try {
 			const url = new URL(window.location.href);
 
 			for (const group of filterGroups) {
-				const selectedIds = [...getSelectedIds(group)];
+				const selectedIds = [...getSelectedIds(group)].sort();
 
 				if (selectedIds.length > 0) {
 					url.searchParams.set(group, selectedIds.join(","));
@@ -46,7 +46,7 @@ if (canInitialize) {
 				}
 			}
 
-			window.history.pushState(null, "", url);
+			window.history[method](null, "", url);
 		} catch (error) {
 			console.error("[project-filters] URL synchronization failed.", error);
 		}
@@ -113,6 +113,7 @@ if (canInitialize) {
 	});
 
 	restoreFiltersFromUrl();
+	updateUrl("replaceState");
 	filters.hidden = false;
 	applyFilters();
 } else if (filters) {
