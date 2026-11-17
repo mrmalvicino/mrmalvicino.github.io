@@ -16,7 +16,7 @@ concurrency:
 jobs:
   build:
     name: Validate, test, and build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
       - name: Check out repository
@@ -52,7 +52,7 @@ jobs:
   deploy:
     name: Deploy
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     permissions:
       pages: write
@@ -70,7 +70,7 @@ jobs:
   smoke-test:
     name: Verify deployed site
     needs: deploy
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     env:
       SITE_URL: ${{ needs.deploy.outputs.page_url }}
