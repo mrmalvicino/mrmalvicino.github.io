@@ -14,7 +14,8 @@
     "test:browser": "playwright test",
     "test:browser:update": "playwright test --update-snapshots",
     "build": "node tools/build.mjs",
-    "build:pdf": "node tools/generate-pdf.mjs"
+    "build:pdf": "node tools/generate-pdf.mjs",
+    "verify:dist": "node tools/verify-dist.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.11.0",
