@@ -540,6 +540,7 @@ test("project and resume pages share identical navbar typography and colors", as
 
 		return page.locator(".menu-header").evaluate(header => {
 			const logo = getComputedStyle(header.querySelector("#logoBtn"));
+			const logoImage = header.querySelector("#logoBtn img").getBoundingClientRect();
 			const backLink = getComputedStyle(header.querySelector("#backLbl"));
 
 			return {
@@ -548,7 +549,9 @@ test("project and resume pages share identical navbar typography and colors", as
 				backFontSize: backLink.fontSize,
 				logoColor: logo.color,
 				logoFontFamily: logo.fontFamily,
-				logoFontSize: logo.fontSize
+				logoFontSize: logo.fontSize,
+				logoImageWidth: logoImage.width,
+				logoImageHeight: logoImage.height
 			};
 		});
 	};
@@ -558,6 +561,8 @@ test("project and resume pages share identical navbar typography and colors", as
 	expect(resumeNavbar).toEqual(projectNavbar);
 	expect(resumeNavbar.logoColor).toBe("rgb(255, 255, 255)");
 	expect(resumeNavbar.backColor).toBe("rgb(204, 204, 204)");
+	expect(resumeNavbar.logoImageWidth).toBe(40);
+	expect(resumeNavbar.logoImageHeight).toBe(40);
 });
 
 test.describe("without JavaScript", () => {

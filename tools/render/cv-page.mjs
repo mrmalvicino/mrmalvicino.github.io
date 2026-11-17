@@ -3,8 +3,6 @@ import { formatStudyTitle } from "./formatters.mjs";
 import { escapeHtml, html } from "./html.mjs";
 import { renderFooter, renderJobSearch, renderNavbar } from "./site-chrome.mjs";
 
-const styles = ["cv.css"];
-
 function renderCvStudies(data) {
 	return data.studies
 		.filter(study => study.shown_in_cv)
@@ -139,5 +137,5 @@ export function renderCvPage(data) {
 		</body>
 	`;
 
-	return renderDocument(data, "cv", body, styles);
+	return renderDocument(data, "cv", body);
 }

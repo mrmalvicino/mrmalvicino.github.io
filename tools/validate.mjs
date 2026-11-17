@@ -33,6 +33,17 @@ async function pathExists(filePath) {
 	}
 }
 
+async function generatedImageSourceExists(root, sitePath) {
+	if (!sitePath.startsWith("assets/images/") || path.extname(sitePath).toLowerCase() !== ".webp") {
+		return false;
+	}
+
+	const sourcePath = sitePath.slice(0, -path.extname(sitePath).length);
+	const candidates = [".png", ".jpg", ".jpeg"].map(extension => path.join(root, `${sourcePath}${extension}`));
+
+	return (await Promise.all(candidates.map(pathExists))).some(Boolean);
+}
+
 async function validateReference(root, reference, source, errors, documentPath = "index.html") {
 	if (!reference || reference.startsWith("#") || reference.startsWith("?") || isExternalReference(reference)) {
 		return;
@@ -57,7 +68,9 @@ async function validateReference(root, reference, source, errors, documentPath =
 		return;
 	}
 
-	if (!sitePath || (!generatedSitePaths.has(sitePath) && !(await pathExists(target)))) {
+	const referenceExists = generatedSitePaths.has(sitePath) || await pathExists(target) || await generatedImageSourceExists(resolvedRoot, sitePath);
+
+	if (!sitePath || !referenceExists) {
 		errors.push(`${source}: local reference does not exist: ${reference}`);
 	}
 }

@@ -90,10 +90,14 @@
   "images": {
     "common_images": {
       "profileImg": {
-        "src": "./assets/images/profile.png"
+        "src": "./assets/images/profile.webp",
+        "width": 500,
+        "height": 500
       },
       "logoImg": {
-        "src": "./assets/images/logo.png"
+        "src": "./assets/images/logo.webp",
+        "width": 100,
+        "height": 100
       }
     },
     "technologies_images": {
@@ -137,7 +141,7 @@
         "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/dot-net/dot-net-original.svg"
       },
       "angularImg": {
-        "src": "./assets/images/technologies/angular.png"
+        "src": "./assets/images/technologies/angular.webp"
       },
       "reactImg": {
         "src": "./assets/images/technologies/react.svg"
@@ -184,19 +188,29 @@
     },
     "institutions_images": {
       "untrefImg": {
-        "src": "./assets/images/untref.png"
+        "src": "./assets/images/untref.webp",
+        "width": 385,
+        "height": 115
       },
       "utnImg": {
-        "src": "./assets/images/utn.png"
+        "src": "./assets/images/utn.webp",
+        "width": 294,
+        "height": 74
       },
       "educacionitImg": {
-        "src": "./assets/images/educacionit.svg"
+        "src": "./assets/images/educacionit.svg",
+        "width": 169,
+        "height": 28
       },
       "cambridgeImg": {
-        "src": "./assets/images/cambridge.png"
+        "src": "./assets/images/cambridge.webp",
+        "width": 937,
+        "height": 208
       },
       "argImg": {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/330px-Flag_of_Argentina.svg.png"
+        "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/330px-Flag_of_Argentina.svg.png",
+        "width": 330,
+        "height": 207
       }
     },
     "projects_images": {
@@ -210,46 +224,46 @@
         "src": "https://github.com/mrmalvicino/anc-research-plan/blob/main/latex/images/cross_Y2.png?raw=true"
       },
       "dugunImg": {
-        "src": "./assets/images/projects/dugun-auto-clicker.png"
+        "src": "./assets/images/projects/dugun-auto-clicker.webp"
       },
       "binaryImg": {
-        "src": "./assets/images/projects/binary-calculator.png"
+        "src": "./assets/images/projects/binary-calculator.webp"
       },
       "balumaImg": {
         "src": "https://github.com/mrmalvicino/baluma-erp/raw/main/images/screenshot-stock.png?raw=true"
       },
       "irwinImg": {
-        "src": "./assets/images/projects/irwins-revenge.png"
+        "src": "./assets/images/projects/irwins-revenge.webp"
       },
       "arduinoImg": {
         "src": "https://content.instructables.com/FNO/ZIKG/K6HPDHBU/FNOZIKGK6HPDHBU.jpg?auto=webp&crop=1.2%3A1&frame=1&width=420"
       },
       "waveformImg": {
-        "src": "./assets/images/projects/dsp-notes.png"
+        "src": "./assets/images/projects/dsp-notes.webp"
       },
       "transmissibilityImg": {
-        "src": "./assets/images/projects/acoustics-notes.png"
+        "src": "./assets/images/projects/acoustics-notes.webp"
       },
       "circuitImg": {
-        "src": "./assets/images/projects/electronics-notes.png"
+        "src": "./assets/images/projects/electronics-notes.webp"
       },
       "mathImg": {
-        "src": "./assets/images/projects/math-notes.png"
+        "src": "./assets/images/projects/math-notes.webp"
       },
       "newtonImg": {
-        "src": "./assets/images/projects/physics-book.png"
+        "src": "./assets/images/projects/physics-book.webp"
       },
       "planeImg": {
-        "src": "./assets/images/projects/physics-1-solved.png"
+        "src": "./assets/images/projects/physics-1-solved.webp"
       },
       "einsteinImg": {
-        "src": "./assets/images/projects/physics-2-demonstrations.png"
+        "src": "./assets/images/projects/physics-2-demonstrations.webp"
       },
       "matrixImg": {
-        "src": "./assets/images/projects/link-tree.png"
+        "src": "./assets/images/projects/link-tree.webp"
       },
       "biblioImg": {
-        "src": "./assets/images/projects/biblio-api.jpeg"
+        "src": "./assets/images/projects/biblio-api.webp"
       },
       "decaucionesImg": {
         "src": "./assets/images/projects/decauciones.webp"

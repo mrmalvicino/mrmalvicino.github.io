@@ -16,9 +16,6 @@ const htmlRoutes = [
 	"es/cv/index.html",
 	"en/cv/index.html"
 ];
-const foundationStyles = ["variables.css", "controls.css", "buttons.css", "images.css", "site-chrome.css"];
-const utilityStyles = ["colors.css", "flexbox.css", "fonts.css", "heights.css", "margins.css", "paddings.css", "widths.css"];
-
 function getLocalStyles(contents) {
 	return [...contents.matchAll(/href="\/style\/([^"]+)"/g)].map(match => match[1]);
 }
@@ -91,19 +88,26 @@ test("build creates localized HTML without runtime content data", async () => {
 			stat(path.join(output, "sitemap.xml")),
 			stat(path.join(output, "projects.html")),
 			stat(path.join(output, "cv.html")),
-			stat(path.join(output, "style/variables.css")),
 			stat(path.join(output, "script/menu.js")),
 			stat(path.join(output, "script/email-copy.js")),
 			stat(path.join(output, "script/project-filters.js")),
-			stat(path.join(output, "style/projects.css")),
-			stat(path.join(output, "assets/images/logo.png")),
-			stat(path.join(output, "assets/images/profile.png")),
-			stat(path.join(output, "assets/images/projects/biblio-api.jpeg")),
+			stat(path.join(output, "assets/images/logo.webp")),
+			stat(path.join(output, "assets/images/profile.webp")),
+			stat(path.join(output, "assets/images/projects/biblio-api.webp")),
 			stat(path.join(output, "assets/images/projects/decauciones.webp")),
 			stat(path.join(output, "assets/images/projects/halley-v2.webp")),
-			stat(path.join(output, "assets/images/technologies/angular.png")),
+			stat(path.join(output, "assets/images/technologies/angular.webp")),
 			stat(path.join(output, "assets/images/technologies/razor.svg")),
 			stat(path.join(output, "assets/images/technologies/react.svg")),
+			stat(path.join(output, "assets/fonts/jost-latin-300-normal.woff2")),
+			stat(path.join(output, "assets/fonts/open-sans-latin-wght-normal.woff2")),
+			stat(path.join(output, "assets/fonts/bootstrap-icons.woff2")),
+			stat(path.join(output, "assets/licenses/jost.txt")),
+			stat(path.join(output, "assets/licenses/open-sans.txt")),
+			stat(path.join(output, "assets/licenses/bootstrap-icons.txt")),
+			stat(path.join(output, "style/bundles/index.css")),
+			stat(path.join(output, "style/bundles/projects.css")),
+			stat(path.join(output, "style/bundles/cv.css")),
 			stat(path.join(output, "assets/cv/malvicino-es.pdf")),
 			stat(path.join(output, "assets/cv/malvicino-en.pdf"))
 		]);
@@ -124,17 +128,17 @@ test("build creates localized HTML without runtime content data", async () => {
 		const sitemap = await readFile(path.join(output, "sitemap.xml"), "utf8");
 		const robots = await readFile(path.join(output, "robots.txt"), "utf8");
 		const legacyProjects = await readFile(path.join(output, "projects.html"), "utf8");
-		const pageStyles = {
-			"es/index.html": ["portfolio.css", "project-cards.css", "inputs.css", "table.css"],
-			"en/index.html": ["portfolio.css", "project-cards.css", "inputs.css", "table.css"],
-			"es/projects/index.html": ["project-cards.css", "projects.css"],
-			"en/projects/index.html": ["project-cards.css", "projects.css"],
-			"es/cv/index.html": ["cv.css"],
-			"en/cv/index.html": ["cv.css"]
+		const styleBundles = {
+			"es/index.html": "bundles/index.css",
+			"en/index.html": "bundles/index.css",
+			"es/projects/index.html": "bundles/projects.css",
+			"en/projects/index.html": "bundles/projects.css",
+			"es/cv/index.html": "bundles/cv.css",
+			"en/cv/index.html": "bundles/cv.css"
 		};
 
-		for (const [route, styles] of Object.entries(pageStyles)) {
-			assert.deepEqual(getLocalStyles(html.get(route)), [...foundationStyles, ...styles, ...utilityStyles]);
+		for (const [route, bundle] of Object.entries(styleBundles)) {
+			assert.deepEqual(getLocalStyles(html.get(route)), [bundle]);
 		}
 
 		assert.match(html.get("es/index.html"), /<html lang="es">/);
@@ -205,7 +209,7 @@ test("build creates localized HTML without runtime content data", async () => {
 		assert.match(html.get("en/projects/index.html"), /data-technologies="dotnet csharp html css javascript mssql git"/);
 		assert.match(html.get("en/projects/index.html"), /value="freelance-saas"[\s\S]*Freelance SaaS/);
 		assert.match(html.get("en/projects/index.html"), /value="employment"[\s\S]*Employment/);
-		assert.match(html.get("en/projects/index.html"), /<script src="\/script\/project-filters\.js"><\/script>/);
+		assert.match(html.get("en/projects/index.html"), /<script src="\/script\/project-filters\.js" defer><\/script>/);
 		assert.equal((html.get("es/cv/index.html").match(/id="projectsLst"[\s\S]*?<\/div>/)?.[0].match(/<article /g) ?? []).length, 2);
 		assert.match(html.get("es/cv/index.html"), /Membriana[\s\S]*deCauciones/);
 		assert.match(html.get("es/cv/index.html"), /Membriana[\s\S]*href="https:\/\/github\.com\/mrmalvicino\/membriana"/);
@@ -232,13 +236,15 @@ test("build creates localized HTML without runtime content data", async () => {
 		assert.doesNotMatch(html.get("en/index.html"), /href="mailto:[^"]+"[^>]*target="_blank"/);
 		assert.doesNotMatch(html.get("en/index.html"), /href="tel:[^"]+"[^>]*target="_blank"/);
 		assert.match(html.get("en/cv/index.html"), /href="\/es\/cv\/"/);
-		assert.match(html.get("es/index.html"), /src="\/assets\/images\/logo\.png"/);
-		assert.match(html.get("es/index.html"), /src="\/assets\/images\/profile\.png"/);
-		assert.match(html.get("en/projects/index.html"), /src="\/assets\/images\/projects\/biblio-api\.jpeg"/);
+		assert.match(html.get("es/index.html"), /src="\/assets\/images\/logo\.webp"[^>]*width="40" height="40"[^>]*decoding="async"/);
+		assert.match(html.get("es/index.html"), /src="\/assets\/images\/profile\.webp"[^>]*width="500" height="500"[^>]*fetchpriority="high"/);
+		assert.match(html.get("en/projects/index.html"), /src="\/assets\/images\/projects\/biblio-api\.webp"[^>]*width="16" height="9" loading="lazy" decoding="async"/);
 		assert.match(html.get("en/index.html"), /src="\/assets\/images\/projects\/decauciones\.webp"/);
 		assert.match(html.get("en/index.html"), /src="\/assets\/images\/projects\/halley-v2\.webp"/);
 		assert.match(html.get("en/index.html"), /href="https:\/\/v2\.sistemahalley\.com\.ar"[\s\S]*bi bi-globe2[\s\S]*Website/);
 		assert.match(html.get("en/projects/index.html"), /src="\/assets\/images\/technologies\/react\.svg"/);
+		assert.match(html.get("en/projects/index.html"), /<iframe[^>]*width="16" height="9" loading="lazy" allowfullscreen><\/iframe>/);
+		assert.doesNotMatch([...html.values()].join("\n"), /fonts\.googleapis\.com|fonts\.gstatic\.com|cdn\.jsdelivr\.net/);
 		assert.match(rootHtml, /new URLSearchParams\(window\.location\.search\)\.get\("lang"\)/);
 		assert.match(rootHtml, /<meta name="robots" content="noindex, follow">/);
 		assert.match(legacyProjects, /window\.location\.replace\("\/" \+ language \+ "\/projects\/"\)/);

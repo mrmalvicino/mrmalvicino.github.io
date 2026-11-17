@@ -3,7 +3,6 @@ import { escapeHtml, html } from "./html.mjs";
 import { renderProjects } from "./project-list.mjs";
 import { renderFooter, renderNavbar } from "./site-chrome.mjs";
 
-const styles = ["project-cards.css", "projects.css"];
 const scripts = ["project-filters.js", "email-copy.js"];
 
 function renderFilterOptions(items, group) {
@@ -92,5 +91,5 @@ export function renderProjectsPage(data) {
 		</body>
 	`;
 
-	return renderDocument(data, "projects", body, styles, scripts);
+	return renderDocument(data, "projects", body, scripts);
 }

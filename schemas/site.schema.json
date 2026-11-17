@@ -338,7 +338,9 @@
         "additionalProperties": false,
         "required": ["src"],
         "properties": {
-          "src": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
+          "src": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+          "width": { "type": "integer", "minimum": 1 },
+          "height": { "type": "integer", "minimum": 1 }
         }
       }
     },

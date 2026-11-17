@@ -18,8 +18,12 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.11.0",
+    "@fontsource-variable/open-sans": "^5.2.7",
+    "@fontsource/jost": "^5.2.8",
     "@playwright/test": "1.56.1",
     "ajv": "^8.20.0",
-    "pdfjs-dist": "5.4.394"
+    "bootstrap-icons": "^1.13.1",
+    "pdfjs-dist": "5.4.394",
+    "sharp": "^0.35.5"
   }
 }

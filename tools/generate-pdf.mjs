@@ -21,7 +21,8 @@ const contentTypes = new Map([
 	[".jpg", "image/jpeg"],
 	[".png", "image/png"],
 	[".svg", "image/svg+xml"],
-	[".webp", "image/webp"]
+	[".webp", "image/webp"],
+	[".woff2", "font/woff2"]
 ]);
 
 function normalizeText(value) {

@@ -4,13 +4,12 @@ import { escapeHtml, html, image, publicUrl } from "./html.mjs";
 import { renderProjects } from "./project-list.mjs";
 import { renderEmailLink, renderFooter, renderJobSearch, renderNavbar } from "./site-chrome.mjs";
 
-const styles = ["portfolio.css", "project-cards.css", "inputs.css", "table.css"];
 const scripts = ["menu.js", "email-copy.js"];
 
 function renderSkillTechnologies(technologies) {
 	return technologies.map(technology => html`
 		<li class="skill-technology">
-		  ${image(technology.image, "skill-technology-icon")}
+		  ${image(technology.image, "skill-technology-icon", { width: 24, height: 24, loading: "lazy", decoding: "async" })}
 		  <span>${escapeHtml(technology.name)}</span>
 		</li>
 	`).join("\n");
@@ -78,7 +77,7 @@ function renderStudyRows(data) {
 			<tr class="education-row">
 			  <td class="education-logo-cell">
 			    <div class="height-100-pct row-flex justify-center margin-horizontal-10-px">
-			      ${image(study.institution.image, "small-logo")}
+			      ${image(study.institution.image, "small-logo", { loading: "lazy", decoding: "async" })}
 			    </div>
 			  </td>
 			  <th scope="row" class="education-description-cell"><span class="pure-black-text bold-text">${escapeHtml(formatStudyTitle(study, data.language))}</span></th>
@@ -101,7 +100,7 @@ export function renderPortfolioPage(data) {
 		  ${renderNavbar(data, "index")}
 		  <main id="main-content" tabindex="-1">
 		    <section id="heroSec" class="page-section min-height-100-vh menu-padding col-flex justify-center">
-		      ${image(data.images.profileImg, "width-250-px margin-vertical-10-px circle-image")}
+		      ${image(data.images.profileImg, "width-250-px margin-vertical-10-px circle-image", { fetchpriority: "high" })}
 		      <div class="content-width margin-vertical-10-px">
 		        <h1>${escapeHtml(data.site.profile.fullName)}</h1>
 		        <p class="mid-font-size jost-font center-text">${escapeHtml(labels.common.degreesLbl)}</p>
@@ -199,5 +198,5 @@ export function renderPortfolioPage(data) {
 		</body>
 	`;
 
-	return renderDocument(data, "index", body, styles, scripts);
+	return renderDocument(data, "index", body, scripts);
 }

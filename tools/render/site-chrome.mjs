@@ -107,7 +107,7 @@ export function renderNavbar(data, page) {
 		<header class="site-chrome menu-header">
 		  <nav${isPortfolio ? ' id="menuNav"' : ""} class="menu-nav" aria-label="${escapeHtml(data.locale.accessibility.primaryNavigation)}">
 		    <a id="logoBtn" href="${route(data.language, "index")}" class="plain-link pure-white-text margin-vertical-auto">
-		      ${image(data.images.logoImg, "width-40-px")}
+		      ${image(data.images.logoImg, "width-40-px", { width: 40, height: 40, decoding: "async" })}
 		      <span>&nbsp;</span>
 		      <span>${escapeHtml(data.site.profile.headerName)}</span>
 		    </a>

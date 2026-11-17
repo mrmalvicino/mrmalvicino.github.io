@@ -13,8 +13,10 @@ export const test = base.extend({
 
 		page.on("pageerror", error => pageErrors.push(error.message));
 		page.on("requestfailed", request => {
-			if (new URL(request.url()).origin === siteOrigin) {
-				failedLocalRequests.push(`${request.method()} ${request.url()}: ${request.failure()?.errorText}`);
+			const failure = request.failure()?.errorText;
+
+			if (new URL(request.url()).origin === siteOrigin && failure !== "net::ERR_ABORTED") {
+				failedLocalRequests.push(`${request.method()} ${request.url()}: ${failure}`);
 			}
 		});
 		page.on("response", response => {
@@ -83,4 +85,13 @@ export async function stabilizeVisualPage(page) {
 	});
 
 	await page.evaluate(() => document.fonts.ready);
+
+	await page.evaluate(() => {
+		for (const image of document.querySelectorAll('img[loading="lazy"]')) {
+			image.loading = "eager";
+		}
+	});
+
+	await page.waitForFunction(() => [...document.images].every(image => image.complete));
+	await page.waitForLoadState("networkidle");
 }

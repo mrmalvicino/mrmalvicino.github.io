@@ -16,11 +16,11 @@ The repository separates content, rendering, and published output:
 
 - `src/data/site.json` is the language-independent domain model and shared configuration.
 - `src/data/es.json` and `src/data/en.json` are the only localized professional-content catalogs.
-- `src/assets/`, `src/style/`, and `src/script/` contain the static resources and progressive enhancement copied into the public artifact.
+- `src/assets/`, `src/style/`, and `src/script/` contain static-resource sources. The build optimizes images, bundles styles, and copies progressive-enhancement scripts into the public artifact.
 - `schemas/` validates the three data files and their relationships.
 - `tools/site-data.mjs` resolves IDs, translations, ordering, visibility, images, technologies, and institutions at build time.
 - `tools/render/` separates pure escaped HTML rendering into page modules, shared visual components, and document primitives.
-- `tools/build.mjs` validates the source, renders every route, generates both resume PDFs, and copies only public assets.
+- `tools/build.mjs` validates the source, optimizes and bundles static assets, renders every route, generates both resume PDFs, and copies only public assets.
 - Localized SEO titles, descriptions, social metadata, canonical URLs, language alternates, and structured data come from the same shared data model and render pipeline.
 - `src/script/` contains progressive enhancement only: mobile menu behavior and email copying.
 - `dist/` is generated publication output, not an editable source.
@@ -102,7 +102,9 @@ Generate the publishable artifact with:
 npm run build
 ```
 
-The build validates first, replaces `dist/`, renders the complete route set, and copies `CNAME` plus the public resources from `src/assets/`, `src/style/`, and `src/script/`. It then serves the generated HTML locally and uses the locked Playwright Chromium version to create `assets/cv/malvicino-es.pdf` and `assets/cv/malvicino-en.pdf`. It intentionally excludes source JSON, schemas, build tools, and tests.
+The build validates first, replaces `dist/`, converts publication raster images to WebP, self-hosts the required font and icon files, and creates one ordered CSS bundle per page. It then renders the complete route set, serves the generated HTML locally, and uses the locked Playwright Chromium version to create `assets/cv/malvicino-es.pdf` and `assets/cv/malvicino-en.pdf`. It intentionally excludes original publication rasters, source JSON, schemas, build tools, and tests.
+
+Image conversion, font selection, licenses, external-resource decisions, and comparable Lighthouse results are documented in [`docs/performance.md`](docs/performance.md).
 
 Generate and validate the PDFs again from an existing `dist/` without rebuilding the HTML with:
 

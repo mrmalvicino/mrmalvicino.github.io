@@ -9,6 +9,7 @@ import {
 	renderProjectsPage
 } from "./render/index.mjs";
 import { generateResumePdfs } from "./generate-pdf.mjs";
+import { optimizeAssets } from "./optimize-assets.mjs";
 import { loadSiteData } from "./site-data.mjs";
 import { validateSite } from "./validate.mjs";
 
@@ -17,8 +18,7 @@ const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "
 export const publishPaths = [
 	{ source: "CNAME", destination: "CNAME" },
 	{ source: "src/assets", destination: "assets" },
-	{ source: "src/script", destination: "script" },
-	{ source: "src/style", destination: "style" }
+	{ source: "src/script", destination: "script" }
 ];
 
 const pages = [
@@ -100,9 +100,20 @@ export async function buildSite(root = projectRoot, output = path.join(root, "di
 
 		await cp(source, path.join(output, publishPath.destination), {
 			recursive: true,
-			filter: sourcePath => path.basename(sourcePath) !== ".DS_Store"
+			filter: sourcePath => {
+				if (path.basename(sourcePath) === ".DS_Store") {
+					return false;
+				}
+
+				const relativePath = path.relative(path.join(root, "src/assets/images"), sourcePath);
+				const isSourceImage = relativePath !== ".." && !relativePath.startsWith(`..${path.sep}`);
+
+				return !isSourceImage || !/\.(?:jpe?g|png)$/i.test(sourcePath);
+			}
 		});
 	}
+
+	await optimizeAssets(root, output);
 
 	for (const language of ["es", "en"]) {
 		const data = await loadSiteData(root, language);

@@ -5,19 +5,19 @@ function renderProjectMedia(data, project) {
 		return html`
 			<iframe src="${escapeHtml(project.video_url)}" title="${escapeHtml(data.locale.accessibility.videoPlayer)}"
 			  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-			  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+			  referrerpolicy="strict-origin-when-cross-origin" width="16" height="9" loading="lazy" allowfullscreen></iframe>
 		`;
 	}
 
 	const imageData = data.images[project.mockup_id ?? "wipImg"];
 
-	return image(imageData);
+	return image(imageData, "", { width: 16, height: 9, loading: "lazy", decoding: "async" });
 }
 
 function renderProjectCard(data, project) {
 	const technologyItems = project.technologies.map(technology => html`
 		<li class="project-technology">
-		  ${image(technology.image, "project-technology-icon")}
+		  ${image(technology.image, "project-technology-icon", { width: 30, height: 30, loading: "lazy", decoding: "async" })}
 		</li>
 	`).join("\n");
 

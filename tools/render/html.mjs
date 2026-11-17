@@ -54,11 +54,14 @@ export function publicUrl(value) {
 	return `${url.pathname}${url.search}${url.hash}`;
 }
 
-export function image(imageData, className = "") {
+export function image(imageData, className = "", imageAttributes = {}) {
 	return `<img ${attributes({
 		src: publicUrl(imageData.src),
 		title: imageData.title,
 		alt: imageData.alt,
-		class: className || null
+		class: className || null,
+		width: imageData.width,
+		height: imageData.height,
+		...imageAttributes
 	})}>`;
 }

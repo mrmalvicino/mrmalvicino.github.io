@@ -1,26 +1,5 @@
 import { escapeHtml, html } from "./html.mjs";
 
-const foundationStyles = [
-	"variables.css",
-	"controls.css"
-];
-
-const sharedComponentStyles = [
-	"buttons.css",
-	"images.css",
-	"site-chrome.css"
-];
-
-const utilityStyles = [
-	"colors.css",
-	"flexbox.css",
-	"fonts.css",
-	"heights.css",
-	"margins.css",
-	"paddings.css",
-	"widths.css"
-];
-
 function absoluteUrl(data, value) {
 	return new URL(value, `${data.site.profile.website.href}/`).href;
 }
@@ -68,15 +47,15 @@ function renderStructuredData(data, page, canonicalUrl) {
 	}).replaceAll("<", "\\u003c");
 }
 
-function renderHead(data, page, styleFiles) {
+function renderHead(data, page, scripts) {
 	const seo = data.locale.seo[page];
 	const siteUrl = absoluteUrl(data, "/").replace(/\/$/, "");
 	const canonicalUrl = absoluteUrl(data, route(data.language, page));
 	const spanishUrl = absoluteUrl(data, route("es", page));
 	const englishUrl = absoluteUrl(data, route("en", page));
 	const socialImageUrl = absoluteUrl(data, data.site.configuration.socialImage);
-	const styleLinks = styleFiles
-		.map(file => `<link rel="stylesheet" type="text/css" href="/style/${file}">`)
+	const scriptElements = scripts
+		.map(file => `<script src="/script/${file}" defer></script>`)
 		.join("\n");
 
 	return html`
@@ -104,29 +83,22 @@ function renderHead(data, page, styleFiles) {
 		  <meta name="twitter:description" content="${escapeHtml(seo.description)}">
 		  <meta name="twitter:image" content="${escapeHtml(socialImageUrl)}">
 		  <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
-		  <link rel="preconnect" href="https://fonts.googleapis.com">
-		  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap">
-		  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap">
-		  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-		  ${styleLinks}
+		  <link rel="preload" href="/assets/fonts/open-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+		  <link rel="preload" href="/assets/fonts/jost-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
+		  <link rel="preload" href="/assets/fonts/bootstrap-icons.woff2" as="font" type="font/woff2" crossorigin>
+		  <link rel="stylesheet" type="text/css" href="/style/bundles/${page}.css">
+		  ${scriptElements}
 		  <script type="application/ld+json">${renderStructuredData(data, page, canonicalUrl)}</script>
 		</head>
 	`;
 }
 
-export function renderDocument(data, page, body, pageStyles, scripts = []) {
-	const styleFiles = [...foundationStyles, ...sharedComponentStyles, ...pageStyles, ...utilityStyles];
-	const scriptElements = scripts
-		.map(file => `<script src="/script/${file}"></script>`)
-		.join("\n");
-
+export function renderDocument(data, page, body, scripts = []) {
 	return html`
 		<!DOCTYPE html>
 		<html lang="${escapeHtml(data.language)}">
-		${renderHead(data, page, styleFiles)}
+		${renderHead(data, page, scripts)}
 		${body}
-		${scriptElements}
 		</html>
 	` + "\n";
 }
