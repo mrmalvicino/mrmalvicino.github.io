@@ -208,9 +208,9 @@
         "height": 208
       },
       "arg-img": {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/330px-Flag_of_Argentina.svg.png",
-        "width": 330,
-        "height": 207
+        "src": "./assets/images/institutions/argentina.webp",
+        "width": 384,
+        "height": 240
       }
     },
     "projectImages": {
