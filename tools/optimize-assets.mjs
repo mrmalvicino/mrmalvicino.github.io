@@ -138,7 +138,11 @@ async function generateWebpImages(root, output) {
 	const sourceDirectory = path.join(root, "src/assets/images");
 	const files = (await listFiles(sourceDirectory)).map(file => path.join(sourceDirectory, file));
 
-	await Promise.all(files.filter(file => rasterExtensions.has(path.extname(file).toLowerCase())).map(async file => {
+	await Promise.all(files.filter(file => {
+		const relativePath = path.relative(sourceDirectory, file);
+
+		return !relativePath.startsWith(`social${path.sep}`) && rasterExtensions.has(path.extname(file).toLowerCase());
+	}).map(async file => {
 		const relativePath = path.relative(sourceDirectory, file);
 		const destination = path.join(output, "assets/images", relativePath.replace(/\.(?:jpe?g|png)$/i, ".webp"));
 		let pipeline = sharp(file).rotate();
@@ -159,20 +163,18 @@ async function copyPublicAssets(root, output) {
 	await Promise.all([
 		cp(sourceImages, outputImages, {
 			recursive: true,
-			filter: sourcePath => path.basename(sourcePath) !== ".DS_Store" &&
-				!rasterExtensions.has(path.extname(sourcePath).toLowerCase())
+			filter: sourcePath => {
+				const relativePath = path.relative(sourceImages, sourcePath);
+
+				return path.basename(sourcePath) !== ".DS_Store" &&
+					(relativePath.startsWith(`social${path.sep}`) || !rasterExtensions.has(path.extname(sourcePath).toLowerCase()));
+			}
 		}),
-		cp(path.join(root, "src/assets/pdf"), path.join(output, "assets/pdf"), {
+		cp(path.join(root, "src/assets/documents"), path.join(output, "assets/documents"), {
 			recursive: true,
 			filter: sourcePath => path.basename(sourcePath) !== ".DS_Store"
-		}),
-		mkdir(path.join(output, "assets/design/linkedin"), { recursive: true })
+		})
 	]);
-
-	await cp(
-		path.join(root, "src/assets/design/linkedin/portfolio.png"),
-		path.join(output, "assets/design/linkedin/portfolio.png")
-	);
 }
 
 export async function optimizeAssets(root, output) {

@@ -85,7 +85,8 @@ test("build creates localized HTML without runtime content data", async () => {
 			stat(path.join(output, "script/menu.js")),
 			stat(path.join(output, "script/email-copy.js")),
 			stat(path.join(output, "script/project-filters.js")),
-			stat(path.join(output, "assets/images/logo.webp")),
+			stat(path.join(output, "assets/images/branding/logo.webp")),
+			stat(path.join(output, "assets/images/social/open-graph-image.png")),
 			stat(path.join(output, "assets/images/profile.webp")),
 			stat(path.join(output, "assets/images/projects/biblio-api.webp")),
 			stat(path.join(output, "assets/images/projects/decauciones.webp")),
@@ -176,8 +177,8 @@ test("build creates localized HTML without runtime content data", async () => {
 		assert.doesNotMatch(html.get("es/index.html"), /Mi participación como empleado/);
 		assert.match(html.get("en/cv/index.html"), /class="cv-contact-row">[\s\S]*mrmalvicino\.com[\s\S]*\/in\/mrmalvicino[\s\S]*mrmalvicino@gmail\.com[\s\S]*\+54 \(911\) 5905-8729[\s\S]*General Pacheco, Buenos Aires/);
 		assert.match(html.get("es/index.html"), /maps\/search\/\?api=1&amp;query=General%20Pacheco%2C%20Buenos%20Aires%2C%20Argentina/);
-		assert.match(html.get("es/index.html"), /href="\/assets\/pdf\/tup-certificate\.pdf"[\s\S]*bi bi-award/);
-		assert.match(html.get("es/index.html"), /href="\/assets\/pdf\/tup-certificate\.pdf" target="_blank" rel="noopener noreferrer"/);
+		assert.match(html.get("es/index.html"), /href="\/assets\/documents\/certificates\/tup-certificate\.pdf"[\s\S]*bi bi-award/);
+		assert.match(html.get("es/index.html"), /href="\/assets\/documents\/certificates\/tup-certificate\.pdf" target="_blank" rel="noopener noreferrer"/);
 		assert.match(html.get("es/index.html"), /Tecnicatura Universitaria en Programación \(12 de diciembre de 2024\)/);
 		assert.match(html.get("en/cv/index.html"), /Technical Degree in Programming \(December 12, 2024\)/);
 		assert.match(html.get("es/cv/index.html"), /Curso de Angular[\s\S]*Curso de Web API \.NET Core[\s\S]*Curso de Entity Framework &amp; LINQ[\s\S]*Curso de portugués Nivel 4/);
@@ -227,8 +228,10 @@ test("build creates localized HTML without runtime content data", async () => {
 		assert.doesNotMatch(html.get("en/index.html"), /href="mailto:[^"]+"[^>]*target="_blank"/);
 		assert.doesNotMatch(html.get("en/index.html"), /href="tel:[^"]+"[^>]*target="_blank"/);
 		assert.match(html.get("en/cv/index.html"), /href="\/es\/cv\/"/);
-		assert.match(html.get("es/index.html"), /src="\/assets\/images\/logo\.webp"[^>]*width="40" height="40"[^>]*decoding="async"/);
+		assert.match(html.get("es/index.html"), /src="\/assets\/images\/branding\/logo\.webp"[^>]*width="40" height="40"[^>]*decoding="async"/);
 		assert.match(html.get("es/index.html"), /src="\/assets\/images\/profile\.webp"[^>]*width="500" height="500"[^>]*fetchpriority="high"/);
+		assert.match(html.get("es/index.html"), /<meta property="og:image" content="https:\/\/mrmalvicino\.com\/assets\/images\/social\/open-graph-image\.png">/);
+		assert.match(html.get("es/index.html"), /<meta name="twitter:image" content="https:\/\/mrmalvicino\.com\/assets\/images\/social\/open-graph-image\.png">/);
 		assert.match(html.get("en/projects/index.html"), /src="\/assets\/images\/projects\/biblio-api\.webp"[^>]*width="16" height="9" loading="lazy" decoding="async"/);
 		assert.match(html.get("en/index.html"), /src="\/assets\/images\/projects\/decauciones\.webp"/);
 		assert.match(html.get("en/index.html"), /src="\/assets\/images\/projects\/halley-v2\.webp"/);
@@ -278,6 +281,7 @@ test("build creates localized HTML without runtime content data", async () => {
 		assert.equal(files.some(file => file.startsWith("tools/")), false);
 		assert.equal(files.includes("script/data-loader.js"), false);
 		assert.equal(files.includes("script/legacy-language.js"), false);
+		assert.equal(files.includes("assets/design/linkedin/portfolio.png"), false);
 		assert.equal(files.includes("assets/design/linkedin/cv.png"), false);
 		assert.equal(files.includes("assets/design/logo/logo.svg"), false);
 		assert.equal(files.includes("assets/design/youtube/youtube-cover.svg"), false);

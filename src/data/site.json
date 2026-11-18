@@ -47,7 +47,7 @@
   },
   "configuration": {
     "formAction": "https://formspree.io/f/mvgpjkjn",
-    "socialImage": "./assets/design/linkedin/portfolio.png"
+    "socialImage": "./assets/images/social/open-graph-image.png"
   },
   "resumes": {
     "en": {
@@ -95,7 +95,7 @@
         "height": 500
       },
       "logo-img": {
-        "src": "./assets/images/logo.webp",
+        "src": "./assets/images/branding/logo.webp",
         "width": 100,
         "height": 100
       }
@@ -188,22 +188,22 @@
     },
     "institutionImages": {
       "untref-img": {
-        "src": "./assets/images/untref.webp",
+        "src": "./assets/images/institutions/untref.webp",
         "width": 385,
         "height": 115
       },
       "utn-img": {
-        "src": "./assets/images/utn.webp",
+        "src": "./assets/images/institutions/utn.webp",
         "width": 294,
         "height": 74
       },
       "educacionit-img": {
-        "src": "./assets/images/educacionit.svg",
+        "src": "./assets/images/institutions/educacionit.svg",
         "width": 169,
         "height": 28
       },
       "cambridge-img": {
-        "src": "./assets/images/cambridge.webp",
+        "src": "./assets/images/institutions/cambridge.webp",
         "width": 937,
         "height": 208
       },
@@ -998,7 +998,7 @@
       "id": "programming-technical-degree-utn",
       "order": 2,
       "studyPlan": "https://www.frgp.utn.edu.ar/carreras/tup_tuss",
-      "certificate": "./assets/pdf/tup-certificate.pdf",
+      "certificate": "./assets/documents/certificates/tup-certificate.pdf",
       "graduationDate": "2024-12-12",
       "type": "career",
       "shownInCv": true,
@@ -1007,8 +1007,8 @@
     {
       "id": "angular-course-educacion-it",
       "order": 3,
-      "studyPlan": "./assets/pdf/angular-plan.pdf",
-      "certificate": "./assets/pdf/angular-certificate.pdf",
+      "studyPlan": "./assets/documents/study-plans/angular-plan.pdf",
+      "certificate": "./assets/documents/certificates/angular-certificate.pdf",
       "type": "course",
       "shownInCv": true,
       "institutionId": "educacion-it"
@@ -1016,8 +1016,8 @@
     {
       "id": "web-api-dotnet-core-course-educacion-it",
       "order": 4,
-      "studyPlan": "./assets/pdf/web-api-plan.pdf",
-      "certificate": "./assets/pdf/web-api-certificate.pdf",
+      "studyPlan": "./assets/documents/study-plans/web-api-plan.pdf",
+      "certificate": "./assets/documents/certificates/web-api-certificate.pdf",
       "type": "course",
       "shownInCv": true,
       "institutionId": "educacion-it"
@@ -1025,8 +1025,8 @@
     {
       "id": "entity-framework-linq-course-educacion-it",
       "order": 5,
-      "studyPlan": "./assets/pdf/linq-entity-plan.pdf",
-      "certificate": "./assets/pdf/linq-entity-certificate.pdf",
+      "studyPlan": "./assets/documents/study-plans/linq-entity-plan.pdf",
+      "certificate": "./assets/documents/certificates/linq-entity-certificate.pdf",
       "type": "course",
       "shownInCv": true,
       "institutionId": "educacion-it"
@@ -1034,8 +1034,8 @@
     {
       "id": "web-dotnet-core-programming-course-educacion-it",
       "order": 6,
-      "studyPlan": "./assets/pdf/net-core-plan.pdf",
-      "certificate": "./assets/pdf/net-core-certificate.pdf",
+      "studyPlan": "./assets/documents/study-plans/net-core-plan.pdf",
+      "certificate": "./assets/documents/certificates/net-core-certificate.pdf",
       "type": "course",
       "shownInCv": false,
       "institutionId": "educacion-it"
@@ -1044,7 +1044,7 @@
       "id": "english-fce-b2-cambridge",
       "order": 7,
       "studyPlan": null,
-      "certificate": "./assets/pdf/fce-certificate.pdf",
+      "certificate": "./assets/documents/certificates/fce-certificate.pdf",
       "type": "language",
       "shownInCv": true,
       "institutionId": "cambridge"
@@ -1053,7 +1053,7 @@
       "id": "portuguese-level-4-utn",
       "order": 8,
       "studyPlan": null,
-      "certificate": "./assets/pdf/portuguese-certificate.pdf",
+      "certificate": "./assets/documents/certificates/portuguese-certificate.pdf",
       "type": "language",
       "shownInCv": true,
       "institutionId": "utn"

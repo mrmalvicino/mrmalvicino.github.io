@@ -89,7 +89,7 @@ function renderHead(data, page) {
 		  <meta name="twitter:title" content="${escapeHtml(seo.title)}">
 		  <meta name="twitter:description" content="${escapeHtml(seo.description)}">
 		  <meta name="twitter:image" content="${escapeHtml(socialImageUrl)}">
-		  <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+		  <link rel="icon" type="image/x-icon" href="/assets/images/branding/favicon.ico">
 		  <link rel="preload" href="/assets/fonts/open-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 		  <link rel="preload" href="/assets/fonts/jost-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
 		  <link rel="preload" href="/assets/fonts/bootstrap-icons.woff2" as="font" type="font/woff2" crossorigin>
