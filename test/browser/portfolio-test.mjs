@@ -85,5 +85,6 @@ export async function stabilizeVisualPage(page) {
 	});
 
 	await page.waitForFunction(() => [...document.images].every(image => image.complete));
+	await page.evaluate(() => Promise.all([...document.images].map(image => image.decode())));
 	await page.waitForLoadState("networkidle");
 }
