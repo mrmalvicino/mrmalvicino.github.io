@@ -21,6 +21,7 @@ async function readPdf(pdfBuffer) {
 	const document = await getDocument({ data: new Uint8Array(pdfBuffer) }).promise;
 	const pages = [];
 	const links = [];
+	const internalLinks = [];
 
 	try {
 		for (let pageNumber = 1; pageNumber <= document.numPages; pageNumber += 1) {
@@ -37,6 +38,8 @@ async function readPdf(pdfBuffer) {
 			for (const annotation of annotations) {
 				if (annotation.subtype === "Link" && annotation.url) {
 					links.push(annotation.url);
+				} else if (annotation.subtype === "Link" && annotation.dest) {
+					internalLinks.push(annotation.dest);
 				}
 			}
 		}
@@ -44,7 +47,7 @@ async function readPdf(pdfBuffer) {
 		await document.destroy();
 	}
 
-	return { pages, links };
+	return { pages, links, internalLinks };
 }
 
 function assertPdfIntegrity(pdf, expected, fileName) {
@@ -84,6 +87,10 @@ function assertPdfIntegrity(pdf, expected, fileName) {
 
 	if (/[\uE000-\uF8FF\uFFFD]/u.test(extractedText)) {
 		throw new Error(`${fileName}: extracted text contains an unsupported decorative character.`);
+	}
+
+	if (pdf.internalLinks.length > 0) {
+		throw new Error(`${fileName}: unexpected internal links are present: ${pdf.internalLinks.join(", ")}`);
 	}
 
 	for (const expectedLink of expected.links) {

@@ -195,7 +195,8 @@
 }
 
 @media print {
-	.site-chrome {
+	.site-chrome,
+	.skip-link {
 		display: none !important;
 	}
 

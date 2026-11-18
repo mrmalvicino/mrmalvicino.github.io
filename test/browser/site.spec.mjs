@@ -646,6 +646,7 @@ test("resume fits mobile screens and produces an A4 print document", async ({ pa
 	await expect(page.locator(".site-chrome")).toHaveCount(2);
 	await expect(page.locator(".site-chrome").first()).toBeHidden();
 	await expect(page.locator(".site-chrome").last()).toBeHidden();
+	await expect(page.locator(".skip-link")).toBeHidden();
 
 	const printDocumentStyles = await page.evaluate(() => {
 		const header = getComputedStyle(document.querySelector(".cv-header"));
