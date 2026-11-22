@@ -39,6 +39,7 @@ test("validation rejects inconsistent identities, translations, and typed refere
 		const spanish = JSON.parse(await readFile(spanishPath, "utf8"));
 
 		delete spanish.projects.membriana;
+		delete spanish.skills.items.autonomy;
 		await writeFile(spanishPath, JSON.stringify(spanish, null, 2), "utf8");
 
 		await assert.rejects(
@@ -47,6 +48,7 @@ test("validation rejects inconsistent identities, translations, and typed refere
 				assert.match(error.message, /duplicate id in projects/);
 				assert.match(error.message, /duplicate order in projects/);
 				assert.match(error.message, /projects: translation keys do not match domain ids/);
+				assert.match(error.message, /skills.items: translation keys do not match domain ids/);
 				assert.match(error.message, /unknown project technology id/);
 				return true;
 			}

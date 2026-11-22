@@ -911,6 +911,7 @@
       {
         "id": "professional-core",
         "order": 1,
+        "shownInPortfolio": true,
         "cvProfiles": [1],
         "categories": [
           {
@@ -961,7 +962,8 @@
       {
         "id": "professional-complementary",
         "order": 2,
-        "cvProfiles": [],
+        "shownInPortfolio": true,
+        "cvProfiles": [1],
         "categories": [
           {
             "id": "languages",
@@ -1005,6 +1007,7 @@
       {
         "id": "academic-research",
         "order": 3,
+        "shownInPortfolio": true,
         "cvProfiles": [2],
         "technologyIds": [
           "python",
@@ -1019,10 +1022,37 @@
       {
         "id": "learning",
         "order": 4,
-        "cvProfiles": [],
+        "shownInPortfolio": true,
+        "cvProfiles": [1],
         "technologyIds": [
           "angular",
           "typescript"
+        ]
+      },
+      {
+        "id": "development-soft-skills",
+        "order": 5,
+        "shownInPortfolio": false,
+        "cvProfiles": [1],
+        "skillIds": [
+          "analytical-thinking",
+          "problem-solving",
+          "autonomy",
+          "continuous-learning",
+          "teamwork"
+        ]
+      },
+      {
+        "id": "teaching-soft-skills",
+        "order": 6,
+        "shownInPortfolio": false,
+        "cvProfiles": [2],
+        "skillIds": [
+          "effective-communication",
+          "analytical-thinking",
+          "pedagogical-skills",
+          "creativity",
+          "organization-planning"
         ]
       }
     ]

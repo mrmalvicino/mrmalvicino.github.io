@@ -411,7 +411,9 @@
       "professional-core": "Frequent professional use",
       "professional-complementary": "Complementary professional use",
       "academic-research": "Research and academic work",
-      "learning": "Currently learning"
+      "learning": "Currently learning",
+      "development-soft-skills": "Soft skills",
+      "teaching-soft-skills": "Soft skills"
     },
     "categories": {
       "languages": "Languages",
@@ -421,6 +423,17 @@
       "databases": "Databases",
       "version-control": "Version control",
       "automation": "Automation"
+    },
+    "items": {
+      "analytical-thinking": "Analytical thinking",
+      "problem-solving": "Problem solving",
+      "autonomy": "Autonomy",
+      "continuous-learning": "Continuous learning",
+      "teamwork": "Teamwork",
+      "effective-communication": "Effective communication",
+      "pedagogical-skills": "Pedagogical skills",
+      "creativity": "Creativity",
+      "organization-planning": "Organization and planning"
     }
   },
   "studies": {

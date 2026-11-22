@@ -80,11 +80,12 @@
     "skills": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["description", "groups", "categories"],
+      "required": ["description", "groups", "categories", "items"],
       "properties": {
         "description": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
         "groups": { "$ref": "#/$defs/stringTranslations" },
-        "categories": { "$ref": "#/$defs/stringTranslations" }
+        "categories": { "$ref": "#/$defs/stringTranslations" },
+        "items": { "$ref": "#/$defs/stringTranslations" }
       }
     },
     "studies": {

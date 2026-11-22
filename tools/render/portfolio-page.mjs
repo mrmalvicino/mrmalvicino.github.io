@@ -15,7 +15,7 @@ function renderSkillTechnologies(technologies) {
 }
 
 function renderSkillGroups(data) {
-	return data.skillGroups.map(group => {
+	return data.skillGroups.filter(group => group.shownInPortfolio).map(group => {
 		const content = group.categories
 			? html`
 				<ul class="skill-subcategories">

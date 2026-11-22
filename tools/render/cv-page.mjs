@@ -47,12 +47,14 @@ function renderCvSkillItems(data) {
 		.filter(group => group.cvProfiles.length > 0)
 		.map(group => {
 			const attributes = renderProfileAttributes(group, data.defaultProfessionalProfile.id);
-			const technologies = group.categories
-				? group.categories.flatMap(category => category.technologies)
-				: group.technologies;
+			const items = group.skillIds
+				? group.skillItems
+				: (group.categories
+					? group.categories.flatMap(category => category.technologies)
+					: group.technologies).map(technology => technology.name);
 
 			return html`
-				<li${attributes}><strong>${escapeHtml(group.label)}:</strong> ${technologies.map(technology => escapeHtml(technology.name)).join(", ")}</li>
+				<li${attributes}><strong>${escapeHtml(group.label)}:</strong> ${items.map(escapeHtml).join(", ")}</li>
 			`;
 		})
 		.join("\n");

@@ -137,7 +137,7 @@ async function generateDocument(browser, baseUrl, document) {
 			const text = selector => [...document.querySelectorAll(selector)]
 				.map(element => element.textContent.replace(/\s+/g, " ").trim());
 
-			const links = [...document.querySelectorAll(".cv-contact a, #projects-list a")]
+			const links = [...document.querySelectorAll(".cv-contact a, #projects-list article:not([hidden]) a")]
 				.map(link => link.href);
 
 			return {

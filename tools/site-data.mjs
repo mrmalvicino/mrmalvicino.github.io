@@ -103,6 +103,9 @@ export async function loadSiteData(root, language) {
 			: null,
 		technologies: group.technologyIds
 			? group.technologyIds.map(id => requireValue(technologies, id, "technologies"))
+			: [],
+		skillItems: group.skillIds
+			? group.skillIds.map(id => requireValue(locale.skills.items, id, "skills.items"))
 			: []
 	}));
 	const professionalProfiles = sortByOrder(site.professionalProfiles).map(profile => ({

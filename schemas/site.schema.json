@@ -188,14 +188,16 @@
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["id", "order", "cvProfiles"],
+            "required": ["id", "order", "shownInPortfolio", "cvProfiles"],
             "oneOf": [
               { "required": ["technologyIds"] },
-              { "required": ["categories"] }
+              { "required": ["categories"] },
+              { "required": ["skillIds"] }
             ],
             "properties": {
               "id": { "$ref": "common.schema.json#/$defs/domainId" },
               "order": { "$ref": "common.schema.json#/$defs/order" },
+              "shownInPortfolio": { "type": "boolean" },
               "cvProfiles": { "$ref": "#/$defs/cvProfiles" },
               "technologyIds": {
                 "type": "array",
@@ -221,6 +223,12 @@
                     }
                   }
                 }
+              },
+              "skillIds": {
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": { "$ref": "common.schema.json#/$defs/domainId" }
               }
             }
           }

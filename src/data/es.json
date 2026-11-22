@@ -411,7 +411,9 @@
       "professional-core": "Uso profesional frecuente",
       "professional-complementary": "Uso profesional complementario",
       "academic-research": "Investigación y ámbito académico",
-      "learning": "Actualmente en formación"
+      "learning": "Actualmente en formación",
+      "development-soft-skills": "Habilidades blandas",
+      "teaching-soft-skills": "Habilidades blandas"
     },
     "categories": {
       "languages": "Lenguajes",
@@ -421,6 +423,17 @@
       "databases": "Bases de datos",
       "version-control": "Control de versiones",
       "automation": "Automatización"
+    },
+    "items": {
+      "analytical-thinking": "Pensamiento analítico",
+      "problem-solving": "Resolución de problemas",
+      "autonomy": "Autonomía",
+      "continuous-learning": "Aprendizaje continuo",
+      "teamwork": "Trabajo en equipo",
+      "effective-communication": "Comunicación efectiva",
+      "pedagogical-skills": "Capacidad pedagógica",
+      "creativity": "Creatividad",
+      "organization-planning": "Organización y planificación"
     }
   },
   "studies": {

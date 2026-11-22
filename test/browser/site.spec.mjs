@@ -39,8 +39,12 @@ test("the three page templates render their critical controls", async ({ page })
 
 	await page.goto("/en/cv/");
 	await expect(page.locator("html")).toHaveAttribute("data-active-cv-profile", "1");
-	await expect(page.locator("#skills-list > li:visible")).toHaveCount(1);
+	await expect(page.locator("#skills-list > li:visible")).toHaveCount(2);
+	await expect(page.locator("#skills-list > li:visible").last()).toContainText("Analytical thinking, Problem solving, Autonomy, Continuous learning, Teamwork");
 	await expect(page.locator("#jobs-list > article:visible").first()).toBeVisible();
+
+	await page.goto("/en/");
+	await expect(page.getByRole("heading", { name: "Soft skills" })).toHaveCount(0);
 });
 
 test("the selected CV profile filters content and survives a language change", async ({ page }) => {
@@ -48,10 +52,12 @@ test("the selected CV profile filters content and survives a language change", a
 
 	await expect(page.locator("html")).toHaveAttribute("data-active-cv-profile", "2");
 	await expect(page.locator("#job-search-label")).toBeVisible();
-	await expect(page.locator("#projects-label")).toBeHidden();
-	await expect(page.locator("#projects-list > article:visible")).toHaveCount(0);
+	await expect(page.locator("#projects-label")).toBeVisible();
+	expect(await page.locator("#projects-list > article:visible").count()).toBeGreaterThan(0);
+	await expect(page.locator("#skills-list > li:visible")).toHaveCount(2);
+	await expect(page.locator("#skills-list > li:visible").last()).toContainText("Comunicación efectiva, Pensamiento analítico, Capacidad pedagógica, Creatividad, Organización y planificación");
 
-	for (const selector of ["#skills-list > li:visible", "#jobs-list > article:visible", "#studies-list > article:visible"]) {
+	for (const selector of ["#skills-list > li:visible", "#jobs-list > article:visible", "#projects-list > article:visible", "#studies-list > article:visible"]) {
 		const items = page.locator(selector);
 
 		expect(await items.count()).toBeGreaterThan(0);

@@ -282,6 +282,13 @@ function validateTranslations(site, locales, errors) {
 			`src/data/${language}.json skills.categories`,
 			errors
 		);
+
+		compareKeys(
+			locale.skills.items,
+			new Set(site.skills.groups.flatMap(group => group.skillIds ?? [])),
+			`src/data/${language}.json skills.items`,
+			errors
+		);
 	}
 }
 
