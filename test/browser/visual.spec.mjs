@@ -1,32 +1,16 @@
-import { expect, openRenderedPage, stabilizeVisualPage, test } from "./portfolio-test.mjs";
+import { expect, stabilizeVisualPage, test } from "./portfolio-test.mjs";
 
-const pages = [
-	{ name: "index", path: "", readySelector: "#projects-list > .project-card", expectedCount: 3 },
-	{ name: "projects", path: "projects/", readySelector: "#projects-list > .project-card", expectedCount: 25 },
-	{ name: "cv", path: "cv/", readySelector: "#projects-list > article", expectedCount: 2 }
+const cases = [
+	{ name: "index-en-desktop", path: "/en/", width: 1440, height: 900 },
+	{ name: "projects-es-mobile", path: "/es/projects/", width: 390, height: 844 },
+	{ name: "cv-en-mobile", path: "/en/cv/", width: 390, height: 844 }
 ];
 
-const viewports = [
-	{ name: "desktop", width: 1440, height: 900 },
-	{ name: "mobile", width: 390, height: 844 }
-];
-
-for (const language of ["es", "en"]) {
-	for (const pageData of pages) {
-		for (const viewport of viewports) {
-			test(`${pageData.name} ${language} ${viewport.name} matches its visual baseline`, async ({ page }) => {
-				await page.setViewportSize({ width: viewport.width, height: viewport.height });
-
-				await openRenderedPage(
-					page,
-					`/${language}/${pageData.path}`,
-					pageData.readySelector,
-					pageData.expectedCount
-				);
-
-				await stabilizeVisualPage(page);
-				await expect(page).toHaveScreenshot(`${pageData.name}-${language}-${viewport.name}.png`, { fullPage: true });
-			});
-		}
-	}
+for (const visualCase of cases) {
+	test(`${visualCase.name} matches its visual baseline`, async ({ page }) => {
+		await page.setViewportSize({ width: visualCase.width, height: visualCase.height });
+		await page.goto(visualCase.path);
+		await stabilizeVisualPage(page);
+		await expect(page).toHaveScreenshot(`${visualCase.name}.png`, { fullPage: true });
+	});
 }

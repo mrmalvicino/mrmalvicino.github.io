@@ -3,7 +3,8 @@ import { escapeHtml, html, image } from "./html.mjs";
 
 function renderLanguageLinks(data, page) {
 	const links = languages.map(language => html`
-		<a href="${route(language.id, page)}" lang="${language.id}" class="plain-link medium-gray-link">${language.label}</a>
+		<a href="${route(language.id, page)}" lang="${language.id}"${page === "cv" ? " data-preserve-cv-profile" : ""}
+		  class="plain-link medium-gray-link">${language.label}</a>
 	`).join('<span>&nbsp;/&nbsp;</span>');
 
 	return html`
@@ -47,7 +48,8 @@ export function renderFooter(data, page) {
 		    <nav aria-label="${escapeHtml(data.locale.navigation.main)}" class="footer-pages">
 		      <a href="${route(data.language, "index")}" class="plain-link medium-gray-link">${escapeHtml(data.locale.navigation.portfolio)}</a>
 		      <a href="${route(data.language, "projects")}" class="plain-link medium-gray-link">${escapeHtml(data.locale.navigation.projects)}</a>
-		      <a href="${route(data.language, "cv")}" class="plain-link medium-gray-link">${escapeHtml(data.locale.navigation.cv)}</a>
+		      <a href="${route(data.language, "cv")}"${page === "cv" ? " data-preserve-cv-profile" : ""}
+		        class="plain-link medium-gray-link">${escapeHtml(data.locale.navigation.cv)}</a>
 		    </nav>
 		    <div class="footer-socials">
 		      <ul class="row-flex gap-20-px">
@@ -72,7 +74,7 @@ export function renderJobSearch(data, className) {
 		return "";
 	}
 
-	return `<p id="job-search-label" class="${className}">${escapeHtml(data.locale.labels.common.jobSearchLbl)}</p>`;
+	return `<p id="job-search-label" class="${className}">${escapeHtml(data.defaultProfessionalProfile.jobSearch)}</p>`;
 }
 
 export function renderNavbar(data, page) {

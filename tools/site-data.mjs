@@ -105,7 +105,11 @@ export async function loadSiteData(root, language) {
 			? group.technologyIds.map(id => requireValue(technologies, id, "technologies"))
 			: []
 	}));
-	const cvSkillGroup = skillGroups.find(group => group.id === site.skills.cvGroupId);
+	const professionalProfiles = sortByOrder(site.professionalProfiles).map(profile => ({
+		...profile,
+		...requireValue(locale.professionalProfiles, profile.id, "professionalProfiles")
+	}));
+	const defaultProfessionalProfile = professionalProfiles.find(profile => profile.default);
 
 	return {
 		language,
@@ -130,7 +134,8 @@ export async function loadSiteData(root, language) {
 		})),
 		skillDescription: locale.skills.description,
 		skillGroups,
-		cvSkillGroup,
+		professionalProfiles,
+		defaultProfessionalProfile,
 		studies: sortByOrder(site.studies).map(study => ({
 			...study,
 			...requireValue(locale.studies, study.id, "studies"),

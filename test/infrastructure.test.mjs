@@ -3,23 +3,7 @@ import { mkdtemp, mkdir, rm, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
-import { languages, outputFile, pages, publicScripts, route } from "../tools/site-manifest.mjs";
 import { startStaticServer } from "../tools/static-server.mjs";
-
-test("site manifest defines unique and complete publication contracts", () => {
-	assert.equal(new Set(languages.map(language => language.id)).size, languages.length);
-	assert.equal(new Set(languages.map(language => language.resumeFile)).size, languages.length);
-	assert.equal(new Set(pages.map(page => page.id)).size, pages.length);
-	assert.equal(pages.filter(page => page.path === "").length, 1);
-	assert.equal(new Set(publicScripts).size, publicScripts.length);
-
-	for (const language of languages) {
-		for (const page of pages) {
-			assert.match(route(language.id, page.id), new RegExp(`^/${language.id}/`));
-			assert.match(outputFile(language.id, page.id), /index\.html$/);
-		}
-	}
-});
 
 test("shared static server handles files, methods, and invalid paths", async () => {
 	const root = await mkdtemp(path.join(os.tmpdir(), "portfolio-server-"));

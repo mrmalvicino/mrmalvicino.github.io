@@ -102,9 +102,9 @@ export function renderPortfolioPage(data) {
 		      ${image(data.images["profile-img"], "width-250-px margin-vertical-10-px circle-image", { fetchpriority: "high" })}
 		      <div class="content-width margin-vertical-10-px">
 		        <h1>${escapeHtml(data.site.profile.fullName)}</h1>
-		        <p class="mid-font-size jost-font center-text">${escapeHtml(labels.common.degreesLbl)}</p>
+		        <p class="mid-font-size jost-font center-text">${escapeHtml(data.defaultProfessionalProfile.name)}</p>
 		      </div>
-		      <p class="content-width margin-vertical-10-px center-text">${escapeHtml(labels.common.presentationLbl)}</p>
+		      <p class="content-width margin-vertical-10-px center-text">${escapeHtml(data.defaultProfessionalProfile.description)}</p>
 		      ${renderJobSearch(data, "content-width margin-vertical-10-px center-text bold-text")}
 		      <div class="content-width margin-vertical-20-px col-flex justify-center">
 		        <a id="resume-btn" href="${escapeHtml(publicUrl(resume.href))}" download="${escapeHtml(resume.download)}" class="resume-download-button dark-button big-hover">

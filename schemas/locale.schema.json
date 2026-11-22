@@ -5,6 +5,7 @@
   "additionalProperties": false,
   "required": [
     "profile",
+    "professionalProfiles",
     "seo",
     "navigation",
     "images",
@@ -32,6 +33,20 @@
       "properties": {
         "footerLocation": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
         "cvLocation": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
+      }
+    },
+    "professionalProfiles": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "description", "jobSearch"],
+        "properties": {
+          "name": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+          "description": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+          "jobSearch": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
+        }
       }
     },
     "seo": {

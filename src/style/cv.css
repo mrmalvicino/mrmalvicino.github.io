@@ -98,6 +98,10 @@
 	justify-content: space-around;
 }
 
+.cv-section[hidden] {
+	display: none;
+}
+
 .cv-section:last-child {
 	margin-bottom: 0px;
 }

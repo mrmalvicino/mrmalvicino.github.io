@@ -59,6 +59,18 @@
       "download": "malvicino-es.pdf"
     }
   },
+  "professionalProfiles": [
+    {
+      "id": 1,
+      "order": 1,
+      "default": true
+    },
+    {
+      "id": 2,
+      "order": 2,
+      "default": false
+    }
+  ],
   "menu": [
     {
       "id": "about",
@@ -184,6 +196,18 @@
       },
       "overleaf-img": {
         "src": "https://images.ctfassets.net/nrgyaltdicpt/wwNSIPYEZa2OCOsuGweSY/0142fa5bce2f40f4168bad08acc8a52d/Sticker_square_colour_light_bg.png"
+      },
+      "matplotlib-img": {
+        "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/matplotlib/matplotlib-original.svg"
+      },
+      "numpy-img": {
+        "src": "https://raw.githubusercontent.com/devicons/devicon/master/icons/numpy/numpy-original.svg"
+      },
+      "sympy-img": {
+        "src": "https://cdn.simpleicons.org/sympy"
+      },
+      "scipy-img": {
+        "src": "https://cdn.simpleicons.org/scipy"
       }
     },
     "institutionImages": {
@@ -371,6 +395,18 @@
     },
     "overleaf": {
       "imageId": "overleaf-img"
+    },
+    "matplotlib": {
+      "imageId": "matplotlib-img"
+    },
+    "numpy": {
+      "imageId": "numpy-img"
+    },
+    "sympy": {
+      "imageId": "sympy-img"
+    },
+    "scipy": {
+      "imageId": "scipy-img"
     }
   },
   "institutions": {
@@ -403,7 +439,7 @@
       "videoUrl": null,
       "mockupId": null,
       "shownInPortfolio": true,
-      "shownInCv": true,
+      "cvProfiles": [1],
       "technologyIds": [
         "dotnet",
         "csharp",
@@ -425,7 +461,7 @@
       "videoUrl": null,
       "mockupId": "decauciones-img",
       "shownInPortfolio": true,
-      "shownInCv": true,
+      "cvProfiles": [1],
       "technologyIds": [
         "html",
         "css",
@@ -446,7 +482,7 @@
       "videoUrl": null,
       "mockupId": "halley-v2-img",
       "shownInPortfolio": true,
-      "shownInCv": false,
+      "cvProfiles": [],
       "technologyIds": [
         "dotnet",
         "vbnet",
@@ -468,7 +504,7 @@
       "videoUrl": null,
       "mockupId": null,
       "shownInPortfolio": false,
-      "shownInCv": false,
+      "cvProfiles": [],
       "technologyIds": [
         "dotnet",
         "csharp",
@@ -491,7 +527,7 @@
       "videoUrl": "https://www.youtube-nocookie.com/embed/H7AISursM2M",
       "mockupId": null,
       "shownInPortfolio": false,
-      "shownInCv": false,
+      "cvProfiles": [],
       "technologyIds": [
         "dotnet",
         "csharp",
@@ -513,7 +549,7 @@
       "videoUrl": "https://www.youtube-nocookie.com/embed/D8P1URMdCHU",
       "mockupId": null,
       "shownInPortfolio": false,
-      "shownInCv": false,
+      "cvProfiles": [],
       "technologyIds": [
         "java",
         "javascript",
@@ -534,7 +570,7 @@
       "videoUrl": null,
       "mockupId": "matrix-img",
       "shownInPortfolio": false,
-      "shownInCv": false,
+      "cvProfiles": [],
       "technologyIds": [
         "react",
         "css",
@@ -554,7 +590,7 @@
       "videoUrl": null,
       "mockupId": null,
       "shownInPortfolio": false,
-      "shownInCv": false,
+      "cvProfiles": [],
       "technologyIds": [
         "html",
         "css",
@@ -574,7 +610,7 @@
       "videoUrl": null,
       "mockupId": "biblio-img",
       "shownInPortfolio": false,
-      "shownInCv": false,
+      "cvProfiles": [],
       "technologyIds": [
         "fastapi",
         "python",
@@ -593,7 +629,7 @@
       "videoUrl": null,
       "mockupId": null,
       "shownInPortfolio": false,
-      "shownInCv": false,
+      "cvProfiles": [],
       "technologyIds": [
         "python",
         "git"
@@ -611,7 +647,7 @@
       "videoUrl": null,
       "mockupId": "stus-img",
       "shownInPortfolio": false,
-      "shownInCv": false,
+      "cvProfiles": [],
       "technologyIds": [
         "python",
         "git"
@@ -629,7 +665,7 @@
       "videoUrl": null,
       "mockupId": "anc-img",
       "shownInPortfolio": false,
-      "shownInCv": false,
+      "cvProfiles": [],
       "technologyIds": [
         "python",
         "git"
@@ -647,7 +683,7 @@
       "videoUrl": null,
       "mockupId": "dugun-img",
       "shownInPortfolio": false,
-      "shownInCv": false,
+      "cvProfiles": [],
       "technologyIds": [
         "cpp",
         "git"
@@ -665,7 +701,7 @@
       "videoUrl": null,
       "mockupId": "binary-img",
       "shownInPortfolio": false,
-      "shownInCv": false,
+      "cvProfiles": [],
       "technologyIds": [
         "cpp",
         "git"
@@ -683,7 +719,7 @@
       "videoUrl": null,
       "mockupId": "baluma-img",
       "shownInPortfolio": false,
-      "shownInCv": false,
+      "cvProfiles": [],
       "technologyIds": [
         "cpp",
         "git"
@@ -701,7 +737,7 @@
       "videoUrl": null,
       "mockupId": "irwin-img",
       "shownInPortfolio": false,
-      "shownInCv": false,
+      "cvProfiles": [],
       "technologyIds": [
         "cpp",
         "git"
@@ -719,7 +755,7 @@
       "videoUrl": null,
       "mockupId": "arduino-img",
       "shownInPortfolio": false,
-      "shownInCv": false,
+      "cvProfiles": [],
       "technologyIds": [
         "cpp",
         "git"
@@ -737,7 +773,7 @@
       "videoUrl": null,
       "mockupId": "waveform-img",
       "shownInPortfolio": false,
-      "shownInCv": false,
+      "cvProfiles": [],
       "technologyIds": [
         "latex",
         "git"
@@ -755,7 +791,7 @@
       "videoUrl": null,
       "mockupId": "transmissibility-img",
       "shownInPortfolio": false,
-      "shownInCv": false,
+      "cvProfiles": [],
       "technologyIds": [
         "latex",
         "git"
@@ -773,7 +809,7 @@
       "videoUrl": null,
       "mockupId": "circuit-img",
       "shownInPortfolio": false,
-      "shownInCv": false,
+      "cvProfiles": [],
       "technologyIds": [
         "latex",
         "git"
@@ -791,7 +827,7 @@
       "videoUrl": null,
       "mockupId": "math-img",
       "shownInPortfolio": false,
-      "shownInCv": false,
+      "cvProfiles": [2],
       "technologyIds": [
         "latex",
         "git"
@@ -809,7 +845,7 @@
       "videoUrl": null,
       "mockupId": "newton-img",
       "shownInPortfolio": false,
-      "shownInCv": false,
+      "cvProfiles": [2],
       "technologyIds": [
         "latex",
         "git"
@@ -827,7 +863,7 @@
       "videoUrl": "https://www.youtube-nocookie.com/embed/2pfTixTPAOM",
       "mockupId": null,
       "shownInPortfolio": false,
-      "shownInCv": false,
+      "cvProfiles": [],
       "technologyIds": [
         "latex",
         "git"
@@ -845,7 +881,7 @@
       "videoUrl": null,
       "mockupId": "plane-img",
       "shownInPortfolio": false,
-      "shownInCv": false,
+      "cvProfiles": [2],
       "technologyIds": [
         "latex",
         "overleaf"
@@ -863,7 +899,7 @@
       "videoUrl": null,
       "mockupId": "einstein-img",
       "shownInPortfolio": false,
-      "shownInCv": false,
+      "cvProfiles": [],
       "technologyIds": [
         "latex",
         "overleaf"
@@ -871,11 +907,11 @@
     }
   ],
   "skills": {
-    "cvGroupId": "professional-core",
     "groups": [
       {
         "id": "professional-core",
         "order": 1,
+        "cvProfiles": [1],
         "categories": [
           {
             "id": "languages",
@@ -925,6 +961,7 @@
       {
         "id": "professional-complementary",
         "order": 2,
+        "cvProfiles": [],
         "categories": [
           {
             "id": "languages",
@@ -968,15 +1005,21 @@
       {
         "id": "academic-research",
         "order": 3,
+        "cvProfiles": [2],
         "technologyIds": [
           "python",
           "cpp",
-          "latex"
+          "latex",
+          "matplotlib",
+          "numpy",
+          "sympy",
+          "scipy"
         ]
       },
       {
         "id": "learning",
         "order": 4,
+        "cvProfiles": [],
         "technologyIds": [
           "angular",
           "typescript"
@@ -991,7 +1034,7 @@
       "studyPlan": "https://untref.edu.ar/carrera/ingenieria-de-sonido",
       "certificate": null,
       "type": "career",
-      "shownInCv": true,
+      "cvProfiles": [1, 2],
       "institutionId": "untref"
     },
     {
@@ -1001,7 +1044,7 @@
       "certificate": "./assets/documents/certificates/tup-certificate.pdf",
       "graduationDate": "2024-12-12",
       "type": "career",
-      "shownInCv": true,
+      "cvProfiles": [1, 2],
       "institutionId": "utn"
     },
     {
@@ -1010,7 +1053,7 @@
       "studyPlan": "./assets/documents/study-plans/angular-plan.pdf",
       "certificate": "./assets/documents/certificates/angular-certificate.pdf",
       "type": "course",
-      "shownInCv": true,
+      "cvProfiles": [1],
       "institutionId": "educacion-it"
     },
     {
@@ -1019,7 +1062,7 @@
       "studyPlan": "./assets/documents/study-plans/web-api-plan.pdf",
       "certificate": "./assets/documents/certificates/web-api-certificate.pdf",
       "type": "course",
-      "shownInCv": true,
+      "cvProfiles": [1],
       "institutionId": "educacion-it"
     },
     {
@@ -1028,7 +1071,7 @@
       "studyPlan": "./assets/documents/study-plans/linq-entity-plan.pdf",
       "certificate": "./assets/documents/certificates/linq-entity-certificate.pdf",
       "type": "course",
-      "shownInCv": true,
+      "cvProfiles": [1],
       "institutionId": "educacion-it"
     },
     {
@@ -1037,7 +1080,7 @@
       "studyPlan": "./assets/documents/study-plans/net-core-plan.pdf",
       "certificate": "./assets/documents/certificates/net-core-certificate.pdf",
       "type": "course",
-      "shownInCv": false,
+      "cvProfiles": [],
       "institutionId": "educacion-it"
     },
     {
@@ -1046,7 +1089,7 @@
       "studyPlan": null,
       "certificate": "./assets/documents/certificates/fce-certificate.pdf",
       "type": "language",
-      "shownInCv": true,
+      "cvProfiles": [1, 2],
       "institutionId": "cambridge"
     },
     {
@@ -1055,7 +1098,7 @@
       "studyPlan": null,
       "certificate": "./assets/documents/certificates/portuguese-certificate.pdf",
       "type": "language",
-      "shownInCv": true,
+      "cvProfiles": [1, 2],
       "institutionId": "utn"
     },
     {
@@ -1064,7 +1107,7 @@
       "studyPlan": null,
       "certificate": null,
       "type": "language",
-      "shownInCv": true,
+      "cvProfiles": [1, 2],
       "institutionId": "argentina"
     }
   ],
@@ -1072,6 +1115,7 @@
     {
       "id": "junior-software-developer-halley",
       "order": 1,
+      "cvProfiles": [1, 2],
       "startDate": "2025-08-11",
       "endDate": "2026-11-04",
       "technologyIds": [
@@ -1086,18 +1130,21 @@
     {
       "id": "programming-2-teaching-assistant-utn",
       "order": 2,
+      "cvProfiles": [1, 2],
       "startDate": "2024-08",
       "endDate": "2025-12"
     },
     {
       "id": "physics-1-teaching-assistant-untref",
       "order": 3,
+      "cvProfiles": [1, 2],
       "startDate": "2019-08",
       "endDate": "2023-07"
     },
     {
       "id": "english-teacher-leonardo-favio-library",
       "order": 4,
+      "cvProfiles": [1, 2],
       "startDate": "2014-03",
       "endDate": "2017-12"
     }

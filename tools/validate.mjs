@@ -233,6 +233,7 @@ function validateTranslations(site, locales, errors) {
 	const imageIds = imageMaps.flatMap(images => Object.keys(images));
 	const technologyImageIds = new Set(Object.values(site.technologies).map(technology => technology.imageId));
 	const expected = {
+		professionalProfiles: site.professionalProfiles.map(item => String(item.id)),
 		images: imageIds,
 		technologies: Object.keys(site.technologies),
 		projectTypes: Object.keys(site.projectTypes),
@@ -247,7 +248,7 @@ function validateTranslations(site, locales, errors) {
 		placeholders: ["nameTxt", "emailTxt", "phoneTxt", "messageTxt"]
 	};
 	const labelIds = {
-		common: ["sourceCodeLbl", "openOnlineLbl", "websiteLbl", "degreesLbl", "presentationLbl", "jobSearchLbl"],
+		common: ["sourceCodeLbl", "openOnlineLbl", "websiteLbl"],
 		index: ["resumeLbl", "onlineResumeLbl", "skillsLbl", "projectsLbl", "allProjectsLbl", "educationLbl", "contactTitleLbl", "contactDescriptionLbl", "nameLbl", "emailLbl", "phoneLbl", "messageLbl"],
 		projects: ["projectsLbl", "backLbl", "filtersLbl", "technologiesLbl", "typesLbl", "contributionsLbl", "clearFiltersLbl", "projectSingularLbl", "projectPluralLbl"],
 		cv: ["profileLbl", "skillsLbl", "educationLbl", "experienceLbl", "projectsLbl", "presentLbl", "technologiesLbl"]
@@ -434,6 +435,7 @@ function validateDates(site, errors) {
 
 function validateDomain(site, errors) {
 	const collections = {
+		professionalProfiles: site.professionalProfiles,
 		menu: site.menu,
 		projects: site.projects,
 		skillGroups: site.skills.groups,
@@ -471,6 +473,7 @@ function validateDomain(site, errors) {
 	const projectTypeIds = new Set(Object.keys(site.projectTypes));
 	const participationModeIds = new Set(Object.keys(site.participationModes));
 	const institutionEntityIds = new Set(Object.keys(site.institutions));
+	const professionalProfileIds = new Set(site.professionalProfiles.map(profile => profile.id));
 	const referencedTechnologyImageIds = new Set();
 	const referencedInstitutionImageIds = new Set();
 
@@ -561,12 +564,27 @@ function validateDomain(site, errors) {
 		errors.push(`src/data/site.json: unknown default project image id: ${site.images.defaultProjectImageId}`);
 	}
 
-	const cvSkillGroup = site.skills.groups.find(group => group.id === site.skills.cvGroupId);
+	const defaultProfiles = site.professionalProfiles.filter(profile => profile.default);
 
-	if (!cvSkillGroup) {
-		errors.push(`src/data/site.json: unknown CV skill group id: ${site.skills.cvGroupId}`);
-	} else if (!cvSkillGroup.categories?.length) {
-		errors.push(`src/data/site.json: CV skill group must contain categories: ${site.skills.cvGroupId}`);
+	if (defaultProfiles.length !== 1) {
+		errors.push("src/data/site.json: exactly one professional profile must be the default");
+	}
+
+	const cvCollections = {
+		projects: site.projects,
+		skillGroups: site.skills.groups,
+		studies: site.studies,
+		jobs: site.jobs
+	};
+
+	for (const [collection, items] of Object.entries(cvCollections)) {
+		for (const item of items) {
+			for (const profileId of item.cvProfiles) {
+				if (!professionalProfileIds.has(profileId)) {
+					errors.push(`src/data/site.json: unknown professional profile id in ${collection}.${item.id}: ${profileId}`);
+				}
+			}
+		}
 	}
 
 	const pageIds = new Set(["hero-sec", "skills-sec", "projects-sec", "education-sec", "contact-sec"]);

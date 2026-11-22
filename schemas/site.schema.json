@@ -7,6 +7,7 @@
     "profile",
     "configuration",
     "resumes",
+    "professionalProfiles",
     "menu",
     "images",
     "projectTypes",
@@ -91,6 +92,20 @@
         "es": { "$ref": "#/$defs/resume" }
       }
     },
+    "professionalProfiles": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "order", "default"],
+        "properties": {
+          "id": { "type": "integer", "minimum": 1 },
+          "order": { "$ref": "common.schema.json#/$defs/order" },
+          "default": { "type": "boolean" }
+        }
+      }
+    },
     "menu": {
       "type": "array",
       "minItems": 1,
@@ -129,7 +144,7 @@
           "videoUrl",
           "mockupId",
           "shownInPortfolio",
-          "shownInCv"
+          "cvProfiles"
         ],
         "properties": {
           "id": { "$ref": "common.schema.json#/$defs/domainId" },
@@ -158,23 +173,22 @@
             ]
           },
           "shownInPortfolio": { "type": "boolean" },
-          "shownInCv": { "type": "boolean" }
+          "cvProfiles": { "$ref": "#/$defs/cvProfiles" }
         }
       }
     },
     "skills": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["cvGroupId", "groups"],
+      "required": ["groups"],
       "properties": {
-        "cvGroupId": { "$ref": "common.schema.json#/$defs/domainId" },
         "groups": {
           "type": "array",
           "minItems": 1,
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["id", "order"],
+            "required": ["id", "order", "cvProfiles"],
             "oneOf": [
               { "required": ["technologyIds"] },
               { "required": ["categories"] }
@@ -182,6 +196,7 @@
             "properties": {
               "id": { "$ref": "common.schema.json#/$defs/domainId" },
               "order": { "$ref": "common.schema.json#/$defs/order" },
+              "cvProfiles": { "$ref": "#/$defs/cvProfiles" },
               "technologyIds": {
                 "type": "array",
                 "minItems": 1,
@@ -218,7 +233,7 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["id", "order", "institutionId", "studyPlan", "certificate", "type", "shownInCv"],
+        "required": ["id", "order", "institutionId", "studyPlan", "certificate", "type", "cvProfiles"],
         "properties": {
           "id": { "$ref": "common.schema.json#/$defs/domainId" },
           "order": { "$ref": "common.schema.json#/$defs/order" },
@@ -227,7 +242,7 @@
           "certificate": { "$ref": "common.schema.json#/$defs/nullableString" },
           "graduationDate": { "$ref": "common.schema.json#/$defs/date" },
           "type": { "enum": ["career", "course", "language"] },
-          "shownInCv": { "type": "boolean" }
+          "cvProfiles": { "$ref": "#/$defs/cvProfiles" }
         }
       }
     },
@@ -237,10 +252,11 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["id", "order", "startDate", "endDate"],
+        "required": ["id", "order", "cvProfiles", "startDate", "endDate"],
         "properties": {
           "id": { "$ref": "common.schema.json#/$defs/domainId" },
           "order": { "$ref": "common.schema.json#/$defs/order" },
+          "cvProfiles": { "$ref": "#/$defs/cvProfiles" },
           "startDate": {
             "anyOf": [
               { "$ref": "common.schema.json#/$defs/yearMonth" },
@@ -265,6 +281,11 @@
     }
   },
   "$defs": {
+    "cvProfiles": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "integer", "minimum": 1 }
+    },
     "link": {
       "type": "object",
       "additionalProperties": false,

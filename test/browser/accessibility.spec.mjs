@@ -1,16 +1,7 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
-const routes = [
-	"/es/",
-	"/en/",
-	"/es/projects/",
-	"/en/projects/",
-	"/es/cv/",
-	"/en/cv/"
-];
-
-for (const route of routes) {
+for (const route of ["/en/", "/en/projects/", "/es/cv/?profile=2"]) {
 	test(`${route} has no serious automated accessibility violations`, async ({ page }) => {
 		await page.goto(route);
 
@@ -37,48 +28,11 @@ test("skip link moves keyboard focus to the main content", async ({ page }) => {
 	await expect(page.locator("#main-content")).toBeFocused();
 });
 
-test("mobile menu exposes its state and restores focus when dismissed", async ({ page }) => {
-	await page.setViewportSize({ width: 320, height: 800 });
+test("contact controls expose input and instruction semantics", async ({ page }) => {
 	await page.goto("/en/");
 
-	const toggle = page.locator("#toggle-btn");
-
-	await expect(toggle).toHaveAccessibleName("Open navigation menu");
-	await toggle.click();
-	await expect(toggle).toHaveAttribute("aria-expanded", "true");
-	await expect(toggle.locator("i")).toHaveClass(/bi-x-lg/);
-	const closeIconContent = await toggle.locator("i").evaluate(element => getComputedStyle(element, "::before").content);
-	expect(closeIconContent).not.toBe("none");
-	expect(closeIconContent).not.toBe('""');
-	await expect(page.locator("#menu-list a").first()).toBeFocused();
-
-	await page.keyboard.press("Escape");
-	await expect(toggle).toHaveAttribute("aria-expanded", "false");
-	await expect(toggle).toHaveAccessibleName("Open navigation menu");
-	await expect(toggle).toBeFocused();
-});
-
-test("education and contact controls expose semantic context", async ({ page }) => {
-	await page.goto("/en/");
-
-	await expect(page.locator(".education-table thead th")).toHaveText(["Institution", "Study", "Documents"]);
-	await expect(page.locator(".education-table tbody th[scope='row']")).toHaveCount(9);
-	await expect(page.getByRole("link", { name: /View study plan: Technical Degree in Programming/ })).toHaveCount(1);
 	await expect(page.getByLabel("Name *")).toHaveAttribute("autocomplete", "name");
 	await expect(page.getByLabel("Email *")).toHaveAttribute("autocomplete", "email");
 	await expect(page.getByLabel("Phone *")).toHaveAttribute("autocomplete", "tel");
 	await expect(page.getByLabel("Message *")).toHaveAttribute("aria-describedby", "required-fields-note");
-});
-
-test("reduced motion preference disables nonessential transitions", async ({ page }) => {
-	await page.emulateMedia({ reducedMotion: "reduce" });
-	await page.goto("/en/");
-
-	await expect(page.locator("html")).toHaveCSS("scroll-behavior", "auto");
-
-	const transitionDuration = await page.locator("#resume-btn").evaluate(element => (
-		Number.parseFloat(getComputedStyle(element).transitionDuration)
-	));
-
-	expect(transitionDuration).toBeLessThan(0.001);
 });

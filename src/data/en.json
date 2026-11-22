@@ -3,6 +3,18 @@
     "footerLocation": "General Pacheco, Buenos Aires, Argentina",
     "cvLocation": "General Pacheco, Buenos Aires"
   },
+  "professionalProfiles": {
+    "1": {
+      "name": ".NET Software Developer",
+      "description": "Hi! I'm Max, a software developer specializing in .NET and business management systems. I have professional experience with C#, VB .NET, WinForms, MySQL, and SAP Crystal Reports, as well as web solutions using ASP.NET, Razor, Entity Framework, and SQL Server. I also study Sound Engineering, combining programming, acoustics, and signal processing.",
+      "jobSearch": "I am actively seeking opportunities as a .NET developer."
+    },
+    "2": {
+      "name": "Secondary School Mathematics and Physics Teacher",
+      "description": "Hi! I'm Maxi, an educator with university-level teaching experience in Physics and Programming, as well as experience teaching secondary school students. I worked as a teaching assistant at UNTREF and UTN, contributing to lesson planning, exercise development, student assessment, and academic support. My background in Sound Engineering and Programming allows me to combine mathematics, physics, and technological tools to make complex concepts easier to understand.",
+      "jobSearch": "I'm seeking teaching opportunities in Mathematics, Physics, and related subjects, particularly at the high school level."
+    }
+  },
   "seo": {
     "index": {
       "title": "Maximiliano Malvicino | .NET Software Developer",
@@ -211,6 +223,22 @@
     "halley-v2-img": {
       "title": "Halley V2",
       "alt": "Halley V2 point-of-sale billing screen with an empty item list."
+    },
+    "matplotlib-img": {
+      "title": "Matplotlib",
+      "alt": "Matplotlib logo."
+    },
+    "numpy-img": {
+      "title": "NumPy",
+      "alt": "NumPy logo."
+    },
+    "sympy-img": {
+      "title": "SymPy",
+      "alt": "SymPy logo."
+    },
+    "scipy-img": {
+      "title": "SciPy",
+      "alt": "SciPy logo."
     }
   },
   "technologies": {
@@ -241,7 +269,11 @@
     "git": "Git",
     "github-actions": "GitHub Actions",
     "latex": "LaTeX",
-    "overleaf": "Overleaf"
+    "overleaf": "Overleaf",
+    "matplotlib": "Matplotlib",
+    "numpy": "NumPy",
+    "sympy": "SymPy",
+    "scipy": "SciPy"
   },
   "projectTypes": {
     "notes": "Notes",
@@ -454,10 +486,7 @@
     "common": {
       "sourceCodeLbl": "Code",
       "openOnlineLbl": "Open",
-      "websiteLbl": "Website",
-      "degreesLbl": ".NET Software Developer",
-      "presentationLbl": "Hi! I'm Max, a software developer specializing in .NET and business management systems. I have professional experience with C#, VB .NET, WinForms, MySQL, and SAP Crystal Reports, as well as web solutions using ASP.NET, Razor, Entity Framework, and SQL Server. I also study Sound Engineering, combining programming, acoustics, and signal processing.",
-      "jobSearchLbl": "I am actively seeking opportunities as a .NET developer."
+      "websiteLbl": "Website"
     },
     "index": {
       "resumeLbl": "Download CV",
@@ -486,7 +515,7 @@
     },
     "cv": {
       "profileLbl": "Professional Profile",
-      "skillsLbl": "Technical Skills",
+      "skillsLbl": "Skills",
       "educationLbl": "Education",
       "experienceLbl": "Work Experience",
       "projectsLbl": "Freelance Experience",

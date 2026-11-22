@@ -3,6 +3,18 @@
     "footerLocation": "General Pacheco, Buenos Aires, Argentina",
     "cvLocation": "General Pacheco, Buenos Aires"
   },
+  "professionalProfiles": {
+    "1": {
+      "name": "Desarrollador de Software .NET",
+      "description": "¡Hola! Soy Maxi, desarrollador de software especializado en .NET y sistemas de gestión. Tengo experiencia profesional con C#, VB .NET, WinForms, MySQL y SAP Crystal Reports, además de soluciones web con ASP.NET, Razor, Entity Framework y SQL Server. También estudio Ingeniería de Sonido, uniendo programación, acústica y procesamiento de señales.",
+      "jobSearch": "Estoy en búsqueda activa de oportunidades como desarrollador .NET."
+    },
+    "2": {
+      "name": "Docente de Matemática y Física de Nivel Secundario",
+      "description": "¡Hola! Soy Maxi, docente con experiencia universitaria en Física y Programación, y en la enseñanza a estudiantes de nivel secundario. Me desempeñé como ayudante de cátedra en la UNTREF y la UTN, participando en la planificación de actividades, elaboración de ejercicios, evaluación de aprendizajes y acompañamiento de estudiantes. Mi formación en Ingeniería de Sonido y Programación me permite integrar conocimientos de matemática, física y herramientas tecnológicas para facilitar la comprensión de conceptos complejos.",
+      "jobSearch": "Estoy en búsqueda de oportunidades como docente de Matemática, Física, NTIC y áreas afines, especialmente en el nivel secundario."
+    }
+  },
   "seo": {
     "index": {
       "title": "Maximiliano Malvicino | Desarrollador de Software .NET",
@@ -211,6 +223,22 @@
     "halley-v2-img": {
       "title": "Halley V2",
       "alt": "Facturador del punto de venta de Halley V2 con la lista de ítems vacía."
+    },
+    "matplotlib-img": {
+      "title": "Matplotlib",
+      "alt": "Matplotlib logo."
+    },
+    "numpy-img": {
+      "title": "NumPy",
+      "alt": "NumPy logo."
+    },
+    "sympy-img": {
+      "title": "SymPy",
+      "alt": "SymPy logo."
+    },
+    "scipy-img": {
+      "title": "SciPy",
+      "alt": "SciPy logo."
     }
   },
   "technologies": {
@@ -241,7 +269,11 @@
     "git": "Git",
     "github-actions": "GitHub Actions",
     "latex": "LaTeX",
-    "overleaf": "Overleaf"
+    "overleaf": "Overleaf",
+    "matplotlib": "Matplotlib",
+    "numpy": "NumPy",
+    "sympy": "SymPy",
+    "scipy": "SciPy"
   },
   "projectTypes": {
     "notes": "Apunte",
@@ -454,10 +486,7 @@
     "common": {
       "sourceCodeLbl": "Código",
       "openOnlineLbl": "Abrir",
-      "websiteLbl": "Sitio web",
-      "degreesLbl": "Desarrollador de Software .NET",
-      "presentationLbl": "¡Hola! Soy Maxi, desarrollador de software especializado en .NET y sistemas de gestión. Tengo experiencia profesional con C#, VB .NET, WinForms, MySQL y SAP Crystal Reports, además de soluciones web con ASP.NET, Razor, Entity Framework y SQL Server. También estudio Ingeniería de Sonido, uniendo programación, acústica y procesamiento de señales.",
-      "jobSearchLbl": "Estoy en búsqueda activa de oportunidades como desarrollador .NET."
+      "websiteLbl": "Sitio web"
     },
     "index": {
       "resumeLbl": "Descargar CV",
@@ -486,7 +515,7 @@
     },
     "cv": {
       "profileLbl": "Perfil profesional",
-      "skillsLbl": "Habilidades técnicas",
+      "skillsLbl": "Habilidades",
       "educationLbl": "Educación",
       "experienceLbl": "Experiencia laboral",
       "projectsLbl": "Experiencia freelance",

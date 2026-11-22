@@ -46,7 +46,7 @@ export const pages = [
 		path: "cv",
 		legacyFile: "cv.html",
 		styles: ["cv.css"],
-		scripts: []
+		scripts: ["cv-profile.js"]
 	}
 ].map(page => ({
 	...page,

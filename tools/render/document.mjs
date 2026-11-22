@@ -16,7 +16,7 @@ function renderStructuredData(data, page, canonicalUrl) {
 			name: data.site.profile.fullName,
 			url: siteUrl,
 			image: absoluteUrl(data, data.images["profile-img"].src),
-			jobTitle: data.locale.labels.common.degreesLbl,
+			jobTitle: data.defaultProfessionalProfile.name,
 			description: data.locale.seo.index.description,
 			sameAs: data.site.profile.socials
 				.filter(social => ["github", "linkedin"].includes(social.id))
