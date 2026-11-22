@@ -1,4 +1,4 @@
-import { route } from "../site-manifest.mjs";
+import { getLanguage, route } from "../site-manifest.mjs";
 import { renderDocument } from "./document.mjs";
 import { formatStudyTitle } from "./formatters.mjs";
 import { escapeHtml, html, image, publicUrl } from "./html.mjs";
@@ -90,9 +90,18 @@ function renderStudyRows(data) {
 	}).join("\n");
 }
 
+function renderProfileData(data, resumeFiles) {
+	return JSON.stringify(data.professionalProfiles.map(profile => ({
+		id: profile.id,
+		default: profile.default,
+		resumeFile: resumeFiles[profile.id]
+	}))).replaceAll("<", "\\u003c");
+}
+
 export function renderPortfolioPage(data) {
 	const labels = data.locale.labels;
-	const resume = data.site.resumes[data.language];
+	const resumeFiles = getLanguage(data.language).resumeFiles;
+	const defaultResumeFile = resumeFiles[data.defaultProfessionalProfile.id];
 
 	const body = html`
 		<body class="open-sans-font light-gray-background">
@@ -107,7 +116,7 @@ export function renderPortfolioPage(data) {
 		      <p class="content-width margin-vertical-10-px center-text">${escapeHtml(data.defaultProfessionalProfile.description)}</p>
 		      ${renderJobSearch(data, "content-width margin-vertical-10-px center-text bold-text")}
 		      <div class="content-width margin-vertical-20-px col-flex justify-center">
-		        <a id="resume-btn" href="${escapeHtml(publicUrl(resume.href))}" download="${escapeHtml(resume.download)}" class="resume-download-button dark-button big-hover">
+		        <a id="resume-btn" href="/assets/cv/${escapeHtml(defaultResumeFile)}" download="${escapeHtml(defaultResumeFile)}" class="resume-download-button dark-button big-hover">
 		          <i class="bi bi-download" aria-hidden="true"></i>
 		          <span>&nbsp;</span>
 		          <span>${escapeHtml(labels.index.resumeLbl)}</span>
@@ -199,6 +208,7 @@ export function renderPortfolioPage(data) {
 		    </section>
 		  </main>
 		  ${renderFooter(data, "index")}
+		  <script id="portfolio-profile-data" type="application/json">${renderProfileData(data, resumeFiles)}</script>
 		</body>
 	`;
 

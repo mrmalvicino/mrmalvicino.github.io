@@ -2,7 +2,7 @@ import { readFile, stat } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { listFiles } from "./filesystem.mjs";
-import { languages, outputFile, pages, publicScripts } from "./site-manifest.mjs";
+import { languages, outputFile, pages, publicScripts, resumeDocuments } from "./site-manifest.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const requiredFiles = [
@@ -17,7 +17,7 @@ const requiredFiles = [
 	"assets/images/branding/favicon.ico",
 	...pages.filter(page => page.legacyFile).map(page => page.legacyFile),
 	...languages.flatMap(language => pages.map(page => outputFile(language.id, page.id))),
-	...languages.map(language => `assets/cv/${language.resumeFile}`),
+	...resumeDocuments.map(document => `assets/cv/${document.fileName}`),
 	...pages.map(page => `style/bundles/${page.id}.css`),
 	...publicScripts.map(script => `script/${script}`)
 ];
@@ -105,7 +105,7 @@ export async function verifyDist(output = path.join(projectRoot, "dist")) {
 		await assertLocalReferencesExist(output, relativePath, contents);
 	}
 
-	for (const relativePath of languages.map(language => `assets/cv/${language.resumeFile}`)) {
+	for (const relativePath of resumeDocuments.map(document => `assets/cv/${document.fileName}`)) {
 		const contents = await readFile(path.join(output, relativePath));
 
 		if (contents.byteLength < 10000 || contents.subarray(0, 5).toString() !== "%PDF-") {

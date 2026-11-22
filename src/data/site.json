@@ -49,16 +49,6 @@
     "formAction": "https://formspree.io/f/mvgpjkjn",
     "socialImage": "./assets/images/social/open-graph-image.png"
   },
-  "resumes": {
-    "en": {
-      "href": "./../assets/cv/malvicino-en.pdf",
-      "download": "malvicino-en.pdf"
-    },
-    "es": {
-      "href": "./../assets/cv/malvicino-es.pdf",
-      "download": "malvicino-es.pdf"
-    }
-  },
   "professionalProfiles": [
     {
       "id": 1,

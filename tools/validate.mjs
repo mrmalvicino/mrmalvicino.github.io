@@ -2,7 +2,7 @@ import { access, readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import Ajv from "ajv";
-import { languages } from "./site-manifest.mjs";
+import { languages, resumeDocuments } from "./site-manifest.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const dataFiles = ["site.json", ...languages.map(language => `${language.id}.json`)];
@@ -19,7 +19,7 @@ const localJsonKeys = new Set([
 ]);
 
 const generatedSitePaths = new Set([
-	...languages.map(language => `assets/cv/${language.resumeFile}`)
+	...resumeDocuments.map(document => `assets/cv/${document.fileName}`)
 ]);
 
 const schemaBaseUrl = "https://mrmalvicino.com/schemas/";
@@ -364,7 +364,6 @@ function validateUrls(site, errors) {
 
 	const localOrHttpsReferences = [
 		[site.configuration.socialImage, "configuration.socialImage"],
-		...Object.entries(site.resumes).map(([language, resume]) => [resume.href, `resumes.${language}.href`]),
 		...[
 			site.images.commonImages,
 			site.images.technologyImages,
@@ -481,8 +480,17 @@ function validateDomain(site, errors) {
 	const participationModeIds = new Set(Object.keys(site.participationModes));
 	const institutionEntityIds = new Set(Object.keys(site.institutions));
 	const professionalProfileIds = new Set(site.professionalProfiles.map(profile => profile.id));
+	const professionalProfileKeys = [...professionalProfileIds].map(String).sort();
 	const referencedTechnologyImageIds = new Set();
 	const referencedInstitutionImageIds = new Set();
+
+	for (const language of languages) {
+		const resumeProfileKeys = Object.keys(language.resumeFiles).sort();
+
+		if (JSON.stringify(resumeProfileKeys) !== JSON.stringify(professionalProfileKeys)) {
+			errors.push(`tools/site-manifest.mjs: resume files for ${language.id} do not match professional profile ids`);
+		}
+	}
 
 	for (const [id, technology] of Object.entries(site.technologies)) {
 		if (referencedTechnologyImageIds.has(technology.imageId)) {

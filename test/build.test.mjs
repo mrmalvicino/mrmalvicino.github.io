@@ -5,7 +5,7 @@ import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 import { buildSite } from "../tools/build.mjs";
-import { languages, outputFile, pages } from "../tools/site-manifest.mjs";
+import { languages, outputFile, pages, resumeDocuments } from "../tools/site-manifest.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -36,8 +36,6 @@ test("build creates the complete static publication", async () => {
 		await buildSite(root, output);
 
 		for (const language of languages) {
-			await stat(path.join(output, "assets/cv", language.resumeFile));
-
 			for (const page of pages) {
 				const route = outputFile(language.id, page.id);
 				const contents = await readFile(path.join(output, route), "utf8");
@@ -53,6 +51,10 @@ test("build creates the complete static publication", async () => {
 				assert.doesNotMatch(contents, /(?:src|href)="[^"]*data\/(?:site|es|en)\.json/);
 				await assertLocalReferencesExist(output, route, contents);
 			}
+		}
+
+		for (const document of resumeDocuments) {
+			await stat(path.join(output, "assets/cv", document.fileName));
 		}
 
 		const cv = await readFile(path.join(output, "en/cv/index.html"), "utf8");

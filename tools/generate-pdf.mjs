@@ -3,15 +3,10 @@ import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { chromium } from "@playwright/test";
 import { getDocument } from "pdfjs-dist/legacy/build/pdf.mjs";
-import { languages, route } from "./site-manifest.mjs";
+import { resumeDocuments, route } from "./site-manifest.mjs";
 import { startStaticServer } from "./static-server.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-
-const generatedDocuments = languages.map(language => ({
-	language: language.id,
-	fileName: language.resumeFile
-}));
 
 function normalizeText(value) {
 	return value.replace(/\s+/g, " ").trim();
@@ -103,7 +98,7 @@ function assertPdfIntegrity(pdf, expected, fileName) {
 async function generateDocument(browser, baseUrl, document) {
 	const page = await browser.newPage();
 	const localFailures = [];
-	const documentUrl = `${baseUrl}${route(document.language, "cv")}`;
+	const documentUrl = `${baseUrl}${route(document.language, "cv")}?profile=${document.profileId}`;
 
 	page.on("requestfailed", request => {
 		if (request.url().startsWith(baseUrl)) {
@@ -170,7 +165,7 @@ async function generateDocument(browser, baseUrl, document) {
 }
 
 export async function generateResumePdfs(output = path.join(projectRoot, "dist")) {
-	for (const document of generatedDocuments) {
+	for (const document of resumeDocuments) {
 		await stat(path.join(output, document.language, "cv/index.html"));
 	}
 
@@ -183,7 +178,7 @@ export async function generateResumePdfs(output = path.join(projectRoot, "dist")
 		browser = await chromium.launch();
 		const results = [];
 
-		for (const document of generatedDocuments) {
+		for (const document of resumeDocuments) {
 			results.push(await generateDocument(browser, server.baseUrl, document));
 		}
 

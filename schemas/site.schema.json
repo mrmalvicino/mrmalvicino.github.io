@@ -6,7 +6,6 @@
   "required": [
     "profile",
     "configuration",
-    "resumes",
     "professionalProfiles",
     "menu",
     "images",
@@ -81,15 +80,6 @@
       "properties": {
         "formAction": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
         "socialImage": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
-      }
-    },
-    "resumes": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["en", "es"],
-      "properties": {
-        "en": { "$ref": "#/$defs/resume" },
-        "es": { "$ref": "#/$defs/resume" }
       }
     },
     "professionalProfiles": {
@@ -301,15 +291,6 @@
       "properties": {
         "href": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
         "label": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
-      }
-    },
-    "resume": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["href", "download"],
-      "properties": {
-        "href": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
-        "download": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
       }
     },
     "orderedReference": {

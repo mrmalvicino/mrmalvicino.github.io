@@ -39,12 +39,25 @@ test("the three page templates render their critical controls", async ({ page })
 
 	await page.goto("/en/cv/");
 	await expect(page.locator("html")).toHaveAttribute("data-active-cv-profile", "1");
-	await expect(page.locator("#skills-list > li:visible")).toHaveCount(2);
-	await expect(page.locator("#skills-list > li:visible").last()).toContainText("Analytical thinking, Problem solving, Autonomy, Continuous learning, Teamwork");
+	const visibleSkills = page.locator("#skills-list > li:visible");
+
+	expect(await visibleSkills.count()).toBeGreaterThan(0);
+	expect(await visibleSkills.evaluateAll(elements => (
+		elements.every(element => element.dataset.cvProfiles.split(" ").includes("1"))
+	))).toBe(true);
+	await expect(visibleSkills.last()).toContainText("Analytical thinking, Problem solving, Autonomy, Continuous learning, Teamwork");
 	await expect(page.locator("#jobs-list > article:visible").first()).toBeVisible();
 
 	await page.goto("/en/");
 	await expect(page.getByRole("heading", { name: "Soft skills" })).toHaveCount(0);
+});
+
+test("portfolio resume links use the requested professional profile", async ({ page }) => {
+	await page.goto("/es/?profile=2");
+
+	await expect(page.locator("#resume-btn")).toHaveAttribute("href", "/assets/cv/malvicino-es-docente.pdf");
+	await expect(page.locator("#resume-btn")).toHaveAttribute("download", "malvicino-es-docente.pdf");
+	await expect(page.locator("#online-resume-btn")).toHaveAttribute("href", "/es/cv/?profile=2");
 });
 
 test("the selected CV profile filters content and survives a language change", async ({ page }) => {

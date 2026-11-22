@@ -20,9 +20,33 @@ const utilityStyles = [
 ];
 
 export const languages = [
-	{ id: "es", label: "ES", ogLocale: "es_AR", resumeFile: "malvicino-es.pdf" },
-	{ id: "en", label: "EN", ogLocale: "en_US", resumeFile: "malvicino-en.pdf" }
+	{
+		id: "es",
+		label: "ES",
+		ogLocale: "es_AR",
+		resumeFiles: {
+			1: "malvicino-es.pdf",
+			2: "malvicino-es-docente.pdf"
+		}
+	},
+	{
+		id: "en",
+		label: "EN",
+		ogLocale: "en_US",
+		resumeFiles: {
+			1: "malvicino-en.pdf",
+			2: "malvicino-en-teacher.pdf"
+		}
+	}
 ];
+
+export const resumeDocuments = languages.flatMap(language => (
+	Object.entries(language.resumeFiles).map(([profileId, fileName]) => ({
+		language: language.id,
+		profileId: Number(profileId),
+		fileName
+	}))
+));
 
 export const defaultLanguage = "en";
 
@@ -32,7 +56,7 @@ export const pages = [
 		path: "",
 		legacyFile: null,
 		styles: ["portfolio.css", "project-cards.css", "inputs.css", "table.css"],
-		scripts: ["menu.js", "email-copy.js", "contact-form.js"]
+		scripts: ["menu.js", "email-copy.js", "contact-form.js", "portfolio-profile.js"]
 	},
 	{
 		id: "projects",
